@@ -1,0 +1,58 @@
+(()=>{
+'use strict';
+const qs=(s,r=document)=>r.querySelector(s), qsa=(s,r=document)=>[...r.querySelectorAll(s)];
+const fmtMoney=(v,compact=false)=>v==null?'N/A':compact?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',notation:'compact',maximumFractionDigits:2}).format(v):new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(v);
+const fmtNum=(v,d=1)=>v==null?'N/A':Number(v).toLocaleString(undefined,{maximumFractionDigits:d});
+const fmtPct=(v,d=1)=>v==null?'N/A':`${v>0?'+':''}${Number(v).toFixed(d)}%`;
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const ago=iso=>{if(!iso)return'UNKNOWN';try{return new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(new Date(iso))}catch{return iso}};
+const LS='recoveryResearchStateV1', API_KEY='recoveryResearchApiV1', TOKEN_KEY='recoveryResearchTokenV1';
+let SEED=null,SYMBOLS=[],CAPS=null,MARKET_STATUS=null,currentTicker=null,currentBundle=null,chart=null,searchTimer=null,activeView='explore';
+let user=loadUser(),viewScroll={explore:0,stock:0,screener:0,compare:0,lists:0};
+const DEFINITIONS={
+ 'Relative volume':'Current volume divided by a reference average. It shows unusual activity, not direction or quality.',
+ 'RSI':'Relative Strength Index. A 0–100 momentum oscillator; extreme readings can persist and are not automatic reversal signals.',
+ 'MACD':'A trend/momentum calculation from exponential moving averages. Crossovers lag price and need context.',
+ 'ATR':'Average True Range. A volatility measure in price units; it does not predict direction.',
+ 'VWAP':'Volume-weighted average price for the represented period. Here it comes from provider aggregate bars.',
+ 'Market cap':'Share price times shares outstanding. It is not the same as enterprise value.',
+ 'Free cash flow':'Operating cash flow minus capital expenditures. Company definitions can differ, so source filings matter.',
+ 'Short interest':'Shares sold short and still open at a reporting date. Reporting is periodic, not a live directional signal.',
+ 'Open interest':'Options contracts still open at the end of the reporting cycle. It is not the same as today’s volume.'
+};
+function loadUser(){try{return Object.assign({recent:[],favorites:[],lists:{Research:[]},notes:{},bookmarks:{},queueRequests:[],compare:[],watches:[],savedScreens:{},assessmentSnapshots:{}},JSON.parse(localStorage.getItem(LS)||'{}'))}catch{return{recent:[],favorites:[],lists:{Research:[]},notes:{},bookmarks:{},queueRequests:[],compare:[],watches:[],savedScreens:{},assessmentSnapshots:{}}}}
+function saveUser(){localStorage.setItem(LS,JSON.stringify(user));scheduleRemoteStatePush()}
+let remotePushTimer=null;function scheduleRemoteStatePush(){clearTimeout(remotePushTimer);remotePushTimer=setTimeout(pushRemoteState,700)}
+function apiBase(){return (localStorage.getItem(API_KEY)||'').replace(/\/$/,'')}
+function authHeaders(){const t=localStorage.getItem(TOKEN_KEY)||'';return t?{'Authorization':'Bearer '+t}:{}}
+async function api(path,opts={}){const base=apiBase();if(!base)throw Object.assign(new Error('Research API not connected'),{code:'NO_API'});const ctrl=new AbortController(),tm=setTimeout(()=>ctrl.abort(),12000);try{const r=await fetch(base+path,{...opts,headers:{'Content-Type':'application/json',...authHeaders(),...(opts.headers||{})},signal:ctrl.signal});let body=null;try{body=await r.json()}catch{}if(!r.ok)throw Object.assign(new Error(body?.error||`HTTP ${r.status}`),{status:r.status,body});return body}finally{clearTimeout(tm)}}
+async function loadSeed(){const embedded=window.__EMBEDDED_RESEARCH__;try{const [a,b,c]=await Promise.all([fetch('data/research-seed.json').then(r=>r.json()),fetch('data/symbols-seed.json').then(r=>r.json()),fetch('data/provider-capabilities.json').then(r=>r.json())]);SEED=a;SYMBOLS=b.symbols||[];CAPS=c;MARKET_STATUS=a.meta?.marketStatusSnapshot||null}catch(e){if(embedded){SEED=embedded.seed;SYMBOLS=embedded.symbols||[];CAPS=embedded.capabilities||{capabilities:[]};MARKET_STATUS=SEED.meta?.marketStatusSnapshot||null}else console.warn('Explorer seed unavailable',e)}}
+function recoveryState(){try{return typeof STATE!=='undefined'?STATE:null}catch{return null}}
+function tracked(t){return recoveryState()?.stocks?.find(x=>x.ticker===t)||null}
+function seedBundle(t){return SEED?.stocks?.[t]||null}
+async function refreshMarketStatus(){try{MARKET_STATUS=await api('/api/market-status');const el=qs('#exMarketNow');if(el)el.textContent=`MARKET ${String(MARKET_STATUS.market||'UNKNOWN').toUpperCase()} · ${ago(MARKET_STATUS.serverTime)}`}catch(e){console.warn('market status',e)}}
+function setConn(){const els=qsa('[data-ex-conn]');els.forEach(el=>{el.textContent=apiBase()?'API CONFIGURED':'CACHED REVIEW';el.classList.toggle('connected',!!apiBase())})}
+function toastEx(msg){if(typeof toast==='function')toast(msg);else console.log(msg)}
+function openExplorer(view='explore'){qs('#explorer')?.classList.add('show');if(apiBase())refreshMarketStatus();document.body.style.overflow='hidden';showView(view);setConn();if(view==='explore')setTimeout(()=>qs('#exHomeSearch')?.focus(),80)}
+function closeExplorer(){qs('#explorer')?.classList.remove('show');document.body.style.overflow='';history.replaceState(null,'',location.pathname+location.search+(location.hash.startsWith('#research/')?'':location.hash))}
+function showView(id){const main=qs('.ex-main');if(main)viewScroll[activeView]=main.scrollTop;activeView=id;qsa('.ex-view').forEach(v=>v.classList.toggle('active',v.id===`ex-${id}`));qsa('[data-ex-view]').forEach(b=>b.classList.toggle('active',b.dataset.exView===id));if(id==='explore')renderExplore();if(id==='screener')renderScreener();if(id==='compare')renderCompare();if(id==='lists')renderLists();requestAnimationFrame(()=>{if(main)main.scrollTop=viewScroll[id]||0})}
+function addRecent(t){user.recent=[t,...user.recent.filter(x=>x!==t)].slice(0,12);saveUser()}
+function toggleFavorite(t){user.favorites=user.favorites.includes(t)?user.favorites.filter(x=>x!==t):[t,...user.favorites];saveUser();renderStockActions();renderLists()}
+function addCompare(t){if(!user.compare.includes(t))user.compare=[...user.compare,t].slice(-4);saveUser();renderStockActions();toastEx(`${t} added to compare`)}
+function getSym(t){return SYMBOLS.find(x=>x.ticker===t)||{ticker:t,name:seedBundle(t)?.profile?.name||tracked(t)?.company||t,exchange:seedBundle(t)?.profile?.exchange||'—',securityType:seedBundle(t)?.profile?.securityType||'—'}}
+async function searchSymbols(q){
+ q=q.trim();if(!q)return[];
+ let local=SYMBOLS.filter(x=>x.ticker.toLowerCase().includes(q.toLowerCase())||x.name.toLowerCase().includes(q.toLowerCase())).sort((a,b)=>(a.ticker.toLowerCase()===q.toLowerCase()?-1:0)-(b.ticker.toLowerCase()===q.toLowerCase()?-1:0)).slice(0,8).map(x=>({...x,supported:true}));
+ if(apiBase()&&q.length>=1){try{const r=await api('/api/search?q='+encodeURIComponent(q));const remote=(r.results||[]).map(x=>({ticker:x.ticker,name:x.name,exchange:x.exchange||x.primary_exchange||'—',securityType:x.type||x.securityType||'—',supported:x.supported!==false,unsupportedReason:x.unsupportedReason||null,remote:true}));const seen=new Set();local=[...remote,...local].filter(x=>!seen.has(x.ticker)&&(seen.add(x.ticker),true)).slice(0,12)}catch(e){console.warn('remote search',e)}}return local
+}
+function mountSuggest(input,box){input.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(async()=>renderSuggest(input,box),140)});input.addEventListener('focus',()=>{if(input.value.trim())renderSuggest(input,box)});input.addEventListener('keydown',e=>{if(e.key==='Enter'){const first=box.querySelector('[data-search-ticker]');if(first){e.preventDefault();openResearch(first.dataset.searchTicker)}else if(input.value.trim())openResearch(input.value.trim().toUpperCase())}if(e.key==='Escape')box.classList.remove('show')})}
+async function renderSuggest(input,box){
+ const q=input.value.trim();if(!q){box.classList.remove('show');return}
+ box.innerHTML='<div class="search-empty">Searching supported symbols…</div>';box.classList.add('show');const rows=await searchSymbols(q);
+ if(!rows.length){box.innerHTML=`<div class="search-empty"><b>No supported match</b><br>Check the ticker/company spelling. Remote coverage requires the research API.</div><div class="search-source">${apiBase()?'CONNECTED PROVIDER SEARCH':'OFFLINE CONVENIENCE LIST ONLY'}</div>`;return}
+ box.innerHTML=rows.map(x=>`<div class="search-item ${x.supported===false?'unsupported':''}" data-search-ticker="${esc(x.ticker)}" data-supported="${x.supported===false?'false':'true'}"><b>${esc(x.ticker)}</b><span>${esc(x.name)}<br>${esc(x.exchange)}</span><em>${esc(x.securityType)}${x.supported===false?' · UNSUPPORTED':''}</em></div>`).join('')+`<div class="search-source">${apiBase()?'PROVIDER + LOCAL RESULTS · STOCKS / ADRs / ETFs FIRST':'LOCAL REVIEW RESULTS · CONNECT API FOR PROVIDER UNIVERSE'}</div>`;
+ box.querySelectorAll('[data-search-ticker]').forEach(el=>el.onclick=()=>{box.classList.remove('show');input.value='';if(el.dataset.supported==='false'){openExplorer('stock');renderError('UNSUPPORTED SECURITY',rows.find(x=>x.ticker===el.dataset.searchTicker)?.unsupportedReason||'This security type is outside the current Stock Explorer coverage.');return}openResearch(el.dataset.searchTicker)})
+}
+async function fetchBundle(t){t=t.toUpperCase();if(apiBase()){try{const r=await api('/api/stock/'+encodeURIComponent(t));return r.stock||r}catch(e){if(seedBundle(t)){toastEx('Remote research unavailable · showing cached review data');return seedBundle(t)}throw e}}return seedBundle(t)}
+async function openResearch(t){t=t.trim().toUpperCase();const isNew=t!==currentTicker;if(isNew)viewScroll.stock=0;if(!/^[A-Z0-9.\-]{1,12}$/.test(t)){openExplorer('stock');renderError('INVALID SYMBOL','Use a valid ticker such as AAPL, SPY, NKE or BRK.B.');return}openExplorer('stock');currentTicker=t;history.replaceState(null,'',`#research/${encodeURIComponent(t)}`);qs('#stockContent').innerHTML='<div class="empty-panel"><strong>LOADING RESEARCH</strong>Resolving profile, cached evidence and tracker status…</div>';try{let b=await fetchBundle(t);if(!b){const s=SYMBOLS.find(x=>x.ticker===t);if(s){b={profile:{ticker:s.ticker,name:s.name,exchange:s.exchange,securityType:s.securityType},quote:null,bars:[],news:[],whatMatters:[{type:'LIMITATION',text:'This symbol is recognized by the local search list, but no research bundle is cached. Connect the secure research API to retrieve it.'}],recoveryAssessment:{tracked:false,headline:'GENERAL RESEARCH ONLY — NOT QUALIFIED',classification:'NOT ASSESSED'}}}else throw Object.assign(new Error('Unsupported or unknown symbol'),{code:'NOT_FOUND'})}currentBundle=b;addRecent(t);renderStock(b);requestAnimationFrame(()=>{const m=qs('.ex-main');if(m)m.scrollTop=viewScroll.stock||0});}catch(e){renderError(e.status===404?'SYMBOL NOT FOUND':'RESEARCH DATA UNAVAILABLE',e.code==='NO_API'?'This symbol is not cached in the review build. Connect the secure research API to search the provider universe.':e.message)}}
+function renderError(title,text){qs('#stockContent').innerHTML=`<div class="ex-page-head"><div><h2>${esc(currentTicker||'STOCK RESEARCH')}</h2><p>Recovery OS Stock Explorer</p></div></div><div class="empty-panel"><strong>${esc(title)}</strong>${esc(text)}<br><b
