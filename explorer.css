@@ -18,9 +18,25 @@
 @media(max-width:700px){.topbar .explorer-launch{display:none}.ex-top{padding-left:8px;padding-right:8px;min-height:58px}.ex-title{display:none}.ex-actions .ex-connection{display:none}.ex-search input{height:40px;font-size:14px}.ex-body{display:block}.ex-nav{display:none}.ex-view{padding:13px 11px 90px}.ex-page-head{align-items:flex-start}.ex-page-head h2{font-size:20px}.ex-page-head .ex-statusline{max-width:42%;font-size:7px}.ex-card,.ex-card.half,.ex-card.wide{grid-column:1/-1}.ex-grid{gap:9px}.stock-identity{grid-template-columns:1fr}.stock-price{text-align:left}.stock-price strong{font-size:34px}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.research-chart{height:330px}.news-row{grid-template-columns:1fr;gap:4px}.assessment-row{grid-template-columns:1fr;gap:3px}.compare-slots{grid-template-columns:repeat(2,1fr)}.ex-mobile-tabs{position:fixed;z-index:1200;display:grid;grid-template-columns:repeat(5,1fr);bottom:0;left:0;right:0;background:rgba(2,8,13,.96);border-top:1px solid var(--rxline);padding:6px 4px calc(6px + env(safe-area-inset-bottom));backdrop-filter:blur(15px)}.ex-mobile-tabs button{border:0;background:transparent;color:#668696;font:8px ui-monospace,monospace;padding:7px 2px}.ex-mobile-tabs button.active{color:#dffcff}.ex-mobile-tabs span{display:block;font-size:16px;margin-bottom:2px}.search-suggest{position:fixed;top:58px;left:8px;right:8px;max-height:60vh}.explorer-home-search{margin-top:12px}.explorer-home-search input{height:50px;font-size:15px}.data-table{min-width:620px}.ex-card h3{margin-bottom:9px}}
 @media(max-width:390px){.metric-grid{grid-template-columns:1fr 1fr}.stat{padding:8px}.ex-back,.ex-icon{width:36px;height:36px}.ex-view{padding-left:9px;padding-right:9px}}
 @media(max-width:700px){.bottom-nav{grid-template-columns:repeat(6,1fr)}.top-actions #explorerBtn{display:none}}
+
+
 .search-item.unsupported{opacity:.58;cursor:not-allowed;background:rgba(255,170,90,.025)}
 .search-item.unsupported em{border-color:rgba(255,170,90,.28);color:#c99b73}
 .ticker-chip{border:1px solid rgba(124,234,255,.18);background:#061018;color:#8fcbd8;border-radius:5px;padding:3px 5px;font:8px ui-monospace,monospace;cursor:pointer}
 .ticker-chip:hover{border-color:rgba(124,234,255,.42);color:#dffcff}
 .warn-text{color:#d8a27f}
 @media(max-width:700px){.screener-bar .filter{min-width:calc(50% - 6px);flex:1}.screener-bar>div:last-child{width:100%}.ticker-chip{min-height:30px}}
+
+/* Free hybrid research mode — TradingView embeds + SEC directory. */
+.free-link-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.free-link-row.compact{margin-top:12px}
+.ex-linkbtn{text-decoration:none;display:inline-flex;align-items:center}
+.free-source-strip{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;padding-top:10px;border-top:1px solid var(--rxline)}
+.free-source-strip span{font:8px ui-monospace,monospace;color:#6f96a7;border:1px solid #223b47;border-radius:5px;padding:5px 7px}
+.tv-widget{width:100%;overflow:hidden;border:1px solid rgba(124,234,255,.08);border-radius:9px;background:#03090e}
+.tv-symbol{min-height:175px}
+.tv-chart{height:560px}
+.tv-medium{height:430px}
+.tv-tall{height:560px}
+.tv-widget iframe{max-width:100%}
+@media(max-width:700px){.tv-chart{height:520px}.tv-medium{height:420px}.tv-tall{height:540px}.free-link-row .ex-btn{flex:1;justify-content:center;min-width:130px}}
