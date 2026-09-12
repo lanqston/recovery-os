@@ -6,11 +6,14 @@ This repository is the canonical portal host and tracker bridge for the v2.0 Cri
 
 The deployed baseline contains 4 qualified securities (STZ, DECK, NKE, ZTS), 2 provisional exception-review records (ENPH, ON), and a research queue (ADBE, PYPL). Provisional names remain explorable in the 3D world but are excluded from qualified counts/performance until formally qualified under v2.0.
 
-## Connected research workspace
+## Open research universe
 
-General Research opens the stock explorer from the home page or a recovery thesis. Every stock has a navigable research map: brief, price, financials, catalysts, risks and original sources. Mobile and desktop use the same native research content. TradingView modules load only when requested, one at a time, with an external chart link when embedding fails.
+Recovery OS opens into a Three.js research world. Drag to orbit, scroll or pinch to travel, select a company beacon, or use free flight with W/A/S/D and Q/E. Touch devices have hold-to-move controls. Eight destinations connect each company to a detailed brief, price history, financials, filings, catalysts, risks, macro context and sources. A guided flight visits the destinations. Reading view provides the same native evidence without WebGL.
 
-- Research snapshots cover AAPL plus 14 additional stocks/funds in `data/research/index.json`. Coverage and dates vary and are visible in each record.
+- Public snapshots cover 33 stock/ETF hubs in `data/open-research/index.json`, with up to nine disclosed quarters, four annual periods, 16 filings, 420 daily bars and news. The SEC directory adds more than 10,000 searchable securities; directory inclusion does not imply a detailed snapshot exists. Dates and coverage vary, including sparse company statements for funds.
+- Free collection uses SEC company facts/submissions, Yahoo daily history/RSS, Federal Reserve and BLS releases, Treasury curves and FRED series. `scripts/refresh_open_research.py` runs without API keys, throttles SEC requests, retains per-metric provenance and preserves previously collected records on provider errors. SEC data is fetched outside the browser because its API does not support browser CORS.
+- `.github/workflows/public-research.yml` collects public snapshots on weekdays and supports manual dispatch. The app reads fresh public repository JSON with a same-origin snapshot fallback, so scheduled data updates do not depend on a new Pages build. Source failures do not erase prior evidence. These are dated records, not a real-time trading feed.
+- Quarterly and annual financials remain separate. Cash flow reported year to date retains that scope; free cash flow requires matching operating-cash-flow and capital-expenditure periods. The collector does not invent fourth-quarter share counts.
 - Briefs are calculated and written from loaded evidence. They are not fresh AI web searches. Uncached tickers open an explicitly limited source workspace; an optional configured research API can supply additional stock bundles.
 - Search does not mutate `data/recovery-os.json` or promote a ticker. Original discovery history, qualification and performance accounting are preserved.
 - Research notes, favorites, source bookmarks, comparisons, lists and assessment snapshots use the existing device storage. Optional remote state integration remains available.
@@ -18,4 +21,6 @@ General Research opens the stock explorer from the home page or a recovery thesi
 - Rapid Enter, stale suggestions and asynchronous query changes are checked by `node tests/research-search.test.cjs`.
 - `tests/responsive.html` is a manual browser fixture for desktop, tablet and 430/390/320 pixel layouts. It does not modify the tracker.
 
-`research-model.js` contains evidence-based analysis; `free-hybrid.js` owns stock routing and the research workspace; `research-world.css` provides its responsive visual system. Existing explorer modules supply saved-state, financial table and optional research tools.
+`research-model.js` contains evidence-based analysis; `free-hybrid.js` owns routing; `research-evidence.js` assembles source-backed reading chapters; `research-universe.js` and `research-universe.css` provide 3D navigation and responsive panels. Three.js is self-hosted under its included MIT license. Pixel ratio and animation frequency are capped; hidden tabs pause rendering and reduced-motion preferences disable idle animation. Native data and public links replace embedded market widgets in the main research flow.
+
+Run `node tests/research-evidence.test.cjs` and `python -m unittest discover -s tests -p 'test_public_research.py'` for public-data integrity, synthesis and period-normalization checks, alongside the model/search checks above.
