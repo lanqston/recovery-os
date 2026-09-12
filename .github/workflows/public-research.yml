@@ -26,7 +26,7 @@ jobs:
           python-version: '3.12'
       - name: Collect free public evidence
         env:
-          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+          SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
         run: python scripts/refresh_open_research.py
       - name: Validate research data and search behavior
         run: |
