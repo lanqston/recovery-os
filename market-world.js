@@ -1,5 +1,6 @@
 import * as THREE from './vendor/three.module.min.js';
 import {StockUniverse} from './research-universe.js';
+import {installInformationWorld} from './information-world.js';
 import {HologramRenderer} from './world-renderer.js';
 
 const el=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)],mobile=()=>innerWidth<760;
@@ -29,7 +30,7 @@ class MarketWorld extends StockUniverse{
   initScene(){
     this.registry=(ATLAS_INDEX.length?ATLAS_INDEX:OPEN_RESEARCH_INDEX).map((r,i)=>({...r,sector:sectorKey(r),seed:hashText(r.ticker),index:i}));
     this.sectors=SECTORS.map(([id,title,color],i)=>({id,title,color,kind:'sector',base:new THREE.Vector3(Math.sin(i/SECTORS.length*Math.PI*2)*1080,0,Math.cos(i/SECTORS.length*Math.PI*2)*1080)}));
-    for(const r of this.registry){const center=this.sectors.find(s=>s.id===r.sector),angle=(r.seed%10000)/10000*Math.PI*2,radius=45+Math.sqrt((r.seed>>>12)%1000)/31.63*300;r.position=center.base.clone().add(new THREE.Vector3(Math.sin(angle)*radius,((r.seed>>>6)%80)-5,Math.cos(angle)*radius));}
+    for(const r of this.registry){const center=this.sectors.find(s=>s.id===r.sector),angle=(r.seed%10000)/10000*Math.PI*2,radius=45+Math.sqrt((r.seed>>>12)%1000)/31.63*300;r.position=center.base.clone().add(new THREE.Vector3(Math.sin(angle)*radius,0,Math.cos(angle)*radius));}
     this.registryMap=new Map(this.registry.map(r=>[r.ticker,r]));this.stationNodes=[];this.sectorNodes=[];this.lastPool=0;this.focusDistrict=null;
     super.initScene();this.camera.far=40000;this.camera.updateProjectionMatrix();this.scene.fog.density=.00055;this.canvas.dataset.renderer=this.renderer.software?'perspective-canvas':'webgl';
     this.addDistricts();this.addStations();this.addPlanet();this.refreshTape();
@@ -46,7 +47,7 @@ class MarketWorld extends StockUniverse{
     this.hubs=this.pool;
   }
   addLabel(node){
-    const button=document.createElement('button');button.className='universe-node-label '+node.kind;button.type='button';button.hidden=true;button.innerHTML='<small></small><strong></strong><em></em>';this.labelHost.append(button);node.label=button;this.labels.push(node);button.onclick=()=>{this.stopTour();if(node.kind==='company')openResearch(node.id);else if(node.kind==='sector')this.district(node.id);else if(node.kind==='station')this.station(node.id);else selectResearchSection(node.id,{scroll:false})};this.label(node);return node;
+    const button=document.createElement('button');button.className='universe-node-label '+node.kind;button.type='button';button.hidden=true;button.innerHTML='<small></small><strong></strong><em></em>';this.labelHost.append(button);node.label=button;this.labels.push(node);button.onclick=()=>{this.stopTour();if(node.kind==='company'){if(window.RecoveryWorldInfo)window.RecoveryWorldInfo.select(node.id);else openResearch(node.id)}else if(node.kind==='sector')this.district(node.id);else if(node.kind==='station')this.station(node.id);else selectResearchSection(node.id,{scroll:false})};this.label(node);return node;
   }
   label(node){const b=node.label;b.dataset.universeNode=node.id;b.querySelector('small').textContent=node.kicker||'';b.querySelector('strong').textContent=node.title+' ↗';b.querySelector('em').textContent=node.detail||'';b.setAttribute('aria-label','Explore '+(node.title||'company'))}
   addDistricts(){
@@ -64,10 +65,11 @@ class MarketWorld extends StockUniverse{
   }
   refreshPool(force=false){
     if(!force&&performance.now()-this.lastPool<700)return;this.lastPool=performance.now();const target=this.cameraTarget||new THREE.Vector3();let records=this.focusDistrict?this.registry.filter(r=>r.sector===this.focusDistrict):this.registry;
+    if(window.RecoveryWorldInfo?.matches)records=records.filter(window.RecoveryWorldInfo.matches);
     if(this.locationKind==='home')records=[...records].sort((a,b)=>(b.marketCap||0)-(a.marketCap||0)).slice(0,this.pool.length);
     else records=[...records].sort((a,b)=>a.position.distanceToSquared(target)-b.position.distanceToSquared(target)).slice(0,this.pool.length);
     if(this.selected){const selected=this.registryMap.get(this.selected);if(selected&&!records.includes(selected))records[records.length-1]=selected}
-    this.pool.forEach((node,i)=>{const r=records[i];node.group.visible=!!r;if(!r){node.id='';return}node.id=r.ticker;node.title=r.ticker;node.kicker=r.sector;node.detail=MODEL.finite(r.price)?fmtMoney(r.price)+(MODEL.finite(r.changePct)?' · '+fmtPct(r.changePct,2):''):r.name;node.position.copy(r.position).add(new THREE.Vector3(0,31,0));node.base.copy(r.position);node.group.position.copy(r.position);node.towers.forEach((tower,j)=>{const height=7+((r.seed>>j*4)%21);tower.scale.y=height;tower.position.y=height/2});this.label(node)});
+    this.pool.forEach((node,i)=>{const r=records[i];node.group.visible=!!r;if(!r){node.id='';return}node.id=r.ticker;node.title=r.ticker;node.kicker=r.sector;node.detail=MODEL.finite(r.price)?fmtMoney(r.price)+(MODEL.finite(r.changePct)?' · '+fmtPct(r.changePct,2):''):r.name;node.position.copy(r.position).add(new THREE.Vector3(0,31,0));node.base.copy(r.position);node.group.position.copy(r.position);node.towers.forEach((tower,j)=>{const height=10;tower.scale.y=height;tower.position.y=height/2});this.label(node)});
   }
   bind(){
     super.bind();
@@ -128,11 +130,11 @@ renderResearchReader=function renderWorldReader(section,b,a,tr){if(section==='th
 openExplorer=function openWorld(view='explore'){ROOT_OPEN(view);if(!market)return;market.activate();if(view==='explore')market.home(false);else if(view!=='stock')market.station(view)};
 closeExplorer=function returnToUniverse(){if(market)market.home();};
 showView=function showWorldView(id){if(!market)return ROOT_VIEW(id);if(id==='explore')market.home();else if(id==='stock'){ROOT_VIEW(id);if(currentBundle)market.stock(currentBundle)}else market.station(id)};
-openResearch=async function openCompanyWorld(raw,options={}){const parts=String(raw||'').split('/'),prefix=parts[0].split(':');prefix[prefix.length-1]=symbolKey(prefix.at(-1));parts[0]=prefix.join(':');if(market){market.activate();market.stopTour();market.closePane();el('#universeTravelStatus').textContent='Opening '+prefix.at(-1)+' · collecting the available evidence';el('#universeGeneral').onclick=()=>selectResearchSection('brief',{scroll:false})}return ROOT_RESEARCH(parts.join('/'),options)};
+openResearch=async function openCompanyWorld(raw,options={}){if(window.RecoveryFabric?.replayState)window.RecoveryFabric.exitReplay();document.body.classList.remove('information-open');const parts=String(raw||'').split('/'),prefix=parts[0].split(':');prefix[prefix.length-1]=symbolKey(prefix.at(-1));parts[0]=prefix.join(':');if(market){market.activate();market.stopTour();market.closePane();el('#universeTravelStatus').textContent='Opening '+prefix.at(-1)+' · collecting the available evidence';el('#universeGeneral').onclick=()=>selectResearchSection('brief',{scroll:false})}return ROOT_RESEARCH(parts.join('/'),options)};
 renderResearchWorld=function renderCompanyWorld(b,section='brief'){ROOT_RENDER(b,section);if(market){market.stock(b);if(section!=='brief'){ROOT_SELECT(section,{scroll:false});market.destination(section)}}};
-selectResearchSection=function visitResearchDestination(section,options={}){if(!currentBundle||!RESEARCH_TOPICS.some(x=>x[0]===section))return;ROOT_SELECT(section,{...options,scroll:false});if(market){market.stopTour();ROOT_VIEW('stock');if(market.bundle!==currentBundle)market.stock(currentBundle);market.destination(section);if(section==='thesis')el('#universePaneTitle').textContent='Recovery thesis'}};
+selectResearchSection=function visitResearchDestination(section,options={}){if(window.RecoveryFabric?.replayState)window.RecoveryFabric.exitReplay();document.body.classList.remove('information-open');if(!currentBundle||!RESEARCH_TOPICS.some(x=>x[0]===section))return;ROOT_SELECT(section,{...options,scroll:false});if(market){market.stopTour();ROOT_VIEW('stock');if(market.bundle!==currentBundle)market.stock(currentBundle);market.destination(section);window.RecoveryFabric?.onStock(currentBundle);if(section==='thesis')el('#universePaneTitle').textContent='Recovery thesis'}};
 openRoom=function openRecoveryWorld(t){return openResearch(t,{section:'thesis'})};
 
 async function routeWorld(){if(routeBusy||!market)return;routeBusy=true;try{const hash=location.hash;if(hash.startsWith('#research/')){let path;try{path=decodeURIComponent(hash.slice(10))}catch{market.home(false);return}const [raw,section='brief']=path.split('/'),t=symbolKey(raw.split(':').at(-1));if(t===currentTicker&&currentBundle){ROOT_VIEW('stock');market.stock(currentBundle);if(section!=='brief')selectResearchSection(section,{history:false})}else await openResearch(path,{history:false})}else if(hash.startsWith('#atlas/sector/'))market.district(decodeURIComponent(hash.slice(14)),{history:false});else if(hash.startsWith('#atlas/'))market.station(hash.slice(7),{history:false});else market.home(false)}finally{routeBusy=false}}
-function bootMarket(){if(market)return;market=new MarketWorld();if(market.failed){market=null;el('#atlasLoading')?.remove();document.body.classList.remove('market-world-app','universe-mode');ROOT_OPEN('explore');return}market.activate();window.RecoveryUniverse={open:()=>market.home(),route:routeWorld,read:()=>market.reading(true)};window.RecoveryExplorer={open:openExplorer,openResearch,showView};go=id=>market.station(({tracker:'tracker',history:'tracker',command:'tracker',alerts:'news',world:'sectors'})[id]||'sectors');routeWorld();}
+function bootMarket(){if(market)return;market=new MarketWorld();if(market.failed){market=null;el('#atlasLoading')?.remove();document.body.classList.remove('market-world-app','universe-mode');ROOT_OPEN('explore');return}market.activate();installInformationWorld(market);window.RecoveryUniverse={open:()=>market.home(),route:routeWorld,read:()=>market.reading(true)};window.RecoveryExplorer={open:openExplorer,openResearch,showView};go=id=>market.station(({tracker:'tracker',history:'tracker',command:'tracker',alerts:'news',world:'sectors'})[id]||'sectors');routeWorld();}
 window.addEventListener('market-atlas-ready',()=>requestAnimationFrame(bootMarket));if(window.marketAtlasReady)requestAnimationFrame(bootMarket);

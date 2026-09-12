@@ -151,20 +151,22 @@ def build_company(t,directory):
             result['filings']=filings(sub);result['health'].append({'provider':'SEC filings','status':'available','asOf':result['filings'][0]['filed'] if result['filings'] else None})
             if t not in ('SPY','QQQ'):
                 facts=fetch(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json',t+'-facts');f=normalize_facts(facts,sub)
-                if f.get('quarterly') or f.get('annual'):result['financials']=f
+                if f.get('quarterly') or f.get('annual'):result['financials']={**f,'retrievedAt':NOW}
                 result['health'].append({'provider':'SEC financial statements','status':'available' if f.get('quarterly') else 'no standard quarterly facts','asOf':f.get('quarterly',[{}])[0].get('endDate') if f.get('quarterly') else None})
         except Exception as e:result['health'].append({'provider':'SEC','status':'last successful record retained' if old else 'unavailable','detail':str(e)[:150]})
     try:
+        if os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('Automatic access paused pending provider permission; saved history retained')
         bars,meta=price_bars(t)
         result.setdefault('profile',old.get('profile') or {'ticker':t,'name':entry['name'] if entry else meta.get('longName') or meta.get('shortName') or t,'cik':str(entry['cik']).zfill(10) if entry else None,'exchange':entry.get('exchange') if entry else meta.get('exchangeName')})
         if meta.get('instrumentType')=='ETF':result['profile'].update(typeCode='ETF',securityType='ETF')
         if bars:
             last=bars[-1];prior=bars[-2] if len(bars)>1 else last
-            result['bars']=bars;result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Yahoo Finance public daily history','dataState':'DAILY SNAPSHOT','currency':meta.get('currency','USD')}
-            result['priceSource']={'title':'Yahoo Finance daily history','url':f'https://finance.yahoo.com/quote/{urllib.parse.quote(t)}/history/','publisher':'Yahoo Finance','date':last['date']}
+            result['bars']=bars;result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Yahoo Finance public daily history','dataState':'DAILY SNAPSHOT','currency':meta.get('currency')}
+            result['priceSource']={'title':'Yahoo Finance daily history','url':f'https://finance.yahoo.com/quote/{urllib.parse.quote(t)}/history/','publisher':'Yahoo Finance','date':last['date'],'retrievedAt':NOW}
             result['health'].append({'provider':'Yahoo daily history','status':'available','asOf':last['date']})
     except Exception as e:result['health'].append({'provider':'Yahoo daily history','status':'saved price history retained','detail':str(e)[:150]})
     try:
+        if os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('RSS ingestion paused pending provider permission; saved news retained')
         rss=fetch(f'https://feeds.finance.yahoo.com/rss/2.0/headline?s={urllib.parse.quote(t)}&region=US&lang=en-US',t+'-rss','text')
         result['news']=feed_items(rss,'Yahoo Finance RSS',8);result['health'].append({'provider':'Yahoo Finance RSS','status':'available','items':len(result['news'])})
     except Exception as e:result['health'].append({'provider':'Yahoo Finance RSS','status':'saved news retained','detail':str(e)[:150]})

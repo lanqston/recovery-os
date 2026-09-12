@@ -106,6 +106,7 @@ def build(skip_frames=False):
     for t,b in old.items():records[t]=b
     health=[]
     try:
+        if public.os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('Automatic screener ingestion paused pending documented access permission')
         payload=public.fetch(NASDAQ,'nasdaq-screener');quotes=payload.get('data',{}).get('rows') or []
         for x in quotes:
             t=x.get('symbol','').strip().upper()

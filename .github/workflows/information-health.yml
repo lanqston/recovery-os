@@ -1,0 +1,32 @@
+name: Information Fabric review gate
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 11 * * 1-5'
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  observe-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_information.py /tmp/validation.json
+      - run: node scripts/audit_information.cjs /tmp/health.json
+      - run: python scripts/discover_information_sources.py --check-links --output /tmp/source-review.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: information-fabric-review
+          path: |
+            /tmp/validation.json
+            /tmp/health.json
+            /tmp/source-review.json
+# Read-only checks produce review artifacts. No deployment or tracker-writing step exists.
