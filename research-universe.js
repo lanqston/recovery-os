@@ -1,4 +1,5 @@
 import * as THREE from './vendor/three.module.min.js';
+import {marketRenderer} from './world-renderer.js';
 
 const Q=s=>document.querySelector(s),QA=s=>[...document.querySelectorAll(s)];
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
@@ -12,12 +13,12 @@ const baseOpen=openExplorer,baseClose=closeExplorer,baseView=showView,baseRender
 let U=null,enabled=false,readerPreference=false,ready=false;
 try{readerPreference=localStorage.getItem('recovery-research-view')==='reader'}catch{}
 
-class StockUniverse{
+export class StockUniverse{
   constructor(){
     this.active=false;this.selected=null;this.bundle=null;this.flight=null;this.mode='orbit';this.keys=new Set();this.nodes=[];this.hubs=[];this.topicNodes=[];this.labels=[];this.pickables=[];this.hover=null;this.time=0;this.lastFrame=0;this.tourIndex=-1;this.tourTimer=null;
     this.target=new THREE.Vector3(0,10,0);this.cameraTarget=this.target.clone();this.yaw=.34;this.pitch=1.02;this.distance=590;this.pointers=new Map();this.changed=true;
     this.mount();
-    try{this.initScene();this.bind();this.resize();this.frame(0)}catch(error){this.failed=true;this.stage.innerHTML='<div class="universe-fallback"><h2>Your research is ready.</h2><p>This browser could not start the 3D view. The full research reader is available.</p><button id="fallbackReader" class="ex-btn">Open reading view ↗</button></div>';Q('#fallbackReader').onclick=()=>setReader(true);}
+    try{this.initScene();this.bind();this.resize();this.frame(0)}catch(error){this.failed=true;this.stage.innerHTML='<div class="universe-fallback"><h2>Your research is ready.</h2><p>This browser could not start the 3D view. The full research reader is available.</p><button id="fallbackReader" class="ex-btn">Open reading view ↗</button></div>';Q('#fallbackReader').onclick=()=>window.RecoveryUniverse?.read();}
   }
   mount(){
     const explorer=Q('#explorer');
@@ -27,20 +28,20 @@ class StockUniverse{
     explorer.append(hud);this.hud=hud;
     const bar=document.createElement('div');bar.id='universeReaderBar';bar.innerHTML='<div><span id="universePaneKicker">RESEARCH DESTINATION</span><strong id="universePaneTitle">Research desk</strong></div><button id="universeRefresh" aria-label="Refresh public research" title="Refresh public research">↻</button><button id="universeExpand" aria-label="Expand the research reader" title="Expand reading view">↗</button><button id="universePaneClose" aria-label="Close research panel" title="Close research panel">×</button>';
     Q('.ex-main').prepend(bar);
-    const returnButton=document.createElement('button');returnButton.id='returnUniverse';returnButton.className='ex-btn';returnButton.textContent='3D World ↗';returnButton.onclick=()=>setReader(false);Q('.ex-actions').prepend(returnButton);
+    const returnButton=document.createElement('button');returnButton.id='returnUniverse';returnButton.className='ex-btn';returnButton.textContent='3D World ↗';returnButton.onclick=()=>window.RecoveryUniverse?.open();Q('.ex-actions').prepend(returnButton);
   }
   initScene(){
-    this.renderer=new THREE.WebGLRenderer({canvas:this.canvas,antialias:!small(),alpha:false,powerPreference:'low-power'});
+    this.renderer=marketRenderer(this.canvas,small());
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,small()?1.5:1.8));this.renderer.setClearColor(0x040810,1);this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.35;
     this.scene=new THREE.Scene();this.scene.fog=new THREE.FogExp2(0x040810,.00135);this.camera=new THREE.PerspectiveCamera(48,1,.2,3600);
     this.scene.add(new THREE.AmbientLight(0xc1d8ff,1.8));const light=new THREE.DirectionalLight(0x86bbff,2.5);light.position.set(-160,280,180);this.scene.add(light);
     const purple=new THREE.PointLight(0x7557ff,14000,1400,2);purple.position.set(-180,80,-180);this.scene.add(purple);
     const grid=new THREE.GridHelper(2600,130,0x315d82,0x172b43);grid.position.y=-16;grid.material.transparent=true;grid.material.opacity=.38;this.scene.add(grid);
-    const floor=new THREE.Mesh(new THREE.PlaneGeometry(2800,2800),new THREE.MeshStandardMaterial({color:0x06101a,roughness:.65,metalness:.45,transparent:true,opacity:.94}));floor.rotation.x=-Math.PI/2;floor.position.y=-16.2;this.scene.add(floor);
+    const floor=new THREE.Mesh(new THREE.PlaneGeometry(2800,2800),new THREE.MeshStandardMaterial({color:0x06101a,roughness:.65,metalness:.45,transparent:true,opacity:.94}));floor.rotation.x=-Math.PI/2;floor.position.y=-16.2;floor.userData.skipSoftware=true;this.scene.add(floor);
     this.addStars();this.addCore();this.addCompanyHubs();this.addPortals();
     this.raycaster=new THREE.Raycaster();this.pointer=new THREE.Vector2();this.radar=Q('#universeRadar').getContext('2d');
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(this.stage);
-    this.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();this.active=false;Q('#universeTravelStatus').textContent='3D paused. Reading view remains available.';setReader(true)});
+    this.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();this.recoverRenderer?.()});
   }
   material(color,opacity=1){return new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.15,metalness:.65,roughness:.28,transparent:opacity<1,opacity})}
   line(points,color=0x37658d,opacity=.45){const g=new THREE.BufferGeometry().setFromPoints(points);return new THREE.Line(g,new THREE.LineBasicMaterial({color,transparent:true,opacity}))}
@@ -121,7 +122,7 @@ class StockUniverse{
     if(!this.bundle)return;this.stopTour(false);const node=this.topicNodes.find(n=>n.id===id);this.openPane(TITLES[id]||'Research desk');
     QA('[data-universe-destination]').forEach(x=>x.classList.toggle('selected',x.dataset.universeDestination===id));this.topicNodes.forEach(x=>x.label.classList.toggle('selected',x.id===id));
     if(node){const pos=node.position.clone().add(new THREE.Vector3(0,-8,0));this.fly(pos,small()?240:170,Math.atan2(pos.x-this.core.position.x,pos.z-this.core.position.z)+.2,1.17);}
-    Q('#universeTravelStatus').textContent=`${this.selected} / ${TITLES[id]}`;Q('.ex-main').scrollTo({top:0,behavior:'instant'});this.changed=true;
+    Q('#universeTravelStatus').textContent=`${this.selected} / ${TITLES[id]||'Recovery thesis'}`;Q('.ex-main').scrollTo({top:0,behavior:'instant'});this.changed=true;
   }
   openPane(title){document.body.classList.add('universe-pane-open');Q('#universePaneTitle').textContent=title;Q('#universePaneKicker').textContent=(this.selected||'RECOVERY OS')+' / NATIVE RESEARCH';Q('.ex-main').removeAttribute('inert');this.resize();}
   closePane(){document.body.classList.remove('universe-pane-open');if(enabled)Q('.ex-main')?.setAttribute('inert','');this.resize();}
@@ -153,7 +154,7 @@ class StockUniverse{
     this.canvas.addEventListener('keydown',e=>{if(['w','a','s','d','q','e','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();if(this.mode!=='free')this.freeFly();this.keys.add(e.key.toLowerCase());this.stopTour();this.changed=true}});
     document.addEventListener('keyup',e=>this.keys.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>{this.keys.clear();this.pointers.clear()});
     QA('[data-flight-key]').forEach(b=>{b.onpointerdown=e=>{e.preventDefault();b.setPointerCapture(e.pointerId);this.keys.add(b.dataset.flightKey);this.changed=true};for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,()=>this.keys.delete(b.dataset.flightKey));});
-    Q('#universeGeneral').onclick=()=>this.selected?selectResearchSection('brief',{scroll:false}):openResearch('AAPL');Q('#universeTour').onclick=()=>this.startTour();Q('#universeOverview').onclick=()=>{baseView('explore');this.overview()};Q('#universeReset').onclick=()=>{this.stopTour();this.reset()};Q('#universeZoomIn').onclick=()=>this.travel(1);Q('#universeZoomOut').onclick=()=>this.travel(-1);Q('#universeMode').onclick=()=>this.freeFly();Q('#universePaneClose').onclick=()=>this.closePane();Q('#universeRefresh').onclick=()=>{if(this.selected)openResearch(this.bundle.researchSymbol||this.selected,{section:researchSection,refresh:true,history:false})};Q('#universeExpand').onclick=()=>setReader(true);Q('#universeTracker').onclick=()=>closeExplorer();Q('#universeReader').onclick=()=>setReader(true);Q('#universeCompare').onclick=()=>{if(this.selected)addCompare(this.selected);this.openAux('compare')};Q('#universeNotes').onclick=()=>{if(!this.selected){this.openAux('lists');return}baseView('stock');this.openPane('Your research notes');scrollResearchTo(Q('#worldNotebook'));Q('#worldNote')?.focus({preventScroll:true})};
+    Q('#universeGeneral').onclick=()=>this.selected?selectResearchSection('brief',{scroll:false}):openResearch('AAPL');Q('#universeTour').onclick=()=>this.startTour();Q('#universeOverview').onclick=()=>{baseView('explore');this.overview()};Q('#universeReset').onclick=()=>{this.stopTour();this.reset()};Q('#universeZoomIn').onclick=()=>this.travel(1);Q('#universeZoomOut').onclick=()=>this.travel(-1);Q('#universeMode').onclick=()=>this.freeFly();Q('#universePaneClose').onclick=()=>this.closePane();Q('#universeRefresh').onclick=()=>{if(this.selected)openResearch(this.bundle.researchSymbol||this.selected,{section:researchSection,refresh:true,history:false})};Q('#universeExpand').onclick=()=>window.RecoveryUniverse?.read();Q('#universeTracker').onclick=()=>closeExplorer();Q('#universeReader').onclick=()=>window.RecoveryUniverse?.read();Q('#universeCompare').onclick=()=>{if(this.selected)addCompare(this.selected);this.openAux('compare')};Q('#universeNotes').onclick=()=>{if(!this.selected){this.openAux('lists');return}baseView('stock');this.openPane('Your research notes');scrollResearchTo(Q('#worldNotebook'));Q('#worldNote')?.focus({preventScroll:true})};
     Q('#universeHelpButton').onclick=()=>{Q('#universeHelpPanel').hidden=!Q('#universeHelpPanel').hidden};Q('#universeHelpClose').onclick=()=>{Q('#universeHelpPanel').hidden=true};document.addEventListener('visibilitychange',()=>{this.keys.clear();this.lastFrame=0;this.changed=true});window.addEventListener('resize',()=>this.resize());
   }
   projectLabels(){
@@ -175,11 +176,11 @@ class StockUniverse{
   drawRadar(){
     if(!this.radar)return;const x=this.radar;x.clearRect(0,0,160,160);x.strokeStyle='#46729066';x.lineWidth=1;for(const r of [24,48,72]){x.beginPath();x.arc(80,80,r,0,Math.PI*2);x.stroke()}x.beginPath();x.moveTo(8,80);x.lineTo(152,80);x.moveTo(80,8);x.lineTo(80,152);x.stroke();for(const n of this.hubs){x.fillStyle=n.id===this.selected?'#deedff':'#7792b988';x.fillRect(80+n.base.x*.15-1.5,80+n.base.z*.15-1.5,3,3)}const p=this.camera.position;x.fillStyle='#85e8cc';x.beginPath();x.arc(clamp(80+p.x*.15,5,155),clamp(80+p.z*.15,5,155),3,0,Math.PI*2);x.fill();}
   frame(timestamp){
-    requestAnimationFrame(t=>this.frame(t));if(!this.active||document.hidden||this.failed)return;const frameDelay=small()?33:24;if(timestamp-this.lastFrame<frameDelay)return;const dt=Math.min(.06,(timestamp-this.lastFrame)/1000||.016);this.lastFrame=timestamp;this.time+=dt;
+    requestAnimationFrame(t=>this.frame(t));if(!this.active||document.hidden||this.failed)return;const frameDelay=this.renderer.software?(small()?50:42):(small()?33:24);if(timestamp-this.lastFrame<frameDelay)return;const dt=Math.min(.06,(timestamp-this.lastFrame)/1000||.016);this.lastFrame=timestamp;this.time+=dt;
     if(this.flight){const f=this.flight,p=f.duration?clamp((performance.now()-f.start)/f.duration,0,1):1,e=p*p*(3-2*p);this.camera.position.lerpVectors(f.from,f.to,e);this.camera.position.y+=Math.sin(Math.PI*p)*16;this.cameraTarget.lerpVectors(f.fromTarget,f.target,e);this.camera.lookAt(this.cameraTarget);if(p===1){this.target.copy(f.target);this.distance=f.distance;this.yaw=f.yaw;this.pitch=f.pitch;this.flight=null;}}
     else if(this.mode==='free'){
-      this.camera.quaternion.setFromEuler(new THREE.Euler(this.freePitch,this.freeYaw,0,'YXZ'));const forward=this.camera.getWorldDirection(new THREE.Vector3()),right=new THREE.Vector3(1,0,0).applyQuaternion(this.camera.quaternion),speed=dt*100;
-      if(this.keys.has('w')||this.keys.has('arrowup'))this.camera.position.addScaledVector(forward,speed);if(this.keys.has('s')||this.keys.has('arrowdown'))this.camera.position.addScaledVector(forward,-speed);if(this.keys.has('a')||this.keys.has('arrowleft'))this.camera.position.addScaledVector(right,-speed);if(this.keys.has('d')||this.keys.has('arrowright'))this.camera.position.addScaledVector(right,speed);if(this.keys.has('q'))this.camera.position.y-=speed;if(this.keys.has('e'))this.camera.position.y+=speed;this.camera.position.y=clamp(this.camera.position.y,-7,1100);if(this.camera.position.length()>1900)this.camera.position.setLength(1900);this.cameraTarget.copy(this.camera.position).addScaledVector(forward,180);
+      this.camera.quaternion.setFromEuler(new THREE.Euler(this.freePitch,this.freeYaw,0,'YXZ'));const forward=this.camera.getWorldDirection(new THREE.Vector3()),right=new THREE.Vector3(1,0,0).applyQuaternion(this.camera.quaternion),speed=dt*240;
+      if(this.keys.has('w')||this.keys.has('arrowup'))this.camera.position.addScaledVector(forward,speed);if(this.keys.has('s')||this.keys.has('arrowdown'))this.camera.position.addScaledVector(forward,-speed);if(this.keys.has('a')||this.keys.has('arrowleft'))this.camera.position.addScaledVector(right,-speed);if(this.keys.has('d')||this.keys.has('arrowright'))this.camera.position.addScaledVector(right,speed);if(this.keys.has('q'))this.camera.position.y-=speed;if(this.keys.has('e'))this.camera.position.y+=speed;this.camera.position.y=clamp(this.camera.position.y,-7,1100);if(this.camera.position.length()>50000)this.camera.position.setLength(50000);this.cameraTarget.copy(this.camera.position).addScaledVector(forward,180);
     }else{this.camera.position.set(this.target.x+Math.sin(this.yaw)*Math.sin(this.pitch)*this.distance,this.target.y+Math.cos(this.pitch)*this.distance,this.target.z+Math.cos(this.yaw)*Math.sin(this.pitch)*this.distance);this.cameraTarget.copy(this.target);this.camera.lookAt(this.target)}
     if(!reduced()){this.coreOrb.rotation.y+=dt*.13;this.coreInner.rotation.y-=dt*.19;this.coreOrbit.rotation.y+=dt*.08;for(const n of this.topicNodes)n.beacon.rotation.y+=dt*.2;}
     if(reduced()&&!this.changed&&!this.flight&&!this.keys.size)return;this.renderer.render(this.scene,this.camera);this.projectLabels();this.drawRadar();this.changed=false;
@@ -187,16 +188,3 @@ class StockUniverse{
   activate(){this.active=true;document.body.classList.add('universe-mode');Q('#explorer').setAttribute('aria-label','Recovery OS research universe');this.resize();this.changed=true;}
   deactivate(){this.active=false;this.stopTour();this.keys.clear();this.pointers.clear();document.body.classList.remove('universe-mode','universe-pane-open','universe-free-flight');Q('.ex-main')?.removeAttribute('inert');}
 }
-
-function ensure(){if(!U)U=new StockUniverse();return U}
-function setReader(value){readerPreference=value;try{localStorage.setItem('recovery-research-view',value?'reader':'world')}catch{}if(value){enabled=false;U?.deactivate();if(currentBundle&&activeView==='stock'){baseSelect(researchSection,{scroll:false});Q('.ex-main').scrollTop=0;}else baseView(activeView);Q('#explorer').setAttribute('aria-label','Recovery OS Stock Explorer');}else{enabled=true;ensure().activate();if(currentBundle&&activeView==='stock')U.stock(currentBundle);else U.overview();}}
-
-openExplorer=function openUniverseExplorer(view='explore'){baseOpen(view);if(!ready||readerPreference)return;enabled=true;ensure().activate();if(view==='explore')U.overview();else if(view!=='stock')U.openAux(view);};
-closeExplorer=function closeUniverseExplorer(){enabled=false;U?.deactivate();baseClose();};
-showView=function showUniverseView(id){baseView(id);if(!enabled||!U)return;if(id==='explore')U.overview();else if(id==='stock'&&currentBundle){U.stock(currentBundle)}else if(id!=='stock')U.openAux(id);};
-renderResearchWorld=function renderUniverseStock(b,section='brief'){baseRender(b,section);if(enabled&&U){U.stock(b);if(section!=='brief'){baseSelect(section,{scroll:false});U.destination(section);}}};
-selectResearchSection=function selectUniverseDestination(section,options={}){baseSelect(section,{...options,scroll:enabled?false:options.scroll});if(enabled&&U){U.stopTour();if(activeView!=='stock')baseView('stock');U.destination(section)}};
-
-function boot(){if(ready)return;ready=true;ensure();Q('#closeExplorer')&&(Q('#closeExplorer').onclick=closeExplorer);Q('#returnWorld')&&(Q('#returnWorld').onclick=closeExplorer);window.RecoveryExplorer={open:openExplorer,openResearch,showView};window.RecoveryUniverse={open:()=>{readerPreference=false;openExplorer(currentBundle?'stock':'explore');if(currentBundle)ensure().stock(currentBundle)},read:()=>setReader(true)};if(!readerPreference&&(Q('#explorer.show')||!location.hash)){enabled=true;ensure().activate();if(!Q('#explorer.show'))baseOpen('explore');if(currentBundle){U.stock(currentBundle);if(researchSection!=='brief')U.destination(researchSection)}else U.overview();}}
-window.addEventListener('research-ready',()=>requestAnimationFrame(boot));if(window.publicResearchReady)requestAnimationFrame(boot);
-for(const event of ['popstate','hashchange'])window.addEventListener(event,()=>{if(!Q('#explorer.show')){enabled=false;U?.deactivate();}});

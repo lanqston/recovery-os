@@ -1,0 +1,230 @@
+/* The atlas is the application shell. All research opens within the world. */
+:root{--world-panel:min(570px,44vw);--atlas-cyan:#9de7eb;--atlas-line:#86b9cd30}
+body.market-world-app{background:#040b13;overflow:hidden}
+.market-world-app>.shell,.market-world-app>.bottom-nav,.market-world-app>#boot{display:none}
+.market-world-app .explorer{height:100dvh;inset:0}
+#atlasLoading{position:fixed;inset:0;z-index:1000;display:grid;place-content:center;text-align:center;background:radial-gradient(ellipse at 50% 45%,#153146,#040b13 65%);color:#def6f7}
+#atlasLoading small{letter-spacing:.22em;font:10px ui-monospace,monospace;color:#90bccb}
+#atlasLoading h1{font:400 clamp(28px,6vw,55px) system-ui;letter-spacing:-.055em;margin:24px 0 18px}
+#atlasLoading p{font:12px/1.7 system-ui;color:#a5bacb;max-width:280px;margin:0 auto}
+.atlas-loading-orbit{height:85px;width:85px;border:1px solid #7ed6dd45;border-radius:50%;margin:0 auto 35px;position:relative;box-shadow:0 0 60px #68bdca13,inset 0 0 35px #73c8d018}
+.atlas-loading-orbit:before{content:'';position:absolute;inset:12px;border:1px solid #94d5e29c;border-radius:50%;transform:rotateX(55deg) rotate(-25deg)}
+.atlas-loading-orbit:after{content:'';position:absolute;width:6px;height:6px;background:#c8fffd;box-shadow:0 0 20px #9ffffb;border-radius:50%;left:15px;top:6px}
+.market-world-app .ex-top{background:#06111bea;border-bottom-color:var(--atlas-line)}
+.market-world-app .ex-title b{color:#e0f6f6;font-weight:500;letter-spacing:.16em}
+.market-world-app .ex-title small{color:#88b5c3}
+.market-world-app .ex-search input{border-color:#7babba50;border-radius:7px;background:#1023319e;color:#e9f9fa}
+.market-world-app .ex-search input:focus{border-color:#a3ebec;box-shadow:0 0 0 3px #80d7dc15}
+.market-world-app .ex-suggest{background:#0c1c2cfb;max-height:min(490px,60dvh);border-color:#79b6c45c;box-shadow:0 24px 70px #000a}
+.market-world-app .ex-search{z-index:40}
+.market-world-app .ex-connection{color:#97b6c5;font-size:9px;max-width:166px}
+#atlasTape{position:absolute;left:0;right:0;top:80px;height:40px;display:flex;align-items:center;gap:0;overflow:auto;scrollbar-width:none;white-space:nowrap;border-bottom:1px solid #7aabba20;background:#081622c7;pointer-events:auto;backdrop-filter:blur(12px)}
+#atlasTape button{display:flex;gap:10px;align-items:center;padding:0 24px;min-height:38px;border:0;border-right:1px solid #77aac428;background:none;font:10px/1.4 ui-monospace,monospace;color:#c1d5df;cursor:pointer}
+#atlasTape button:hover{background:#20404d80}
+#atlasTape b{color:#d9f3f4;font-weight:500}
+#atlasTape em{font-style:normal;font-size:9px}
+#atlasTape>small{padding:0 25px;font:8px ui-monospace,monospace;letter-spacing:.06em;color:#819daa}
+.up{color:#95dfbf}.down{color:#efa4b5}
+.market-world-app .universe-heading{top:155px;left:38px;width:min(505px,46vw)}
+.market-world-app #universeTitle{font-size:clamp(41px,4.4vw,68px);font-weight:350;line-height:1.04;letter-spacing:-.064em;margin:20px 0 17px}
+.market-world-app #universeTitle em{color:#97c6d5}
+.market-world-app #universeSubtitle{max-width:295px;font-size:13px;line-height:1.75;color:#a5bccb}
+.market-world-app .universe-eyebrow{color:#8cb6c5;font-size:8px;letter-spacing:.18em}
+.market-world-app .universe-live-dot{background:#9fece8;box-shadow:0 0 12px #67dbd9}
+.market-world-app .universe-stock-meta{color:#8fb4c5;font-size:9px;gap:8px 16px;max-width:350px}
+.market-world-app .universe-primary{background:#b7e5e8;border-color:#b7e5e8;color:#08202b;box-shadow:0 0 25px #83d2da14}
+.market-world-app .universe-ghost{border-color:#73aabb50;background:#102735b3;color:#c3e7ed}
+.market-world-app .universe-heading-actions button{min-height:44px}
+.market-world-app .universe-flight-controls{top:151px;right:24px}
+.market-world-app .universe-flight-controls button{border-radius:5px;border-color:#78a7bf3b;background:#102635bb;color:#b4dce7;width:44px;height:44px}
+.market-world-app .universe-flight-controls #universeMode{height:44px}
+.market-world-app .universe-node-label{background:linear-gradient(115deg,#193447ed,#081c2adc);border-color:#79b9ca61;box-shadow:inset 2px 0 #a2d6df80,0 10px 32px #0004;border-radius:4px}
+.market-world-app .universe-node-label small{color:#7eb8cb;letter-spacing:.08em}
+.market-world-app .universe-node-label strong{font-weight:450;color:#e4f8f7}
+.market-world-app .universe-node-label em{color:#a1bfce}
+.market-world-app .universe-node-label.company{border-color:#76a8bd3b;background:#0c2430cc;box-shadow:inset 2px 0 #6fa7b76b}
+.market-world-app .universe-node-label.sector{border-color:#abc7e250;background:#132839dd}
+.market-world-app .universe-node-label.station{border-color:#a6e5e077;box-shadow:inset 2px 0 #b5ebe9a1,0 0 30px #71b0c009}
+.market-world-app .universe-node-label:hover,.market-world-app .universe-node-label.selected{background:#245166ed;border-color:#c2fafa;box-shadow:inset 2px 0 #cefffb,0 0 28px #68c5d332}
+#atlasLocation{position:absolute;left:38px;bottom:189px;border-left:1px solid #91cdcf8c;padding-left:13px;max-width:240px}
+#atlasLocation span,#atlasLocation b{display:block;font:8px/1.8 ui-monospace,monospace;letter-spacing:.12em;color:#779bab}
+#atlasLocation b{font-size:10px;color:#b5d7df;letter-spacing:.07em;margin-top:3px}
+#atlasStockTools{position:absolute;left:38px;bottom:245px;display:flex;gap:6px;pointer-events:auto}
+#atlasStockTools[hidden]{display:none!important}
+#atlasStockTools button,#atlasStockSector{min-height:36px;border:1px solid #7dabbd40;background:#0e2533db;color:#bcdde6;font:10px/1.4 system-ui;border-radius:5px;padding:0 11px}
+#atlasStockSector{min-height:28px;font-size:9px;color:#91c6d6}
+.market-world-app .universe-radar{width:124px;right:27px;bottom:168px}
+.market-world-app .universe-radar canvas{width:124px;height:124px}
+.market-world-app .universe-travel-status{left:38px;bottom:142px;font-size:9px;color:#849eaf}
+.market-world-app .universe-destinations{border-color:#78aebb3b;background:#091c29e6;border-radius:7px;bottom:78px;max-width:calc(100% - 60px)}
+.market-world-app .universe-destinations button{min-height:40px;font-size:10px;color:#b1cbd5}
+.market-world-app .universe-destinations button.selected{background:#214654;border-color:#73b6c14d;color:#e2fbf5}
+.market-world-app .universe-footer{padding-inline:25px;min-height:66px;background:#05131deb;border-color:#8fc2d02a}
+.market-world-app .universe-footer>div{gap:10px}
+.market-world-app .universe-footer>div>button{display:flex;align-items:center;gap:10px;font-size:18px;min-height:44px;padding:0 14px;color:#87b7c7;border-radius:5px}
+.market-world-app .universe-footer>div>button span{font:11px/1.2 system-ui;color:#9bb8c5}
+.market-world-app .universe-footer>div>button.selected{border-color:#79acbd46;background:#193443a6;color:#c7fcf4}
+.market-world-app .universe-footer>div>button.selected span{color:#dcf5f3}
+.market-world-app .universe-footer>span{font-size:7px;color:#7799aa}
+.market-world-app .universe-footer #universeHelpButton{height:40px;width:40px}
+.market-world-app .ex-main{top:138px;bottom:138px;background:linear-gradient(135deg,#102533fa,#07131efa);border-color:#83b8c649;border-radius:8px;box-shadow:0 22px 70px #0007}
+.market-world-app #universeReaderBar{background:#102635f7;border-color:#85b8c634;padding:12px 16px;gap:7px}
+.market-world-app #universePaneKicker{color:#86b9ca}
+.market-world-app #universePaneTitle{color:#d8f0f2}
+.market-world-app #universeReaderBar>button{width:40px;height:40px;flex-shrink:0;background:#1b384b;border-color:#80b3c339;border-radius:5px;color:#d3eeee}
+.market-world-app #universeReaderBar>button:hover{background:#2f5766;border-color:#bcf6ee}
+.market-world-app.universe-pane-open .universe-heading{max-width:calc(100% - var(--world-panel) - 135px)}
+.market-world-app.universe-pane-open #universeTitle{font-size:clamp(34px,3.8vw,54px)}
+.market-world-app.universe-pane-open .universe-flight-controls{right:calc(var(--world-panel) + 39px)}
+.market-world-app .research-kicker{color:#8dc3d0;font-size:9px;letter-spacing:.13em}
+.market-world-app .ex-view{padding:25px 26px 32px}
+.market-world-app .reader-heading h3{font-size:28px;font-weight:450;color:#deeff2;letter-spacing:-.035em}
+.market-world-app .evidence-chapter h4{font-size:21px;font-weight:450;line-height:1.35}
+.market-world-app .evidence-chapter p,.market-world-app .evidence-synthesis p{font-size:14px;line-height:1.9;color:#b5cbd5}
+.market-world-app .research-metrics{margin:22px 0;gap:9px}
+.market-world-app .research-metric{border-color:#78b0bf2c;background:#15324173;border-radius:5px;overflow-wrap:anywhere}
+.market-world-app .research-metric>strong{font-size:25px;font-weight:400;color:#dff7f1}
+.market-world-app .research-prose{background:#15303e5c;border-color:#7badba2c}
+.market-world-app .ex-btn{border-color:#7aabba45;color:#bddde6;background:#15334266;min-height:38px;border-radius:5px}
+.market-world-app .ex-btn:hover{background:#244f5e;border-color:#a6dfdf}
+.market-world-app .research-citation{min-height:36px;border-color:#7fb5c246;color:#a9d0dc}
+.atlas-panel-head{margin-bottom:28px}
+.atlas-panel-head h2{font:400 32px/1.15 system-ui;letter-spacing:-.045em;margin:16px 0;color:#e0f4f3}
+.atlas-panel-head p,.atlas-business p,.atlas-next-sources>p{font:13px/1.8 system-ui;color:#a7c1ce}
+.atlas-sector-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.atlas-sector-grid>button{position:relative;overflow:hidden;min-height:144px;padding:17px;text-align:left;border:1px solid #77adbe36;background:radial-gradient(ellipse at 92% 0%,color-mix(in srgb,var(--sector-color) 12%,transparent),#0f2533);border-radius:7px;color:var(--sector-color);cursor:pointer}
+.atlas-sector-grid>button:hover{border-color:var(--sector-color);background-color:#214450}
+.atlas-sector-orbit{display:block;font:30px/1 system-ui;margin-bottom:18px;opacity:.75}
+.atlas-sector-grid b{display:block;font:450 14px/1.35 system-ui;color:#daedf0;margin-bottom:8px}
+.atlas-sector-grid small{font:9px/1.6 ui-monospace,monospace;color:#94b4c4;display:block}
+.atlas-filter{display:block;width:100%;height:44px;padding:0 13px;margin:0 0 17px;background:#0b1c2c;border:1px solid #7fb1c452;border-radius:5px;font:13px system-ui;color:#d9f2f4;outline-offset:3px}
+.atlas-company-list{display:grid;gap:0;margin:15px 0 24px}
+.atlas-company-list>button{display:flex;align-items:center;justify-content:space-between;text-align:left;gap:16px;min-height:70px;padding:12px 1px;border:0;border-bottom:1px solid #7da7bb28;background:none;color:#cee7ee;cursor:pointer;width:100%}
+.atlas-company-list>button:hover{background:#2144546b}
+.atlas-company-list>button>span{min-width:0;flex:1}
+.atlas-company-list b{font:450 15px/1.3 system-ui;letter-spacing:.015em}
+.atlas-company-list small{display:block;margin-top:6px;font:10px/1.5 system-ui;color:#89abba;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.atlas-company-list em{font:12px/1.4 ui-monospace,monospace;text-align:right;flex-shrink:0}
+.atlas-company-list em small{font-size:10px}
+.atlas-source-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0 28px}
+.atlas-source-cards>a{display:block;border:1px solid #83b2bd30;border-radius:6px;background:#17344464;padding:18px 15px;color:#cce6ed;text-decoration:none;min-width:0}
+.atlas-source-cards>a:hover{border-color:#a0dadd80;background:#24465499}
+.atlas-source-cards>a>span{float:right;color:#85bccb;font-size:17px}
+.atlas-source-cards strong{font:450 12px/1.6 system-ui;display:block;max-width:90%;overflow-wrap:anywhere}
+.atlas-source-cards p{font:11px/1.7 system-ui;color:#8eafc0;margin:10px 0 0}
+.atlas-business{padding:23px 0;border-block:1px solid #77a9ba2b;margin:24px 0}
+.atlas-business h4,.atlas-next-sources h4{font:450 21px/1.4 system-ui;letter-spacing:-.015em;color:#d0e8ed;margin:13px 0}
+.atlas-identity-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.atlas-identity-tags span{font:8px/1.6 ui-monospace,monospace;letter-spacing:.04em;border:1px solid #79abba33;color:#a1c3d0;padding:5px 8px;border-radius:3px}
+.market-world-app .data-table-wrap{overflow-x:auto;max-width:100%;border:1px solid #7fadc134;border-radius:5px;scrollbar-width:thin;scrollbar-color:#618396 transparent}
+.atlas-financial-table{width:max-content;min-width:100%;border-collapse:collapse;font:11px/1.55 ui-monospace,monospace}
+.atlas-financial-table th,.atlas-financial-table td{text-align:right;white-space:nowrap;padding:15px 13px;border-bottom:1px solid #7aa6b72c}
+.atlas-financial-table thead th{color:#8eb8c9;font-size:9px;font-weight:400;background:#183545}
+.atlas-financial-table tr>th:first-child{text-align:left;color:#c7e2ea;font-weight:400}
+.atlas-financial-table small{display:block;font:8px/1.6 system-ui;color:#799dab;margin-top:5px}
+.atlas-financial-table td{color:#c1dce6}
+.atlas-financial-table a{font:9px/1.5 system-ui;color:#8ec5d6;text-decoration:none}
+.atlas-detail{border-block:1px solid #81b6c52b;margin:25px 0;padding:15px 0}
+.atlas-detail summary{cursor:pointer;font:12px/1.6 system-ui;color:#b9dce4;padding:6px 0}
+.atlas-detail[open]>summary{margin-bottom:18px}
+.atlas-recovery-list{display:grid;gap:16px}
+.atlas-recovery-list>article{padding:20px;border:1px solid #9aafd438;border-radius:7px;background:linear-gradient(135deg,#23314685,#10263780)}
+.atlas-recovery-list header{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.atlas-recovery-list header b{font:450 23px system-ui;color:#e1e8fc;letter-spacing:-.03em}
+.atlas-recovery-list header span{font:8px/1.5 ui-monospace,monospace;color:#adaed6;text-align:right}
+.atlas-recovery-list h4{font:400 12px system-ui;color:#a9bfd1;margin:8px 0 18px}
+.atlas-recovery-list p{font:13px/1.8 system-ui;color:#b5c6d8}
+.atlas-blocker{padding:15px 0;border-block:1px solid #8aafd02c;margin:18px 0;font:11px/1.8 system-ui;color:#a7bed4}
+.atlas-blocker span{display:block;font:8px ui-monospace,monospace;letter-spacing:.12em;margin-bottom:9px;color:#97a5c9}
+.atlas-recovery-list footer{display:flex;flex-wrap:wrap;gap:9px}
+.atlas-recovery-list footer .ex-btn{font-size:10px}
+.atlas-history{margin:18px 0}.atlas-history small{font:9px ui-monospace,monospace;color:#80a6ba}.atlas-history h4{font-size:13px}.atlas-history p{font:12px/1.7 system-ui;color:#a9bdce}
+.atlas-prompt{border:1px dashed #81b0c139;border-radius:6px;padding:20px;color:#99bacb;font:12px/1.8 system-ui}
+.atlas-note-preview,.atlas-news-item{padding:20px 0;border-bottom:1px solid #7fabbe2e}
+.atlas-note-preview button{background:#1b3c4c;border:1px solid #80b8c544;border-radius:4px;padding:6px 12px;color:#bde5e9;font:12px system-ui;min-height:36px}
+.atlas-note-preview p{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.8 system-ui;color:#a7c2d1}
+.atlas-news-item small{font:9px/1.6 ui-monospace,monospace;color:#82abbc}
+.atlas-news-item h4{font:450 16px/1.65 system-ui;letter-spacing:-.01em;margin:12px 0;color:#d0e7ed}
+.atlas-news-item h4 a{color:inherit;text-decoration:none}.atlas-news-item h4 a:hover{color:#aef2ec}
+.atlas-news-item p{font:12px/1.75 system-ui;color:#a3becc}
+.atlas-news-item .research-text-link{background:none;border:0;padding:10px 0;color:#90c7d1;font:11px system-ui;min-height:38px}
+.atlas-checklist>div{padding:15px 0;border-bottom:1px solid #80aabc29;display:flex;justify-content:space-between;align-items:center;gap:20px;font:12px/1.6 system-ui;color:#a9c5d2}
+.atlas-checklist b{font:9px/1.5 ui-monospace,monospace;text-align:right;color:#b7d7db}
+.market-world-app #ex-atlas>h3{font:450 21px/1.5 system-ui;letter-spacing:-.02em;color:#cde7ed;margin:28px 0 15px}
+.market-world-app .source-note{font:10px/1.8 system-ui;color:#83a4b5;margin:18px 0;overflow-wrap:anywhere}
+.market-world-app.atlas-reading .ex-main{left:50%;right:auto;transform:translateX(-50%);width:min(940px,calc(100% - 80px));top:136px;bottom:137px}
+.market-world-app.atlas-reading .ex-view{padding:30px clamp(24px,5vw,70px) 42px}
+.market-world-app.atlas-reading #universeStage{right:0;bottom:0;opacity:.2}
+.market-world-app.atlas-reading .universe-heading,.market-world-app.atlas-reading .universe-flight-controls,.market-world-app.atlas-reading #atlasStockTools,.market-world-app.atlas-reading #atlasLocation{visibility:hidden}
+.market-world-app.atlas-reading .research-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+.market-world-app.atlas-reading .atlas-source-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.market-world-app.atlas-reading .atlas-sector-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.market-world-app.atlas-reading .universe-travel-status{display:none}
+.market-world-app .universe-help-panel{bottom:142px;z-index:20;background:#0b2433f7;border-color:#98c7cf5c}
+.market-world-app :focus-visible{outline:2px solid #a9f4ed;outline-offset:3px}
+@media(min-width:761px) and (max-width:1100px){
+ .market-world-app .universe-footer>div{gap:2px}.market-world-app .universe-footer>div>button{padding:0 9px;gap:7px}.market-world-app .universe-heading{left:26px;width:44vw}.market-world-app #universeTitle{font-size:48px}.market-world-app.universe-pane-open .universe-heading{left:25px;max-width:calc(100% - var(--world-panel) - 103px)}.market-world-app.universe-pane-open #universeTitle{font-size:35px}.market-world-app .ex-view{padding:23px 20px}.atlas-panel-head h2{font-size:28px}.atlas-source-cards{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+ .market-world-app .ex-top{padding:9px 14px;min-height:118px;gap:8px 11px;padding-top:max(9px,env(safe-area-inset-top))}.market-world-app .ex-title b{font-size:10px}.market-world-app .ex-title small{font-size:7px}.market-world-app .ex-search input{height:44px;font-size:13px}.market-world-app .ex-title{padding-left:2px}
+ #atlasTape{top:118px;height:34px}#atlasTape button{padding:0 17px;gap:8px;min-height:34px;font-size:9px}#atlasTape em{font-size:8px}#atlasTape>small{font-size:7px}
+ .market-world-app .universe-heading{left:20px;top:178px;width:calc(100% - 90px);max-width:none}.market-world-app #universeTitle{font-size:clamp(32px,8.7vw,43px);margin:16px 0 12px}.market-world-app .universe-eyebrow{font-size:6.5px;letter-spacing:.12em}.market-world-app #universeSubtitle{font-size:11px;line-height:1.7;max-width:250px}.market-world-app .universe-stock-meta{font-size:8px;gap:5px 9px;max-width:265px}.market-world-app .universe-stock-meta small{font-size:7px}.market-world-app .universe-heading-actions{gap:7px;margin-top:17px}.market-world-app .universe-heading-actions button{padding:0 11px;font-size:9px;min-height:42px}
+ .market-world-app .universe-flight-controls{top:177px;right:12px;gap:6px}.market-world-app .universe-flight-controls button{width:40px;height:40px;font-size:21px}.market-world-app .universe-flight-controls #universeMode{font-size:9px;height:44px}
+ .market-world-app .universe-node-label{backdrop-filter:none;padding:8px 10px}.market-world-app .universe-node-label small{font-size:6px}.market-world-app .universe-node-label strong{font-size:11px}.market-world-app .universe-node-label em{font-size:8px}
+ #atlasLocation{left:20px;bottom:164px;max-width:195px;padding-left:9px}#atlasLocation span{font-size:6px}#atlasLocation b{font-size:8px}#atlasStockTools{left:20px;bottom:219px;gap:5px}#atlasStockTools button{min-height:38px;padding:0 9px;font-size:9px}
+ .market-world-app .universe-travel-status{bottom:131px;left:20px;font-size:7px;max-width:calc(100% - 40px);line-height:1.6}.market-world-app .universe-radar{display:none}
+ .market-world-app .universe-destinations{bottom:calc(67px + env(safe-area-inset-bottom));max-width:none;left:10px;right:10px;border-radius:6px;padding:4px}.market-world-app .universe-destinations button{font-size:10px;min-height:42px;padding:0 12px}
+ .market-world-app .universe-footer{min-height:61px;padding:5px 7px max(5px,env(safe-area-inset-bottom));gap:2px}.market-world-app .universe-footer>div{gap:1px;justify-content:space-between}.market-world-app .universe-footer>div>button{flex-direction:column;gap:5px;padding:5px 7px;min-height:47px;min-width:43px;font-size:18px;border-radius:5px}.market-world-app .universe-footer>div>button span{font-size:8px}.market-world-app .universe-footer #universeTracker{white-space:nowrap;max-width:none;text-align:center}.market-world-app .universe-footer #universeHelpButton{width:28px;min-height:36px;height:36px;font-size:12px}.market-world-app .universe-footer>span{display:none}
+ .market-world-app .ex-main{top:44dvh;bottom:calc(126px + env(safe-area-inset-bottom));left:10px;right:10px;width:auto;border-radius:8px;backdrop-filter:none;background:#0b1c2afc}
+ .market-world-app.universe-pane-open #universeStage{right:0;bottom:51dvh}.market-world-app.universe-pane-open .universe-heading{top:173px;left:20px;width:calc(100% - 90px);max-width:none}.market-world-app.universe-pane-open #universeTitle{font-size:32px;margin:0 0 9px}.market-world-app.universe-pane-open #universeSubtitle{font-size:10px;line-height:1.5;max-width:225px}.market-world-app.universe-pane-open .universe-flight-controls{right:12px;top:173px}.market-world-app.universe-pane-open .universe-flight-controls>button:not(#universeOverview):not(#universeMode){display:none}.market-world-app.universe-pane-open #atlasLocation,.market-world-app.universe-pane-open #atlasStockTools,.market-world-app.universe-pane-open .universe-travel-status{display:none}.market-world-app.universe-pane-open #universeStockMeta{font-size:8px;margin-top:10px}.market-world-app.universe-pane-open #universeStockMeta small{display:none}.market-world-app.universe-pane-open #atlasStockSector{display:none}
+ .market-world-app #universeReaderBar{padding:10px 12px;gap:6px}.market-world-app #universePaneKicker{font-size:7px;letter-spacing:.08em}.market-world-app #universePaneTitle{font-size:12px}.market-world-app #universeReaderBar>button{width:36px;height:38px;font-size:20px}.market-world-app .ex-view{padding:21px 18px 30px}.market-world-app .reader-heading h3{font-size:25px}.market-world-app .evidence-chapter h4{font-size:20px}.market-world-app .evidence-chapter p,.market-world-app .evidence-synthesis p{font-size:13px;line-height:1.85}.market-world-app .research-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:20px 0}.market-world-app .research-metric>strong{font-size:23px}.market-world-app .research-chart{height:255px}.market-world-app .research-prose{padding:16px}
+ .atlas-panel-head h2{font-size:28px}.atlas-panel-head p{font-size:12px}.atlas-sector-grid{gap:9px}.atlas-sector-grid>button{padding:14px;min-height:140px}.atlas-sector-grid b{font-size:12px}.atlas-sector-grid small{font-size:8px}.atlas-source-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.atlas-source-cards>a{padding:15px 12px}.atlas-source-cards strong{font-size:11px}.atlas-source-cards p{font-size:10px}.atlas-business p{font-size:12px}.atlas-company-list>button{min-height:66px}.atlas-company-list b{font-size:14px}.atlas-company-list small{font-size:9px}.atlas-company-list em{font-size:11px}.atlas-recovery-list>article{padding:17px}.atlas-news-item h4{font-size:15px}
+ .market-world-app.atlas-reading .ex-main{left:10px;right:10px;transform:none;width:auto;top:164px;bottom:calc(125px + env(safe-area-inset-bottom))}.market-world-app.atlas-reading .ex-view{padding:22px 18px 35px}.market-world-app.atlas-reading .research-metrics,.market-world-app.atlas-reading .atlas-source-cards,.market-world-app.atlas-reading .atlas-sector-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.market-world-app.atlas-reading #universeStage{bottom:0}.market-world-app .universe-help-panel{bottom:130px;right:12px;padding:21px}.market-world-app .universe-travel-pad{bottom:222px;left:17px;grid-template-columns:repeat(3,42px)}.market-world-app.universe-free-flight #atlasStockTools{display:none}
+}
+@media(max-width:360px){
+ .market-world-app .ex-top{padding-inline:10px}.market-world-app .universe-heading{left:16px;width:calc(100% - 75px)}.market-world-app #universeTitle{font-size:31px}.market-world-app #universeSubtitle{font-size:10px}.market-world-app .universe-heading-actions button{padding:0 8px;font-size:8px}.market-world-app .universe-footer{padding-inline:4px}.market-world-app .universe-footer>div>button{padding-inline:4px;min-width:39px}.market-world-app .universe-footer>div>button span{font-size:7px}.market-world-app .universe-footer #universeHelpButton{width:24px}.market-world-app .ex-view{padding-inline:14px}.atlas-source-cards{grid-template-columns:1fr}.market-world-app #universePaneTitle{font-size:11px}.market-world-app #universeReaderBar{padding-inline:9px}.market-world-app #universeReaderBar>button{width:32px}.atlas-sector-grid>button{padding:12px}.atlas-sector-grid small{font-size:7px}.market-world-app .research-metric>strong{font-size:20px}
+}
+@media(max-height:680px) and (min-width:761px){.market-world-app .universe-heading{top:142px}.market-world-app #universeTitle{font-size:42px;margin:14px 0}.market-world-app #universeSubtitle{font-size:11px}.market-world-app #atlasLocation{display:none}.market-world-app #atlasStockTools{bottom:170px}}
+@media(prefers-reduced-motion:reduce){.market-world-app *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Readable controls and evidence at desktop and touch sizes. */
+.market-world-app .ex-search input{font-size:1rem}
+.market-world-app #universeSubtitle{font-size:1rem;line-height:1.6}
+.market-world-app .universe-heading{background:radial-gradient(ellipse at 25% 40%,#04111bdb,transparent 74%)}
+.market-world-app .universe-eyebrow,.market-world-app .universe-stock-meta,.market-world-app .universe-stock-meta small,.market-world-app .ex-title small,.market-world-app .ex-connection{font-size:.75rem;letter-spacing:.04em}
+.market-world-app .universe-heading-actions button,.market-world-app .universe-destinations button,.market-world-app #atlasStockTools button,.market-world-app #atlasStockSector{font-size:.875rem}
+.market-world-app .universe-node-label strong{font-size:.875rem}
+.market-world-app .universe-node-label small,.market-world-app .universe-node-label em{font-size:.75rem;letter-spacing:0}
+.market-world-app .universe-footer>div>button span{font-size:.875rem}
+.market-world-app .universe-footer>div{min-width:0;overflow:auto;scrollbar-width:none}
+.market-world-app .universe-footer>div>button{flex-shrink:0}
+.market-world-app #atlasTape button,.market-world-app #atlasTape em,.market-world-app #atlasTape>small,.market-world-app #atlasLocation span,.market-world-app #atlasLocation b,.market-world-app .universe-travel-status{font-size:.75rem}
+.market-world-app .universe-travel-status{max-width:calc(100% - 76px)}
+.market-world-app #universePaneKicker,.market-world-app .research-kicker,.market-world-app .source-note,.market-world-app .research-metric>small,.market-world-app .research-metric>span{font-size:.75rem;letter-spacing:.02em}
+.market-world-app #universePaneTitle{font-size:.875rem}
+.market-world-app .evidence-chapter p,.market-world-app .evidence-synthesis p,.market-world-app .research-prose p,.market-world-app .reader-heading p,.market-world-app .atlas-business p,.market-world-app .atlas-panel-head p,.market-world-app .atlas-prompt{font-size:1rem;line-height:1.75}
+.market-world-app .atlas-source-cards p,.market-world-app .atlas-company-list small,.market-world-app .atlas-sector-grid small{font-size:.75rem;line-height:1.5}
+.market-world-app .atlas-source-cards strong,.market-world-app .atlas-company-list em,.market-world-app .atlas-sector-grid b,.market-world-app .atlas-filter,.market-world-app .ex-btn{font-size:.875rem}
+.market-world-app .atlas-financial-table{font-size:.875rem}
+@media(max-width:760px){
+ .market-world-app .ex-title b{font-size:.75rem}.market-world-app .ex-title small{font-size:.65rem}
+ .market-world-app #universeTitle{font-size:clamp(30px,8vw,41px)}
+ .market-world-app #universeSubtitle{font-size:.875rem;max-width:250px}
+ .market-world-app .universe-heading-actions{flex-wrap:wrap}.market-world-app .universe-heading-actions button{font-size:.8125rem;padding-inline:10px}
+ .market-world-app #atlasLocation{bottom:166px}.market-world-app #atlasLocation span{display:none}
+ .market-world-app .universe-travel-status{display:none}
+ .market-world-app .universe-footer>div{flex:1}.market-world-app .universe-footer>div>button{min-width:54px;padding-inline:5px}.market-world-app .universe-footer>div>button span{font-size:.75rem}
+ .market-world-app .universe-flight-controls #universeMode{font-size:.75rem}
+ .market-world-app .universe-node-label{padding:8px;min-height:66px}
+ .market-world-app.universe-pane-open #universeSubtitle{font-size:.875rem}.market-world-app.universe-pane-open #universeStockMeta{font-size:.75rem}
+ .market-world-app .atlas-source-cards,.market-world-app.atlas-reading .atlas-source-cards{grid-template-columns:1fr}
+ .market-world-app .atlas-sector-grid>button{min-height:155px}
+ .market-world-app .ex-main{top:43dvh}
+}
+@media(max-width:360px){
+ .market-world-app .universe-heading{top:164px}.market-world-app #universeTitle{font-size:29px}.market-world-app .universe-stock-meta{font-size:.75rem}
+ .market-world-app #universeSubtitle{font-size:.8125rem}.market-world-app .universe-heading-actions{gap:5px;margin-top:12px}.market-world-app .universe-heading-actions button{font-size:.75rem;padding-inline:8px}
+ .market-world-app .universe-footer>div>button{min-width:50px}
+ .market-world-app.universe-pane-open .ex-main{top:45dvh}
+ .market-world-app.atlas-reading .ex-main{top:164px}
+}

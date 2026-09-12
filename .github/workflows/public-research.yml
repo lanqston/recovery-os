@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - 'scripts/refresh_open_research.py'
+      - 'scripts/build_market_atlas.py'
       - '.github/workflows/public-research.yml'
 
 permissions:
@@ -18,7 +19,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,17 +29,23 @@ jobs:
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
         run: python scripts/refresh_open_research.py
+      - name: Collect the broad public market atlas
+        env:
+          SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
+        run: python scripts/build_market_atlas.py
       - name: Validate research data and search behavior
         run: |
           node tests/research-model.test.cjs
           node tests/research-search.test.cjs
           node tests/research-evidence.test.cjs
+          node tests/market-atlas.test.cjs
           python -m unittest discover -s tests -p 'test_public_research.py'
+          python -m unittest discover -s tests -p 'test_market_atlas.py'
       - name: Save successful snapshots
         run: |
           git config user.name 'recovery-os-data'
           git config user.email 'recovery-os-data@users.noreply.github.com'
-          git add data/open-research
+          git add data/open-research data/market-atlas
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh public research snapshots'
             git pull --rebase origin main

@@ -28,7 +28,7 @@ async function loadSeed(){
   const merged=new Map(SYMBOLS.map(x=>[x.ticker,x]));researchIndex.forEach(x=>merged.set(x.ticker,{...merged.get(x.ticker),...x}));SYMBOLS=[...merged.values()];
   MARKET_STATUS=SEED.meta?.marketStatusSnapshot||null;
 }
-function setConn(){qsa('[data-ex-conn]').forEach(el=>{el.textContent=apiBase()?'Research connection configured':'Dated research snapshots';el.classList.remove('connected')});const subtitle=qs('.ex-title small');if(subtitle)subtitle.textContent='CONNECTED RESEARCH WORKSPACE'}
+function setConn(){qsa('[data-ex-conn]').forEach(el=>{el.textContent=apiBase()?'Research connection configured':'Dated research snapshots';el.classList.remove('connected')});const subtitle=qs('.ex-title small');if(subtitle)subtitle.textContent=document.body.classList.contains('market-world-app')?'THE OPEN MARKET ATLAS':'CONNECTED RESEARCH WORKSPACE'}
 function rememberResearchScroll(){const m=qs('.ex-main');if(m)viewScroll[activeView]=m.scrollTop}
 function openExplorer(view='explore'){
   const ex=qs('#explorer');if(!ex)return;
@@ -233,7 +233,7 @@ function installResearchWorld(){
   qs('#heroSearch')?.addEventListener('click',()=>openExplorer('explore'));
   const roomTop=qs('.room-top');if(roomTop&&!qs('#roomGeneralResearch')){const button=document.createElement('button');button.id='roomGeneralResearch';button.className='ex-btn';button.textContent='General Research ↗';button.type='button';button.onclick=()=>openResearch(selectedTicker);roomTop.appendChild(button)}
   document.addEventListener('click',e=>{const btn=e.target.closest('[data-go]');if(btn&&qs('#explorer.show'))closeExplorer()});
-  const route=()=>{const m=location.hash.match(/^#research\/(.+)$/);if(m){let raw;try{raw=decodeURIComponent(m[1])}catch{return}const [symbol,section='brief']=raw.split('/');const p=parseResearchSymbol(symbol);if(p?.ticker===currentTicker&&currentBundle&&qs('#explorer.show')){showView('stock');selectResearchSection(section,{scroll:true,history:false});}else openResearch(raw,{history:false});}else if(qs('#explorer.show')){researchRequest++;cleanupResearch();qs('#explorer').classList.remove('show');document.body.classList.remove('research-open');document.body.style.overflow='';qs('.shell')?.removeAttribute('inert');qs('.bottom-nav')?.removeAttribute('inert')}};
+  const route=()=>{if(window.RecoveryUniverse?.route){window.RecoveryUniverse.route();return}const m=location.hash.match(/^#research\/(.+)$/);if(m){let raw;try{raw=decodeURIComponent(m[1])}catch{return}const [symbol,section='brief']=raw.split('/');const p=parseResearchSymbol(symbol);if(p?.ticker===currentTicker&&currentBundle&&qs('#explorer.show')){showView('stock');selectResearchSection(section,{scroll:true,history:false});}else openResearch(raw,{history:false});}else if(qs('#explorer.show')){researchRequest++;cleanupResearch();qs('#explorer').classList.remove('show');document.body.classList.remove('research-open');document.body.style.overflow='';qs('.shell')?.removeAttribute('inert');qs('.bottom-nav')?.removeAttribute('inert')}};
   window.addEventListener('popstate',route);window.addEventListener('hashchange',route);
   window.RecoveryExplorer={open:openExplorer,openResearch,showView};
 }

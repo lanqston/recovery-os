@@ -156,6 +156,8 @@ def build_company(t,directory):
         except Exception as e:result['health'].append({'provider':'SEC','status':'last successful record retained' if old else 'unavailable','detail':str(e)[:150]})
     try:
         bars,meta=price_bars(t)
+        result.setdefault('profile',old.get('profile') or {'ticker':t,'name':entry['name'] if entry else meta.get('longName') or meta.get('shortName') or t,'cik':str(entry['cik']).zfill(10) if entry else None,'exchange':entry.get('exchange') if entry else meta.get('exchangeName')})
+        if meta.get('instrumentType')=='ETF':result['profile'].update(typeCode='ETF',securityType='ETF')
         if bars:
             last=bars[-1];prior=bars[-2] if len(bars)>1 else last
             result['bars']=bars;result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Yahoo Finance public daily history','dataState':'DAILY SNAPSHOT','currency':meta.get('currency','USD')}
@@ -166,7 +168,10 @@ def build_company(t,directory):
         rss=fetch(f'https://feeds.finance.yahoo.com/rss/2.0/headline?s={urllib.parse.quote(t)}&region=US&lang=en-US',t+'-rss','text')
         result['news']=feed_items(rss,'Yahoo Finance RSS',8);result['health'].append({'provider':'Yahoo Finance RSS','status':'available','items':len(result['news'])})
     except Exception as e:result['health'].append({'provider':'Yahoo Finance RSS','status':'saved news retained','detail':str(e)[:150]})
-    merged={**old,**result};write(old_path,merged)
+    merged={**old,**result}
+    for key in ('filings','news','bars'):merged.setdefault(key,[])
+    merged.setdefault('financials',{'quarterly':[],'annual':[]})
+    write(old_path,merged)
     print(f'{t}: {len(merged.get("financials",{}).get("quarterly",[]))} quarters, {len(merged.get("filings",[]))} filings, {len(merged.get("bars",[]))} bars',flush=True)
     return {'ticker':t,'name':merged.get('profile',{}).get('name',entry['name'] if entry else t),'exchange':entry.get('exchange') if entry else None,'cik':entry.get('cik') if entry else None,'financialThrough':merged.get('financials',{}).get('quarterly',[{}])[0].get('endDate') if merged.get('financials',{}).get('quarterly') else None,'priceThrough':merged.get('bars',[{}])[-1].get('date'),'filings':len(merged.get('filings',[])),'health':merged.get('health',[])}
 
@@ -200,7 +205,9 @@ def macro():
     out['health']=health;write(path,out)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=' '.join(TICKERS));parser.add_argument('--skip-macro',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=None);parser.add_argument('--skip-macro',action='store_true');args=parser.parse_args()
+    prepared=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
+    tickers=args.tickers.upper().split() if args.tickers else list(dict.fromkeys(TICKERS+[x['ticker'] for x in prepared]))
     DEST.mkdir(parents=True,exist_ok=True)
     try:
         raw=fetch('https://www.sec.gov/files/company_tickers_exchange.json','company-directory')
@@ -211,7 +218,7 @@ def main():
         directory={x['ticker']:{'ticker':x['ticker'],'name':x.get('name',x['ticker']),'exchange':x.get('exchange'),'cik':int(x['cik']) if str(x.get('cik','')).isdigit() else 0} for x in prior.get('symbols',[])}
         print(f'SEC directory unavailable; retaining previous directory ({error})',flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        records=list(pool.map(lambda t:build_company(t,directory),args.tickers.upper().split()))
+        records=list(pool.map(lambda t:build_company(t,directory),tickers))
     previous=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
     merged={x['ticker']:x for x in previous};merged.update({x['ticker']:x for x in records})
     write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'method':'Public SEC statements and filing history, Yahoo daily history and RSS; preserved snapshots on provider failure.'})

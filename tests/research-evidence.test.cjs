@@ -24,11 +24,12 @@ for(const item of index.symbols){
  }
  const text=c.evidenceChapters(b,a,null);assert(!/NaN|undefined|Infinity/.test(text),item.ticker+' has invalid narrative output');
  assert(a.sources.every(x=>model.safeURL(x.url)));assert(b.filings.every(x=>model.safeURL(x.url)));
- if(b.financials?.quarterly?.length)assert(b.financials.quarterly[0].endDate>'2025-09-01',item.ticker+' unexpectedly uses old financial concepts');
+ if(a.fund)assert.equal(a.fin.rows.length,0,'Fund investment results must not be presented as corporate operating statements');
+ else if(b.financials?.quarterly?.length)assert(b.financials.quarterly[0].endDate>'2025-09-01',item.ticker+' unexpectedly uses old financial concepts');
 }
 assert.equal(JSON.stringify(tracker),before);
 (async()=>{
- await c.loadSeed();const b=await c.researchBundle('AAPL');
+ await c.loadSeed();const b=await c.researchBundle('AAPL',{refresh:true});
  assert.equal(b.profile.name,'Apple Inc.');assert.equal(b.financials.quarterly.length,9);assert.equal(b.bars.length,420);assert(b.financials.cashFlowPeriod.freeCashFlow>0);
  assert(requests.some(x=>x.startsWith('https:'))&&requests.some(x=>x==='data/open-research/AAPL.json'),'A blocked fresh source must fall back to the local snapshot');
  const count=requests.length;await c.researchBundle('AAPL');assert.equal(requests.length,count,'Repeated navigation should reuse the stock bundle');

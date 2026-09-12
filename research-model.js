@@ -26,7 +26,7 @@
     if(!latest)return {rows,latest:null,yoy:null,priorYear:null};
     const period=latest.fiscalPeriod||latest.period?.match(/Q[1-4]/)?.[0];
     const fy=latest.fiscalYear||Number(latest.period?.match(/FY(\d{4})/)?.[1]);
-    const priorYear=rows.find(x=>(x.fiscalPeriod||x.period?.match(/Q[1-4]/)?.[0])===period&&(x.fiscalYear||Number(x.period?.match(/FY(\d{4})/)?.[1]))===fy-1&&x.currency===latest.currency&&(!Number.isFinite(duration(x))||!Number.isFinite(duration(latest))||Math.abs(duration(x)-duration(latest))<=15));
+    const priorYear=rows.find(x=>latest.comparisonYear&&latest.comparisonQuarter?x.comparisonYear===latest.comparisonYear-1&&x.comparisonQuarter===latest.comparisonQuarter&&x.currency===latest.currency&&Math.abs(duration(x)-duration(latest))<=15:(x.fiscalPeriod||x.period?.match(/Q[1-4]/)?.[0])===period&&(x.fiscalYear||Number(x.period?.match(/FY(\d{4})/)?.[1]))===fy-1&&x.currency===latest.currency&&(!Number.isFinite(duration(x))||!Number.isFinite(duration(latest))||Math.abs(duration(x)-duration(latest))<=15));
     const yoy=priorYear?.revenue>0&&finite(latest.revenue)?(latest.revenue/priorYear.revenue-1)*100:null;
     return {rows,latest,priorYear,yoy};
   }
@@ -34,8 +34,10 @@
     const items=[],seen=new Set();
     const add=x=>{const u=url(x.url);if(!u||seen.has(u))return;seen.add(u);items.push({...x,url:u,id:'S'+(items.length+1)})};
     (tr?.evidence||[]).forEach(e=>add({type:e.sourceType==='OFFICIAL'?'Official':'News',title:e.title,url:e.url,date:null,publisher:e.sourceType==='OFFICIAL'?'Company / official source':'Source in tracker',context:e.claim||'Evidence attached to the saved recovery thesis.'}));
-    (b.filings||[]).forEach(f=>add({type:'Official',title:`${f.form} · ${f.title}`,url:f.url,date:f.filed,publisher:'SEC EDGAR',context:`Filed ${f.filed}. Report or event date ${f.reportDate||'not supplied'}. Read the original disclosures.`}));
+    (b.filings||[]).forEach(f=>add({type:'Official',title:`${f.form} · ${f.title}`,url:f.url,date:f.filed||f.reportDate,publisher:'SEC EDGAR',context:`${f.filed?'Filed '+f.filed+'. ':''}${f.reportDate?'Report or event date '+f.reportDate+'. ':''}Read the original disclosures and filing metadata.`}));
     [...(b.financials?.quarterly||[]),...(b.financials?.annual||[])].forEach(f=>add({type:'Official',title:`${f.period} financial filing`,url:f.source,date:f.filingDate,publisher:'SEC EDGAR',context:`Fiscal period ended ${f.endDate||'date unavailable'}. Figures are normalized from the filing; margins are calculated.`}));
+    for(const f of [...(b.financials?.quarterly||[]),...(b.financials?.annual||[])])for(const [metric,href] of Object.entries(f.metricSources||{}))add({type:'Official',title:metric+' · '+f.period,url:href,date:f.endDate,publisher:'SEC EDGAR',context:'Field-specific financial filing. Reporting periods are matched exactly.'});
+    if(b.quote&&b.priceSource)add({type:'Market data',title:b.priceSource.title||'Public market snapshot',url:b.priceSource.url,date:b.priceSource.date,publisher:b.priceSource.publisher,context:b.quote.sessionNote||'Dated provider record.'});
     if(b.profile?.homepage)add({type:'Official',title:b.profile.name+' company website',url:b.profile.homepage,date:null,publisher:'Company website',context:'Business information and access to investor relations. This is a source directory entry, not a newly verified event.'});
     if(b.profile?.cik)add({type:'Official',title:'SEC filing history',url:`https://www.sec.gov/edgar/browse/?CIK=${encodeURIComponent(b.profile.cik)}&owner=exclude`,date:null,publisher:'SEC EDGAR',context:'Browse quarterly, annual, current-event and ownership filings.'});
     if(b.bars?.length)add({type:'Market data',title:'Historical daily price data',url:b.priceSource?.url||'https://massive.com/docs/rest/stocks/aggregates/custom-bars',date:b.bars.at(-1)?.date,publisher:b.priceSource?.publisher||'Massive',context:`${b.bars.length} saved daily bars, ${b.bars[0]?.date} through ${b.bars.at(-1)?.date}. The native chart uses the dated record; provider adjustments and market-session timing should be checked at the original source.`});
@@ -43,7 +45,7 @@
     return items;
   }
   function analyze(b,tr){
-    const t=b.profile?.ticker||'',fund=b.profile?.typeCode==='ETF'||/ETF/i.test(b.profile?.securityType||''),tech=technical(b.bars),fin=financials(b),q=b.quote||{},f=fin.latest,refs=sources(b,tr);
+    const t=b.profile?.ticker||'',fund=b.profile?.typeCode==='ETF'||/ETF/i.test(b.profile?.securityType||''),tech=technical(b.bars),fin=fund?{rows:[],latest:null,yoy:null,priorYear:null}:financials(b),q=b.quote||{},f=fin.latest,refs=sources(b,tr);
     const lead=[];
     if(tr){
       lead.push(`${t} is marked ${tr.status} in the saved recovery thesis. ${tr.crisis?.summary||''} The proposed recovery depends on ${String(tr.catalyst?.summary||'further verified progress').replace(/\.$/,'')}.`);
@@ -51,10 +53,11 @@
     }else if(fund){
       lead.push(`${t} is an exchange-traded fund. Its research starts with the index or mandate, holdings, concentration, fees and trading liquidity. Corporate revenue and earnings are not fund-level operating results.`);
     }else if(f){
-      lead.push(`${b.profile.name||t} reported ${money(f.revenue,true)} in revenue and ${money(f.netIncome,true)} in net income for ${f.period}, ended ${f.endDate}.${fin.yoy!=null?` Revenue ${fin.yoy>=0?'grew':'fell'} ${Math.abs(fin.yoy).toFixed(1)}% against the matching prior-year quarter.`:' A compatible prior-year quarter is not loaded, so year-over-year growth is not inferred.'}`);
+      const facts=[finite(f.revenue)?money(f.revenue,true)+' in revenue':null,finite(f.netIncome)?money(f.netIncome,true)+' in net income':null,finite(f.dilutedEPS)?money(f.dilutedEPS)+' diluted EPS':null].filter(Boolean);
+      lead.push(`${b.profile.name||t} reported ${facts.join(', ')} for ${f.period}, covering ${f.startDate} through ${f.endDate}.${fin.yoy!=null?` Revenue ${fin.yoy>=0?'grew':'fell'} ${Math.abs(fin.yoy).toFixed(1)}% against the matching prior-year quarter.`:''}`);
       lead.push(`${finite(f.operatingMarginPct)?`The calculated operating margin was ${f.operatingMarginPct.toFixed(1)}%. `:''}${finite(f.operatingCashFlow)?`Reported operating cash flow was ${money(f.operatingCashFlow,true)} for this period. `:''}These figures establish operating performance; the investment case still needs the latest guidance, valuation, competitive position and risks from the original filing.`);
     }else{
-      lead.push(`A full company brief for ${t} is not available in the loaded snapshot. Use the source workspace to investigate the business, filings and market context. A valid ticker format alone does not verify a listing.`);
+      lead.push(b.profile?.directoryVerified?`${b.profile.name||t} appears in the public securities directory.${finite(q.price)?' The stored provider price is '+money(q.price)+'. ':''} Build the company picture from its original reports, market record and current issuer updates. The linked source paths connect these parts of the research.`:`Start by verifying ${t} in the original listing and issuer records. The source workspace links directly to public company, filing and market searches.`);
     }
     if(tech)lead.push(`In the ${tech.latest.date} price snapshot, ${t} closed at ${money(tech.latest.close)} and was ${tech.trend.toLowerCase()}.${finite(tech.relativeVolume)?` Volume was ${tech.relativeVolume.toFixed(2)}× the average of the preceding ${Math.min(20,tech.bars.length-1)} sessions.`:''} The most recent ${tech.sample}-bar range was ${money(tech.support)}–${money(tech.resistance)}. Those are observed levels, not a forecast or an entry trigger.`);
     const headline=tr?(tr.entryEligible==='YES'?'A confirmed setup in the saved thesis':'The thesis is developing. Confirmation still matters.'):fund?'Follow the fund through its underlying exposures.':f?(fin.yoy==null?'Separate the business results from the price narrative.':fin.yoy>=0?'Growth is visible. Test the durability behind it.':'Revenue is under pressure. Look for evidence of a turn.'):'Start with the evidence. Build the thesis from there.';
