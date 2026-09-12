@@ -1,4 +1,4 @@
-const CACHE='recovery-os-mobile-v6';
+const CACHE='recovery-os-mobile-v7';
 const STATIC=['./','./index.html','./styles.css','./explorer.css','./tradingview-mode.css','./app.js','./research-chart.js','./explorer-prod-0.js','./explorer-prod-1.js','./explorer-prod-2.js','./explorer-prod-3.js','./explorer-prod-4.js','./explorer-prod-5.js','./explorer-prod-6.js','./explorer-prod-7.js','./explorer-prod-8.js','./explorer-prod-9.js','./explorer-prod-10.js','./free-hybrid.js','./manifest.webmanifest','./assets/icon.svg','./data/recovery-os.json','./data/research-seed.json','./data/research-seed-aapl-extra.json','./data/symbols-seed.json','./data/provider-capabilities.json'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
