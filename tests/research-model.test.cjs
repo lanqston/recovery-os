@@ -5,7 +5,7 @@ for(const file of ['research-model.js','research-chart.js'])vm.runInContext(fs.r
 const m=context.window.RecoveryResearch,ind=context.window.RecoveryIndicators;
 const tracker=JSON.parse(fs.readFileSync(path.join(root,'data/recovery-os.json'))),before=JSON.stringify(tracker);
 const files=fs.readdirSync(path.join(root,'data/research')).filter(f=>f.endsWith('.json')&&f!=='index.json');
-for(const file of files){const b=JSON.parse(fs.readFileSync(path.join(root,'data/research',file))),tr=tracker.stocks.find(x=>x.ticker===b.profile.ticker),a=m.analyze(b,tr);assert(a.lead.length);assert(!JSON.stringify(a).includes('NaN'));assert(a.sources.every(s=>/^https?:/.test(s.url)));assert.equal(a.tech?.bars.length,b.bars.length);assert(a.fin.rows.every(r=>r.freeCashFlow==null));}
+for(const file of files){const b=JSON.parse(fs.readFileSync(path.join(root,'data/research',file))),tr=tracker.stocks.find(x=>x.ticker===b.profile.ticker),a=m.analyze(b,tr);assert(a.lead.length);assert(!JSON.stringify(a).includes('NaN'));assert(a.sources.every(s=>/^https?:/.test(s.url)));assert.equal(a.tech?.bars.length,b.bars.length);assert(a.fin.rows.every(r=>r.freeCashFlow==null));assert(a.fin.rows.every(r=>r.dilutedShares==null||r.dilutedShares>0),'Share counts must be positive or unavailable');assert(a.fin.rows.filter(r=>r.dataQualityNote).every(r=>r.dilutedShares==null&&r.dilutedEPS==null),'Unverified Q4 share figures must remain unavailable');}
 assert.equal(JSON.stringify(tracker),before,'Research must not mutate canonical tracker records');
 const empty=m.analyze({profile:{ticker:'UNKNOWN'},bars:[],financials:{quarterly:[]}},null);
 assert.equal(empty.hasEvidence,false);assert.equal(empty.tech,null);assert.equal(empty.fin.yoy,null);
