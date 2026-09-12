@@ -65,19 +65,19 @@ async function searchSymbols(query){
 function mountSuggest(input,box){
   if(!input||!box)return;
   input.setAttribute('role','combobox');input.setAttribute('aria-autocomplete','list');input.setAttribute('aria-controls',box.id);input.setAttribute('aria-expanded','false');input.setAttribute('aria-label','Search ticker or company');box.setAttribute('role','listbox');
-  let timer;input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>renderSuggest(input,box),160)});
+  let timer;input.addEventListener('input',()=>{clearTimeout(timer);box.replaceChildren();box.dataset.query='';input.removeAttribute('aria-activedescendant');timer=setTimeout(()=>renderSuggest(input,box),160)});
   input.addEventListener('focus',()=>{if(input.value.trim())renderSuggest(input,box)});
   input.addEventListener('keydown',e=>{
     const options=qsa('[data-search-ticker]',box),active=options.findIndex(x=>x.classList.contains('active'));
     if(['ArrowDown','ArrowUp'].includes(e.key)&&options.length){e.preventDefault();const index=(active+(e.key==='ArrowDown'?1:-1)+options.length)%options.length;options.forEach((x,i)=>{x.classList.toggle('active',i===index);x.setAttribute('aria-selected',String(i===index))});input.setAttribute('aria-activedescendant',options[index].id);options[index].scrollIntoView({block:'nearest'});}
     if(e.key==='Escape'){e.preventDefault();e.stopPropagation();box.classList.remove('show');input.setAttribute('aria-expanded','false');}
-    if(e.key==='Enter'){e.preventDefault();const choice=options[active>=0?active:0];if(choice){choice.click()}else searchSymbols(input.value).then(rows=>{if(rows[0])openResearch(rows[0].exactSymbol||rows[0].ticker);else toastEx('No company match. Try the exact ticker.');});}
+    if(e.key==='Enter'){e.preventDefault();clearTimeout(timer);const query=input.value.trim(),choice=box.dataset.query===query?options[active>=0?active:0]:null;if(choice){choice.click()}else searchSymbols(query).then(rows=>{if(input.value.trim()!==query)return;if(rows[0]){box.classList.remove('show');input.setAttribute('aria-expanded','false');input.value='';openResearch(rows[0].exactSymbol||rows[0].ticker);}else toastEx('No company match. Try the exact ticker.');});}
   });
 }
 async function renderSuggest(input,box){
   const query=input.value.trim();if(!query){box.classList.remove('show');input.setAttribute('aria-expanded','false');return}
   box.classList.add('show');input.setAttribute('aria-expanded','true');box.innerHTML='<div class="search-empty" role="status">Finding companies…</div>';
-  const rows=await searchSymbols(query);if(input.value.trim()!==query)return;
+  const rows=await searchSymbols(query);if(input.value.trim()!==query)return;box.dataset.query=query;
   box.innerHTML=rows.length?rows.map((x,i)=>`<button type="button" class="search-item search-item-btn" id="${box.id}-option-${i}" role="option" aria-selected="false" data-search-ticker="${esc(x.exactSymbol||x.ticker)}"><b>${esc(x.ticker)}</b><span>${esc(x.name)}<small>${esc(x.exchange||'Exchange unverified')}</small></span><em>${esc(x.securityType||'Security')}</em></button>`).join(''):'<div class="search-empty">No company match in available coverage. Try its exact ticker.</div>';
   qsa('[data-search-ticker]',box).forEach(button=>button.onclick=()=>{box.classList.remove('show');input.setAttribute('aria-expanded','false');input.value='';openResearch(button.dataset.searchTicker)});
 }

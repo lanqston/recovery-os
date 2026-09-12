@@ -1,0 +1,24 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const context={window:{},document:{readyState:'loading',addEventListener(){}},setTimeout:()=>1,clearTimeout(){},console};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync(path.join(root,'free-hybrid.js'),'utf8'),context);
+const events={},opened=[];
+const input={value:'AAPL',setAttribute(){},removeAttribute(){},addEventListener(type,fn){events[type]=fn}};
+const box={id:'search',setAttribute(){},dataset:{query:'Palantir'},classList:{remove(){}},replaceChildren(){this.options=[]},options:[{classList:{contains:()=>false},click:()=>opened.push('PLTR')}]};
+context.qsa=(_,target)=>target.options;
+context.searchSymbols=async query=>[{ticker:query}];
+context.openResearch=ticker=>opened.push(ticker);
+context.toastEx=()=>{};
+context.mountSuggest(input,box);
+const enter=()=>events.keydown({key:'Enter',preventDefault(){}});
+(async()=>{
+  enter();await Promise.resolve();
+  assert.deepEqual(opened,['AAPL'],'Enter must not reuse a result from a previous query');
+  input.value='NVDA';events.input();enter();await Promise.resolve();
+  assert.deepEqual(opened,['AAPL','NVDA'],'Immediate Enter before debounce must use the new ticker');
+  let finish;context.searchSymbols=()=>new Promise(resolve=>finish=resolve);
+  input.value='MSFT';enter();input.value='TSLA';events.input();finish([{ticker:'MSFT'}]);await Promise.resolve();
+  assert.equal(opened.length,2,'An older asynchronous search must not replace newer input');
+  console.log('PASS: stale search suggestions, immediate Enter, and asynchronous query replacement.');
+})().catch(error=>{console.error(error);process.exitCode=1});

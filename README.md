@@ -15,6 +15,7 @@ General Research opens the stock explorer from the home page or a recovery thesi
 - Search does not mutate `data/recovery-os.json` or promote a ticker. Original discovery history, qualification and performance accounting are preserved.
 - Research notes, favorites, source bookmarks, comparisons, lists and assessment snapshots use the existing device storage. Optional remote state integration remains available.
 - Source URLs, quarter alignment, missing values, indicator formulas and the canonical tracker boundary are checked by `node tests/research-model.test.cjs`.
+- Rapid Enter, stale suggestions and asynchronous query changes are checked by `node tests/research-search.test.cjs`.
 - `tests/responsive.html` is a manual browser fixture for desktop, tablet and 430/390/320 pixel layouts. It does not modify the tracker.
 
 `research-model.js` contains evidence-based analysis; `free-hybrid.js` owns stock routing and the research workspace; `research-world.css` provides its responsive visual system. Existing explorer modules supply saved-state, financial table and optional research tools.
