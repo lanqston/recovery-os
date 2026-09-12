@@ -1,15 +1,271 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#060b12"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Recovery OS"><link rel="apple-touch-icon" href="assets/icon.svg"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="explorer.css"><title>Recovery OS</title></head><body>
-<div class="boot" id="boot"><div class="boot-inner"><div class="boot-logo">RECOVERY<span>//OS</span></div><div class="boot-bar"><i></i></div><div class="boot-code">Initializing command world…<br>Loading tracker schema v2.0…<br>Establishing verified sync channel…</div></div></div>
-<div class="shell"><aside class="rail"><div class="logo">R</div><button data-go="world" class="active">◉</button><button data-go="command">⌁</button><button data-go="tracker">▦</button><button data-go="alerts">⚠</button><button data-go="history">◷</button><button id="explorerRail" title="Stock Explorer">⌕</button><div class="spacer"></div><button id="settingsRail">⚙</button></aside><main class="main">
-<header class="topbar"><div class="brandblock"><h1>RECOVERY // OS</h1><small>MARKET RESEARCH + CRISIS-TO-RECOVERY INTELLIGENCE</small></div><div class="explorer-launch"><input id="globalStockSearch" autocomplete="off" placeholder="Search stocks, ADRs, ETFs…"><span class="search-kbd">⌘K</span><div class="search-suggest" id="globalSuggest"></div></div><div class="syschips"><span class="chip" id="sessionChip">SESSION —</span><span class="chip warn" id="marketChip">MARKET —</span><span class="chip" id="coverageChip">DATA —</span><span class="chip" id="revisionChip">REV —</span></div><div class="top-actions"><button class="icon-btn" id="explorerBtn" title="Stock Explorer">⌕</button><button class="icon-btn" id="syncBtn" title="Sync">↻</button><button class="icon-btn" id="settingsBtn" title="Settings">⚙</button></div></header>
-<section class="hero" id="world"><div class="world-card"><canvas id="worldCanvas"></canvas><div class="world-hud"><div class="hud-top"><div class="hud-label">COMMAND WORLD<b>RECOVERY NETWORK</b></div><div class="radar"><i></i></div></div><div class="hud-bottom"><div class="hud-label">SYSTEM STATE<b id="worldState">LOADING</b></div><div class="gesture">DRAG TO ORBIT · TAP NODE</div></div></div><div class="core-label"><div class="small">QUALIFIED</div><div class="big" id="worldCount">—</div><div class="sub">ACTIVE NODES</div></div></div><aside class="inspector"><div class="ticker-head"><div class="ticker-line"><div><div class="ticker" id="iTicker">—</div><div class="company" id="iCompany">—</div></div><div class="tier" id="iTier">—</div></div><div class="price-line"><div class="price" id="iPrice">—</div><div class="asof" id="iAsOf">—</div><div class="direction" id="iDirection">—</div></div></div><div class="ringgrid"><div class="metric"><div class="ring" id="scoreRing"><b id="iScore">—</b></div><label>Opportunity<strong>SCORE</strong></label></div><div class="metric"><div class="ring" id="progressRing"><b id="iProgress">—</b></div><label>Setup<strong>PROGRESS</strong></label></div></div><div class="detail-list"><div class="detail-row"><label>STATUS</label><div id="iStatus">—</div></div><div class="detail-row"><label>ENTRY</label><div id="iEntry">—</div></div><div class="detail-row"><label>CRISIS</label><div id="iCrisis">—</div></div><div class="detail-row"><label>CATALYST</label><div id="iCatalyst">—</div></div><div class="detail-row"><label>BLOCKER</label><div id="iBlocker">—</div></div></div><button class="open-room" id="openRoom">ENTER STOCK ROOM →</button></aside></section>
-<div class="commandbar" id="command"><button class="cmd" id="scanCommand"><b>SCAN NOW</b><small>ChatGPT bridge</small></button><button class="cmd" id="changesCommand"><b>CHANGES ONLY</b><small>Latest events</small></button><button class="cmd" id="hotCommand"><b>HOT LIST</b><small>Ranked priorities</small></button><button class="cmd" id="scoreCommand"><b>SCORECARD</b><small>Outcome accounting</small></button><button class="cmd" id="exportCommand"><b>EXPORT</b><small>JSON checkpoint</small></button></div>
-<section class="section"><div class="section-head"><div class="section-title"><b>COMMAND CENTER</b> // CURRENT PRIORITIES</div><div class="section-meta" id="lastScan">—</div></div><div class="dashboard"><div class="panel"><h3>TOP HOT LIST</h3><div id="hotList"></div></div><div class="panel" id="alerts"><h3>ALERT STREAM</h3><div id="alertList"></div></div><div class="panel"><h3>TRACKER SCORECARD</h3><div class="scoregrid" id="scoreGrid"></div></div></div></section>
-<section class="section" id="tracker"><div class="section-head"><div class="section-title"><b>MASTER TRACKER</b> // CANONICAL CURRENT STATE</div><div class="section-meta" id="trackerMeta">—</div></div><div class="tracker-scroll"><table><thead><tr><th>RANK</th><th>TICKER</th><th>ADDED</th><th>DISCOVERY</th><th>LATEST</th><th>STATUS / TIER</th><th>SCORE</th><th>PROGRESS</th><th>ENTRY</th><th>BLOCKER</th></tr></thead><tbody id="trackerRows"></tbody></table></div></section>
-<section class="section"><div class="section-head"><div class="section-title"><b>RESEARCH QUEUE</b> // NOT YET QUALIFIED</div><div class="section-meta">EXCLUDED FROM QUALIFIED PERFORMANCE</div></div><div class="research-list" id="researchList"></div></section>
-<section class="section" id="history"><div class="section-head"><div class="section-title"><b>IMMUTABLE EVENT HISTORY</b> // APPEND ONLY</div><div class="section-meta">ORIGINAL DISCOVERY STATE IS NEVER OVERWRITTEN</div></div><div class="events" id="eventList"></div></section>
-<div class="footer">RECOVERY // OS · RESEARCH & TRACKING ONLY · NO TRADE EXECUTION · SEEDED/STALE DATA IS NEVER REPRESENTED AS LIVE</div></main></div>
-<nav class="bottom-nav"><button data-go="world" class="active"><span class="ico">◉</span>WORLD</button><button id="explorerMobile"><span class="ico">⌕</span>SEARCH</button><button data-go="command"><span class="ico">⌁</span>COMMAND</button><button data-go="tracker"><span class="ico">▦</span>TRACKER</button><button data-go="alerts"><span class="ico">⚠</span>ALERTS</button><button id="settingsMobile"><span class="ico">⚙</span>SYSTEM</button></nav>
-<div class="room" id="room"><div class="room-shell"><div class="room-top"><button class="room-back" id="roomBack">←</button><div class="room-title"><b id="rTicker">—</b><small id="rCompany">—</small></div><div class="room-status" id="rStatus">—</div></div><div class="room-body"><div class="room-hero"><div class="core-stage"><div class="stage-data" id="stageData"></div><div class="stock-core"><div><strong id="coreTicker">—</strong><small>RECOVERY CORE</small></div></div><div class="stage-price"><b id="rPrice">—</b><small id="rQuote">—</small></div></div><div class="room-side"><div class="glass"><h3>PRICE STRUCTURE</h3><div class="chart-wrap" id="chart"></div></div><div class="glass"><h3>STATE MATRIX</h3><div class="micro-grid" id="stateMatrix"></div></div></div></div><div class="room-grid"><div class="glass"><h3>CRISIS → RECOVERY TIMELINE</h3><div id="crisisTimeline"></div></div><div class="glass"><h3>ENTRY GATE</h3><div id="entryChecks"></div></div><div class="glass"><h3>RISK / REWARD MAP</h3><div id="riskMap"></div></div><div class="glass"><h3>CATALYST NETWORK</h3><div id="catalystNetwork"></div></div><div class="glass"><h3>SEC / NEWS EVIDENCE</h3><div id="evidenceFeed"></div></div><div class="glass"><h3>CHANGE DETECTOR</h3><div id="changeFeed"></div></div><div class="glass"><h3>THESIS CHECKLIST</h3><div id="thesisChecks"></div></div><div class="glass"><h3>PERFORMANCE LAB</h3><div id="performanceLab"></div></div><div class="glass"><h3>OPERATOR NOTES</h3><textarea class="operator-note" id="operatorNote" placeholder="Private notes saved on this device…"></textarea></div></div></div></div></div>
-<div class="settings" id="settings"><div class="settings-card"><button class="room-back" id="settingsClose" style="float:right">×</button><h2>RECOVERY // OS SYSTEM</h2><p id="systemSummary">Loading…</p><div class="field"><label>Optional remote state URL</label><input id="remoteUrl" placeholder="Leave blank for same-origin data/recovery-os.json"></div><div class="field"><label>Auto-refresh interval (seconds)</label><input id="pollSeconds" type="number" min="30" max="3600" value="60"></div><button class="btn primary" id="saveSettings">SAVE & SYNC</button> <button class="btn" id="sharePortal">SHARE</button><h2 style="margin-top:24px">INSTALL ON IPHONE</h2><p>After the portal is hosted, open it in Safari → tap the Share button → <b>Add to Home Screen</b>. It launches full-screen like an app and keeps an offline cache.</p><h2 style="margin-top:24px">AUTOMATIC SCAN BRIDGE</h2><p>The canonical state file is <b>data/recovery-os.json</b>. Approved scanner publishes update that one file, increment its revision, append history, verify the write, and this portal pulls the new revision automatically. Stock Explorer research never edits the canonical tracker.</p></div></div>
-<div class="explorer" id="explorer" aria-label="Recovery OS Stock Explorer"></div><div class="toast" id="toast"></div><script src="app.js"></script><script src="research-chart.js"></script><script src="explorer-prod-0.js"></script><script src="explorer-prod-1.js"></script><script src="explorer-prod-2.js"></script><script src="explorer-prod-3.js"></script><script src="explorer-prod-4.js"></script><script src="explorer-prod-5.js"></script><script src="explorer-prod-6.js"></script><script src="explorer-prod-7.js"></script><script src="explorer-prod-8.js"></script><script src="explorer-prod-9.js"></script><script src="explorer-prod-10.js"></script><script src="free-hybrid.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#050505">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Recovery OS">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="explorer.css">
+  <title>Recovery OS</title>
+</head>
+<body>
+  <div class="boot" id="boot">
+    <div class="boot-inner">
+      <div class="boot-kicker">MARKET INTELLIGENCE</div>
+      <div class="boot-logo">RECOVERY<span>OS</span></div>
+      <div class="boot-bar"><i></i></div>
+      <div class="boot-code">Loading canonical tracker…<br>Verifying recovery state…<br>Opening market intelligence layer…</div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <aside class="rail" aria-label="Primary navigation">
+      <div class="logo">R</div>
+      <button data-go="world" class="active" aria-label="Overview">01</button>
+      <button data-go="command" aria-label="Command center">02</button>
+      <button data-go="tracker" aria-label="Tracker">03</button>
+      <button data-go="alerts" aria-label="Alerts">04</button>
+      <button data-go="history" aria-label="History">05</button>
+      <button id="explorerRail" title="Stock Explorer">⌕</button>
+      <div class="spacer"></div>
+      <button id="settingsRail" aria-label="Settings">⚙</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="brandblock">
+          <h1>RECOVERY OS</h1>
+          <small>CRISIS-TO-RECOVERY INTELLIGENCE</small>
+        </div>
+        <div class="explorer-launch">
+          <input id="globalStockSearch" autocomplete="off" placeholder="Search any stock, ADR or ETF…">
+          <span class="search-kbd">⌘K</span>
+          <div class="search-suggest" id="globalSuggest"></div>
+        </div>
+        <div class="syschips">
+          <span class="chip" id="sessionChip">SESSION —</span>
+          <span class="chip warn" id="marketChip">MARKET —</span>
+          <span class="chip" id="coverageChip">DATA —</span>
+          <span class="chip" id="revisionChip">REV —</span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" id="explorerBtn" title="Stock Explorer">⌕</button>
+          <button class="icon-btn" id="syncBtn" title="Sync">↻</button>
+          <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
+        </div>
+      </header>
+
+      <section class="hero editorial-hero" id="world">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span></span> RECOVERY INTELLIGENCE / LIVE TRACKER</div>
+          <h2>Find the companies <em>the market gave up on</em> before the recovery becomes obvious.</h2>
+          <p>Recovery OS separates a falling stock from a developing turnaround. Crisis, catalyst, technical confirmation, invalidation and evidence are tracked as one living thesis.</p>
+          <div class="hero-actions">
+            <button class="hero-primary" data-go="tracker">EXPLORE THE TRACKER <span>↘</span></button>
+            <button class="hero-secondary" id="heroSearch" onclick="document.getElementById('globalStockSearch').focus()">SEARCH THE MARKET</button>
+          </div>
+          <div class="hero-proof">
+            <div><strong id="worldCount">—</strong><span>ACTIVE RECOVERY NODES</span></div>
+            <div><strong>RULES</strong><span>NOT RANDOM STOCK LISTS</span></div>
+            <div><strong>LIVE</strong><span>CANONICAL TRACKER STATE</span></div>
+          </div>
+        </div>
+
+        <div class="hero-scene reveal delay-1">
+          <div class="world-card">
+            <canvas id="worldCanvas"></canvas>
+            <div class="world-hud">
+              <div class="hud-top">
+                <div class="hud-label">RECOVERY NETWORK<b>MARKET MAP</b></div>
+                <div class="radar"><i></i></div>
+              </div>
+              <div class="hud-bottom">
+                <div class="hud-label">SYSTEM STATE<b id="worldState">LOADING</b></div>
+                <div class="gesture">DRAG TO ORBIT · TAP A NODE</div>
+              </div>
+            </div>
+            <div class="scene-watermark">RECOVERY<br>NETWORK</div>
+          </div>
+
+          <aside class="inspector">
+            <div class="inspector-label">FEATURED OPPORTUNITY</div>
+            <div class="ticker-head">
+              <div class="ticker-line">
+                <div>
+                  <div class="ticker" id="iTicker">—</div>
+                  <div class="company" id="iCompany">—</div>
+                </div>
+                <div class="tier" id="iTier">—</div>
+              </div>
+              <div class="price-line">
+                <div class="price" id="iPrice">—</div>
+                <div class="asof" id="iAsOf">—</div>
+                <div class="direction" id="iDirection">—</div>
+              </div>
+            </div>
+            <div class="ringgrid">
+              <div class="metric"><div class="ring" id="scoreRing"><b id="iScore">—</b></div><label>OPPORTUNITY<strong>SCORE</strong></label></div>
+              <div class="metric"><div class="ring" id="progressRing"><b id="iProgress">—</b></div><label>SETUP<strong>PROGRESS</strong></label></div>
+            </div>
+            <div class="detail-list">
+              <div class="detail-row"><label>STATUS</label><div id="iStatus">—</div></div>
+              <div class="detail-row"><label>ENTRY</label><div id="iEntry">—</div></div>
+              <div class="detail-row editorial-row"><label>CRISIS</label><div id="iCrisis">—</div></div>
+              <div class="detail-row editorial-row"><label>CATALYST</label><div id="iCatalyst">—</div></div>
+              <div class="detail-row editorial-row"><label>BLOCKER</label><div id="iBlocker">—</div></div>
+            </div>
+            <button class="open-room" id="openRoom">OPEN THE FULL THESIS <span>↗</span></button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="manifesto reveal">
+        <div class="manifesto-index">THE SYSTEM / 01</div>
+        <div class="manifesto-copy">A stock can be <em>cheap for a reason.</em> Recovery OS waits for the reason to change.</div>
+        <div class="manifesto-note">No forced entries. No certainty theater. The system preserves discovery history and separates crisis resolution from price confirmation.</div>
+      </section>
+
+      <div class="commandbar" id="command">
+        <button class="cmd" id="scanCommand"><span>01</span><b>SCAN NOW</b><small>Run the recovery engine</small></button>
+        <button class="cmd" id="changesCommand"><span>02</span><b>CHANGES ONLY</b><small>What materially changed</small></button>
+        <button class="cmd" id="hotCommand"><span>03</span><b>HOT LIST</b><small>Ranked priorities</small></button>
+        <button class="cmd" id="scoreCommand"><span>04</span><b>SCORECARD</b><small>Outcome accounting</small></button>
+        <button class="cmd" id="exportCommand"><span>05</span><b>EXPORT</b><small>JSON checkpoint</small></button>
+      </div>
+
+      <section class="section command-section reveal">
+        <div class="section-head">
+          <div><div class="section-kicker">02 / COMMAND CENTER</div><div class="section-title"><b>What matters now.</b></div></div>
+          <div class="section-meta" id="lastScan">—</div>
+        </div>
+        <div class="dashboard">
+          <div class="panel priority-panel"><h3>TOP HOT LIST</h3><div id="hotList"></div></div>
+          <div class="panel" id="alerts"><h3>ALERT STREAM</h3><div id="alertList"></div></div>
+          <div class="panel"><h3>TRACKER SCORECARD</h3><div class="scoregrid" id="scoreGrid"></div></div>
+        </div>
+      </section>
+
+      <section class="section terminal-section reveal" id="tracker">
+        <div class="section-head">
+          <div><div class="section-kicker">03 / TERMINAL</div><div class="section-title"><b>Master tracker.</b></div></div>
+          <div class="section-meta" id="trackerMeta">—</div>
+        </div>
+        <div class="tracker-intro">
+          <p>The dense view. Every qualified and provisional name stays here with its original discovery state intact.</p>
+          <span>SELECT ANY ROW TO OPEN THE FULL RECOVERY THESIS →</span>
+        </div>
+        <div class="tracker-scroll">
+          <table>
+            <thead><tr><th>RANK</th><th>TICKER</th><th>ADDED</th><th>DISCOVERY</th><th>LATEST</th><th>STATUS / TIER</th><th>SCORE</th><th>PROGRESS</th><th>ENTRY</th><th>BLOCKER</th></tr></thead>
+            <tbody id="trackerRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section paper-section reveal">
+        <div class="section-head">
+          <div><div class="section-kicker">04 / RESEARCH</div><div class="section-title"><b>Interesting is not qualified.</b></div></div>
+          <div class="section-meta">EXCLUDED FROM QUALIFIED PERFORMANCE</div>
+        </div>
+        <div class="paper-intro">The research queue keeps compelling ideas visible without quietly promoting them into the strategy.</div>
+        <div class="research-list" id="researchList"></div>
+      </section>
+
+      <section class="section history-section reveal" id="history">
+        <div class="section-head">
+          <div><div class="section-kicker">05 / HISTORY</div><div class="section-title"><b>Nothing gets rewritten.</b></div></div>
+          <div class="section-meta">IMMUTABLE / APPEND ONLY</div>
+        </div>
+        <div class="events" id="eventList"></div>
+      </section>
+
+      <div class="footer">RECOVERY OS · RESEARCH & TRACKING ONLY · NO TRADE EXECUTION · SEEDED OR STALE DATA IS NEVER REPRESENTED AS LIVE</div>
+    </main>
+  </div>
+
+  <nav class="bottom-nav">
+    <button data-go="world" class="active"><span class="ico">01</span>HOME</button>
+    <button id="explorerMobile"><span class="ico">⌕</span>SEARCH</button>
+    <button data-go="command"><span class="ico">02</span>COMMAND</button>
+    <button data-go="tracker"><span class="ico">03</span>TRACKER</button>
+    <button data-go="alerts"><span class="ico">04</span>ALERTS</button>
+    <button id="settingsMobile"><span class="ico">⚙</span>SYSTEM</button>
+  </nav>
+
+  <div class="room" id="room">
+    <div class="room-shell">
+      <div class="room-top">
+        <button class="room-back" id="roomBack">←</button>
+        <div class="room-title"><b id="rTicker">—</b><small id="rCompany">—</small></div>
+        <div class="room-status" id="rStatus">—</div>
+      </div>
+      <div class="room-body">
+        <div class="room-eyebrow">RECOVERY THESIS / LIVE STATE</div>
+        <div class="room-hero">
+          <div class="core-stage">
+            <div class="stage-data" id="stageData"></div>
+            <div class="stock-core"><div><strong id="coreTicker">—</strong><small>RECOVERY CORE</small></div></div>
+            <div class="stage-price"><b id="rPrice">—</b><small id="rQuote">—</small></div>
+          </div>
+          <div class="room-side">
+            <div class="glass feature-glass"><h3>PRICE STRUCTURE</h3><div class="chart-wrap" id="chart"></div></div>
+            <div class="glass"><h3>STATE MATRIX</h3><div class="micro-grid" id="stateMatrix"></div></div>
+          </div>
+        </div>
+        <div class="story-divider"><span>THE COLLAPSE</span><span>THE CATALYST</span><span>THE RECOVERY</span><span>THE SETUP</span><span>THE RISK</span></div>
+        <div class="room-grid">
+          <div class="glass story-card"><h3>CRISIS → RECOVERY</h3><div id="crisisTimeline"></div></div>
+          <div class="glass story-card"><h3>ENTRY GATE</h3><div id="entryChecks"></div></div>
+          <div class="glass story-card"><h3>RISK / REWARD</h3><div id="riskMap"></div></div>
+          <div class="glass story-card"><h3>CATALYST NETWORK</h3><div id="catalystNetwork"></div></div>
+          <div class="glass story-card"><h3>SEC / NEWS EVIDENCE</h3><div id="evidenceFeed"></div></div>
+          <div class="glass story-card"><h3>CHANGE DETECTOR</h3><div id="changeFeed"></div></div>
+          <div class="glass story-card"><h3>THESIS CHECKLIST</h3><div id="thesisChecks"></div></div>
+          <div class="glass story-card"><h3>PERFORMANCE LAB</h3><div id="performanceLab"></div></div>
+          <div class="glass story-card"><h3>OPERATOR NOTES</h3><textarea class="operator-note" id="operatorNote" placeholder="Private notes saved on this device…"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings" id="settings">
+    <div class="settings-card">
+      <button class="room-back" id="settingsClose" style="float:right">×</button>
+      <div class="section-kicker">SYSTEM / CONFIGURATION</div>
+      <h2>Recovery OS</h2>
+      <p id="systemSummary">Loading…</p>
+      <div class="field"><label>Optional remote state URL</label><input id="remoteUrl" placeholder="Leave blank for same-origin data/recovery-os.json"></div>
+      <div class="field"><label>Auto-refresh interval (seconds)</label><input id="pollSeconds" type="number" min="30" max="3600" value="60"></div>
+      <button class="btn primary" id="saveSettings">SAVE & SYNC</button>
+      <button class="btn" id="sharePortal">SHARE</button>
+      <h2 style="margin-top:36px">Install on iPhone</h2>
+      <p>Open the hosted portal in Safari → Share → <b>Add to Home Screen</b>. It launches full-screen and keeps an offline cache.</p>
+      <h2 style="margin-top:36px">Automatic scan bridge</h2>
+      <p>The canonical state file is <b>data/recovery-os.json</b>. Approved scanner runs update that file, increment its revision, append history, verify the write, and the portal pulls the new revision automatically. Stock Explorer research never edits the canonical tracker.</p>
+    </div>
+  </div>
+
+  <div class="explorer" id="explorer" aria-label="Recovery OS Stock Explorer"></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+  <script src="research-chart.js"></script>
+  <script src="explorer-prod-0.js"></script>
+  <script src="explorer-prod-1.js"></script>
+  <script src="explorer-prod-2.js"></script>
+  <script src="explorer-prod-3.js"></script>
+  <script src="explorer-prod-4.js"></script>
+  <script src="explorer-prod-5.js"></script>
+  <script src="explorer-prod-6.js"></script>
+  <script src="explorer-prod-7.js"></script>
+  <script src="explorer-prod-8.js"></script>
+  <script src="explorer-prod-9.js"></script>
+  <script src="explorer-prod-10.js"></script>
+  <script src="free-hybrid.js"></script>
+</body>
+</html>
