@@ -202,9 +202,14 @@ def macro():
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=' '.join(TICKERS));parser.add_argument('--skip-macro',action='store_true');args=parser.parse_args()
     DEST.mkdir(parents=True,exist_ok=True)
-    raw=fetch('https://www.sec.gov/files/company_tickers_exchange.json','company-directory')
-    directory={row[2]:dict(zip(raw['fields'],row)) for row in raw['data']}
-    write(DEST/'directory.json',{'source':'https://www.sec.gov/files/company_tickers_exchange.json','retrievedAt':NOW,'symbols':[{'ticker':t,'name':x['name'],'exchange':x['exchange'],'cik':str(x['cik']).zfill(10)} for t,x in directory.items()]})
+    try:
+        raw=fetch('https://www.sec.gov/files/company_tickers_exchange.json','company-directory')
+        directory={row[2]:dict(zip(raw['fields'],row)) for row in raw['data']}
+        write(DEST/'directory.json',{'source':'https://www.sec.gov/files/company_tickers_exchange.json','retrievedAt':NOW,'symbols':[{'ticker':t,'name':x['name'],'exchange':x['exchange'],'cik':str(x['cik']).zfill(10)} for t,x in directory.items()]})
+    except Exception as error:
+        prior=json.loads((DEST/'directory.json').read_text()) if (DEST/'directory.json').exists() else {'symbols':[]}
+        directory={x['ticker']:{'ticker':x['ticker'],'name':x.get('name',x['ticker']),'exchange':x.get('exchange'),'cik':int(x['cik']) if str(x.get('cik','')).isdigit() else 0} for x in prior.get('symbols',[])}
+        print(f'SEC directory unavailable; retaining previous directory ({error})',flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         records=list(pool.map(lambda t:build_company(t,directory),args.tickers.upper().split()))
     previous=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
