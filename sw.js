@@ -1,5 +1,14 @@
-const CACHE='recovery-os-mobile-v7';
-const STATIC=['./','./index.html','./styles.css','./explorer.css','./tradingview-mode.css','./app.js','./research-chart.js','./explorer-prod-0.js','./explorer-prod-1.js','./explorer-prod-2.js','./explorer-prod-3.js','./explorer-prod-4.js','./explorer-prod-5.js','./explorer-prod-6.js','./explorer-prod-7.js','./explorer-prod-8.js','./explorer-prod-9.js','./explorer-prod-10.js','./free-hybrid.js','./manifest.webmanifest','./assets/icon.svg','./data/recovery-os.json','./data/research-seed.json','./data/research-seed-aapl-extra.json','./data/symbols-seed.json','./data/provider-capabilities.json'];
+const CACHE='recovery-os-research-v8';
+const STATIC=['./','./index.html','./styles.css','./explorer.css','./tradingview-mode.css','./app.js','./research-chart.js','./explorer-prod-0.js','./explorer-prod-1.js','./explorer-prod-2.js','./explorer-prod-3.js','./explorer-prod-4.js','./explorer-prod-5.js','./explorer-prod-6.js','./explorer-prod-7.js','./explorer-prod-8.js','./explorer-prod-9.js','./explorer-prod-10.js','./free-hybrid.js?v=20260912','./research-model.js?v=20260912','./research-world.css?v=20260912','./data/research/index.json','./manifest.webmanifest','./assets/icon.svg','./data/recovery-os.json','./data/research-seed.json','./data/research-seed-aapl-extra.json','./data/symbols-seed.json','./data/provider-capabilities.json'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);if(r.method!=='GET')return;if(u.hostname.endsWith('tradingview.com')||u.hostname.endsWith('tradingview-widget.com'))return;if(u.origin!==self.location.origin)return;const isState=u.pathname.endsWith('/data/recovery-os.json')||u.pathname.endsWith('/data/research-seed.json');const isFreshAsset=r.mode==='navigate'||['document','script','style'].includes(r.destination)||u.pathname.endsWith('/free-hybrid.js')||u.pathname.endsWith('/tradingview-mode.css');if(isState||isFreshAsset){e.respondWith(fetch(r,{cache:'no-store'}).then(resp=>{if(resp&&resp.ok){const copy=resp.clone();caches.open(CACHE).then(c=>c.put(r,copy))}return resp}).catch(()=>caches.match(r)));return}e.respondWith(caches.match(r).then(cached=>cached||fetch(r).then(resp=>{if(resp&&resp.ok){const copy=resp.clone();caches.open(CACHE).then(c=>c.put(r,copy))}return resp}))) });
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('recovery-os-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{
+  const request=event.request,url=new URL(request.url);
+  if(request.method!=='GET'||url.origin!==self.location.origin)return;
+  if(url.pathname.includes('/tests/'))return;
+  const key=url.origin+url.pathname;
+  const fresh=request.mode==='navigate'||['document','script','style'].includes(request.destination)||url.pathname.endsWith('.json');
+  const offline=async()=>await caches.match(request,{ignoreSearch:true})||await caches.match(key,{ignoreSearch:true})||new Response('This page is unavailable offline.',{status:503,headers:{'Content-Type':'text/plain'}});
+  const network=async()=>{const response=await fetch(request,{cache:fresh?'no-cache':'default'});if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(cache=>cache.put(key,copy)).catch(()=>{}))}return response};
+  event.respondWith(fresh?network().catch(offline):caches.match(key).then(cached=>cached||network().catch(offline)));
+});

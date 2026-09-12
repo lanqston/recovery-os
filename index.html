@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#050505">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -11,6 +11,8 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="explorer.css">
+  <link rel="stylesheet" href="research-world.css?v=20260912">
+  <meta name="description" content="Explore connected stock research, financials, price structure, catalysts and original sources in Recovery OS.">
   <title>Recovery OS</title>
 </head>
 <body>
@@ -67,7 +69,7 @@
           <p>Recovery OS separates a falling stock from a developing turnaround. Crisis, catalyst, technical confirmation, invalidation and evidence are tracked as one living thesis.</p>
           <div class="hero-actions">
             <button class="hero-primary" data-go="tracker">EXPLORE THE TRACKER <span>↘</span></button>
-            <button class="hero-secondary" id="heroSearch" onclick="document.getElementById('globalStockSearch').focus()">SEARCH THE MARKET</button>
+            <button class="hero-secondary" id="heroSearch">GENERAL RESEARCH ↗</button>
           </div>
           <div class="hero-proof">
             <div><strong id="worldCount">—</strong><span>ACTIVE RECOVERY NODES</span></div>
@@ -250,7 +252,7 @@
     </div>
   </div>
 
-  <div class="explorer" id="explorer" aria-label="Recovery OS Stock Explorer"></div>
+  <div class="explorer" id="explorer" role="dialog" aria-modal="true" aria-label="Recovery OS Stock Explorer"></div>
   <div class="toast" id="toast"></div>
 
   <script src="app.js"></script>
@@ -266,6 +268,7 @@
   <script src="explorer-prod-8.js"></script>
   <script src="explorer-prod-9.js"></script>
   <script src="explorer-prod-10.js"></script>
-  <script src="free-hybrid.js"></script>
+  <script src="research-model.js?v=20260912"></script>
+  <script src="free-hybrid.js?v=20260912"></script>
 </body>
 </html>
