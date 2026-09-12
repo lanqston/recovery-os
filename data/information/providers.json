@@ -1,0 +1,783 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-12",
+  "sources": [
+    {
+      "id": "sec",
+      "name": "SEC EDGAR",
+      "operator": "U.S. Securities and Exchange Commission",
+      "authority": "Regulator",
+      "categories": [
+        "profiles",
+        "filings",
+        "financials",
+        "earnings",
+        "cashflow",
+        "insider filing discovery"
+      ],
+      "coverage": "SEC filers; standard US GAAP facts in this adapter. IFRS and company-specific extensions are explicit coverage gaps.",
+      "auth": "No API key; identifying server-side SEC_USER_AGENT required.",
+      "refresh": "As filings disseminate; bulk archives nightly. Application caches 30 minutes to 6 hours.",
+      "rateLimit": "SEC maximum 10 requests/second across machines; app uses durable 2/second budget.",
+      "license": "Public SEC APIs; comply with fair access. Underlying issuer material may contain third-party rights.",
+      "docs": [
+        "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+        "https://www.sec.gov/about/developer-resources"
+      ],
+      "status": "Adapter ready",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Company identity, same-period calculations, filing metadata, failure retention and rate budgets tested locally; production access must be checked from deployed Worker.",
+      "fieldMappings": {
+        "directory.cik": "companyId / CIK",
+        "directory.ticker": "security ticker",
+        "filings.recent.acceptanceDateTime": "publishedAt",
+        "filings.recent.reportDate": "reporting period",
+        "companyfacts.us-gaap.*.units.*.val": "reported financial metric",
+        "companyfacts.us-gaap.*.units.*.start/end": "exact input reporting period",
+        "companyfacts.us-gaap.*.units.*.filed": "publication date; day precision"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ],
+      "documentationDiscoveryApproved": true
+    },
+    {
+      "id": "massive",
+      "name": "Massive",
+      "operator": "Massive",
+      "authority": "Licensed market-data provider",
+      "categories": [
+        "prices",
+        "bars",
+        "profiles",
+        "news",
+        "financials",
+        "optional short/insider/options data"
+      ],
+      "coverage": "U.S. securities and entitled datasets",
+      "auth": "Server-side MASSIVE_API_KEY; dataset entitlements apply.",
+      "refresh": "Plan-dependent. Basic market history is EOD; do not infer live access.",
+      "rateLimit": "Conservative default 5/minute; configurable only within contract.",
+      "license": "Provider and exchange agreements apply. A free personal plan is not permission for public redistribution.",
+      "docs": [
+        "https://massive.com/docs/rest/stocks/overview",
+        "https://massive.com/pricing"
+      ],
+      "status": "Optional existing adapter",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Original Worker contract retained; centralized deduplication, redacted errors, persistent cache and quotas added. Key/redistribution grant not configured in this review.",
+      "fieldMappings": {
+        "results.ticker/cik": "security / issuer identity",
+        "results.o/h/l/c/v/t": "OHLCV / epoch milliseconds",
+        "financials.*.value/unit": "reported metrics and currency",
+        "source_filing_url": "original source URL"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "alpha-vantage",
+      "name": "Alpha Vantage",
+      "operator": "Alpha Vantage",
+      "authority": "Licensed market-data provider",
+      "categories": [
+        "daily historical prices"
+      ],
+      "coverage": "Supported stock symbols; standard daily endpoint compact history",
+      "auth": "Server-side ALPHA_VANTAGE_API_KEY; approved usage terms required.",
+      "refresh": "EOD by default; real-time and delayed U.S. data require entitlements.",
+      "rateLimit": "Free service: 25 requests/day; approved educational/open-source programs may differ.",
+      "license": "Provider Terms of Service and market-data licensing apply. Active only when owner sets ALPHA_VANTAGE_APPROVED=true after confirming appropriate grant.",
+      "docs": [
+        "https://www.alphavantage.co/documentation/",
+        "https://www.alphavantage.co/support/",
+        "https://www.alphavantage.co/terms_of_service/"
+      ],
+      "status": "Optional adapter",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Daily OHLC parsing, error payloads, identity and rate budget tests. No key configured.",
+      "fieldMappings": {
+        "Meta Data.2. Symbol": "exact security symbol",
+        "Time Series (Daily).1. open": "open",
+        "2. high": "high",
+        "3. low": "low",
+        "4. close": "close",
+        "5. volume": "volume",
+        "series key": "session date"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "legacy-market",
+      "name": "Previously collected market snapshots",
+      "operator": "Nasdaq / Yahoo Finance in existing project",
+      "authority": "Legacy collected market data",
+      "categories": [
+        "dated prices",
+        "bars",
+        "sector labels",
+        "news"
+      ],
+      "coverage": "Existing atlas and prepared dossiers only",
+      "auth": "None for reading existing project cache.",
+      "refresh": "No new automated collection through unreviewed endpoints.",
+      "rateLimit": "Not established for the original website endpoints.",
+      "license": "Publicly viewable does not establish automated-access or redistribution permission. Original Nasdaq screener / Yahoo chart integrations are held for licensing review; saved data keeps its origin label.",
+      "docs": [
+        "https://www.nasdaq.com/market-activity/stocks/screener",
+        "https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html"
+      ],
+      "status": "Cached / review required",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "issuer",
+      "name": "Company investor relations",
+      "operator": "Individual issuers",
+      "authority": "Issuer primary source",
+      "categories": [
+        "announcements",
+        "earnings",
+        "presentations",
+        "guidance"
+      ],
+      "coverage": "Per-company verified investor-relations URLs",
+      "auth": "Usually none; terms differ by issuer.",
+      "refresh": "On release; no continuous polling before access review.",
+      "rateLimit": "Per issuer; unknown until checked.",
+      "license": "Link to original releases. Automated parsing, retention and redistribution require issuer-specific review.",
+      "docs": [
+        "https://www.sec.gov/edgar/search/"
+      ],
+      "status": "Linked sources",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "fed",
+      "name": "Federal Reserve releases",
+      "operator": "Federal Reserve Board",
+      "authority": "Government",
+      "categories": [
+        "rates",
+        "policy",
+        "macroeconomic events"
+      ],
+      "coverage": "Board release RSS feeds",
+      "auth": "No API key for public RSS.",
+      "refresh": "On publication; application checks conservatively.",
+      "rateLimit": "No numerical rate guarantee identified; bounded polling and caching.",
+      "license": "Public official releases; retain attribution, release time and revision history.",
+      "docs": [
+        "https://www.federalreserve.gov/feeds/feeds.htm"
+      ],
+      "status": "Existing collected feed",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "fred",
+      "name": "FRED / ALFRED",
+      "operator": "Federal Reserve Bank of St. Louis",
+      "authority": "Official distributor; series-specific underlying authority",
+      "categories": [
+        "macro series",
+        "vintages",
+        "interest rates"
+      ],
+      "coverage": "FRED series; availability and rights differ by series.",
+      "auth": "Documented API key required; series-specific terms.",
+      "refresh": "Series release schedule; revisions require vintages.",
+      "rateLimit": "Respect service responses; no unverified unlimited access claim.",
+      "license": "Underlying series may be copyrighted. Inspect series notes and terms. Vintage endpoints required before historical macro claims.",
+      "docs": [
+        "https://fred.stlouisfed.org/docs/api/fred/",
+        "https://fred.stlouisfed.org/docs/api/terms_of_use.html"
+      ],
+      "status": "Existing cache / API review",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "treasury",
+      "name": "U.S. Treasury",
+      "operator": "U.S. Treasury",
+      "authority": "Government",
+      "categories": [
+        "Treasury yields",
+        "fiscal series"
+      ],
+      "coverage": "Published Treasury curves and Fiscal Data datasets",
+      "auth": "Public feeds; API requirements vary.",
+      "refresh": "Daily curve / dataset release schedule.",
+      "rateLimit": "Bounded cache; exact dataset limit must be verified.",
+      "license": "Use documented feeds, maintain dates and attribution. Fiscal Data documentation retrieval was unavailable during this review; new API activation is blocked.",
+      "docs": [
+        "https://home.treasury.gov/treasury-daily-interest-rate-xml-feed",
+        "https://fiscaldata.treasury.gov/api-documentation/"
+      ],
+      "status": "Existing curve cache",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "bls",
+      "name": "Bureau of Labor Statistics",
+      "operator": "U.S. BLS",
+      "authority": "Government",
+      "categories": [
+        "inflation",
+        "employment",
+        "release calendar"
+      ],
+      "coverage": "Published statistics and time series",
+      "auth": "v1 public; v2 registration unlocks features.",
+      "refresh": "Per release calendar.",
+      "rateLimit": "Version-specific limits; preserve response messages.",
+      "license": "Public official statistics; retain period, seasonal basis and revisions.",
+      "docs": [
+        "https://www.bls.gov/developers/",
+        "https://www.bls.gov/feed/"
+      ],
+      "status": "Existing releases / API review",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "bea",
+      "name": "Bureau of Economic Analysis",
+      "operator": "U.S. BEA",
+      "authority": "Government",
+      "categories": [
+        "GDP",
+        "industry statistics"
+      ],
+      "coverage": "BEA datasets and dimensions",
+      "auth": "API user ID registration",
+      "refresh": "Per release schedule",
+      "rateLimit": "Dataset/API limits must be validated",
+      "license": "Official API; preserve units, seasonal adjustments and revision vintage.",
+      "docs": [
+        "https://www.bea.gov/resources/for-developers"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "census",
+      "name": "Census Bureau",
+      "operator": "U.S. Census Bureau",
+      "authority": "Government",
+      "categories": [
+        "industry",
+        "geographic exposure",
+        "economic indicators"
+      ],
+      "coverage": "Dataset-specific geography and vintage",
+      "auth": "API key policy per official API terms",
+      "refresh": "Dataset release schedule",
+      "rateLimit": "Verify current API key and request limits",
+      "license": "Public API; preserve geography, variables and vintage; do not infer a company exposure from population statistics.",
+      "docs": [
+        "https://www.census.gov/data/developers.html"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "eia",
+      "name": "Energy Information Administration",
+      "operator": "U.S. EIA",
+      "authority": "Government",
+      "categories": [
+        "commodities",
+        "energy",
+        "industry statistics"
+      ],
+      "coverage": "EIA API v2 categories",
+      "auth": "API key",
+      "refresh": "Hourly / weekly / monthly by series",
+      "rateLimit": "Verify API route pagination and throttles",
+      "license": "Free open API; maintain series units and source notes.",
+      "docs": [
+        "https://www.eia.gov/opendata/"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "cftc",
+      "name": "Commitments of Traders",
+      "operator": "U.S. CFTC",
+      "authority": "Regulator",
+      "categories": [
+        "futures positioning"
+      ],
+      "coverage": "Report-market categories; not individual stock ownership",
+      "auth": "Public reports",
+      "refresh": "Weekly report; positions date differs from release date",
+      "rateLimit": "Use published bulk reports and bounded retrieval",
+      "license": "Public report definitions; distinguish report types and publication lag.",
+      "docs": [
+        "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "finra",
+      "name": "FINRA data",
+      "operator": "FINRA",
+      "authority": "Market authority",
+      "categories": [
+        "short interest",
+        "off-exchange statistics"
+      ],
+      "coverage": "Dataset-specific FINRA coverage",
+      "auth": "Developer platform authentication may be required",
+      "refresh": "Dataset schedule",
+      "rateLimit": "Per subscription/dataset limits",
+      "license": "FINRA terms and licensing apply; short sale volume is not short interest.",
+      "docs": [
+        "https://developer.finra.org/"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "fda",
+      "name": "openFDA",
+      "operator": "U.S. FDA",
+      "authority": "Regulator",
+      "categories": [
+        "drug approvals",
+        "recalls",
+        "regulatory events"
+      ],
+      "coverage": "Published openFDA datasets",
+      "auth": "Public API; keys increase applicable quotas",
+      "refresh": "Dataset-specific updates",
+      "rateLimit": "Confirm endpoint request/day limits",
+      "license": "Data not a substitute for clinical decisions; verify issuer/product mapping and authoritative action.",
+      "docs": [
+        "https://open.fda.gov/apis/"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "trials",
+      "name": "ClinicalTrials.gov",
+      "operator": "U.S. National Library of Medicine",
+      "authority": "Government registry",
+      "categories": [
+        "clinical trials",
+        "study status"
+      ],
+      "coverage": "Registered clinical studies",
+      "auth": "API v2 public access requirements",
+      "refresh": "Study update dates",
+      "rateLimit": "API pagination and rate policy review needed",
+      "license": "Registry entries are submitter reports; trial registry status is not FDA approval.",
+      "docs": [
+        "https://clinicaltrials.gov/data-api/api"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "uspto",
+      "name": "USPTO open data",
+      "operator": "U.S. Patent and Trademark Office",
+      "authority": "Government",
+      "categories": [
+        "patents",
+        "intellectual property"
+      ],
+      "coverage": "Patent records; applicant-to-issuer mapping required",
+      "auth": "Depends on USPTO product",
+      "refresh": "Product-specific refresh",
+      "rateLimit": "Product-specific quotas",
+      "license": "Review official product terms and automated access before activation.",
+      "docs": [
+        "https://data.uspto.gov/"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    },
+    {
+      "id": "spending",
+      "name": "USAspending.gov",
+      "operator": "U.S. Treasury",
+      "authority": "Government",
+      "categories": [
+        "government contracts"
+      ],
+      "coverage": "Federal award records and recipients",
+      "auth": "Documented public API",
+      "refresh": "Award reporting schedule; modifications retained",
+      "rateLimit": "Bounded queries / bulk download preferred",
+      "license": "Contract award value is not recognized company revenue; recipient mapping must be verified.",
+      "docs": [
+        "https://api.usaspending.gov/docs/"
+      ],
+      "status": "Review queue",
+      "reviewedAt": "2026-09-12",
+      "fallback": "Last verified observation with its original timestamp, then official source link.",
+      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "fieldMappings": {
+        "status": "Not implemented; candidate source needs field-level validation"
+      },
+      "timestampConvention": "UTC ISO 8601; preserve original time precision; reporting period is separate from publication.",
+      "expectedFailures": [
+        "HTTP 429",
+        "HTTP 403 / entitlement",
+        "schema drift",
+        "missing timestamps",
+        "issuer mismatch"
+      ],
+      "qualityTests": [
+        "identity match",
+        "finite values",
+        "period and currency alignment",
+        "publication cutoff",
+        "duplicate identity",
+        "source lineage"
+      ]
+    }
+  ]
+}

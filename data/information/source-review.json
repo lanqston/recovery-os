@@ -1,0 +1,760 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-12T18:40:43.590583+00:00",
+  "candidates": [
+    {
+      "id": "0f07369afb96d99f09b7",
+      "operator": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+      "official": true,
+      "categories": [
+        "profiles",
+        "filings",
+        "financials",
+        "earnings",
+        "cashflow",
+        "insider filing discovery"
+      ],
+      "coverage": "SEC filers; standard US GAAP facts in this adapter. IFRS and company-specific extensions are explicit coverage gaps.",
+      "refresh": "As filings disseminate; bulk archives nightly. Application caches 30 minutes to 6 hours.",
+      "auth": "No API key; identifying server-side SEC_USER_AGENT required.",
+      "rateLimit": "SEC maximum 10 requests/second across machines; app uses durable 2/second budget.",
+      "license": "Public SEC APIs; comply with fair access. Underlying issuer material may contain third-party rights.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for profiles, filings, financials, earnings, cashflow, insider filing discovery",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "9adcb84311014626842c",
+      "operator": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/about/developer-resources",
+      "official": true,
+      "categories": [
+        "profiles",
+        "filings",
+        "financials",
+        "earnings",
+        "cashflow",
+        "insider filing discovery"
+      ],
+      "coverage": "SEC filers; standard US GAAP facts in this adapter. IFRS and company-specific extensions are explicit coverage gaps.",
+      "refresh": "As filings disseminate; bulk archives nightly. Application caches 30 minutes to 6 hours.",
+      "auth": "No API key; identifying server-side SEC_USER_AGENT required.",
+      "rateLimit": "SEC maximum 10 requests/second across machines; app uses durable 2/second budget.",
+      "license": "Public SEC APIs; comply with fair access. Underlying issuer material may contain third-party rights.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for profiles, filings, financials, earnings, cashflow, insider filing discovery",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "bcd154cf677b5700104a",
+      "operator": "Massive",
+      "url": "https://massive.com/docs/rest/stocks/overview",
+      "official": false,
+      "categories": [
+        "prices",
+        "bars",
+        "profiles",
+        "news",
+        "financials",
+        "optional short/insider/options data"
+      ],
+      "coverage": "U.S. securities and entitled datasets",
+      "refresh": "Plan-dependent. Basic market history is EOD; do not infer live access.",
+      "auth": "Server-side MASSIVE_API_KEY; dataset entitlements apply.",
+      "rateLimit": "Conservative default 5/minute; configurable only within contract.",
+      "license": "Provider and exchange agreements apply. A free personal plan is not permission for public redistribution.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for prices, bars, profiles, news, financials, optional short/insider/options data",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "395c4c9f77a4b03808cb",
+      "operator": "Massive",
+      "url": "https://massive.com/pricing",
+      "official": false,
+      "categories": [
+        "prices",
+        "bars",
+        "profiles",
+        "news",
+        "financials",
+        "optional short/insider/options data"
+      ],
+      "coverage": "U.S. securities and entitled datasets",
+      "refresh": "Plan-dependent. Basic market history is EOD; do not infer live access.",
+      "auth": "Server-side MASSIVE_API_KEY; dataset entitlements apply.",
+      "rateLimit": "Conservative default 5/minute; configurable only within contract.",
+      "license": "Provider and exchange agreements apply. A free personal plan is not permission for public redistribution.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for prices, bars, profiles, news, financials, optional short/insider/options data",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "a6f5e8aa3bce05ea2c26",
+      "operator": "Alpha Vantage",
+      "url": "https://www.alphavantage.co/documentation/",
+      "official": false,
+      "categories": [
+        "daily historical prices"
+      ],
+      "coverage": "Supported stock symbols; standard daily endpoint compact history",
+      "refresh": "EOD by default; real-time and delayed U.S. data require entitlements.",
+      "auth": "Server-side ALPHA_VANTAGE_API_KEY; approved usage terms required.",
+      "rateLimit": "Free service: 25 requests/day; approved educational/open-source programs may differ.",
+      "license": "Provider Terms of Service and market-data licensing apply. Active only when owner sets ALPHA_VANTAGE_APPROVED=true after confirming appropriate grant.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for daily historical prices",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "1cd92766e9eaadd159e8",
+      "operator": "Alpha Vantage",
+      "url": "https://www.alphavantage.co/support/",
+      "official": false,
+      "categories": [
+        "daily historical prices"
+      ],
+      "coverage": "Supported stock symbols; standard daily endpoint compact history",
+      "refresh": "EOD by default; real-time and delayed U.S. data require entitlements.",
+      "auth": "Server-side ALPHA_VANTAGE_API_KEY; approved usage terms required.",
+      "rateLimit": "Free service: 25 requests/day; approved educational/open-source programs may differ.",
+      "license": "Provider Terms of Service and market-data licensing apply. Active only when owner sets ALPHA_VANTAGE_APPROVED=true after confirming appropriate grant.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for daily historical prices",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "15e5bbcb978cfbd52b88",
+      "operator": "Alpha Vantage",
+      "url": "https://www.alphavantage.co/terms_of_service/",
+      "official": false,
+      "categories": [
+        "daily historical prices"
+      ],
+      "coverage": "Supported stock symbols; standard daily endpoint compact history",
+      "refresh": "EOD by default; real-time and delayed U.S. data require entitlements.",
+      "auth": "Server-side ALPHA_VANTAGE_API_KEY; approved usage terms required.",
+      "rateLimit": "Free service: 25 requests/day; approved educational/open-source programs may differ.",
+      "license": "Provider Terms of Service and market-data licensing apply. Active only when owner sets ALPHA_VANTAGE_APPROVED=true after confirming appropriate grant.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for daily historical prices",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "f5d9bfba71fd1cb2a581",
+      "operator": "Nasdaq / Yahoo Finance in existing project",
+      "url": "https://www.nasdaq.com/market-activity/stocks/screener",
+      "official": false,
+      "categories": [
+        "dated prices",
+        "bars",
+        "sector labels",
+        "news"
+      ],
+      "coverage": "Existing atlas and prepared dossiers only",
+      "refresh": "No new automated collection through unreviewed endpoints.",
+      "auth": "None for reading existing project cache.",
+      "rateLimit": "Not established for the original website endpoints.",
+      "license": "Publicly viewable does not establish automated-access or redistribution permission. Original Nasdaq screener / Yahoo chart integrations are held for licensing review; saved data keeps its origin label.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for dated prices, bars, sector labels, news",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "32f6341324a344e1dd1b",
+      "operator": "Nasdaq / Yahoo Finance in existing project",
+      "url": "https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html",
+      "official": false,
+      "categories": [
+        "dated prices",
+        "bars",
+        "sector labels",
+        "news"
+      ],
+      "coverage": "Existing atlas and prepared dossiers only",
+      "refresh": "No new automated collection through unreviewed endpoints.",
+      "auth": "None for reading existing project cache.",
+      "rateLimit": "Not established for the original website endpoints.",
+      "license": "Publicly viewable does not establish automated-access or redistribution permission. Original Nasdaq screener / Yahoo chart integrations are held for licensing review; saved data keeps its origin label.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for dated prices, bars, sector labels, news",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "2181c944a3a5f983f0c1",
+      "operator": "Individual issuers",
+      "url": "https://www.sec.gov/edgar/search/",
+      "official": false,
+      "categories": [
+        "announcements",
+        "earnings",
+        "presentations",
+        "guidance"
+      ],
+      "coverage": "Per-company verified investor-relations URLs",
+      "refresh": "On release; no continuous polling before access review.",
+      "auth": "Usually none; terms differ by issuer.",
+      "rateLimit": "Per issuer; unknown until checked.",
+      "license": "Link to original releases. Automated parsing, retention and redistribution require issuer-specific review.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for announcements, earnings, presentations, guidance",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "bf181b2640d372b63be4",
+      "operator": "Federal Reserve Board",
+      "url": "https://www.federalreserve.gov/feeds/feeds.htm",
+      "official": true,
+      "categories": [
+        "rates",
+        "policy",
+        "macroeconomic events"
+      ],
+      "coverage": "Board release RSS feeds",
+      "refresh": "On publication; application checks conservatively.",
+      "auth": "No API key for public RSS.",
+      "rateLimit": "No numerical rate guarantee identified; bounded polling and caching.",
+      "license": "Public official releases; retain attribution, release time and revision history.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for rates, policy, macroeconomic events",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "4afc9961ffa4d6c9321e",
+      "operator": "Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/",
+      "official": false,
+      "categories": [
+        "macro series",
+        "vintages",
+        "interest rates"
+      ],
+      "coverage": "FRED series; availability and rights differ by series.",
+      "refresh": "Series release schedule; revisions require vintages.",
+      "auth": "Documented API key required; series-specific terms.",
+      "rateLimit": "Respect service responses; no unverified unlimited access claim.",
+      "license": "Underlying series may be copyrighted. Inspect series notes and terms. Vintage endpoints required before historical macro claims.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for macro series, vintages, interest rates",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "a269f05ba1b27b4b2e1d",
+      "operator": "Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/docs/api/terms_of_use.html",
+      "official": false,
+      "categories": [
+        "macro series",
+        "vintages",
+        "interest rates"
+      ],
+      "coverage": "FRED series; availability and rights differ by series.",
+      "refresh": "Series release schedule; revisions require vintages.",
+      "auth": "Documented API key required; series-specific terms.",
+      "rateLimit": "Respect service responses; no unverified unlimited access claim.",
+      "license": "Underlying series may be copyrighted. Inspect series notes and terms. Vintage endpoints required before historical macro claims.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for macro series, vintages, interest rates",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "3a6404a8b95bf20f1abd",
+      "operator": "U.S. Treasury",
+      "url": "https://home.treasury.gov/treasury-daily-interest-rate-xml-feed",
+      "official": true,
+      "categories": [
+        "Treasury yields",
+        "fiscal series"
+      ],
+      "coverage": "Published Treasury curves and Fiscal Data datasets",
+      "refresh": "Daily curve / dataset release schedule.",
+      "auth": "Public feeds; API requirements vary.",
+      "rateLimit": "Bounded cache; exact dataset limit must be verified.",
+      "license": "Use documented feeds, maintain dates and attribution. Fiscal Data documentation retrieval was unavailable during this review; new API activation is blocked.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for Treasury yields, fiscal series",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "ef13a13c404a24685665",
+      "operator": "U.S. Treasury",
+      "url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "official": true,
+      "categories": [
+        "Treasury yields",
+        "fiscal series"
+      ],
+      "coverage": "Published Treasury curves and Fiscal Data datasets",
+      "refresh": "Daily curve / dataset release schedule.",
+      "auth": "Public feeds; API requirements vary.",
+      "rateLimit": "Bounded cache; exact dataset limit must be verified.",
+      "license": "Use documented feeds, maintain dates and attribution. Fiscal Data documentation retrieval was unavailable during this review; new API activation is blocked.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for Treasury yields, fiscal series",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "da19197a547a40723591",
+      "operator": "U.S. BLS",
+      "url": "https://www.bls.gov/developers/",
+      "official": true,
+      "categories": [
+        "inflation",
+        "employment",
+        "release calendar"
+      ],
+      "coverage": "Published statistics and time series",
+      "refresh": "Per release calendar.",
+      "auth": "v1 public; v2 registration unlocks features.",
+      "rateLimit": "Version-specific limits; preserve response messages.",
+      "license": "Public official statistics; retain period, seasonal basis and revisions.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for inflation, employment, release calendar",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "84be0d7bdcfc31c72438",
+      "operator": "U.S. BLS",
+      "url": "https://www.bls.gov/feed/",
+      "official": true,
+      "categories": [
+        "inflation",
+        "employment",
+        "release calendar"
+      ],
+      "coverage": "Published statistics and time series",
+      "refresh": "Per release calendar.",
+      "auth": "v1 public; v2 registration unlocks features.",
+      "rateLimit": "Version-specific limits; preserve response messages.",
+      "license": "Public official statistics; retain period, seasonal basis and revisions.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for inflation, employment, release calendar",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "10683c7d9447a3849a76",
+      "operator": "U.S. BEA",
+      "url": "https://www.bea.gov/resources/for-developers",
+      "official": true,
+      "categories": [
+        "GDP",
+        "industry statistics"
+      ],
+      "coverage": "BEA datasets and dimensions",
+      "refresh": "Per release schedule",
+      "auth": "API user ID registration",
+      "rateLimit": "Dataset/API limits must be validated",
+      "license": "Official API; preserve units, seasonal adjustments and revision vintage.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for GDP, industry statistics",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "5c5ac24769a8d694ed5e",
+      "operator": "U.S. Census Bureau",
+      "url": "https://www.census.gov/data/developers.html",
+      "official": true,
+      "categories": [
+        "industry",
+        "geographic exposure",
+        "economic indicators"
+      ],
+      "coverage": "Dataset-specific geography and vintage",
+      "refresh": "Dataset release schedule",
+      "auth": "API key policy per official API terms",
+      "rateLimit": "Verify current API key and request limits",
+      "license": "Public API; preserve geography, variables and vintage; do not infer a company exposure from population statistics.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for industry, geographic exposure, economic indicators",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "246bcc3dec7e43fc764e",
+      "operator": "U.S. EIA",
+      "url": "https://www.eia.gov/opendata/",
+      "official": true,
+      "categories": [
+        "commodities",
+        "energy",
+        "industry statistics"
+      ],
+      "coverage": "EIA API v2 categories",
+      "refresh": "Hourly / weekly / monthly by series",
+      "auth": "API key",
+      "rateLimit": "Verify API route pagination and throttles",
+      "license": "Free open API; maintain series units and source notes.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for commodities, energy, industry statistics",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "0850d09f28777d142e2f",
+      "operator": "U.S. CFTC",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "official": true,
+      "categories": [
+        "futures positioning"
+      ],
+      "coverage": "Report-market categories; not individual stock ownership",
+      "refresh": "Weekly report; positions date differs from release date",
+      "auth": "Public reports",
+      "rateLimit": "Use published bulk reports and bounded retrieval",
+      "license": "Public report definitions; distinguish report types and publication lag.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for futures positioning",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "99f32e1ec83fee04a5ee",
+      "operator": "FINRA",
+      "url": "https://developer.finra.org/",
+      "official": false,
+      "categories": [
+        "short interest",
+        "off-exchange statistics"
+      ],
+      "coverage": "Dataset-specific FINRA coverage",
+      "refresh": "Dataset schedule",
+      "auth": "Developer platform authentication may be required",
+      "rateLimit": "Per subscription/dataset limits",
+      "license": "FINRA terms and licensing apply; short sale volume is not short interest.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for short interest, off-exchange statistics",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "e0dcb9d3ab4864bdc96b",
+      "operator": "U.S. FDA",
+      "url": "https://open.fda.gov/apis/",
+      "official": true,
+      "categories": [
+        "drug approvals",
+        "recalls",
+        "regulatory events"
+      ],
+      "coverage": "Published openFDA datasets",
+      "refresh": "Dataset-specific updates",
+      "auth": "Public API; keys increase applicable quotas",
+      "rateLimit": "Confirm endpoint request/day limits",
+      "license": "Data not a substitute for clinical decisions; verify issuer/product mapping and authoritative action.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for drug approvals, recalls, regulatory events",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "a4dee5360107667ed58e",
+      "operator": "U.S. National Library of Medicine",
+      "url": "https://clinicaltrials.gov/data-api/api",
+      "official": false,
+      "categories": [
+        "clinical trials",
+        "study status"
+      ],
+      "coverage": "Registered clinical studies",
+      "refresh": "Study update dates",
+      "auth": "API v2 public access requirements",
+      "rateLimit": "API pagination and rate policy review needed",
+      "license": "Registry entries are submitter reports; trial registry status is not FDA approval.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for clinical trials, study status",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "52a9f0fb108ab3ff064b",
+      "operator": "U.S. Patent and Trademark Office",
+      "url": "https://data.uspto.gov/",
+      "official": true,
+      "categories": [
+        "patents",
+        "intellectual property"
+      ],
+      "coverage": "Patent records; applicant-to-issuer mapping required",
+      "refresh": "Product-specific refresh",
+      "auth": "Depends on USPTO product",
+      "rateLimit": "Product-specific quotas",
+      "license": "Review official product terms and automated access before activation.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for patents, intellectual property",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    },
+    {
+      "id": "2104c2c6b7007b9df29a",
+      "operator": "U.S. Treasury",
+      "url": "https://api.usaspending.gov/docs/",
+      "official": true,
+      "categories": [
+        "government contracts"
+      ],
+      "coverage": "Federal award records and recipients",
+      "refresh": "Award reporting schedule; modifications retained",
+      "auth": "Documented public API",
+      "rateLimit": "Bounded queries / bulk download preferred",
+      "license": "Contract award value is not recognized company revenue; recipient mapping must be verified.",
+      "probe": "NOT_PROBED",
+      "status": "REVIEW_REQUIRED",
+      "automatedAccess": "Not approved for new ingestion until source-specific review",
+      "reliability": "Not measured",
+      "existingStrongerSource": "Must be checked for each field and reporting period",
+      "value": "Candidate coverage for government contracts",
+      "validationRequired": [
+        "Access and licensing",
+        "Identity and timestamps",
+        "Quality tests",
+        "Fallback behavior"
+      ],
+      "activationAllowed": false
+    }
+  ],
+  "releaseEnabled": false
+}

@@ -40,11 +40,12 @@ researchBundle=async function loadAtlasCompany(t,options={}){
     const key=atlasShard(t);if(!ATLAS_SHARDS.has(key)&&ATLAS_SYMBOLS.has(t))ATLAS_SHARDS.set(key,atlasFile('shards/'+key+'.json',!!options.refresh));
     const [base,shard]=await Promise.all([ATLAS_BASE_BUNDLE(t,options),ATLAS_SHARDS.get(key)]),extra=shard?.stocks?.[t];
     if(!extra)return base;
+    const evidenceConflicts=window.RecoveryQuality?.findConflicts(base.financials,extra.financials)||[];
     const profile={...extra.profile,...Object.fromEntries(Object.entries(base.profile||{}).filter(([,v])=>v!=null&&v!==''))};
     for(const k of ['sector','industry','country','marketCap'])if(extra.profile[k]!=null&&extra.profile[k]!=='')profile[k]=extra.profile[k];
     profile.directoryVerified=true;
     const refs=[...(base.filings||[]),...(extra.filings||[])].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i);
-    return {...extra,...base,profile,quote:MODEL.finite(base.quote?.price)?base.quote:extra.quote,priceSource:MODEL.finite(base.quote?.price)?base.priceSource:extra.priceSource,
+    return {...extra,...base,evidenceConflicts:[...(base.evidenceConflicts||[]),...evidenceConflicts],profile,quote:MODEL.finite(base.quote?.price)?base.quote:extra.quote,priceSource:MODEL.finite(base.quote?.price)?base.priceSource:extra.priceSource,
       financials:mergeFinancialEvidence(base.financials,extra.financials),filings:refs,atlasRetrievedAt:extra.retrievedAt,coverage:extra.coverage,
       connectionState:'Public company atlas · collected '+snapshotDate(extra.retrievedAt),meta:{...base.meta,coverage:'Public Nasdaq market snapshots, SEC statements and original filings. Exact reporting dates are retained; additional history is loaded where collected.'}};
   })();ATLAS_BUNDLES.set(t,promise);return promise;

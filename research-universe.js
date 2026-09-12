@@ -3,7 +3,7 @@ import {marketRenderer} from './world-renderer.js';
 
 const Q=s=>document.querySelector(s),QA=s=>[...document.querySelectorAll(s)];
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
-const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.dataset.informationMotion==='reduced';
 const small=()=>innerWidth<760;
 const COLORS={brief:0x9cbdff,price:0x54e6c2,financials:0xa0a9ff,catalysts:0xffc58b,risks:0xff839b,sources:0x86d5ff,filings:0xd8dfef,macro:0xba99ff};
 const TITLES={brief:'Research desk',price:'Price observatory',financials:'Financial engine',catalysts:'Catalyst field',risks:'Risk scenarios',sources:'Source archive',filings:'Filing trail',macro:'Macro observatory'};
@@ -97,7 +97,7 @@ export class StockUniverse{
   updateSculpture(b){
     if(!this.dataSculpture)return;
     for(const child of [...this.dataSculpture.children]){child.geometry?.dispose();child.material?.dispose();this.dataSculpture.remove(child)}
-    const bars=(b?.bars||[]).slice(-34);if(!bars.length)return;
+    const bars=(b?.bars||[]).filter(x=>[x.open,x.high,x.low,x.close].every(Number.isFinite)).slice(-34);if(!bars.length)return;
     const lo=Math.min(...bars.map(x=>x.low)),hi=Math.max(...bars.map(x=>x.high)),range=hi-lo||1;
     bars.forEach((b,i)=>{const a=i/bars.length*Math.PI*1.45+.5,r=47,low=3+(b.low-lo)/range*17,high=3+(b.high-lo)/range*17,color=b.close>=b.open?0x72e4ca:0xcd779a;const body=new THREE.Mesh(new THREE.BoxGeometry(1.3,Math.max(.8,Math.abs(b.close-b.open)/range*17),1.3),this.material(color));body.position.set(Math.sin(a)*r,3+((b.open+b.close)/2-lo)/range*17,Math.cos(a)*r);this.dataSculpture.add(body);const wick=this.line([new THREE.Vector3(body.position.x,low,body.position.z),new THREE.Vector3(body.position.x,high,body.position.z)],color,.7);this.dataSculpture.add(wick)});
   }
@@ -140,7 +140,7 @@ export class StockUniverse{
   resize(){if(!this.renderer)return;const rect=this.stage.getBoundingClientRect();if(!rect.width||!rect.height)return;this.renderer.setSize(rect.width,rect.height,false);this.camera.aspect=rect.width/rect.height;this.camera.updateProjectionMatrix();this.changed=true;}
   bind(){
     const stop=()=>{this.flight=null;this.stopTour();this.changed=true};
-    this.canvas.addEventListener('pointerdown',e=>{this.canvas.setPointerCapture(e.pointerId);this.canvas.focus({preventScroll:true});this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.down={x:e.clientX,y:e.clientY,moved:0};stop()});
+    this.canvas.addEventListener('pointerdown',e=>{try{this.canvas.setPointerCapture(e.pointerId)}catch{}this.canvas.focus({preventScroll:true});this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.down={x:e.clientX,y:e.clientY,moved:0};stop()});
     this.canvas.addEventListener('pointermove',e=>{
       const prev=this.pointers.get(e.pointerId);if(!prev)return;const dx=e.clientX-prev.x,dy=e.clientY-prev.y;this.down.moved+=Math.abs(dx)+Math.abs(dy);
       if(this.pointers.size===2){const pts=[...this.pointers.entries()],other=pts.find(([id])=>id!==e.pointerId)?.[1];if(other){const before=Math.hypot(prev.x-other.x,prev.y-other.y),after=Math.hypot(e.clientX-other.x,e.clientY-other.y);this.travel((after-before)*.027)}}
@@ -149,7 +149,7 @@ export class StockUniverse{
       else{this.yaw-=dx*.005;this.pitch=clamp(this.pitch+dy*.005,.2,1.5)}
       this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.changed=true;
     });
-    const up=e=>{const tap=this.down&&this.down.moved<7;this.pointers.delete(e.pointerId);if(tap){const r=this.canvas.getBoundingClientRect();this.pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);this.raycaster.setFromCamera(this.pointer,this.camera);const hit=this.raycaster.intersectObjects(this.pickables).find(h=>h.object.parent.visible&&h.object.userData.node?.kind==='company'||this.selected&&h.object.userData.node?.kind==='topic');const node=hit?.object.userData.node;if(node)node.kind==='company'?openResearch(node.id):selectResearchSection(node.id,{scroll:false});}};
+    const up=e=>{const tap=this.down&&this.down.moved<7;this.pointers.delete(e.pointerId);if(tap){const r=this.canvas.getBoundingClientRect();this.pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);this.raycaster.setFromCamera(this.pointer,this.camera);const hit=this.raycaster.intersectObjects(this.pickables).find(h=>h.object.parent.visible&&h.object.userData.node?.kind==='company'||this.selected&&h.object.userData.node?.kind==='topic');const node=hit?.object.userData.node;if(node)node.kind==='company'?(window.RecoveryWorldInfo?window.RecoveryWorldInfo.select(node.id):openResearch(node.id)):selectResearchSection(node.id,{scroll:false});}};
     this.canvas.addEventListener('pointerup',up);this.canvas.addEventListener('pointercancel',e=>this.pointers.delete(e.pointerId));this.canvas.addEventListener('contextmenu',e=>e.preventDefault());this.canvas.addEventListener('wheel',e=>{e.preventDefault();this.stopTour();this.travel(-clamp(e.deltaY,-140,140)/120)},{passive:false});
     this.canvas.addEventListener('keydown',e=>{if(['w','a','s','d','q','e','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();if(this.mode!=='free')this.freeFly();this.keys.add(e.key.toLowerCase());this.stopTour();this.changed=true}});
     document.addEventListener('keyup',e=>this.keys.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>{this.keys.clear();this.pointers.clear()});

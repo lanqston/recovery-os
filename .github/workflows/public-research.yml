@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '37 23 * * 1-5'
   push:
+    branches: [main]
     paths:
       - 'scripts/refresh_open_research.py'
       - 'scripts/build_market_atlas.py'

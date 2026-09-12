@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-12T18:35:26.129Z",
+  "scope": {
+    "dossiers": 151,
+    "bars": 63420,
+    "events": 3320,
+    "bytes": 16129102
+  },
+  "trackerSHA256": "643623d97a6e5893cbbb6db81274def0c0a8ee8df766b8b3def4c0b6f80f5b19",
+  "mode": "READ_ONLY",
+  "findings": [
+    {
+      "ticker": "AAPL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "ADBE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMZN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "AVGO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "COIN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "COST",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "DECK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 404: Not Found",
+      "severity": "review"
+    },
+    {
+      "ticker": "ENPH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "HOOD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "JPM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "LLY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "META",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "MSFT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "NKE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "NVDA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "ON",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "ORCL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "PLTR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "PYPL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "QQQ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "SOFI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "STZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSLA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "UBER",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "V",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "XOM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZTS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC: HTTP Error 403: Forbidden",
+      "severity": "review"
+    }
+  ],
+  "summary": [
+    {
+      "code": "PROVIDER_FAILURE",
+      "count": 33,
+      "severity": "medium"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "proposal-PROVIDER_FAILURE",
+      "rank": 1,
+      "problem": "PROVIDER_FAILURE",
+      "evidence": [
+        {
+          "ticker": "AAPL",
+          "code": "PROVIDER_FAILURE",
+          "detail": "SEC: HTTP Error 403: Forbidden",
+          "severity": "review"
+        },
+        {
+          "ticker": "ADBE",
+          "code": "PROVIDER_FAILURE",
+          "detail": "SEC: HTTP Error 403: Forbidden",
+          "severity": "review"
+        },
+        {
+          "ticker": "AMD",
+          "code": "PROVIDER_FAILURE",
+          "detail": "SEC: HTTP Error 403: Forbidden",
+          "severity": "review"
+        },
+        {
+          "ticker": "AMZN",
+          "code": "PROVIDER_FAILURE",
+          "detail": "SEC: HTTP Error 403: Forbidden",
+          "severity": "review"
+        },
+        {
+          "ticker": "AVGO",
+          "code": "PROVIDER_FAILURE",
+          "detail": "SEC: HTTP Error 403: Forbidden",
+          "severity": "review"
+        }
+      ],
+      "affectedSystems": [
+        "Information Fabric",
+        "Provider adapters",
+        "Data Coverage Center"
+      ],
+      "affectedFiles": [
+        "information-model.js",
+        "information-bridge.js",
+        "backend/cloudflare/provider-client.mjs"
+      ],
+      "expectedBenefit": "Resolve 33 flagged observations without replacing retained evidence",
+      "difficulty": "low",
+      "risks": [
+        "Provider access and dataset scope must be rechecked",
+        "Historical values must retain original provenance"
+      ],
+      "validation": [
+        "Schema and identity tests",
+        "Calculation and replay tests",
+        "Regression build"
+      ],
+      "status": "RECOMMEND",
+      "releaseAllowed": false
+    }
+  ],
+  "monitoringBounds": {
+    "pixelRatio": [
+      1,
+      1.8
+    ],
+    "mobilePoints": 1600,
+    "desktopPoints": 6000,
+    "mobileHubs": 24,
+    "desktopHubs": 46,
+    "historyFetchLimit": 100
+  },
+  "limitations": [
+    "No provider credentials or personal notes are collected.",
+    "Source-link probes run only for approved documentation URLs.",
+    "Data flags require review; existing source caches and canonical records are never rewritten."
+  ]
+}
