@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-14T04:07:44.460710+00:00",
+  "mode": "FREE_SOURCES_ONLY",
+  "providers": [
+    {
+      "provider": "SEC filings",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 140,
+      "checkedRecords": 140,
+      "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "SEC financial statements",
+      "cost": "Free / public sources only",
+      "status": "Partial",
+      "successfulRecords": 127,
+      "checkedRecords": 133,
+      "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "Yahoo daily history",
+      "cost": "Free / public sources only",
+      "status": "Paused",
+      "successfulRecords": 0,
+      "checkedRecords": 155,
+      "lastSuccessAt": null,
+      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
+      "errors": [
+        "Automatic access paused pending provider permission; saved history retained"
+      ],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "Yahoo Finance RSS",
+      "cost": "Free / public sources only",
+      "status": "Paused",
+      "successfulRecords": 0,
+      "checkedRecords": 155,
+      "lastSuccessAt": null,
+      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
+      "errors": [
+        "RSS ingestion paused pending provider permission; saved news retained"
+      ],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "Federal Reserve",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "BLS CPI",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "BLS Employment",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "US Treasury",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "FRED DFF",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "FRED CPIAUCSL",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "FRED UNRATE",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "BLS public API LNS14000000",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "BLS public API CUSR0000SA0",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "Nasdaq public screener",
+      "cost": "Free / public sources only",
+      "status": "Paused",
+      "successfulRecords": 0,
+      "checkedRecords": 1,
+      "lastSuccessAt": null,
+      "lastAttemptAt": "2026-09-14T04:07:39.665419+00:00",
+      "errors": [
+        "Automatic screener ingestion paused pending documented access permission"
+      ],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    },
+    {
+      "provider": "SEC symbol directory",
+      "cost": "Free / public sources only",
+      "status": "Current",
+      "successfulRecords": 1,
+      "checkedRecords": 1,
+      "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
+      "lastAttemptAt": "2026-09-14T03:55:33.925748+00:00",
+      "errors": [],
+      "fallback": "Retained observations with original timestamps, then original source links",
+      "paidRequests": false
+    }
+  ],
+  "coverage": {
+    "securities": 10449,
+    "preparedDossiers": 155
+  },
+  "efficiency": {
+    "requests": 134,
+    "cacheHits": 149,
+    "requestsAvoided": 0
+  },
+  "automaticMaintenance": {
+    "refresh": "Weekdays before and after the US regular session; manual refresh also available",
+    "coverageGrowth": "Up to four additional directory-verified company dossiers per collection, prioritized by available market cap; no fabricated price history",
+    "dataProtection": "Failed or invalid requests retain the last verified data and original timestamps",
+    "requests": "Conditional requests, cache reuse, host cooldowns and bounded retries",
+    "quality": "Financial and price checks, source coverage reports, and tracker integrity gate",
+    "rendering": "Bounded frame-time adaptation; reduced detail on slower devices",
+    "codeChanges": "Evidence-backed improvement proposals require validation and review"
+  },
+  "limitations": [
+    "Market sources paused for access permission remain paused; stored quotes are not live.",
+    "Analyst, options and intraday coverage is unavailable where no compatible free source is connected.",
+    "A passing application check does not imply that every upstream provider is reachable."
+  ]
+}

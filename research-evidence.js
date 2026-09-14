@@ -8,7 +8,7 @@ async function publicResearchFile(name,{fresh=false}={}){
   if(!/^[A-Za-z0-9.\-]+\.json$/.test(name))throw new Error('Invalid research file');
   const local='data/open-research/'+name;
   const urls=fresh?[PUBLIC_RESEARCH_ROOT+name,local]:[local,PUBLIC_RESEARCH_ROOT+name];
-  for(const url of urls)try{const response=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(url.startsWith('https:')?3500:5000)});if(response.ok)return await response.json()}catch{}
+  for(const url of urls)try{if(window.RecoveryRequests)return await window.RecoveryRequests.json(url,{refresh:fresh});const response=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(url.startsWith('https:')?3500:5000)});if(response.ok)return await response.json()}catch{}
   throw new Error('Public research snapshot is unavailable');
 }
 loadSeed=async function loadPublicSeed(){
@@ -36,7 +36,7 @@ researchBundle=async function publicResearchBundle(t,{refresh=false}={}){
       const bars=enriched.bars?.length&&String(enriched.bars.at(-1).date)>=String(base.bars?.at(-1)?.date||'')?enriched.bars:base.bars;
       const useNewBars=bars===enriched.bars;
       return {...base,profile,news,bars,quote:useNewBars?enriched.quote:base.quote,priceSource:useNewBars?enriched.priceSource:base.priceSource,
-        financials:enriched.financials?.quarterly?.length?enriched.financials:base.financials,filings:enriched.filings||[],sourceHealth:enriched.health||[],publicRetrievedAt:enriched.retrievedAt,
+        financials:enriched.financials?.quarterly?.length?enriched.financials:base.financials,filings:enriched.filings||[],sourceHealth:enriched.health||[],health:enriched.health||[],lastAttemptAt:enriched.lastAttemptAt,publicRetrievedAt:enriched.retrievedAt,
         connectionState:'Public-source research · collected '+snapshotDate(enriched.retrievedAt),meta:{...base.meta,coverage:'SEC statements and filings, public market history and news. Each observation retains its date. Sources are collected outside the browser and served as native research.'}};
     }catch{return base}
   })();PUBLIC_BUNDLES.set(t,promise);return promise;

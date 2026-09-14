@@ -16,7 +16,7 @@ vm.runInContext(fs.readFileSync(path.join(root,'research-evidence.js'),'utf8'),c
 const model=c.window.RecoveryResearch,tracker=read('data/recovery-os.json'),before=JSON.stringify(tracker),index=read('data/open-research/index.json');
 for(const item of index.symbols){
  const b=read('data/open-research/'+item.ticker+'.json'),a=model.analyze(b,tracker.stocks.find(x=>x.ticker===item.ticker));
- assert(b.bars.length>0);assert.equal(a.tech.bars.length,b.bars.length);
+ assert(Array.isArray(b.bars));if(!b.bars.length)assert(b.health.some(h=>h.provider==='Yahoo daily history'&&h.status==='unavailable'),'An uncollected history needs an explicit source status');if(b.bars.length)assert.equal(a.tech.bars.length,b.bars.length);else assert.equal(a.tech,null,'Indicators must stay unavailable without price history');
  for(let i=0;i<b.bars.length;i++){const x=b.bars[i];assert(x.high>=Math.max(x.open,x.close));assert(x.low<=Math.min(x.open,x.close));if(i)assert(x.date>b.bars[i-1].date)}
  for(const r of [...(b.financials?.quarterly||[]),...(b.financials?.annual||[])]){
    assert.equal(r.currency,'USD');assert(!r.dilutedShares||r.dilutedShares>0);

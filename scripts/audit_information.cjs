@@ -26,7 +26,7 @@ function audit(){
    const calculated=F.financialMetrics(row,d).freeCashFlow;
    if(calculated.value!=null&&row.freeCashFlow!=null&&Math.abs(calculated.value-row.freeCashFlow)>.01)add(ticker,'FCF_CONFLICT',row.period+' retained both values for source review');
   }
-  const eventKeys=new Set();for(const e of [...(d.filings||[]),...(d.news||[])]){events++;const k=e.accession||e.url;if(eventKeys.has(k))add(ticker,'DUPLICATE_EVENT',k);eventKeys.add(k);if(!F.date(e.acceptedAt||e.filed||e.published))add(ticker,'MISSING_PUBLICATION_TIME',e.title||k);}
+  for(const group of [d.filings||[],d.news||[]]){const eventKeys=new Set();for(const e of group){events++;const k=e.accession||e.url;if(eventKeys.has(k))add(ticker,'DUPLICATE_EVENT',k);eventKeys.add(k);if(!F.date(e.acceptedAt||e.filed||e.published))add(ticker,'MISSING_PUBLICATION_TIME',e.title||k);}}
   for(const h of d.health||[])if(/error|blocked|limit|retained|fail/i.test(h.status+' '+h.detail))add(ticker,'PROVIDER_FAILURE',h.provider+': '+h.detail);
  }
  const groups=Object.entries(Object.groupBy(findings,x=>x.code)).map(([code,rows])=>({code,count:rows.length,severity:rows.some(x=>x.severity==='quarantine')?'high':'medium'})).sort((a,b)=>b.count-a.count);

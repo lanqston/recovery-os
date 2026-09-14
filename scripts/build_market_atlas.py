@@ -52,7 +52,7 @@ def fetch_frame(task):
     unit='USD-per-shares' if metric=='dilutedEPS' else 'shares' if metric=='dilutedShares' else 'USD'
     url=f'https://data.sec.gov/api/xbrl/frames/us-gaap/{tag}/{unit}/{period}.json'
     try:
-        payload=public.fetch(url,f'atlas-{tag}-{period}')
+        payload=public.fetch(url,f'atlas-{tag}-{period}',ttl=21600,validate=lambda x:isinstance(x.get('data'),list))
         return task,payload.get('data',[]),{'source':url,'status':'available','records':len(payload.get('data',[]))}
     except Exception as e:return task,[],{'source':url,'status':'previous snapshot retained','detail':str(e)[:120]}
 
@@ -103,7 +103,10 @@ def build(skip_frames=False):
     if old_index.exists():
         for file in (DEST/'shards').glob('*.json'):
             old.update(json.loads(file.read_text()).get('stocks',{}))
-    for t,b in old.items():records[t]=b
+    for t,b in old.items():
+        fresh=records.get(t,{}).get('profile',{}).get('cik');previous=b.get('profile',{}).get('cik')
+        if fresh and previous and str(fresh).zfill(10)!=str(previous).zfill(10):continue
+        records[t]=b
     health=[]
     try:
         if public.os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('Automatic screener ingestion paused pending documented access permission')
@@ -166,7 +169,7 @@ def build(skip_frames=False):
     write_atlas(DEST/'index.json',{'retrievedAt':NOW,'columns':['ticker','name','sector','exchange','cik','price','changePct','marketCap','financialPeriods','securityType'],'rows':symbols,
         'counts':{'symbols':len(symbols),'quotes':sum(b['coverage']['quote'] for b in records.values()),'financials':sum(bool(b['coverage']['financialPeriods']) for b in records.values())},
         'health':health,'method':'Nasdaq screener snapshots and SEC XBRL frames. Company periods are matched by exact start/end dates; field-specific filing links are retained.'})
-    write_atlas(DEST/'collection.json',{'retrievedAt':NOW,'sources':health,'frames':frame_health})
+    write_atlas(DEST/'collection.json',{'retrievedAt':NOW,'sources':health,'frames':frame_health,'http':{k:v for k,v in public.HTTP.report().items() if k!='resources'}})
     print(f'Atlas complete: {len(symbols)} symbols; {sum(b["coverage"]["quote"] for b in records.values())} quotes; {sum(bool(b["coverage"]["financialPeriods"]) for b in records.values())} issuers with financial records.',flush=True)
 
 if __name__=='__main__':

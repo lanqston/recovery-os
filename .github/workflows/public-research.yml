@@ -2,30 +2,44 @@ name: Refresh public research
 on:
   workflow_dispatch:
   schedule:
-    - cron: '37 23 * * 1-5'
+    - cron: '37 12,20 * * 1-5'
   push:
     branches: [main]
     paths:
       - 'scripts/refresh_open_research.py'
+      - 'scripts/public_http.py'
+      - 'scripts/refresh_sec_symbols.py'
       - 'scripts/build_market_atlas.py'
+      - 'scripts/build_connector_report.py'
       - '.github/workflows/public-research.yml'
-
 permissions:
   contents: write
-
+  pages: write
 concurrency:
   group: public-research-refresh
   cancel-in-progress: false
-
 jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Reuse public response cache and cooldowns
+        uses: actions/cache@v4
+        with:
+          path: ../open-source-cache
+          key: public-http-v2-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: public-http-v2-${{ runner.os }}-
+      - name: Record tracker integrity
+        run: sha256sum data/recovery-os.json > /tmp/tracker.sha256
       - name: Collect free public evidence
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
@@ -34,21 +48,35 @@ jobs:
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
         run: python scripts/build_market_atlas.py
-      - name: Validate research data and search behavior
+      - name: Rebuild coverage and connector health
         run: |
-          node tests/research-model.test.cjs
-          node tests/research-search.test.cjs
-          node tests/research-evidence.test.cjs
-          node tests/market-atlas.test.cjs
-          python -m unittest discover -s tests -p 'test_public_research.py'
-          python -m unittest discover -s tests -p 'test_market_atlas.py'
-      - name: Save successful snapshots
+          node scripts/build_information_catalog.cjs
+          node scripts/audit_information.cjs data/information/health.json
+          python scripts/build_connector_report.py
+      - name: Validate before accepting any refresh
+        run: |
+          python scripts/validate_information.py /tmp/validation.json
+          sha256sum --check /tmp/tracker.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-source-health
+          path: |
+            /tmp/validation.json
+            data/information/connectors.json
+            data/information/health.json
+            data/information/directory-health.json
+      - name: Save validated snapshots and current coverage
         run: |
           git config user.name 'recovery-os-data'
           git config user.email 'recovery-os-data@users.noreply.github.com'
-          git add data/open-research data/market-atlas
+          git add data/open-research data/market-atlas data/sec-symbols.json data/information/coverage.json data/information/health.json data/information/connectors.json data/information/directory-health.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Refresh public research snapshots'
+            git commit -m 'Refresh verified free research and connector health'
             git pull --rebase origin main
             git push
           fi
+      - name: Publish the refreshed site data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" --jq '.status'

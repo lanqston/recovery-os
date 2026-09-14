@@ -19,26 +19,14 @@ lock=threading.Lock();last_sec=0.0
 
 def write(path,value):
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.write_text(json.dumps(value,ensure_ascii=False,separators=(',',':')),encoding='utf8')
+    temp=path.with_suffix(path.suffix+'.tmp')
+    temp.write_text(json.dumps(value,ensure_ascii=False,separators=(',',':')),encoding='utf8');temp.replace(path)
 
-def fetch(url,cache_key=None,kind='json'):
-    global last_sec
-    if cache_key:
-        p=CACHE/(cache_key+'.'+('json' if kind=='json' else 'txt'))
-        if p.exists() and time.time()-p.stat().st_mtime<7200:
-            return json.loads(p.read_text()) if kind=='json' else p.read_text()
-    if 'sec.gov/' in url:
-        with lock:
-            delay=max(0,0.55-(time.monotonic()-last_sec))
-            if delay:time.sleep(delay)
-            last_sec=time.monotonic()
-    req=urllib.request.Request(url,headers={'User-Agent':UA,'Accept':'application/json, application/xml, text/csv, */*'})
-    with urllib.request.urlopen(req,timeout=22) as res:
-        text=res.read(18_000_000).decode('utf-8-sig')
-    value=json.loads(text) if kind=='json' else text
-    if cache_key:
-        p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
-    return value
+from public_http import PublicHTTP
+HTTP=PublicHTTP(CACHE,UA)
+def fetch(url,cache_key=None,kind='json',ttl=7200,validate=None):
+    return HTTP.fetch(url,cache_key,kind,ttl,validate)
+
 
 def days(a,b):
     try:return (dt.date.fromisoformat(b)-dt.date.fromisoformat(a)).days
@@ -107,13 +95,13 @@ def normalize_facts(facts,sub):
 
 def filings(sub):
     r=sub.get('filings',{}).get('recent',{});items=[]
-    accepted={'10-K','10-Q','8-K','10-K/A','10-Q/A','20-F','6-K','DEF 14A'}
+    accepted={'10-K','10-Q','8-K','10-K/A','10-Q/A','20-F','6-K','40-F','DEF 14A','4','4/A','SC 13D','SC 13D/A','SC 13G','SC 13G/A'}
     labels={'10-K':'Annual report','10-Q':'Quarterly results','8-K':'Current company event','DEF 14A':'Proxy and governance','20-F':'Annual foreign-issuer report','6-K':'Foreign-issuer update'}
     for i,form in enumerate(r.get('form',[])):
         if form not in accepted:continue
         def at(k):return r.get(k,[])[i] if i<len(r.get(k,[])) else ''
-        items.append({'form':form,'title':labels.get(form,form),'filed':at('filingDate'),'reportDate':at('reportDate'),'accession':at('accessionNumber'),'items':at('items'),'url':accession_url(sub['cik'],at('accessionNumber'),at('primaryDocument'))})
-        if len(items)>=16:break
+        items.append({'form':form,'title':labels.get(form,form),'filed':at('filingDate'),'reportDate':at('reportDate'),'acceptedAt':at('acceptanceDateTime') or None,'accession':at('accessionNumber'),'items':at('items'),'url':accession_url(sub['cik'],at('accessionNumber'),at('primaryDocument'))})
+        if len(items)>=32:break
     return items
 
 def feed_items(text,publisher,limit=8):
@@ -142,18 +130,20 @@ def price_bars(t):
     return bars[-420:],data['meta']
 
 def build_company(t,directory):
-    result={'ticker':t,'retrievedAt':NOW,'health':[]};entry=directory.get(t)
+    result={'ticker':t,'lastAttemptAt':NOW,'health':[]};entry=directory.get(t)
     old_path=DEST/(t+'.json');old=json.loads(old_path.read_text()) if old_path.exists() else {}
+    if entry and old.get('profile',{}).get('cik') and str(entry.get('cik')).zfill(10)!=str(old['profile']['cik']).zfill(10):old={}
     if entry:
         try:
-            cik=str(entry['cik']).zfill(10);sub=fetch(f'https://data.sec.gov/submissions/CIK{cik}.json',t+'-submissions')
-            result['profile']={'ticker':t,'name':sub.get('name',entry['name']),'exchange':entry.get('exchange'),'cik':cik,'industry':sub.get('sicDescription'),'fiscalYearEnd':sub.get('fiscalYearEnd'),'homepage':sub.get('website') or None,'investorRelations':sub.get('investorWebsite') or None}
+            cik=str(entry['cik']).zfill(10);sub=fetch(f'https://data.sec.gov/submissions/CIK{cik}.json',t+'-submissions',ttl=1800,validate=lambda x:str(x.get('cik','')).zfill(10)==cik and isinstance(x.get('filings'),dict))
+            result['retrievedAt']=NOW
+            result['profile']={**old.get('profile',{}),'ticker':t,'name':sub.get('name',entry['name']),'exchange':entry.get('exchange'),'cik':cik,'industry':sub.get('sicDescription'),'fiscalYearEnd':sub.get('fiscalYearEnd'),'homepage':sub.get('website') or None,'investorRelations':sub.get('investorWebsite') or None}
             result['filings']=filings(sub);result['health'].append({'provider':'SEC filings','status':'available','asOf':result['filings'][0]['filed'] if result['filings'] else None})
-            if t not in ('SPY','QQQ'):
-                facts=fetch(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json',t+'-facts');f=normalize_facts(facts,sub)
+            if old.get('profile',{}).get('typeCode')!='ETF' and old.get('profile',{}).get('securityType')!='ETF' and t not in ('SPY','QQQ'):
+                facts=fetch(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json',t+'-facts',ttl=21600,validate=lambda x:str(x.get('cik','')).zfill(10)==cik and isinstance(x.get('facts'),dict));f=normalize_facts(facts,sub)
                 if f.get('quarterly') or f.get('annual'):result['financials']={**f,'retrievedAt':NOW}
                 result['health'].append({'provider':'SEC financial statements','status':'available' if f.get('quarterly') else 'no standard quarterly facts','asOf':f.get('quarterly',[{}])[0].get('endDate') if f.get('quarterly') else None})
-        except Exception as e:result['health'].append({'provider':'SEC','status':'last successful record retained' if old else 'unavailable','detail':str(e)[:150]})
+        except Exception as e:result['health'].append({'provider':'SEC','status':'last successful record retained' if old else 'unavailable','detail':str(e)[:150],'lastAttemptAt':NOW,'retryAt':getattr(e,'retry_at',None)})
     try:
         if os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('Automatic access paused pending provider permission; saved history retained')
         bars,meta=price_bars(t)
@@ -164,26 +154,46 @@ def build_company(t,directory):
             result['bars']=bars;result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Yahoo Finance public daily history','dataState':'DAILY SNAPSHOT','currency':meta.get('currency')}
             result['priceSource']={'title':'Yahoo Finance daily history','url':f'https://finance.yahoo.com/quote/{urllib.parse.quote(t)}/history/','publisher':'Yahoo Finance','date':last['date'],'retrievedAt':NOW}
             result['health'].append({'provider':'Yahoo daily history','status':'available','asOf':last['date']})
-    except Exception as e:result['health'].append({'provider':'Yahoo daily history','status':'saved price history retained','detail':str(e)[:150]})
+    except Exception as e:result['health'].append({'provider':'Yahoo daily history','status':'saved price history retained' if old.get('bars') else 'unavailable','detail':str(e)[:150],'lastAttemptAt':NOW,'retryAt':getattr(e,'retry_at',None)})
     try:
         if os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('RSS ingestion paused pending provider permission; saved news retained')
         rss=fetch(f'https://feeds.finance.yahoo.com/rss/2.0/headline?s={urllib.parse.quote(t)}&region=US&lang=en-US',t+'-rss','text')
         result['news']=feed_items(rss,'Yahoo Finance RSS',8);result['health'].append({'provider':'Yahoo Finance RSS','status':'available','items':len(result['news'])})
-    except Exception as e:result['health'].append({'provider':'Yahoo Finance RSS','status':'saved news retained','detail':str(e)[:150]})
+    except Exception as e:result['health'].append({'provider':'Yahoo Finance RSS','status':'saved news retained','detail':str(e)[:150],'lastAttemptAt':NOW,'retryAt':getattr(e,'retry_at',None)})
+    if result.get('filings'):
+        releases=[{'title':(result.get('profile',{}).get('name') or t)+' / '+('Reported results event' if '2.02' in f.get('items','') else f['title']),
+            'url':f['url'],'published':f.get('acceptedAt') or f['filed'],'publisher':'SEC EDGAR','sourceType':'OFFICIAL',
+            'why':'Original '+f['form']+' disclosure. Verify the reported event, period and attached release.'} for f in result['filings'] if f['form'] in ('8-K','6-K')][:12]
+        prior_news=result.get('news',old.get('news',[]))
+        result['news']=list({n['url']:n for n in [*prior_news,*releases]}.values())
+        result['news'].sort(key=lambda x:x.get('published',''),reverse=True);result['news']=result['news'][:24]
     merged={**old,**result}
     for key in ('filings','news','bars'):merged.setdefault(key,[])
     merged.setdefault('financials',{'quarterly':[],'annual':[]})
     write(old_path,merged)
     print(f'{t}: {len(merged.get("financials",{}).get("quarterly",[]))} quarters, {len(merged.get("filings",[]))} filings, {len(merged.get("bars",[]))} bars',flush=True)
-    return {'ticker':t,'name':merged.get('profile',{}).get('name',entry['name'] if entry else t),'exchange':entry.get('exchange') if entry else None,'cik':entry.get('cik') if entry else None,'financialThrough':merged.get('financials',{}).get('quarterly',[{}])[0].get('endDate') if merged.get('financials',{}).get('quarterly') else None,'priceThrough':merged.get('bars',[{}])[-1].get('date'),'filings':len(merged.get('filings',[])),'health':merged.get('health',[])}
+    return {'ticker':t,'name':merged.get('profile',{}).get('name',entry['name'] if entry else t),'exchange':entry.get('exchange') if entry else None,'cik':entry.get('cik') if entry else None,'financialThrough':merged.get('financials',{}).get('quarterly',[{}])[0].get('endDate') if merged.get('financials',{}).get('quarterly') else None,'priceThrough':(merged.get('bars') or [{}])[-1].get('date'),'filings':len(merged.get('filings',[])),'lastAttemptAt':NOW,'health':merged.get('health',[])}
+
+def bls_observations(data,code):
+    series=data.get('Results',{}).get('series',[{}])[0]
+    if series.get('seriesID')!=code:raise ValueError('BLS series identity mismatch')
+    rows=[]
+    for r in series.get('data',[]):
+        if not re.fullmatch(r'M(0[1-9]|1[0-2])',r.get('period','')):continue
+        try:value=float(str(r.get('value','')).replace(',',''))
+        except ValueError:continue
+        if not finite(value):continue
+        rows.append({'date':r['year']+'-'+r['period'][1:]+'-01','value':value,'precision':'month'})
+    if not rows:raise ValueError('BLS returned no released monthly observations')
+    return sorted(rows,key=lambda r:r['date'])
 
 def macro():
     path=DEST/'macro.json';out=json.loads(path.read_text()) if path.exists() else {'releases':[],'series':{}}
     out['retrievedAt']=NOW;health=[]
-    feeds=[('Federal Reserve','https://www.federalreserve.gov/feeds/press_monetary.xml'),('BLS CPI','https://www.bls.gov/feed/cpi.rss'),('BLS Employment','https://www.bls.gov/feed/empsit.rss')]
+    feeds=[('Federal Reserve','https://www.federalreserve.gov/feeds/press_all.xml'),('BLS CPI','https://www.bls.gov/feed/cpi.rss'),('BLS Employment','https://www.bls.gov/feed/empsit.rss')]
     for publisher,url in feeds:
         try:
-            items=feed_items(fetch(url,publisher.replace(' ','-'),'text'),publisher,4)
+            items=feed_items(fetch(url,publisher.replace(' ','-')+'-v2','text'),publisher,6)
             out['releases']=[x for x in out['releases'] if x['publisher']!=publisher]+items
             health.append({'provider':publisher,'status':'available','items':len(items),'url':url})
         except Exception as e:health.append({'provider':publisher,'status':'previous data retained','detail':str(e)[:120]})
@@ -204,27 +214,57 @@ def macro():
             if valid:out['series'][series]={'name':name,'unit':unit,'observations':valid[-90:],'source':f'https://fred.stlouisfed.org/series/{series}','publisher':'FRED / original federal agency'}
             health.append({'provider':'FRED '+series,'status':'available','observations':len(valid)})
         except Exception as e:health.append({'provider':'FRED '+series,'status':'previous data retained','detail':str(e)[:120]})
+    # BLS v1 is an independent, keyless official source for the same monthly measures.
+    out.setdefault('bls',{})
+    for code,name,unit in [('LNS14000000','US unemployment rate','percent'),('CUSR0000SA0','Consumer Price Index','index, seasonally adjusted')]:
+        try:
+            url='https://api.bls.gov/publicAPI/v1/timeseries/data/'+code
+            data=fetch(url,'bls-'+code,ttl=21600,validate=lambda x:x.get('status')=='REQUEST_SUCCEEDED' and bool(x.get('Results',{}).get('series')))
+            rows=bls_observations(data,code)
+            out['bls'][code]={'name':name,'unit':unit,'observations':rows,'source':url,'publisher':'Bureau of Labor Statistics','retrievedAt':NOW}
+            fallback_key='UNRATE' if code=='LNS14000000' else 'CPIAUCSL'
+            if not out['series'].get(fallback_key,{}).get('observations') or out['series'][fallback_key]['observations'][-1]['date']<rows[-1]['date']:
+                out['series'][fallback_key]={**out['bls'][code],'seriesId':code}
+            health.append({'provider':'BLS public API '+code,'status':'available','asOf':rows[-1]['date'],'lastSuccessAt':NOW,'lastAttemptAt':NOW,'url':url})
+        except Exception as e:health.append({'provider':'BLS public API '+code,'status':'previous data retained','lastAttemptAt':NOW,'detail':str(e)[:120]})
+    for h in health:
+        h.setdefault('lastAttemptAt',NOW)
+        if h['status']=='available':h.setdefault('lastSuccessAt',NOW)
     out['health']=health;write(path,out)
 
+def expansion_symbols(existing,directory,atlas,count=4):
+    rows=[dict(zip(atlas.get('columns',[]),r)) for r in atlas.get('rows',[])]
+    candidates=[r for r in rows if r.get('ticker') not in existing and r.get('ticker') in directory and r.get('financialPeriods',0)>0 and re.fullmatch(r'[A-Z][A-Z0-9.-]{0,11}',r.get('ticker',''))]
+    candidates.sort(key=lambda r:(-(r.get('marketCap') or 0),r['ticker']))
+    seen={str(directory[t].get('cik')).zfill(10) for t in existing if t in directory};selected=[]
+    for r in candidates:
+        cik=str(directory[r['ticker']].get('cik')).zfill(10)
+        if cik in seen:continue
+        if len(selected)>=max(0,min(8,count)):break
+        selected.append(r['ticker']);seen.add(cik)
+    return selected
+
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=None);parser.add_argument('--skip-macro',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=None);parser.add_argument('--skip-macro',action='store_true');parser.add_argument('--expand',type=int,choices=range(9),default=4,help='Add up to eight directory-verified company dossiers per run');args=parser.parse_args()
     prepared=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
-    tickers=args.tickers.upper().split() if args.tickers else list(dict.fromkeys(TICKERS+[x['ticker'] for x in prepared]))
+    tickers=args.tickers.upper().split() if args.tickers else list(dict.fromkeys(TICKERS+[x['ticker'] for x in sorted(prepared,key=lambda x:x.get('lastAttemptAt',''))]))
     DEST.mkdir(parents=True,exist_ok=True)
-    try:
-        raw=fetch('https://www.sec.gov/files/company_tickers_exchange.json','company-directory')
-        directory={row[2]:dict(zip(raw['fields'],row)) for row in raw['data']}
-        write(DEST/'directory.json',{'source':'https://www.sec.gov/files/company_tickers_exchange.json','retrievedAt':NOW,'symbols':[{'ticker':t,'name':x['name'],'exchange':x['exchange'],'cik':str(x['cik']).zfill(10)} for t,x in directory.items()]})
-    except Exception as error:
-        prior=json.loads((DEST/'directory.json').read_text()) if (DEST/'directory.json').exists() else {'symbols':[]}
-        directory={x['ticker']:{'ticker':x['ticker'],'name':x.get('name',x['ticker']),'exchange':x.get('exchange'),'cik':int(x['cik']) if str(x.get('cik','')).isdigit() else 0} for x in prior.get('symbols',[])}
-        print(f'SEC directory unavailable; retaining previous directory ({error})',flush=True)
+    import sys
+    from refresh_sec_symbols import refresh
+    prior=refresh(sys.modules[__name__])
+    directory={x['ticker']:x for x in prior['symbols']}
+    atlas_path=ROOT/'data/market-atlas/index.json'
+    if not args.tickers and atlas_path.exists():
+        additions=expansion_symbols(tickers,directory,json.loads(atlas_path.read_text()),args.expand)
+        tickers=tickers[:180-len(additions)]+additions
+        print('Coverage expansion: '+(', '.join(additions) or 'no additions'),flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         records=list(pool.map(lambda t:build_company(t,directory),tickers))
     previous=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
     merged={x['ticker']:x for x in previous};merged.update({x['ticker']:x for x in records})
-    write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'method':'Public SEC statements and filing history, Yahoo daily history and RSS; preserved snapshots on provider failure.'})
+    write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'method':'SEC statements, filings and company events; official macro sources; retained market snapshots with original timestamps. Unapproved collectors remain paused.'})
     if not args.skip_macro:macro()
+    write(DEST/'collection.json',HTTP.report())
     print(f'Completed {len(records)} stock records and {len(directory)} searchable SEC tickers.',flush=True)
 
 if __name__=='__main__':main()

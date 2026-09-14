@@ -6,7 +6,7 @@ function atlasShard(t){let h=0;for(const c of t)h=(Math.imul(h,31)+c.charCodeAt(
 async function atlasFile(path,fresh=false){
   if(!/^(index|collection|shards\/[0-9a-f]{2})\.json$/.test(path))throw new Error('Invalid atlas path');
   const local='data/market-atlas/'+path,remote='https://raw.githubusercontent.com/lanqston/recovery-os/main/'+local;
-  for(const url of fresh?[remote,local]:[local,remote])try{const r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(url===remote?3500:6000)});if(r.ok)return await r.json()}catch{}
+  for(const url of (fresh?[remote,local]:[local,remote]))try{if(window.RecoveryRequests)return await window.RecoveryRequests.json(url,{refresh:fresh,validate:x=>path.startsWith('shards/')?!!x.stocks:path==='index.json'?Array.isArray(x.rows):!!x});const r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(url===remote?3500:6000)});if(r.ok)return await r.json()}catch{}
   return null;
 }
 loadSeed=async function loadMarketAtlas(){

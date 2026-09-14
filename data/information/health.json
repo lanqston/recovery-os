@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-12T18:35:26.129Z",
+  "generatedAt": "2026-09-14T04:07:44.183Z",
   "scope": {
-    "dossiers": 151,
+    "dossiers": 155,
     "bars": 63420,
-    "events": 3320,
-    "bytes": 16129102
+    "events": 6201,
+    "bytes": 16526364
   },
   "trackerSHA256": "643623d97a6e5893cbbb6db81274def0c0a8ee8df766b8b3def4c0b6f80f5b19",
   "mode": "READ_ONLY",
@@ -13,206 +13,1868 @@
     {
       "ticker": "AAPL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AAPL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABBV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABBV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABNB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABNB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "ADBE",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ADBE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "AMD",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMGN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMGN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "AMZN",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMZN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARKK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARKK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ASTS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ASTS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "AVGO",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AVGO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AXP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "AXP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BABA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BABA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BKNG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BKNG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BLK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BLK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BRK-B",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "BRK-B",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "C",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "C",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CAT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CAT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CEG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CEG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "COIN",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "COIN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "COP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "COP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "COST",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "COST",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "CRM",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRWD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRWD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CSX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CSX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DAL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DAL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DASH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DASH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DDOG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DDOG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "DECK",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DECK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DELL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DELL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "DIA",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 404: Not Found",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DKNG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DKNG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DUK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "DUK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ENPH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ETHA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ETHA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "F",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "F",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "FCX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "FCX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "FDX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "FDX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GILD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GILD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "GOOGL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "GS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "HOOD",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HOOD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPQ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPQ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HYG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "HYG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "IBIT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "IBIT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "INTC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "INTC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "IONQ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "IONQ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ISRG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ISRG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "IWM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "IWM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "JD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "JD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "JNJ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "JNJ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "JPM",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "JPM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "KO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "KO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LCID",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LCID",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "LLY",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LLY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LMT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LMT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LUV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "LUV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MAR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MAR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MCD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MCD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "META",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "META",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MRK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MRK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "MSFT",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MSFT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MU",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "MU",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NET",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NET",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NFLX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NFLX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "NKE",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NKE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NNE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NNE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NUE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NUE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "NVDA",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "NVDA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "OKLO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "OKLO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "ON",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ON",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "ORCL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ORCL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "OXY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "OXY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PANW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PANW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PDD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PDD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PEP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PEP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PFE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PFE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PINS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PINS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "PLTR",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PLTR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "PYPL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "PYPL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "QQQ",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "QQQ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RBLX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RBLX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RIVN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RIVN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RKLB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RKLB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ROKU",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ROKU",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RTX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "RTX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SBUX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SBUX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SCHW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SCHW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SHOP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SHOP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMCI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMCI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNAP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNAP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "SOFI",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SOFI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPCX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPCX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPGI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPGI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPOT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPOT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "SPY",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "STZ",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "STZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "T",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "T",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TGT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TGT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TLT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TLT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMUS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMUS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "TSLA",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSLA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TTD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "TTD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "U",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "U",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UAL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UAL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "UBER",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UBER",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "UNH",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UPS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "UPS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "V",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "V",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "VST",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "VST",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "VTI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "VTI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "VZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "VZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "WFC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "WFC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "WMT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "WMT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "WYNN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "WYNN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLF",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLF",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLRE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLRE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLU",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLU",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLV",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "XOM",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "XOM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     },
     {
       "ticker": "ZTS",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC: HTTP Error 403: Forbidden",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZTS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
       "severity": "review"
     }
   ],
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 33,
+      "count": 310,
       "severity": "medium"
     }
   ],
@@ -225,31 +1887,31 @@
         {
           "ticker": "AAPL",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC: HTTP Error 403: Forbidden",
+          "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
           "severity": "review"
         },
         {
-          "ticker": "ADBE",
+          "ticker": "AAPL",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC: HTTP Error 403: Forbidden",
+          "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
           "severity": "review"
         },
         {
-          "ticker": "AMD",
+          "ticker": "ABBV",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC: HTTP Error 403: Forbidden",
+          "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
           "severity": "review"
         },
         {
-          "ticker": "AMZN",
+          "ticker": "ABBV",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC: HTTP Error 403: Forbidden",
+          "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission; saved news retained",
           "severity": "review"
         },
         {
-          "ticker": "AVGO",
+          "ticker": "ABNB",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC: HTTP Error 403: Forbidden",
+          "detail": "Yahoo daily history: Automatic access paused pending provider permission; saved history retained",
           "severity": "review"
         }
       ],
@@ -263,7 +1925,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 33 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 310 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",

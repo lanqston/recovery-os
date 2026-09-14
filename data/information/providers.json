@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-09-12",
+  "reviewedAt": "2026-09-14",
   "sources": [
     {
       "id": "sec",
@@ -24,10 +24,10 @@
         "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
         "https://www.sec.gov/about/developer-resources"
       ],
-      "status": "Adapter ready",
+      "status": "Active \u00b7 scheduled public collection",
       "reviewedAt": "2026-09-12",
       "fallback": "Last verified observation with its original timestamp, then official source link.",
-      "validation": "Company identity, same-period calculations, filing metadata, failure retention and rate budgets tested locally; production access must be checked from deployed Worker.",
+      "validation": "Identity checks, filing periods, source preservation, endpoint cooldowns and schema validation tested. CI retains verified records on upstream errors.",
       "fieldMappings": {
         "directory.cik": "companyId / CIK",
         "directory.ticker": "security ticker",
@@ -77,10 +77,10 @@
         "https://massive.com/docs/rest/stocks/overview",
         "https://massive.com/pricing"
       ],
-      "status": "Optional existing adapter",
+      "status": "Disabled \u00b7 free-source mode",
       "reviewedAt": "2026-09-12",
       "fallback": "Last verified observation with its original timestamp, then official source link.",
-      "validation": "Original Worker contract retained; centralized deduplication, redacted errors, persistent cache and quotas added. Key/redistribution grant not configured in this review.",
+      "validation": "No public research route invokes this legacy paid adapter. No key is required for the free archive API.",
       "fieldMappings": {
         "results.ticker/cik": "security / issuer identity",
         "results.o/h/l/c/v/t": "OHLCV / epoch milliseconds",
@@ -376,19 +376,19 @@
         "employment",
         "release calendar"
       ],
-      "coverage": "Published statistics and time series",
-      "auth": "v1 public; v2 registration unlocks features.",
-      "refresh": "Per release calendar.",
+      "coverage": "Monthly unemployment (LNS14000000) and seasonally adjusted CPI (CUSR0000SA0). Keyless API limitations apply.",
+      "auth": "No key: Public Data API version 1",
+      "refresh": "Weekday collection; six-hour cache; original monthly periods retained.",
       "rateLimit": "Version-specific limits; preserve response messages.",
       "license": "Public official statistics; retain period, seasonal basis and revisions.",
       "docs": [
         "https://www.bls.gov/developers/",
         "https://www.bls.gov/feed/"
       ],
-      "status": "Existing releases / API review",
+      "status": "Active \u00b7 keyless API",
       "reviewedAt": "2026-09-12",
       "fallback": "Last verified observation with its original timestamp, then official source link.",
-      "validation": "Candidate only; field mapping, access policy, issuer resolution and integration tests required before activation.",
+      "validation": "Series ID, API status and valid monthly observations are checked; original data retained on failure.",
       "fieldMappings": {
         "status": "Not implemented; candidate source needs field-level validation"
       },

@@ -17,7 +17,7 @@ function localJSON(key,fallback){try{return JSON.parse(localStorage.getItem(key)
 function saveUser(){try{localStorage.setItem(LS,JSON.stringify(user));scheduleRemoteStatePush();return true}catch{toastEx('This device could not save changes. Storage may be full or unavailable.');return false}}
 function apiBase(){try{const value=(localStorage.getItem(API_KEY)||'').replace(/\/$/,'');return /^https:\/\//.test(value)?value:''}catch{return ''}}
 function snapshotDate(value){if(!value)return 'Date not supplied';if(/^\d{4}-\d{2}-\d{2}$/.test(value))return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));return ago(value)}
-async function readResearchJSON(path){const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw new Error('Research snapshot unavailable');return r.json()}
+async function readResearchJSON(path){if(window.RecoveryRequests)return window.RecoveryRequests.json(path);const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw new Error('Research snapshot unavailable');return r.json()}
 async function loadSeed(){
   const results=await Promise.allSettled(['data/research-seed.json','data/symbols-seed.json','data/provider-capabilities.json','data/research-seed-aapl-extra.json','data/research/index.json'].map(readResearchJSON));
   SEED=results[0].status==='fulfilled'?results[0].value:{stocks:{},meta:{}};

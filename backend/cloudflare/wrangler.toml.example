@@ -7,9 +7,9 @@ ALLOWED_ORIGIN = "https://lanqston.github.io"
 WATCH_MONITORING_ENABLED = "false"
 INFORMATION_MONITORING_ENABLED = "false"
 ALPHA_VANTAGE_APPROVED = "false"
-# SEC_USER_AGENT, MASSIVE_API_KEY, ALPHA_VANTAGE_API_KEY and RECOVERY_CLIENT_TOKEN are Worker secrets.
+# Public archive reads require no secrets. Optional SEC_USER_AGENT, ALPHA_VANTAGE_API_KEY and RECOVERY_CLIENT_TOKEN stay server-side.
 
-# D1 is required for durable provider budgets and immutable research history.
+# D1 is optional for archive reads; required for durable provider budgets and saved history.
 # Apply schema.sql to the existing D1 database before enabling adapters.
 # Create a D1 database, then uncomment and fill these values.
 # [[d1_databases]]
@@ -17,6 +17,6 @@ ALPHA_VANTAGE_APPROVED = "false"
 # database_name = "recovery-os-research"
 # database_id = "YOUR_D1_DATABASE_ID"
 
-# Enable only after your stock plan supports the quote data you intend to monitor.
+# Enable only after reviewing the optional official-data monitoring configuration.
 # [triggers]
 # crons = ["*/15 * * * *"]

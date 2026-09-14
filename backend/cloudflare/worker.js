@@ -1,14 +1,15 @@
 import {informationRoute,scheduledInformation,client as reliableClient} from './information.mjs';
+import {freeRoute} from './free-api.mjs';
 /** Recovery OS Research API — Cloudflare Worker reference implementation.
- * Secrets: MASSIVE_API_KEY, RECOVERY_CLIENT_TOKEN, SEC_USER_AGENT
+ * Public reads need no key. Optional private state: RECOVERY_CLIENT_TOKEN.
  * Optional binding: DB (D1). Canonical recovery tracker is NEVER written here.
  */
 const MASSIVE='https://api.massive.com';
 const ALLOWED_ORIGIN='https://lanqston.github.io';
 const CACHE_TTL={search:86400,profile:86400,bars:300,financials:21600,news:300,filings:1800,positioning:3600,options:60,screener:300};
 export default {
- async fetch(request,env,ctx){return await informationRoute(request,env)||handle(request,env,ctx)},
- async scheduled(event,env,ctx){ctx.waitUntil(Promise.all([evaluateWatches(env),scheduledInformation(env)]))}
+ async fetch(request,env,ctx){return await freeRoute(request,env)||await informationRoute(request,env)||handle(request,env,ctx)},
+ async scheduled(event,env,ctx){ctx.waitUntil(scheduledInformation(env))}
 };
 function cors(request,env){const origin=request.headers.get('Origin')||'';const allowed=(env.ALLOWED_ORIGIN||ALLOWED_ORIGIN).split(',').map(x=>x.trim());const ok=!origin||allowed.includes(origin)||/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);return {'Access-Control-Allow-Origin':ok&&origin?origin:allowed[0],'Vary':'Origin','Access-Control-Allow-Headers':'Content-Type, Authorization','Access-Control-Allow-Methods':'GET, PUT, POST, OPTIONS','Cache-Control':'no-store'}}
 function json(request,env,body,status=200,extra={}){return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json;charset=utf-8',...cors(request,env),...extra}})}
@@ -173,5 +174,5 @@ async function screener(sp,env,ctx){
 }
 async function getState(env){if(!env.DB)return null;const r=await env.DB.prepare('SELECT payload FROM user_state WHERE id=?').bind('primary').first();return r?JSON.parse(r.payload):null}
 async function putState(env,state){if(!env.DB)throw Object.assign(new Error('D1 storage is not configured'),{status:503});await env.DB.prepare('INSERT INTO user_state(id,payload,updated_at) VALUES(?,?,?) ON CONFLICT(id) DO UPDATE SET payload=excluded.payload,updated_at=excluded.updated_at').bind('primary',JSON.stringify(state||{}),new Date().toISOString()).run()}
-async function putWatch(env,w){if(!env.DB)throw Object.assign(new Error('D1 storage is not configured'),{status:503});const id=w.id||crypto.randomUUID(),active=env.WATCH_MONITORING_ENABLED==='true'?1:0;await env.DB.prepare('INSERT OR REPLACE INTO watches(id,ticker,metric,operator,value,active,frequency,last_evaluated,last_value,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)').bind(id,symbol(w.ticker),w.metric,w.operator,Number(w.value),active,active?'15 MIN':'MANUAL',null,null,w.createdAt||new Date().toISOString()).run();return{id,active:!!active,frequency:active?'15 MIN':'MANUAL',lastEvaluated:null}}
+async function putWatch(env,w){if(!env.DB)throw Object.assign(new Error('D1 storage is not configured'),{status:503});const id=w.id||crypto.randomUUID(),active=0;await env.DB.prepare('INSERT OR REPLACE INTO watches(id,ticker,metric,operator,value,active,frequency,last_evaluated,last_value,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)').bind(id,symbol(w.ticker),w.metric,w.operator,Number(w.value),active,active?'15 MIN':'MANUAL',null,null,w.createdAt||new Date().toISOString()).run();return{id,active:!!active,frequency:active?'15 MIN':'MANUAL',lastEvaluated:null}}
 async function evaluateWatches(env){if(!env.DB||env.WATCH_MONITORING_ENABLED!=='true'||!env.MASSIVE_API_KEY)return;const {results=[]}=await env.DB.prepare('SELECT * FROM watches WHERE active=1').all();for(const w of results){try{let value=null;if(w.metric==='price'){const d=await mfetch(`/v2/snapshot/locale/us/markets/stocks/tickers/${encodeURIComponent(w.ticker)}`,{},env,null,300),x=d.ticker||d.results||d;value=x?.lastTrade?.p??x?.day?.c??null}const hit=value!=null&&(w.operator==='above'?value>Number(w.value):value<Number(w.value));await env.DB.prepare('UPDATE watches SET last_evaluated=?,last_value=?,last_triggered=? WHERE id=?').bind(new Date().toISOString(),value,hit?new Date().toISOString():null,w.id).run()}catch(e){console.warn('watch failed',w.id,e)}}}
