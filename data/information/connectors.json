@@ -1,21 +1,44 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-09-14T04:36:41.725172+00:00",
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-14T04:56:23.014582+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
-      "provider": "SEC",
+      "provider": "SEC filings",
       "cost": "Free / public sources only",
-      "status": "Cached",
+      "status": "Partial",
       "successfulRecords": 0,
       "checkedRecords": 144,
-      "lastSuccessAt": null,
+      "availableRecords": 140,
+      "unavailableRecords": 4,
+      "cachedRecords": 140,
+      "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": "2026-09-14T05:36:17.809808+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "HTTP_403"
       ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 140 of 144 checked records. Original source links remain available.",
+      "paidRequests": false
+    },
+    {
+      "provider": "SEC financial statements",
+      "cost": "Free / public sources only",
+      "status": "Partial",
+      "successfulRecords": 0,
+      "checkedRecords": 144,
+      "availableRecords": 132,
+      "unavailableRecords": 12,
+      "cachedRecords": 132,
+      "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": "2026-09-14T05:36:17.809808+00:00",
+      "errors": [
+        "SOURCE_COOLDOWN",
+        "HTTP_403"
+      ],
+      "fallback": "Original dated evidence is available for 132 of 144 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -24,12 +47,17 @@
       "status": "Paused",
       "successfulRecords": 0,
       "checkedRecords": 159,
+      "availableRecords": 151,
+      "unavailableRecords": 8,
+      "cachedRecords": 151,
       "lastSuccessAt": null,
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [
-        "Automatic access paused pending provider permission; saved history retained"
+        "Automatic access paused pending provider permission; saved history retained",
+        "Automatic access paused pending provider permission"
       ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 151 of 159 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -38,12 +66,36 @@
       "status": "Paused",
       "successfulRecords": 0,
       "checkedRecords": 159,
+      "availableRecords": 151,
+      "unavailableRecords": 8,
+      "cachedRecords": 151,
       "lastSuccessAt": null,
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [
-        "RSS ingestion paused pending provider permission; saved news retained"
+        "RSS ingestion paused pending provider permission; saved news retained",
+        "RSS ingestion paused pending provider permission"
       ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 151 of 159 checked records. Original source links remain available.",
+      "paidRequests": false
+    },
+    {
+      "provider": "Nasdaq public screener",
+      "cost": "Free / public sources only",
+      "status": "Paused",
+      "successfulRecords": 0,
+      "checkedRecords": 5,
+      "availableRecords": 5,
+      "unavailableRecords": 0,
+      "cachedRecords": 5,
+      "lastSuccessAt": "2026-09-12T15:43:57.446978+00:00",
+      "lastAttemptAt": null,
+      "retryAt": null,
+      "errors": [
+        "Saved provider snapshot; no new market request was made.",
+        "Automatic screener ingestion paused pending documented access permission"
+      ],
+      "fallback": "Original dated evidence is available for 5 of 5 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -52,10 +104,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -64,12 +120,16 @@
       "status": "Cached",
       "successfulRecords": 0,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 1,
       "lastSuccessAt": null,
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [
         "HTTP_403"
       ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -78,12 +138,16 @@
       "status": "Cached",
       "successfulRecords": 0,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 1,
       "lastSuccessAt": null,
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [
         "SOURCE_COOLDOWN"
       ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -92,10 +156,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -104,10 +172,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -116,10 +188,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -128,10 +204,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -140,10 +220,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -152,24 +236,14 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 0,
       "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "retryAt": null,
       "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
-      "paidRequests": false
-    },
-    {
-      "provider": "Nasdaq public screener",
-      "cost": "Free / public sources only",
-      "status": "Paused",
-      "successfulRecords": 0,
-      "checkedRecords": 1,
-      "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-14T04:36:36.869091+00:00",
-      "errors": [
-        "Automatic screener ingestion paused pending documented access permission"
-      ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -178,18 +252,24 @@
       "status": "Cached",
       "successfulRecords": 0,
       "checkedRecords": 1,
+      "availableRecords": 1,
+      "unavailableRecords": 0,
+      "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
       "lastAttemptAt": "2026-09-14T04:36:17.619791+00:00",
+      "retryAt": "2026-09-14T05:36:17.628387+00:00",
       "errors": [
         "HTTP_403"
       ],
-      "fallback": "Retained observations with original timestamps, then original source links",
+      "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
     }
   ],
   "coverage": {
     "securities": 10449,
-    "preparedDossiers": 159
+    "preparedDossiers": 159,
+    "evidenceDossiers": 159,
+    "identityOnlyDossiers": 0
   },
   "efficiency": {
     "requests": 10,
@@ -198,8 +278,8 @@
   },
   "automaticMaintenance": {
     "refresh": "Weekdays before and after the US regular session; manual refresh also available",
-    "coverageGrowth": "Up to four additional directory-verified company dossiers per collection, prioritized by available market cap; no fabricated price history",
-    "dataProtection": "Failed or invalid requests retain the last verified data and original timestamps",
+    "coverageGrowth": "Up to four additional directory-verified company records per collection. Matching saved atlas evidence is reused with its original dates.",
+    "dataProtection": "Failed requests retain the last verified data, source identity and successful retrieval time",
     "requests": "Conditional requests, cache reuse, host cooldowns and bounded retries",
     "quality": "Financial and price checks, source coverage reports, and tracker integrity gate",
     "rendering": "Bounded frame-time adaptation; reduced detail on slower devices",
@@ -208,6 +288,6 @@
   "limitations": [
     "Market sources paused for access permission remain paused; stored quotes are not live.",
     "Analyst, options and intraday coverage is unavailable where no compatible free source is connected.",
-    "A passing application check does not imply that every upstream provider is reachable."
+    "Passing checks describe the application; individual source blocks and missing records are reported separately."
   ]
 }

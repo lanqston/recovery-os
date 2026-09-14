@@ -127,7 +127,8 @@ def build(skip_frames=False):
             b['retrievedAt']=NOW
         health.append({'provider':'Nasdaq public screener','status':'available','records':len(quotes),'collectedAt':NOW})
         print(f'Nasdaq: {len(quotes)} public market records',flush=True)
-    except Exception as e:health.append({'provider':'Nasdaq public screener','status':'previous records retained','detail':str(e)[:150]})
+    except Exception as e:health.append({'provider':'Nasdaq public screener','status':'previous records retained','detail':str(e)[:150],
+        'lastAttemptAt':NOW,'lastSuccessAt':public.latest(*(b.get('quote',{}).get('collectedAt') for b in records.values() if b.get('quote',{}).get('source')=='Nasdaq public stock screener'))})
     cohorts={};frame_health=[]
     if not skip_frames:
         tasks=[(metric,tag,y,q,i) for metric,tags in METRICS.items() for i,tag in enumerate(tags) for y,q in (quarters()[:2] if metric in INSTANT else quarters())]

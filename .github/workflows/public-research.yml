@@ -8,6 +8,7 @@ on:
     paths:
       - 'scripts/refresh_open_research.py'
       - 'scripts/public_http.py'
+      - 'scripts/source_status.py'
       - 'scripts/refresh_sec_symbols.py'
       - 'scripts/build_market_atlas.py'
       - 'scripts/build_connector_report.py'

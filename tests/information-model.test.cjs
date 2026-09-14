@@ -38,3 +38,14 @@ test('a stage transition needs complete dated evidence and invalidation rules',(
 test('noncomparable conflict does not replace the applicable reported period',()=>{const a=m('revenue',100,{sourceType:'MARKET_DATA'}),b=m('revenue',200,{reportingPeriod:{end:'2025-01-01'}});assert.equal(F.conflict(a,b).value,100)});
 test('freshness degradation creates an informational coverage change',()=>{const a=F.snapshot(d),b=F.clone(a);b.coverage[0].status='Stale';a.coverage[0].status='Cached';const c=F.changes(a,b).find(c=>c.key==='coverage.prices');assert.equal(c.category,'availability');assert.equal(c.materiality,'Informational');assert.match(c.before.value,/Cached/);assert.match(c.after.value,/Stale/)});
 test('replay selects the latest fiscal period even when a filing also repeats earlier comparatives',()=>{const at='2026-09-12',r=F.replay(d,at),latest=d.events.filter(e=>e.category==='financials'&&e.payload.frequency==='quarterly'&&e.publishedAt<=F.dayEnd(at)).map(e=>e.effectiveAt).sort().at(-1);assert.equal(r.financials.effectiveAt,latest);assert.equal(r.metrics.revenue.value,d.metrics.revenue.value)});
+
+test('coverage keeps financial and filing source histories separate during a cooldown',()=>{
+ const x=F.normalize({...b,health:[{provider:'SEC filings',status:'available',lastSuccessAt:'2026-09-14T12:00:00Z',lastAttemptAt:'2026-09-14T12:00:00Z'},{provider:'SEC financial statements',status:'cached',detail:'SOURCE_COOLDOWN',lastSuccessAt:'2026-09-10T12:00:00Z',lastAttemptAt:'2026-09-14T12:00:00Z'}]});
+ const fin=x.coverage.find(c=>c.id==='financials'),filing=x.coverage.find(c=>c.id==='filings');
+ assert.equal(fin.lastSuccessfulUpdate,'2026-09-10T12:00:00.000Z');assert.deepEqual(fin.errors,['SOURCE_COOLDOWN']);
+ assert.equal(filing.lastSuccessfulUpdate,'2026-09-14T12:00:00.000Z');assert.equal(filing.errors.length,0);
+});
+test('a provider snapshot without an exchange timestamp never becomes an EOD observation',()=>{
+ const x=F.normalize({profile:{ticker:'TEST'},quote:{price:12,dataState:'PROVIDER SNAPSHOT',collectedAt:'2026-09-12T12:00:00Z'},priceSource:{publisher:'Nasdaq',date:'2026-09-12'},bars:[]});
+ assert.equal(x.metrics.price.value,12);assert.equal(x.metrics.price.source.effectiveAt,null);assert.equal(x.metrics.price.source.delivery,'CACHED');assert.equal(x.metrics.price.source.timestampPrecision,'UNKNOWN');assert.equal(x.bars.length,0);
+});

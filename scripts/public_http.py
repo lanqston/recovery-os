@@ -26,6 +26,9 @@ class PublicHTTP:
         with self.lock:
             self.cache.mkdir(parents=True,exist_ok=True);temp=self.state_path.with_suffix('.tmp')
             temp.write_text(json.dumps(self.state,separators=(',',':')));temp.replace(self.state_path)
+    def metadata(self,url):
+        with self.lock:
+            return dict(self.state['resources'].get(hashlib.sha256(url.encode()).hexdigest(),{}))
     def fetch(self,url,cache_key=None,kind='json',ttl=7200,validate=None):
         parsed=urllib.parse.urlparse(url)
         if parsed.scheme!='https' or parsed.username or parsed.password:raise FetchError('SOURCE_URL_NOT_ALLOWED',400)
