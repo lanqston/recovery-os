@@ -1,29 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T04:07:44.460710+00:00",
+  "generatedAt": "2026-09-14T04:36:41.725172+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
-      "provider": "SEC filings",
+      "provider": "SEC",
       "cost": "Free / public sources only",
-      "status": "Current",
-      "successfulRecords": 140,
-      "checkedRecords": 140,
-      "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
-      "errors": [],
-      "fallback": "Retained observations with original timestamps, then original source links",
-      "paidRequests": false
-    },
-    {
-      "provider": "SEC financial statements",
-      "cost": "Free / public sources only",
-      "status": "Partial",
-      "successfulRecords": 127,
-      "checkedRecords": 133,
-      "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
-      "errors": [],
+      "status": "Cached",
+      "successfulRecords": 0,
+      "checkedRecords": 144,
+      "lastSuccessAt": null,
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "errors": [
+        "SOURCE_COOLDOWN",
+        "HTTP_403"
+      ],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
     },
@@ -32,9 +23,9 @@
       "cost": "Free / public sources only",
       "status": "Paused",
       "successfulRecords": 0,
-      "checkedRecords": 155,
+      "checkedRecords": 159,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [
         "Automatic access paused pending provider permission; saved history retained"
       ],
@@ -46,9 +37,9 @@
       "cost": "Free / public sources only",
       "status": "Paused",
       "successfulRecords": 0,
-      "checkedRecords": 155,
+      "checkedRecords": 159,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [
         "RSS ingestion paused pending provider permission; saved news retained"
       ],
@@ -61,8 +52,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -70,24 +61,28 @@
     {
       "provider": "BLS CPI",
       "cost": "Free / public sources only",
-      "status": "Current",
-      "successfulRecords": 1,
+      "status": "Cached",
+      "successfulRecords": 0,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
-      "errors": [],
+      "lastSuccessAt": null,
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "errors": [
+        "HTTP_403"
+      ],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
     },
     {
       "provider": "BLS Employment",
       "cost": "Free / public sources only",
-      "status": "Current",
-      "successfulRecords": 1,
+      "status": "Cached",
+      "successfulRecords": 0,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
-      "errors": [],
+      "lastSuccessAt": null,
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
+      "errors": [
+        "SOURCE_COOLDOWN"
+      ],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
     },
@@ -97,8 +92,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -109,8 +104,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -121,8 +116,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -133,8 +128,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -145,8 +140,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -157,8 +152,8 @@
       "status": "Current",
       "successfulRecords": 1,
       "checkedRecords": 1,
-      "lastSuccessAt": "2026-09-14T04:04:25.008515+00:00",
-      "lastAttemptAt": "2026-09-14T04:04:25.008515+00:00",
+      "lastSuccessAt": "2026-09-14T04:36:17.614377+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:17.614377+00:00",
       "errors": [],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
@@ -170,7 +165,7 @@
       "successfulRecords": 0,
       "checkedRecords": 1,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-14T04:07:39.665419+00:00",
+      "lastAttemptAt": "2026-09-14T04:36:36.869091+00:00",
       "errors": [
         "Automatic screener ingestion paused pending documented access permission"
       ],
@@ -180,24 +175,26 @@
     {
       "provider": "SEC symbol directory",
       "cost": "Free / public sources only",
-      "status": "Current",
-      "successfulRecords": 1,
+      "status": "Cached",
+      "successfulRecords": 0,
       "checkedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-09-14T03:55:33.925748+00:00",
-      "errors": [],
+      "lastAttemptAt": "2026-09-14T04:36:17.619791+00:00",
+      "errors": [
+        "HTTP_403"
+      ],
       "fallback": "Retained observations with original timestamps, then original source links",
       "paidRequests": false
     }
   ],
   "coverage": {
     "securities": 10449,
-    "preparedDossiers": 155
+    "preparedDossiers": 159
   },
   "efficiency": {
-    "requests": 134,
-    "cacheHits": 149,
-    "requestsAvoided": 0
+    "requests": 10,
+    "cacheHits": 0,
+    "requestsAvoided": 196
   },
   "automaticMaintenance": {
     "refresh": "Weekdays before and after the US regular session; manual refresh also available",
