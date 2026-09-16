@@ -1,19 +1,25 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-15T20:46:24.728Z",
+  "generatedAt": "2026-09-16T12:51:49.904Z",
   "scope": {
-    "dossiers": 179,
+    "dossiers": 183,
     "bars": 63420,
-    "events": 6291,
-    "bytes": 16733877
+    "events": 6307,
+    "bytes": 16760463
   },
   "trackerSHA256": "643623d97a6e5893cbbb6db81274def0c0a8ee8df766b8b3def4c0b6f80f5b19",
   "mode": "READ_ONLY",
   "findings": [
     {
       "ticker": "AAPL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "AAPL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
@@ -36,6 +42,12 @@
     },
     {
       "ticker": "ABBV",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABBV",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -56,6 +68,12 @@
       "ticker": "ABBV",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABNB",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -158,6 +176,12 @@
       "ticker": "ABT",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ADBE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -342,6 +366,12 @@
     },
     {
       "ticker": "AMD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -366,6 +396,12 @@
     },
     {
       "ticker": "AMGN",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMGN",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -386,6 +422,12 @@
       "ticker": "AMGN",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMZN",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -570,6 +612,12 @@
     },
     {
       "ticker": "ARKK",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARKK",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -582,6 +630,12 @@
     },
     {
       "ticker": "ARM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -606,6 +660,12 @@
     },
     {
       "ticker": "ASTS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ASTS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -630,6 +690,12 @@
     },
     {
       "ticker": "AVGO",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "AVGO",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -654,6 +720,12 @@
     },
     {
       "ticker": "AXP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "AXP",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -678,6 +750,12 @@
     },
     {
       "ticker": "BA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "BA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -698,6 +776,12 @@
       "ticker": "BA",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "BABA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -726,6 +810,12 @@
     },
     {
       "ticker": "BAC",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAC",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -750,6 +840,12 @@
     },
     {
       "ticker": "BKNG",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "BKNG",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -774,6 +870,12 @@
     },
     {
       "ticker": "BLK",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "BLK",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -798,6 +900,12 @@
     },
     {
       "ticker": "BRK-B",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "BRK-B",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -822,6 +930,12 @@
     },
     {
       "ticker": "C",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "C",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -842,6 +956,12 @@
       "ticker": "C",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CAT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -948,6 +1068,12 @@
     },
     {
       "ticker": "CEG",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "CEG",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -972,6 +1098,12 @@
     },
     {
       "ticker": "COIN",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "COIN",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -996,6 +1128,12 @@
     },
     {
       "ticker": "COP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "COP",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1020,6 +1158,12 @@
     },
     {
       "ticker": "COST",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "COST",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1044,6 +1188,12 @@
     },
     {
       "ticker": "CRM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1064,6 +1214,12 @@
       "ticker": "CRM",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRWD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -1152,6 +1308,12 @@
     },
     {
       "ticker": "CSX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "CSX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1176,6 +1338,12 @@
     },
     {
       "ticker": "CVX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1200,6 +1368,12 @@
     },
     {
       "ticker": "DAL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DAL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1224,6 +1398,12 @@
     },
     {
       "ticker": "DASH",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DASH",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1244,6 +1424,12 @@
       "ticker": "DASH",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "DDOG",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -1350,6 +1536,12 @@
     },
     {
       "ticker": "DECK",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DECK",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1374,6 +1566,12 @@
     },
     {
       "ticker": "DELL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DELL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1397,6 +1595,90 @@
       "severity": "review"
     },
     {
+      "ticker": "DHR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-26",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-27",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-26",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-27",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-26",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-27",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-26",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/313616/000031361626000161/",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-27",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
       "ticker": "DIA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
@@ -1416,6 +1698,12 @@
     },
     {
       "ticker": "DIS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1440,6 +1728,12 @@
     },
     {
       "ticker": "DKNG",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DKNG",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1464,6 +1758,12 @@
     },
     {
       "ticker": "DUK",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "DUK",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1488,6 +1788,12 @@
     },
     {
       "ticker": "ENPH",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1508,6 +1814,12 @@
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ETHA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -1608,6 +1920,12 @@
     },
     {
       "ticker": "F",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "F",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1632,6 +1950,12 @@
     },
     {
       "ticker": "FCX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "FCX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1656,6 +1980,12 @@
     },
     {
       "ticker": "FDX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "FDX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1676,6 +2006,12 @@
       "ticker": "FDX",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "GE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -1782,6 +2118,12 @@
     },
     {
       "ticker": "GILD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "GILD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1806,6 +2148,12 @@
     },
     {
       "ticker": "GLD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1823,6 +2171,90 @@
       "severity": "review"
     },
     {
+      "ticker": "GLW",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/24741/000002474126000255/",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "GM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
       "ticker": "GM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
@@ -1868,6 +2300,12 @@
       "ticker": "GOOG",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -1944,6 +2382,12 @@
     },
     {
       "ticker": "GS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "GS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1968,6 +2412,12 @@
     },
     {
       "ticker": "HD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "HD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -1992,6 +2442,12 @@
     },
     {
       "ticker": "HOOD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "HOOD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2016,6 +2472,12 @@
     },
     {
       "ticker": "HPE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2036,6 +2498,12 @@
       "ticker": "HPE",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPQ",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2064,6 +2532,12 @@
     },
     {
       "ticker": "HYG",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "HYG",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -2072,6 +2546,12 @@
       "ticker": "HYG",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "IBIT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2172,6 +2652,12 @@
     },
     {
       "ticker": "INTC",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "INTC",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2196,6 +2682,12 @@
     },
     {
       "ticker": "IONQ",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "IONQ",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2216,6 +2708,12 @@
       "ticker": "IONQ",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ISRG",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2244,6 +2742,12 @@
     },
     {
       "ticker": "IWM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "IWM",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -2256,6 +2760,12 @@
     },
     {
       "ticker": "JD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "JD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2280,6 +2790,12 @@
     },
     {
       "ticker": "JNJ",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "JNJ",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2300,6 +2816,12 @@
       "ticker": "JNJ",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "JPM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2388,6 +2910,12 @@
     },
     {
       "ticker": "KO",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "KO",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2408,6 +2936,12 @@
       "ticker": "KO",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "LCID",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2514,6 +3048,12 @@
     },
     {
       "ticker": "LLY",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "LLY",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2538,6 +3078,12 @@
     },
     {
       "ticker": "LMT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "LMT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2558,6 +3104,12 @@
       "ticker": "LMT",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "LOW",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2646,6 +3198,12 @@
     },
     {
       "ticker": "LUV",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "LUV",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2670,6 +3228,12 @@
     },
     {
       "ticker": "MA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2694,6 +3258,12 @@
     },
     {
       "ticker": "MAR",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MAR",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2718,6 +3288,12 @@
     },
     {
       "ticker": "MCD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MCD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2742,6 +3318,12 @@
     },
     {
       "ticker": "MDB",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDB",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2766,6 +3348,12 @@
     },
     {
       "ticker": "META",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "META",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2786,6 +3374,12 @@
       "ticker": "META",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "MRK",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -2892,6 +3486,12 @@
     },
     {
       "ticker": "MS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2916,6 +3516,12 @@
     },
     {
       "ticker": "MSFT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MSFT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2940,6 +3546,12 @@
     },
     {
       "ticker": "MU",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "MU",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2964,6 +3576,12 @@
     },
     {
       "ticker": "NEE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -2988,6 +3606,12 @@
     },
     {
       "ticker": "NEM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3012,6 +3636,12 @@
     },
     {
       "ticker": "NET",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NET",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3036,6 +3666,12 @@
     },
     {
       "ticker": "NFLX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NFLX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3060,6 +3696,12 @@
     },
     {
       "ticker": "NKE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NKE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3084,6 +3726,12 @@
     },
     {
       "ticker": "NNE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NNE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3108,6 +3756,12 @@
     },
     {
       "ticker": "NOC",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOC",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3132,6 +3786,12 @@
     },
     {
       "ticker": "NOW",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOW",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3156,6 +3816,12 @@
     },
     {
       "ticker": "NUE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NUE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3180,6 +3846,12 @@
     },
     {
       "ticker": "NVDA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "NVDA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3204,6 +3876,12 @@
     },
     {
       "ticker": "OKLO",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "OKLO",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3228,6 +3906,12 @@
     },
     {
       "ticker": "ON",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ON",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3252,6 +3936,12 @@
     },
     {
       "ticker": "ORCL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ORCL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3276,6 +3966,12 @@
     },
     {
       "ticker": "OXY",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "OXY",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3300,6 +3996,12 @@
     },
     {
       "ticker": "PANW",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "PANW",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3324,6 +4026,12 @@
     },
     {
       "ticker": "PDD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "PDD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3348,6 +4056,12 @@
     },
     {
       "ticker": "PEP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "PEP",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3368,6 +4082,12 @@
       "ticker": "PEP",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "PFE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -3456,6 +4176,12 @@
     },
     {
       "ticker": "PINS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "PINS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3480,8 +4206,14 @@
     },
     {
       "ticker": "PLTR",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "PLTR",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -3578,6 +4310,12 @@
       "ticker": "PM",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "PYPL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -3684,6 +4422,12 @@
     },
     {
       "ticker": "QQQ",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "QQQ",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3702,6 +4446,12 @@
     },
     {
       "ticker": "RBLX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "RBLX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3726,6 +4476,12 @@
     },
     {
       "ticker": "RIVN",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "RIVN",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3750,6 +4506,12 @@
     },
     {
       "ticker": "RKLB",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "RKLB",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3774,6 +4536,12 @@
     },
     {
       "ticker": "ROKU",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ROKU",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3798,6 +4566,12 @@
     },
     {
       "ticker": "RTX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "RTX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3818,6 +4592,12 @@
       "ticker": "RTX",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SBUX",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -3924,6 +4704,12 @@
     },
     {
       "ticker": "SCHW",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SCHW",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3948,6 +4734,12 @@
     },
     {
       "ticker": "SHOP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SHOP",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -3968,6 +4760,12 @@
       "ticker": "SHOP",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLB",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -3996,6 +4794,12 @@
     },
     {
       "ticker": "SLV",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLV",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4010,6 +4814,12 @@
       "ticker": "SLV",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMCI",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -4038,6 +4848,12 @@
     },
     {
       "ticker": "SMR",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMR",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4058,6 +4874,12 @@
       "ticker": "SMR",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNAP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -4146,6 +4968,12 @@
     },
     {
       "ticker": "SNOW",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNOW",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4170,6 +4998,12 @@
     },
     {
       "ticker": "SOFI",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SOFI",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4218,6 +5052,12 @@
     },
     {
       "ticker": "SPGI",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPGI",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4242,6 +5082,12 @@
     },
     {
       "ticker": "SPOT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPOT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4262,6 +5108,12 @@
       "ticker": "SPOT",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPY",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -4344,6 +5196,12 @@
     },
     {
       "ticker": "STZ",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "STZ",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4368,6 +5226,12 @@
     },
     {
       "ticker": "T",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "T",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4392,6 +5256,12 @@
     },
     {
       "ticker": "TGT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "TGT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4412,6 +5282,90 @@
       "ticker": "TGT",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-08-01",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-05-02",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-11-01",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-08-02",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-08-01",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-05-02",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-11-01",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/109198/000010919826000048/",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-08-02",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "TLT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -4428,6 +5382,12 @@
     },
     {
       "ticker": "TMO",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMO",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4452,6 +5412,12 @@
     },
     {
       "ticker": "TMUS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMUS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4476,6 +5442,12 @@
     },
     {
       "ticker": "TSLA",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSLA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4500,6 +5472,12 @@
     },
     {
       "ticker": "TSM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4520,6 +5498,12 @@
       "ticker": "TSM",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "TTD",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -4626,6 +5610,12 @@
     },
     {
       "ticker": "U",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "U",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4650,6 +5640,12 @@
     },
     {
       "ticker": "UAL",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "UAL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4674,6 +5670,12 @@
     },
     {
       "ticker": "UBER",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "UBER",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4698,6 +5700,12 @@
     },
     {
       "ticker": "UNH",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNH",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4722,6 +5730,12 @@
     },
     {
       "ticker": "UNP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNP",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4746,6 +5760,12 @@
     },
     {
       "ticker": "UPS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "UPS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4770,6 +5790,12 @@
     },
     {
       "ticker": "V",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "V",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -4790,6 +5816,90 @@
       "ticker": "V",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/875320/000087532026000259/",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "VST",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -4818,6 +5928,12 @@
     },
     {
       "ticker": "VTI",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "VTI",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -4826,6 +5942,12 @@
       "ticker": "VTI",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "VZ",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -5004,6 +6126,12 @@
     },
     {
       "ticker": "WFC",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "WFC",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -5028,6 +6156,12 @@
     },
     {
       "ticker": "WMT",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "WMT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -5048,6 +6182,12 @@
       "ticker": "WMT",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "WYNN",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -5076,6 +6216,12 @@
     },
     {
       "ticker": "XLB",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLB",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5088,6 +6234,12 @@
     },
     {
       "ticker": "XLE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLE",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5100,6 +6252,12 @@
     },
     {
       "ticker": "XLF",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLF",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5112,6 +6270,12 @@
     },
     {
       "ticker": "XLI",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLI",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5124,6 +6288,12 @@
     },
     {
       "ticker": "XLK",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLK",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5136,6 +6306,12 @@
     },
     {
       "ticker": "XLP",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLP",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5148,6 +6324,12 @@
     },
     {
       "ticker": "XLRE",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLRE",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5160,6 +6342,12 @@
     },
     {
       "ticker": "XLU",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLU",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5172,6 +6360,12 @@
     },
     {
       "ticker": "XLV",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLV",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5184,6 +6378,12 @@
     },
     {
       "ticker": "XLY",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLY",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
@@ -5196,6 +6396,12 @@
     },
     {
       "ticker": "XOM",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "XOM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -5220,6 +6426,12 @@
     },
     {
       "ticker": "ZS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZS",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
@@ -5240,6 +6452,12 @@
       "ticker": "ZS",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZTS",
+      "code": "STALE_QUOTE",
+      "detail": "2026-09-11",
       "severity": "review"
     },
     {
@@ -5270,22 +6488,27 @@
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 679,
+      "count": 695,
+      "severity": "medium"
+    },
+    {
+      "code": "STALE_QUOTE",
+      "count": 151,
       "severity": "medium"
     },
     {
       "code": "MISSING_FINANCIAL_PERIOD",
-      "count": 90,
+      "count": 106,
       "severity": "medium"
     },
     {
       "code": "MISSING_PUBLICATION_TIME",
-      "count": 90,
+      "count": 106,
       "severity": "medium"
     },
     {
       "code": "DUPLICATE_EVENT",
-      "count": 17,
+      "count": 21,
       "severity": "medium"
     }
   ],
@@ -5298,7 +6521,7 @@
         {
           "ticker": "AAPL",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC filings: SOURCE_COOLDOWN",
+          "detail": "SEC filings: HTTP_403",
           "severity": "review"
         },
         {
@@ -5336,7 +6559,67 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 679 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 695 flagged observations without replacing retained evidence",
+      "difficulty": "low",
+      "risks": [
+        "Provider access and dataset scope must be rechecked",
+        "Historical values must retain original provenance"
+      ],
+      "validation": [
+        "Schema and identity tests",
+        "Calculation and replay tests",
+        "Regression build"
+      ],
+      "status": "RECOMMEND",
+      "releaseAllowed": false
+    },
+    {
+      "id": "proposal-STALE_QUOTE",
+      "rank": 2,
+      "problem": "STALE_QUOTE",
+      "evidence": [
+        {
+          "ticker": "AAPL",
+          "code": "STALE_QUOTE",
+          "detail": "2026-09-11",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABBV",
+          "code": "STALE_QUOTE",
+          "detail": "2026-09-11",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABNB",
+          "code": "STALE_QUOTE",
+          "detail": "2026-09-11",
+          "severity": "review"
+        },
+        {
+          "ticker": "ADBE",
+          "code": "STALE_QUOTE",
+          "detail": "2026-09-11",
+          "severity": "review"
+        },
+        {
+          "ticker": "AMD",
+          "code": "STALE_QUOTE",
+          "detail": "2026-09-11",
+          "severity": "review"
+        }
+      ],
+      "affectedSystems": [
+        "Information Fabric",
+        "Provider adapters",
+        "Data Coverage Center"
+      ],
+      "affectedFiles": [
+        "information-model.js",
+        "information-bridge.js",
+        "backend/cloudflare/provider-client.mjs"
+      ],
+      "expectedBenefit": "Resolve 151 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -5352,7 +6635,7 @@
     },
     {
       "id": "proposal-MISSING_FINANCIAL_PERIOD",
-      "rank": 2,
+      "rank": 3,
       "problem": "MISSING_FINANCIAL_PERIOD",
       "evidence": [
         {
@@ -5396,7 +6679,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 90 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 106 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -5412,7 +6695,7 @@
     },
     {
       "id": "proposal-MISSING_PUBLICATION_TIME",
-      "rank": 3,
+      "rank": 4,
       "problem": "MISSING_PUBLICATION_TIME",
       "evidence": [
         {
@@ -5456,7 +6739,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 90 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 106 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -5472,7 +6755,7 @@
     },
     {
       "id": "proposal-DUPLICATE_EVENT",
-      "rank": 4,
+      "rank": 5,
       "problem": "DUPLICATE_EVENT",
       "evidence": [
         {
@@ -5516,7 +6799,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 17 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 21 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
