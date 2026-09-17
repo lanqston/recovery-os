@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T12:51:06.531Z",
+  "generatedAt": "2026-09-17T20:44:39.934Z",
   "scope": {
-    "dossiers": 191,
+    "dossiers": 195,
     "bars": 63420,
-    "events": 6340,
-    "bytes": 16811320
+    "events": 6355,
+    "bytes": 16837108
   },
   "trackerSHA256": "643623d97a6e5893cbbb6db81274def0c0a8ee8df766b8b3def4c0b6f80f5b19",
   "mode": "READ_ONLY",
@@ -2411,6 +2411,84 @@
       "severity": "review"
     },
     {
+      "ticker": "FTNT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1262039/000126203926000021/",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "FTNT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
       "ticker": "GE",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
@@ -3749,6 +3827,84 @@
       "severity": "review"
     },
     {
+      "ticker": "MDT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-07-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-01-23",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-10-24",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-07-25",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-07-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-01-23",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-10-24",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026060473/",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-07-25",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
       "ticker": "META",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
@@ -3852,6 +4008,84 @@
     },
     {
       "ticker": "MNST",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/764180/000076418026000094/",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "MO",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -4728,6 +4962,66 @@
     },
     {
       "ticker": "PGR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-12-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-12-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "PH",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -7130,7 +7424,17 @@
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 727,
+      "count": 743,
+      "severity": "medium"
+    },
+    {
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "count": 154,
+      "severity": "medium"
+    },
+    {
+      "code": "MISSING_PUBLICATION_TIME",
+      "count": 154,
       "severity": "medium"
     },
     {
@@ -7139,18 +7443,8 @@
       "severity": "medium"
     },
     {
-      "code": "MISSING_FINANCIAL_PERIOD",
-      "count": 139,
-      "severity": "medium"
-    },
-    {
-      "code": "MISSING_PUBLICATION_TIME",
-      "count": 139,
-      "severity": "medium"
-    },
-    {
       "code": "DUPLICATE_EVENT",
-      "count": 30,
+      "count": 33,
       "severity": "medium"
     }
   ],
@@ -7201,7 +7495,127 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 727 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 743 flagged observations without replacing retained evidence",
+      "difficulty": "low",
+      "risks": [
+        "Provider access and dataset scope must be rechecked",
+        "Historical values must retain original provenance"
+      ],
+      "validation": [
+        "Schema and identity tests",
+        "Calculation and replay tests",
+        "Regression build"
+      ],
+      "status": "RECOMMEND",
+      "releaseAllowed": false
+    },
+    {
+      "id": "proposal-MISSING_FINANCIAL_PERIOD",
+      "rank": 2,
+      "problem": "MISSING_FINANCIAL_PERIOD",
+      "evidence": [
+        {
+          "ticker": "ABT",
+          "code": "MISSING_FINANCIAL_PERIOD",
+          "detail": "Quarter ended 2026-06-30",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABT",
+          "code": "MISSING_FINANCIAL_PERIOD",
+          "detail": "Quarter ended 2026-03-31",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABT",
+          "code": "MISSING_FINANCIAL_PERIOD",
+          "detail": "Quarter ended 2025-09-30",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABT",
+          "code": "MISSING_FINANCIAL_PERIOD",
+          "detail": "Quarter ended 2025-06-30",
+          "severity": "review"
+        },
+        {
+          "ticker": "ACN",
+          "code": "MISSING_FINANCIAL_PERIOD",
+          "detail": "Quarter ended 2026-05-31",
+          "severity": "review"
+        }
+      ],
+      "affectedSystems": [
+        "Information Fabric",
+        "Provider adapters",
+        "Data Coverage Center"
+      ],
+      "affectedFiles": [
+        "information-model.js",
+        "information-bridge.js",
+        "backend/cloudflare/provider-client.mjs"
+      ],
+      "expectedBenefit": "Resolve 154 flagged observations without replacing retained evidence",
+      "difficulty": "low",
+      "risks": [
+        "Provider access and dataset scope must be rechecked",
+        "Historical values must retain original provenance"
+      ],
+      "validation": [
+        "Schema and identity tests",
+        "Calculation and replay tests",
+        "Regression build"
+      ],
+      "status": "RECOMMEND",
+      "releaseAllowed": false
+    },
+    {
+      "id": "proposal-MISSING_PUBLICATION_TIME",
+      "rank": 3,
+      "problem": "MISSING_PUBLICATION_TIME",
+      "evidence": [
+        {
+          "ticker": "ABT",
+          "code": "MISSING_PUBLICATION_TIME",
+          "detail": "Original report supporting quarter ended 2026-06-30",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABT",
+          "code": "MISSING_PUBLICATION_TIME",
+          "detail": "Original report supporting quarter ended 2026-03-31",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABT",
+          "code": "MISSING_PUBLICATION_TIME",
+          "detail": "Original report supporting quarter ended 2025-09-30",
+          "severity": "review"
+        },
+        {
+          "ticker": "ABT",
+          "code": "MISSING_PUBLICATION_TIME",
+          "detail": "Original report supporting quarter ended 2025-06-30",
+          "severity": "review"
+        },
+        {
+          "ticker": "ACN",
+          "code": "MISSING_PUBLICATION_TIME",
+          "detail": "Original report supporting quarter ended 2026-05-31",
+          "severity": "review"
+        }
+      ],
+      "affectedSystems": [
+        "Information Fabric",
+        "Provider adapters",
+        "Data Coverage Center"
+      ],
+      "affectedFiles": [
+        "information-model.js",
+        "information-bridge.js",
+        "backend/cloudflare/provider-client.mjs"
+      ],
+      "expectedBenefit": "Resolve 154 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -7217,7 +7631,7 @@
     },
     {
       "id": "proposal-STALE_QUOTE",
-      "rank": 2,
+      "rank": 4,
       "problem": "STALE_QUOTE",
       "evidence": [
         {
@@ -7262,126 +7676,6 @@
         "backend/cloudflare/provider-client.mjs"
       ],
       "expectedBenefit": "Resolve 151 flagged observations without replacing retained evidence",
-      "difficulty": "low",
-      "risks": [
-        "Provider access and dataset scope must be rechecked",
-        "Historical values must retain original provenance"
-      ],
-      "validation": [
-        "Schema and identity tests",
-        "Calculation and replay tests",
-        "Regression build"
-      ],
-      "status": "RECOMMEND",
-      "releaseAllowed": false
-    },
-    {
-      "id": "proposal-MISSING_FINANCIAL_PERIOD",
-      "rank": 3,
-      "problem": "MISSING_FINANCIAL_PERIOD",
-      "evidence": [
-        {
-          "ticker": "ABT",
-          "code": "MISSING_FINANCIAL_PERIOD",
-          "detail": "Quarter ended 2026-06-30",
-          "severity": "review"
-        },
-        {
-          "ticker": "ABT",
-          "code": "MISSING_FINANCIAL_PERIOD",
-          "detail": "Quarter ended 2026-03-31",
-          "severity": "review"
-        },
-        {
-          "ticker": "ABT",
-          "code": "MISSING_FINANCIAL_PERIOD",
-          "detail": "Quarter ended 2025-09-30",
-          "severity": "review"
-        },
-        {
-          "ticker": "ABT",
-          "code": "MISSING_FINANCIAL_PERIOD",
-          "detail": "Quarter ended 2025-06-30",
-          "severity": "review"
-        },
-        {
-          "ticker": "ACN",
-          "code": "MISSING_FINANCIAL_PERIOD",
-          "detail": "Quarter ended 2026-05-31",
-          "severity": "review"
-        }
-      ],
-      "affectedSystems": [
-        "Information Fabric",
-        "Provider adapters",
-        "Data Coverage Center"
-      ],
-      "affectedFiles": [
-        "information-model.js",
-        "information-bridge.js",
-        "backend/cloudflare/provider-client.mjs"
-      ],
-      "expectedBenefit": "Resolve 139 flagged observations without replacing retained evidence",
-      "difficulty": "low",
-      "risks": [
-        "Provider access and dataset scope must be rechecked",
-        "Historical values must retain original provenance"
-      ],
-      "validation": [
-        "Schema and identity tests",
-        "Calculation and replay tests",
-        "Regression build"
-      ],
-      "status": "RECOMMEND",
-      "releaseAllowed": false
-    },
-    {
-      "id": "proposal-MISSING_PUBLICATION_TIME",
-      "rank": 4,
-      "problem": "MISSING_PUBLICATION_TIME",
-      "evidence": [
-        {
-          "ticker": "ABT",
-          "code": "MISSING_PUBLICATION_TIME",
-          "detail": "Original report supporting quarter ended 2026-06-30",
-          "severity": "review"
-        },
-        {
-          "ticker": "ABT",
-          "code": "MISSING_PUBLICATION_TIME",
-          "detail": "Original report supporting quarter ended 2026-03-31",
-          "severity": "review"
-        },
-        {
-          "ticker": "ABT",
-          "code": "MISSING_PUBLICATION_TIME",
-          "detail": "Original report supporting quarter ended 2025-09-30",
-          "severity": "review"
-        },
-        {
-          "ticker": "ABT",
-          "code": "MISSING_PUBLICATION_TIME",
-          "detail": "Original report supporting quarter ended 2025-06-30",
-          "severity": "review"
-        },
-        {
-          "ticker": "ACN",
-          "code": "MISSING_PUBLICATION_TIME",
-          "detail": "Original report supporting quarter ended 2026-05-31",
-          "severity": "review"
-        }
-      ],
-      "affectedSystems": [
-        "Information Fabric",
-        "Provider adapters",
-        "Data Coverage Center"
-      ],
-      "affectedFiles": [
-        "information-model.js",
-        "information-bridge.js",
-        "backend/cloudflare/provider-client.mjs"
-      ],
-      "expectedBenefit": "Resolve 139 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -7441,7 +7735,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 30 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 33 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
