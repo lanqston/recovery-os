@@ -98,6 +98,7 @@ def build():
             'codeChanges': 'Evidence-backed improvement proposals require validation and review',
         },
         'limitations': [
+            'Fresh end-of-day market history uses the authorized Stooq adapter when STOOQ_API_KEY is configured; otherwise dated saved quotes remain explicitly stale.',
             'Market sources paused for access permission remain paused; stored quotes are not live.',
             'Analyst, options and intraday coverage is unavailable where no compatible free source is connected.',
             'Passing checks describe the application; individual source blocks and missing records are reported separately.',
