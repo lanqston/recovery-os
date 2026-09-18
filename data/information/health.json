@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T20:45:15.601Z",
+  "generatedAt": "2026-09-18T21:30:24.426Z",
   "scope": {
-    "dossiers": 203,
+    "dossiers": 207,
     "bars": 63420,
-    "events": 6387,
-    "bytes": 16888663
+    "events": 6402,
+    "bytes": 16960699
   },
   "trackerSHA256": "643623d97a6e5893cbbb6db81274def0c0a8ee8df766b8b3def4c0b6f80f5b19",
   "mode": "READ_ONLY",
@@ -19,13 +19,19 @@
     {
       "ticker": "AAPL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
       "ticker": "AAPL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "AAPL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -61,6 +67,12 @@
     {
       "ticker": "ABBV",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABBV",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -86,6 +98,12 @@
       "ticker": "ABNB",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABNB",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -164,6 +182,12 @@
       "ticker": "ABT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "ABT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -259,6 +283,12 @@
     {
       "ticker": "ACN",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ACN",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -284,6 +314,12 @@
       "ticker": "ADBE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "ADBE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -505,6 +541,12 @@
     {
       "ticker": "AMAT",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMAT",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -535,6 +577,12 @@
     {
       "ticker": "AMD",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMD",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -565,6 +613,12 @@
     {
       "ticker": "AMGN",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMGN",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -590,6 +644,12 @@
       "ticker": "AMZN",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "AMZN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -829,6 +889,12 @@
     {
       "ticker": "APP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "APP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -847,6 +913,12 @@
     {
       "ticker": "ARKK",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARKK",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -877,6 +949,12 @@
     {
       "ticker": "ARM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ARM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -907,6 +985,12 @@
     {
       "ticker": "ASTS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ASTS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -937,6 +1021,12 @@
     {
       "ticker": "AVGO",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "AVGO",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -967,6 +1057,12 @@
     {
       "ticker": "AXP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "AXP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -992,6 +1088,12 @@
       "ticker": "BA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "BA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -1027,6 +1129,12 @@
     {
       "ticker": "BABA",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "BABA",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1057,6 +1165,12 @@
     {
       "ticker": "BAC",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAC",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1087,6 +1201,12 @@
     {
       "ticker": "BKNG",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "BKNG",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1112,6 +1232,12 @@
       "ticker": "BLK",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "BLK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -1273,6 +1399,12 @@
     {
       "ticker": "BNY",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "BNY",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1303,6 +1435,12 @@
     {
       "ticker": "BRK-B",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "BRK-B",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1333,6 +1471,12 @@
     {
       "ticker": "C",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "C",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1358,6 +1502,12 @@
       "ticker": "CAT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "CAT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -1519,6 +1669,12 @@
     {
       "ticker": "CCZ",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CCZ",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1549,11 +1705,101 @@
     {
       "ticker": "CEG",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CEG",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
     {
       "ticker": "CEG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1156375/000115637526000047/",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CME",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -1657,6 +1903,12 @@
     {
       "ticker": "COIN",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "COIN",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1687,6 +1939,12 @@
     {
       "ticker": "COP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "COP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1717,6 +1975,12 @@
     {
       "ticker": "COST",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "COST",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1747,6 +2011,12 @@
     {
       "ticker": "CRM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1772,6 +2042,12 @@
       "ticker": "CRWD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "CRWD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -1867,6 +2143,12 @@
     {
       "ticker": "CSX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CSX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1945,6 +2227,12 @@
     {
       "ticker": "CVS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -1975,6 +2263,12 @@
     {
       "ticker": "CVX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2005,6 +2299,12 @@
     {
       "ticker": "DAL",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DAL",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2035,6 +2335,12 @@
     {
       "ticker": "DASH",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DASH",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2060,6 +2366,12 @@
       "ticker": "DDOG",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "DDOG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -2143,6 +2455,12 @@
     {
       "ticker": "DE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2173,6 +2491,12 @@
     {
       "ticker": "DECK",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DECK",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2198,6 +2522,12 @@
       "ticker": "DELL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "DELL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -2281,6 +2611,12 @@
     {
       "ticker": "DHR",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DHR",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2305,6 +2641,12 @@
     {
       "ticker": "DIA",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIA",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2335,6 +2677,12 @@
     {
       "ticker": "DIS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DIS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2365,6 +2713,12 @@
     {
       "ticker": "DKNG",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DKNG",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2395,6 +2749,12 @@
     {
       "ticker": "DUK",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "DUK",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2425,11 +2785,101 @@
     {
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ENPH",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
     {
       "ticker": "ENPH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000147/",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "EQIX",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -2444,6 +2894,12 @@
       "ticker": "ETHA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "ETHA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -2557,6 +3013,12 @@
     {
       "ticker": "F",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "F",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2587,6 +3049,12 @@
     {
       "ticker": "FCX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "FCX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2612,6 +3080,12 @@
       "ticker": "FDX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "FDX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -2725,6 +3199,12 @@
     {
       "ticker": "GE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2803,6 +3283,12 @@
     {
       "ticker": "GEV",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GEV",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2833,6 +3319,12 @@
     {
       "ticker": "GILD",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GILD",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2852,6 +3344,12 @@
       "ticker": "GLD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -2935,6 +3433,12 @@
     {
       "ticker": "GLW",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GLW",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2965,6 +3469,12 @@
     {
       "ticker": "GM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -2989,6 +3499,12 @@
     {
       "ticker": "GOOG",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOG",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3019,6 +3535,12 @@
     {
       "ticker": "GOOGL",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GOOGL",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3097,6 +3619,12 @@
     {
       "ticker": "GS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "GS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3127,6 +3655,12 @@
     {
       "ticker": "HD",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "HD",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3157,6 +3691,12 @@
     {
       "ticker": "HOOD",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "HOOD",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3187,6 +3727,12 @@
     {
       "ticker": "HPE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3217,6 +3763,12 @@
     {
       "ticker": "HPQ",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "HPQ",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3230,6 +3782,12 @@
       "ticker": "HYG",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "HYG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -3254,6 +3812,12 @@
       "ticker": "IBIT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "IBIT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -3337,6 +3901,12 @@
     {
       "ticker": "IBM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "IBM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3367,6 +3937,12 @@
     {
       "ticker": "INTC",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "INTC",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3397,6 +3973,12 @@
     {
       "ticker": "IONQ",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "IONQ",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3427,6 +4009,12 @@
     {
       "ticker": "ISRG",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ISRG",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3445,6 +4033,12 @@
     {
       "ticker": "IWM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "IWM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3475,6 +4069,12 @@
     {
       "ticker": "JD",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "JD",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3505,6 +4105,12 @@
     {
       "ticker": "JNJ",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "JNJ",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3530,6 +4136,12 @@
       "ticker": "JPM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "JPM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -3625,6 +4237,12 @@
     {
       "ticker": "KO",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "KO",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3650,6 +4268,12 @@
       "ticker": "LCID",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "LCID",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -3733,6 +4357,12 @@
     {
       "ticker": "LIN",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "LIN",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3763,6 +4393,12 @@
     {
       "ticker": "LLY",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "LLY",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3793,6 +4429,12 @@
     {
       "ticker": "LMT",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "LMT",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3818,6 +4460,12 @@
       "ticker": "LOW",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "LOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -3913,6 +4561,12 @@
     {
       "ticker": "LUV",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "LUV",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3943,6 +4597,12 @@
     {
       "ticker": "MA",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MA",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3973,6 +4633,12 @@
     {
       "ticker": "MAR",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MAR",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -3998,6 +4664,12 @@
       "ticker": "MCD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "MCD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -4111,6 +4783,12 @@
     {
       "ticker": "MDB",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MDB",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4219,6 +4897,12 @@
     {
       "ticker": "META",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "META",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4292,6 +4976,12 @@
       "ticker": "MNST",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "MNST",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -4453,6 +5143,12 @@
     {
       "ticker": "MPC",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MPC",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4478,6 +5174,12 @@
       "ticker": "MRK",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "MRK",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -4561,6 +5263,12 @@
     {
       "ticker": "MRVL",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MRVL",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4591,6 +5299,12 @@
     {
       "ticker": "MS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4621,6 +5335,12 @@
     {
       "ticker": "MSFT",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MSFT",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4651,6 +5371,12 @@
     {
       "ticker": "MU",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "MU",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4681,6 +5407,12 @@
     {
       "ticker": "NEE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4711,6 +5443,12 @@
     {
       "ticker": "NEM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NEM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4741,6 +5479,12 @@
     {
       "ticker": "NET",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NET",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4771,6 +5515,12 @@
     {
       "ticker": "NFLX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NFLX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4801,6 +5551,12 @@
     {
       "ticker": "NKE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NKE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4831,6 +5587,12 @@
     {
       "ticker": "NNE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NNE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4861,6 +5623,12 @@
     {
       "ticker": "NOC",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOC",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4891,6 +5659,12 @@
     {
       "ticker": "NOW",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NOW",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4921,6 +5695,12 @@
     {
       "ticker": "NUE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NUE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -4939,13 +5719,19 @@
     {
       "ticker": "NVDA",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
       "ticker": "NVDA",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "NVDA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -4981,6 +5767,12 @@
     {
       "ticker": "OKLO",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "OKLO",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5011,6 +5803,12 @@
     {
       "ticker": "ON",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ON",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5036,6 +5834,12 @@
       "ticker": "ORCL",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "ORCL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5066,6 +5870,12 @@
       "ticker": "OXY",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "OXY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5096,6 +5906,12 @@
       "ticker": "PANW",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "PANW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5126,6 +5942,12 @@
       "ticker": "PDD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "PDD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5156,6 +5978,12 @@
       "ticker": "PEP",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "PEP",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5186,6 +6014,12 @@
       "ticker": "PFE",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "PFE",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5246,6 +6080,12 @@
       "ticker": "PG",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "PG",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5329,6 +6169,12 @@
     {
       "ticker": "PGR",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "PGR",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5419,6 +6265,12 @@
     {
       "ticker": "PINS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "PINS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5533,6 +6385,12 @@
     {
       "ticker": "PLTR",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "PLTR",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5606,6 +6464,12 @@
       "ticker": "PM",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "PM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -5719,6 +6583,12 @@
     {
       "ticker": "PYPL",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "PYPL",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5821,6 +6691,12 @@
     {
       "ticker": "QQQ",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "QQQ",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5851,6 +6727,12 @@
     {
       "ticker": "RBLX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "RBLX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5881,6 +6763,12 @@
     {
       "ticker": "RIVN",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "RIVN",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5911,6 +6799,12 @@
     {
       "ticker": "RKLB",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "RKLB",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5941,6 +6835,12 @@
     {
       "ticker": "ROKU",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ROKU",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5971,6 +6871,12 @@
     {
       "ticker": "RTX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "RTX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -5996,6 +6902,12 @@
       "ticker": "SBUX",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SBUX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6109,6 +7021,12 @@
     {
       "ticker": "SCHW",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SCHW",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6139,6 +7057,12 @@
     {
       "ticker": "SHOP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SHOP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6169,6 +7093,12 @@
     {
       "ticker": "SLB",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLB",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6193,6 +7123,12 @@
     {
       "ticker": "SLV",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SLV",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6223,6 +7159,12 @@
     {
       "ticker": "SMCI",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMCI",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6253,6 +7195,12 @@
     {
       "ticker": "SMR",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SMR",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6283,6 +7231,12 @@
     {
       "ticker": "SNAP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNAP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6373,6 +7327,12 @@
     {
       "ticker": "SNOW",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNOW",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6383,6 +7343,72 @@
       "severity": "review"
     },
     {
+      "ticker": "SO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
       "ticker": "SOFI",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
@@ -6398,6 +7424,12 @@
       "ticker": "SOFI",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SOFI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6427,6 +7459,12 @@
     {
       "ticker": "SPCX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPCX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6452,6 +7490,12 @@
       "ticker": "SPGI",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPGI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6482,6 +7526,12 @@
       "ticker": "SPOT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPOT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6506,6 +7556,12 @@
       "ticker": "SPY",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SPY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6596,6 +7652,12 @@
       "ticker": "STZ",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "STZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6727,6 +7789,12 @@
     {
       "ticker": "T",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "T",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6752,6 +7820,12 @@
       "ticker": "TGT",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "TGT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -6835,6 +7909,12 @@
     {
       "ticker": "TJX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "TJX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6853,6 +7933,12 @@
     {
       "ticker": "TLT",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "TLT",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6883,6 +7969,12 @@
     {
       "ticker": "TMO",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMO",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6913,6 +8005,12 @@
     {
       "ticker": "TMUS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "TMUS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6943,6 +8041,12 @@
     {
       "ticker": "TSLA",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSLA",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6973,6 +8077,12 @@
     {
       "ticker": "TSM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "TSM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -6998,6 +8108,12 @@
       "ticker": "TTD",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "TTD",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -7111,6 +8227,12 @@
     {
       "ticker": "U",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "U",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7141,6 +8263,12 @@
     {
       "ticker": "UAL",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "UAL",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7171,6 +8299,12 @@
     {
       "ticker": "UBER",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "UBER",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7201,6 +8335,12 @@
     {
       "ticker": "UNH",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNH",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7231,6 +8371,12 @@
     {
       "ticker": "UNP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "UNP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7261,6 +8407,12 @@
     {
       "ticker": "UPS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "UPS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7286,6 +8438,12 @@
       "ticker": "V",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "V",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -7369,11 +8527,101 @@
     {
       "ticker": "VLO",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "VLO",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
     {
       "ticker": "VLO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRT",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -7447,6 +8695,12 @@
     {
       "ticker": "VRTX",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "VRTX",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7477,6 +8731,12 @@
     {
       "ticker": "VST",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "VST",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7490,6 +8750,12 @@
       "ticker": "VTI",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
+      "severity": "review"
+    },
+    {
+      "ticker": "VTI",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -7520,6 +8786,12 @@
       "ticker": "VZ",
       "code": "PROVIDER_FAILURE",
       "detail": "SEC financial statements: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "VZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
       "severity": "review"
     },
     {
@@ -7675,6 +8947,12 @@
     {
       "ticker": "WELL",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "WELL",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7705,6 +8983,12 @@
     {
       "ticker": "WFC",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "WFC",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7735,6 +9019,12 @@
     {
       "ticker": "WMT",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "WMT",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7765,6 +9055,12 @@
     {
       "ticker": "WYNN",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "WYNN",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7783,6 +9079,12 @@
     {
       "ticker": "XLB",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLB",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7801,6 +9103,12 @@
     {
       "ticker": "XLE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7819,6 +9127,12 @@
     {
       "ticker": "XLF",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLF",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7837,6 +9151,12 @@
     {
       "ticker": "XLI",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLI",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7855,6 +9175,12 @@
     {
       "ticker": "XLK",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLK",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7873,6 +9199,12 @@
     {
       "ticker": "XLP",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLP",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7891,6 +9223,12 @@
     {
       "ticker": "XLRE",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLRE",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7909,6 +9247,12 @@
     {
       "ticker": "XLU",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLU",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7927,6 +9271,12 @@
     {
       "ticker": "XLV",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLV",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7945,6 +9295,12 @@
     {
       "ticker": "XLY",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XLY",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -7975,6 +9331,12 @@
     {
       "ticker": "XOM",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XOM",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -8005,6 +9367,12 @@
     {
       "ticker": "ZS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -8035,6 +9403,12 @@
     {
       "ticker": "ZTS",
       "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ZTS",
+      "code": "PROVIDER_FAILURE",
       "detail": "Yahoo daily history: Automatic access paused pending provider permission",
       "severity": "review"
     },
@@ -8048,17 +9422,17 @@
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 775,
+      "count": 971,
       "severity": "medium"
     },
     {
       "code": "MISSING_FINANCIAL_PERIOD",
-      "count": 186,
+      "count": 201,
       "severity": "medium"
     },
     {
       "code": "MISSING_PUBLICATION_TIME",
-      "count": 186,
+      "count": 201,
       "severity": "medium"
     },
     {
@@ -8068,7 +9442,7 @@
     },
     {
       "code": "DUPLICATE_EVENT",
-      "count": 41,
+      "count": 44,
       "severity": "medium"
     }
   ],
@@ -8081,13 +9455,19 @@
         {
           "ticker": "AAPL",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC filings: SOURCE_COOLDOWN",
+          "detail": "SEC filings: HTTP_403",
           "severity": "review"
         },
         {
           "ticker": "AAPL",
           "code": "PROVIDER_FAILURE",
           "detail": "SEC financial statements: SOURCE_COOLDOWN",
+          "severity": "review"
+        },
+        {
+          "ticker": "AAPL",
+          "code": "PROVIDER_FAILURE",
+          "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
           "severity": "review"
         },
         {
@@ -8101,12 +9481,6 @@
           "code": "PROVIDER_FAILURE",
           "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
           "severity": "review"
-        },
-        {
-          "ticker": "ABBV",
-          "code": "PROVIDER_FAILURE",
-          "detail": "SEC filings: SOURCE_COOLDOWN",
-          "severity": "review"
         }
       ],
       "affectedSystems": [
@@ -8119,7 +9493,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 775 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 971 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -8179,7 +9553,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 186 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 201 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -8239,7 +9613,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 186 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 201 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -8359,7 +9733,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 41 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 44 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
