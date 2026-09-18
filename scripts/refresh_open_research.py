@@ -132,6 +132,30 @@ def feed_items(text,publisher,limit=8):
         if len(out)>=limit:break
     return out
 
+def stooq_price_bars(t):
+    key=os.environ.get('STOOQ_API_KEY','').strip()
+    if not key:raise RuntimeError('STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable')
+    end=dt.date.today();start=end-dt.timedelta(days=800)
+    symbol=urllib.parse.quote(t.lower()+'.us')
+    public_url=f'https://stooq.com/q/d/l/?s={symbol}&d1={start:%Y%m%d}&d2={end:%Y%m%d}&i=d'
+    request_url=public_url+'&apikey='+urllib.parse.quote(key,safe='')
+    text=fetch(request_url,t+'-stooq','text',ttl=1800)
+    low=text.lower()
+    if not text.strip() or text.strip()=='N/D' or 'get your apikey' in low or 'exceeded' in low or '<html' in low:
+        raise ValueError('Stooq did not return usable CSV data')
+    rows=[]
+    for item in csv.DictReader(io.StringIO(text)):
+        try:
+            row={'date':item['Date'],**{k:float(item[k.capitalize()]) for k in ['open','high','low','close']}}
+            volume=item.get('Volume');row['volume']=float(volume) if volume not in (None,'','N/D','-') else None
+        except (KeyError,TypeError,ValueError):
+            continue
+        if re.fullmatch(r'\d{4}-\d{2}-\d{2}',row['date']) and all(finite(row[k]) and row[k]>0 for k in ['open','high','low','close']):
+            rows.append(row)
+    rows.sort(key=lambda x:x['date'])
+    if len(rows)<2:raise ValueError('Stooq returned fewer than two verified daily bars')
+    return rows[-420:],request_url,public_url
+
 def price_bars(t):
     url=f'https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(t)}?interval=1d&range=2y'
     data=fetch(url,t+'-yahoo')['chart']['result'][0];v=data['indicators']['quote'][0];bars=[]
@@ -172,15 +196,31 @@ def build_company(t,directory):
                 result['health'].append(success_health('SEC financial statements',url,asOf=(f.get('quarterly') or f.get('annual'))[0].get('endDate')))
             except Exception as e:result['health'].append(failure_health('SEC financial statements',e))
     try:
+        bars,request_url,public_url=stooq_price_bars(t)
+        current=(result.get('bars') or old.get('bars') or [{}])[-1].get('date')
+        last=bars[-1]
+        if not current or last['date']>=current:
+            result.setdefault('profile',old.get('profile') or {'ticker':t,'name':entry['name'] if entry else t,'cik':str(entry['cik']).zfill(10) if entry else None,'exchange':entry.get('exchange') if entry else None})
+            prior=bars[-2]
+            result['bars']=bars
+            result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Stooq daily history','dataState':'END-OF-DAY SNAPSHOT','currency':'USD'}
+            result['priceSource']={'title':'Stooq daily history','url':public_url,'publisher':'Stooq','date':last['date'],'retrievedAt':received_at(request_url)}
+        meta=HTTP.metadata(request_url);verified=latest(meta.get('lastSuccessAt'),meta.get('lastVerifiedAt'))
+        result['health'].append({'provider':'Stooq daily history','status':'available' if verified and latest(verified,NOW)==verified else 'cached','lastSuccessAt':verified,'lastAttemptAt':NOW,'lastSourceAttemptAt':meta.get('lastAttemptAt'),'url':public_url,'asOf':last['date']})
+    except Exception as e:
+        result['health'].append(failure_health('Stooq daily history',e))
+    try:
         if os.environ.get('LEGACY_MARKET_ACCESS_APPROVED')!='true': raise RuntimeError('Automatic access paused pending provider permission')
         bars,meta=price_bars(t)
         result.setdefault('profile',old.get('profile') or {'ticker':t,'name':entry['name'] if entry else meta.get('longName') or meta.get('shortName') or t,'cik':str(entry['cik']).zfill(10) if entry else None,'exchange':entry.get('exchange') if entry else meta.get('exchangeName')})
         if meta.get('instrumentType')=='ETF':result['profile'].update(typeCode='ETF',securityType='ETF')
         if bars:
             last=bars[-1];prior=bars[-2] if len(bars)>1 else last
-            result['bars']=bars;result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Yahoo Finance public daily history','dataState':'DAILY SNAPSHOT','currency':meta.get('currency')}
+            current=(result.get('bars') or old.get('bars') or [{}])[-1].get('date')
             url=f'https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(t)}?interval=1d&range=2y'
-            result['priceSource']={'title':'Yahoo Finance daily history','url':f'https://finance.yahoo.com/quote/{urllib.parse.quote(t)}/history/','publisher':'Yahoo Finance','date':last['date'],'retrievedAt':received_at(url)}
+            if not current or last['date']>=current:
+                result['bars']=bars;result['quote']={'price':last['close'],'changePct':ratio(last['close']-prior['close'],prior['close'],100),'timestamp':last['date']+' daily close','source':'Yahoo Finance public daily history','dataState':'DAILY SNAPSHOT','currency':meta.get('currency')}
+                result['priceSource']={'title':'Yahoo Finance daily history','url':f'https://finance.yahoo.com/quote/{urllib.parse.quote(t)}/history/','publisher':'Yahoo Finance','date':last['date'],'retrievedAt':received_at(url)}
             result['health'].append(success_health('Yahoo daily history',url,asOf=last['date']))
     except Exception as e:result['health'].append(failure_health('Yahoo daily history',e))
     try:
@@ -299,7 +339,14 @@ def main():
     merged={x['ticker']:x for x in previous};merged.update({x['ticker']:x for x in records})
     write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'method':'SEC statements, filings and company events; official macro sources; retained market snapshots with original timestamps. Unapproved collectors remain paused.'})
     if not args.skip_macro:macro()
-    write(DEST/'collection.json',HTTP.report())
+    report=HTTP.report()
+    for resource in report.get('resources',[]):
+        url=resource.get('url','')
+        if 'apikey=' in url:
+            parts=urllib.parse.urlsplit(url);query=urllib.parse.parse_qsl(parts.query,keep_blank_values=True)
+            query=[(k,'REDACTED' if k.lower()=='apikey' else v) for k,v in query]
+            resource['url']=urllib.parse.urlunsplit((parts.scheme,parts.netloc,parts.path,urllib.parse.urlencode(query),parts.fragment))
+    write(DEST/'collection.json',report)
     print(f'Completed {len(records)} stock records and {len(directory)} searchable SEC tickers.',flush=True)
 
 if __name__=='__main__':main()
