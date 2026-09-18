@@ -21,7 +21,8 @@ function quoteStamp(bundle){
   for(const value of values){if(!value)continue;const raw=String(value),match=raw.match(/\\d{4}-\\d{2}-\\d{2}(?:[T ][0-9:.+-Z]+)?/);if(!match)continue;const normalized=match[0].length===10?match[0]+'T23:59:59Z':match[0].replace(' ','T').replace(/ET$/,'');const stamp=Date.parse(normalized);if(Number.isFinite(stamp)&&stamp>best)best=stamp}
   return best;
 }
-function newestPriceBundle(base,extra){const candidates=[base,extra].filter(x=>MODEL.finite(x?.quote?.price));if(!candidates.length)return null;if(candidates.length===1)return candidates[0];return candidates.sort((a,b)=>quoteStamp(a)-quoteStamp(b)).at(-1)}
+function newestPriceBundle(...bundles){const candidates=bundles.filter(x=>MODEL.finite(x?.quote?.price));if(!candidates.length)return null;if(candidates.length===1)return candidates[0];return candidates.sort((a,b)=>quoteStamp(a)-quoteStamp(b)).at(-1)}
+function trackerPriceBundle(t){const tr=tracked(t);if(!MODEL.finite(tr?.latestPrice))return null;const series=tr.priceSeries||[],prior=series.length>1?series.at(-2)?.close:null,change=MODEL.finite(prior)&&prior!==0?(tr.latestPrice/prior-1)*100:null,meta=tr.marketData||{};return{quote:{price:tr.latestPrice,changePct:change,volume:meta.volume??null,timestamp:tr.quoteAsOf||meta.regularCloseDate,source:'Recovery OS canonical tracker market refresh',dataState:'TRACKER MARKET REFRESH',currency:'USD',collectedAt:meta.retrievedAt||null},priceSource:{title:'Recovery OS tracked market refresh',publisher:meta.source||'Recovery OS',date:meta.regularCloseDate||String(tr.quoteAsOf||'').slice(0,10),retrievedAt:meta.retrievedAt||null,sourceType:meta.sourceType||'MARKET_DATA'},retrievedAt:meta.retrievedAt||null}}
 function mergeFinancialEvidence(base,extra){
   const old=base?.quarterly||[],more=extra?.quarterly||[],byEnd=new Map(more.map(x=>[x.endDate,x]));
   for(const row of old){
@@ -44,13 +45,13 @@ researchBundle=async function loadAtlasCompany(t,options={}){
   if(ATLAS_BUNDLES.has(t))return ATLAS_BUNDLES.get(t);
   const promise=(async()=>{
     const key=atlasShard(t);if(!ATLAS_SHARDS.has(key)&&ATLAS_SYMBOLS.has(t))ATLAS_SHARDS.set(key,atlasFile('shards/'+key+'.json',!!options.refresh));
-    const [base,shard]=await Promise.all([ATLAS_BASE_BUNDLE(t,options),ATLAS_SHARDS.get(key)]),extra=shard?.stocks?.[t];
-    if(!extra)return base;
+    const [base,shard]=await Promise.all([ATLAS_BASE_BUNDLE(t,options),ATLAS_SHARDS.get(key)]),extra=shard?.stocks?.[t],tracker=trackerPriceBundle(t);
+    if(!extra){const priceBundle=newestPriceBundle(base,tracker);return priceBundle&&priceBundle!==base?{...base,quote:priceBundle.quote,priceSource:priceBundle.priceSource,trackerPriceAsOf:tracker?.priceSource?.date||null}:base}
     const evidenceConflicts=window.RecoveryQuality?.findConflicts(base.financials,extra.financials)||[];
     const profile={...extra.profile,...Object.fromEntries(Object.entries(base.profile||{}).filter(([,v])=>v!=null&&v!==''))};
     for(const k of ['sector','industry','country','marketCap'])if(extra.profile[k]!=null&&extra.profile[k]!=='')profile[k]=extra.profile[k];
     profile.directoryVerified=true;
-    const refs=[...(base.filings||[]),...(extra.filings||[])].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i),priceBundle=newestPriceBundle(base,extra);
+    const refs=[...(base.filings||[]),...(extra.filings||[])].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i),priceBundle=newestPriceBundle(base,extra,tracker);
     return {...extra,...base,evidenceConflicts:[...(base.evidenceConflicts||[]),...evidenceConflicts],profile,quote:priceBundle?.quote||null,priceSource:priceBundle?.priceSource||null,
       financials:mergeFinancialEvidence(base.financials,extra.financials),filings:refs,atlasRetrievedAt:extra.retrievedAt,coverage:extra.coverage,
       connectionState:'Public company atlas · collected '+snapshotDate(extra.retrievedAt),meta:{...base.meta,coverage:'Public Nasdaq market snapshots, SEC statements and original filings. Exact reporting dates are retained; additional history is loaded where collected.'}};
