@@ -44,6 +44,7 @@ jobs:
       - name: Collect free public evidence
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
+          STOOQ_API_KEY: ${{ secrets.STOOQ_API_KEY }}
         run: python scripts/refresh_open_research.py
       - name: Collect the broad public market atlas
         env:
