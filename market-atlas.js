@@ -16,6 +16,12 @@ loadSeed=async function loadMarketAtlas(){
   const all=new Map(SYMBOLS.map(x=>[x.ticker,x]));for(const x of ATLAS_INDEX){const prior=all.get(x.ticker)||{};all.set(x.ticker,{...x,...prior,sector:x.sector,marketCap:x.marketCap,price:x.price,changePct:x.changePct,financialPeriods:x.financialPeriods,name:prior.name&&prior.name!==x.ticker?prior.name:x.name,exchange:prior.exchange||x.exchange,securityType:/ETF/.test(prior.securityType||'')?'ETF':x.securityType})}SYMBOLS=[...all.values()];
   window.marketAtlasReady=true;window.dispatchEvent(new CustomEvent('market-atlas-ready'));
 };
+function quoteStamp(bundle){
+  const values=[bundle?.quote?.collectedAt,bundle?.quote?.timestamp,bundle?.priceSource?.retrievedAt,bundle?.priceSource?.date,bundle?.retrievedAt];let best=-Infinity;
+  for(const value of values){if(!value)continue;const raw=String(value),match=raw.match(/\\d{4}-\\d{2}-\\d{2}(?:[T ][0-9:.+-Z]+)?/);if(!match)continue;const normalized=match[0].length===10?match[0]+'T23:59:59Z':match[0].replace(' ','T').replace(/ET$/,'');const stamp=Date.parse(normalized);if(Number.isFinite(stamp)&&stamp>best)best=stamp}
+  return best;
+}
+function newestPriceBundle(base,extra){const candidates=[base,extra].filter(x=>MODEL.finite(x?.quote?.price));if(!candidates.length)return null;if(candidates.length===1)return candidates[0];return candidates.sort((a,b)=>quoteStamp(a)-quoteStamp(b)).at(-1)}
 function mergeFinancialEvidence(base,extra){
   const old=base?.quarterly||[],more=extra?.quarterly||[],byEnd=new Map(more.map(x=>[x.endDate,x]));
   for(const row of old){
@@ -44,8 +50,8 @@ researchBundle=async function loadAtlasCompany(t,options={}){
     const profile={...extra.profile,...Object.fromEntries(Object.entries(base.profile||{}).filter(([,v])=>v!=null&&v!==''))};
     for(const k of ['sector','industry','country','marketCap'])if(extra.profile[k]!=null&&extra.profile[k]!=='')profile[k]=extra.profile[k];
     profile.directoryVerified=true;
-    const refs=[...(base.filings||[]),...(extra.filings||[])].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i);
-    return {...extra,...base,evidenceConflicts:[...(base.evidenceConflicts||[]),...evidenceConflicts],profile,quote:MODEL.finite(base.quote?.price)?base.quote:extra.quote,priceSource:MODEL.finite(base.quote?.price)?base.priceSource:extra.priceSource,
+    const refs=[...(base.filings||[]),...(extra.filings||[])].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i),priceBundle=newestPriceBundle(base,extra);
+    return {...extra,...base,evidenceConflicts:[...(base.evidenceConflicts||[]),...evidenceConflicts],profile,quote:priceBundle?.quote||null,priceSource:priceBundle?.priceSource||null,
       financials:mergeFinancialEvidence(base.financials,extra.financials),filings:refs,atlasRetrievedAt:extra.retrievedAt,coverage:extra.coverage,
       connectionState:'Public company atlas · collected '+snapshotDate(extra.retrievedAt),meta:{...base.meta,coverage:'Public Nasdaq market snapshots, SEC statements and original filings. Exact reporting dates are retained; additional history is loaded where collected.'}};
   })();ATLAS_BUNDLES.set(t,promise);return promise;
