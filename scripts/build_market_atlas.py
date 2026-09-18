@@ -30,6 +30,15 @@ def number(value):
         return n if math.isfinite(n) else None
     except (TypeError,ValueError):return None
 
+def market_date(bundle):
+    values=[(bundle.get('quote') or {}).get('collectedAt'),(bundle.get('priceSource') or {}).get('retrievedAt'),
+            (bundle.get('priceSource') or {}).get('date'),(bundle.get('quote') or {}).get('timestamp'),bundle.get('retrievedAt')]
+    dates=[]
+    for value in values:
+        match=re.search(r'\d{4}-\d{2}-\d{2}',str(value or ''))
+        if match:dates.append(match.group(0))
+    return max(dates,default='')
+
 def shard(ticker):
     n=0
     for c in ticker:n=(n*31+ord(c))&0xffffffff
@@ -156,8 +165,10 @@ def build(skip_frames=False):
         b=records.setdefault(t,{'profile':p,'retrievedAt':detail.get('retrievedAt',NOW)})
         if p.get('typeCode')=='ETF' or 'ETF' in p.get('securityType','') or 'ETF' in seed_by_ticker.get(t,{}).get('securityType',''):
             b['profile'].update(securityType='ETF',typeCode='ETF',sector='Funds')
-        if not public.finite(b.get('quote',{}).get('price')) and public.finite(detail.get('quote',{}).get('price')):
-            b['quote']=detail['quote'];b['priceSource']=detail.get('priceSource')
+        if public.finite(detail.get('quote',{}).get('price')):
+            current=market_date(b);candidate=market_date(detail)
+            if not public.finite(b.get('quote',{}).get('price')) or candidate and candidate>=current:
+                b['quote']=detail['quote'];b['priceSource']=detail.get('priceSource');b['retrievedAt']=detail.get('retrievedAt',b.get('retrievedAt'))
     # Make issuer and market source paths useful even when a metric is not disclosed.
     buckets={f'{i:02x}':{} for i in range(64)};symbols=[]
     for t,b in sorted(records.items()):
