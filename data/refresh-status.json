@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "revision": "6c760c404e8a03b862d3c8c9",
+  "completedAt": "2026-09-22T22:28:00.476457+00:00",
+  "status": "Partial",
+  "schedule": "Source refresh every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening.",
+  "pollSeconds": 60,
+  "components": [
+    {
+      "id": "quotes",
+      "total": 239,
+      "available": 239,
+      "current": 234,
+      "stale": 5,
+      "unavailable": 0,
+      "latestObservationAt": "2026-09-22T21:49:06+00:00",
+      "lastSuccessfulRetrieval": "2026-09-22T22:05:15.581Z",
+      "lastAttemptAt": "2026-09-22T22:27:15.454845+00:00",
+      "status": "Partial"
+    },
+    {
+      "id": "priceHistory",
+      "total": 239,
+      "available": 151,
+      "current": 0,
+      "stale": 151,
+      "unavailable": 88,
+      "latestObservationAt": "2026-09-11",
+      "lastSuccessfulRetrieval": null,
+      "lastAttemptAt": null,
+      "status": "Stale"
+    },
+    {
+      "id": "news",
+      "total": 239,
+      "available": 155,
+      "current": 4,
+      "stale": 151,
+      "unavailable": 84,
+      "latestObservationAt": "2026-09-22T12:59:21.039Z",
+      "lastSuccessfulRetrieval": "2026-09-22T22:27:55.463642+00:00",
+      "lastAttemptAt": "2026-09-22T22:27:54.239233+00:00",
+      "status": "Partial",
+      "note": "Publication dates and successful feed checks are separate. A current feed can have no new headline."
+    },
+    {
+      "id": "filings",
+      "total": 239,
+      "available": 140,
+      "current": 0,
+      "stale": 140,
+      "unavailable": 99,
+      "latestObservationAt": "2026-09-11",
+      "lastSuccessfulRetrieval": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-22T22:27:15.454845+00:00",
+      "status": "Stale",
+      "note": "Reported dates are preserved. Current requires a successful source check within 72 hours."
+    },
+    {
+      "id": "financials",
+      "total": 239,
+      "available": 212,
+      "current": 0,
+      "stale": 212,
+      "unavailable": 27,
+      "latestObservationAt": "2026-08-31",
+      "lastSuccessfulRetrieval": "2026-09-14T03:55:33.922092+00:00",
+      "lastAttemptAt": "2026-09-22T22:27:15.454845+00:00",
+      "status": "Stale",
+      "note": "Reported dates are preserved. Current requires a successful source check within 72 hours."
+    },
+    {
+      "id": "directory",
+      "total": 1,
+      "available": 1,
+      "current": 0,
+      "stale": 1,
+      "unavailable": 0,
+      "latestObservationAt": "2026-09-14T03:55:33.925748+00:00",
+      "lastSuccessfulRetrieval": "2026-09-14T03:55:33.925748+00:00",
+      "lastAttemptAt": "2026-09-22T22:27:15.461850+00:00",
+      "status": "Stale",
+      "note": "Refresh check time is not the date of every underlying observation."
+    },
+    {
+      "id": "macro",
+      "total": 1,
+      "available": 1,
+      "current": 1,
+      "stale": 0,
+      "unavailable": 0,
+      "latestObservationAt": "2026-09-22T22:27:53.903617+00:00",
+      "lastSuccessfulRetrieval": "2026-09-22T22:27:53.903617+00:00",
+      "lastAttemptAt": "2026-09-22T22:27:15.454845+00:00",
+      "status": "Current",
+      "note": "Refresh check time is not the date of every underlying observation."
+    },
+    {
+      "id": "atlas",
+      "total": 10449,
+      "available": 1,
+      "current": 0,
+      "stale": 1,
+      "unavailable": 0,
+      "latestObservationAt": "2026-09-12T15:43:57.446978+00:00",
+      "lastSuccessfulRetrieval": "2026-09-12T15:43:57.446978+00:00",
+      "lastAttemptAt": "2026-09-22T22:27:56.359295+00:00",
+      "status": "Partial",
+      "note": "Refresh check time is not the date of every underlying observation."
+    },
+    {
+      "id": "recoveryThesis",
+      "status": "Saved review",
+      "latestObservationAt": "2026-09-11 04:35 ET",
+      "note": "Original discovery, thesis, scores and trades require an evidence review; quote refreshes do not change them."
+    }
+  ],
+  "preparedDossiers": 239,
+  "quotesAsOf": "2026-09-22T21:49:06+00:00",
+  "limitations": [
+    "Quotes are dated observations, not a streaming feed.",
+    "Historical bars are not fabricated from a quote.",
+    "Source failures retain original timestamps.",
+    "The broad directory includes securities without current quotes or prepared research."
+  ]
+}
