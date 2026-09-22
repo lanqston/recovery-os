@@ -41,5 +41,8 @@ class PublicResearchTests(unittest.TestCase):
         atom='<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>Inflation release</title><link href="https://bls.gov/report"/><updated>2026-09-11T12:00:00Z</updated></entry></feed>'
         self.assertEqual(model.feed_items(rss,'Yahoo Finance RSS')[0]['sourceType'],'NEWS')
         self.assertEqual(model.feed_items(atom,'BLS CPI')[0]['url'],'https://bls.gov/report')
+    def test_atom_uses_article_instead_of_enclosure_or_self(self):
+        atom='<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>Issuer release</title><link rel="self" href="https://example.com/feed/item"/><link href="https://example.com/article"/><link rel="enclosure" type="image/jpeg" href="https://example.com/image.jpg"/><updated>2026-09-22T12:00:00Z</updated></entry></feed>'
+        self.assertEqual(model.feed_items(atom,'Issuer')[0]['url'],'https://example.com/article')
 
 if __name__=='__main__':unittest.main()

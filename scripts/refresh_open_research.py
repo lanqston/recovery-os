@@ -124,7 +124,9 @@ def feed_items(text,publisher,limit=8):
         if local(node.tag) not in ('item','entry'):continue
         fields={local(c.tag):c for c in node}
         title=''.join(fields.get('title',ET.Element('x')).itertext()).strip()
-        link=fields.get('link');url=(link.attrib.get('href') or link.text or '').strip() if link is not None else ''
+        links=[c for c in node if local(c.tag)=='link' and c.attrib.get('rel','alternate')=='alternate' and c.attrib.get('type','text/html') in ('text/html','application/xhtml+xml')]
+        link=links[0] if links else None
+        url=(link.attrib.get('href') or link.text or '').strip() if link is not None else ''
         date=next((''.join(fields[k].itertext()).strip() for k in ['pubDate','published','updated'] if k in fields),'')
         try:date=email.utils.parsedate_to_datetime(date).isoformat()
         except (TypeError,ValueError):pass

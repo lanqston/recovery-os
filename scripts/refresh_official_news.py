@@ -32,7 +32,9 @@ def refresh():
                 valid.append({**item, 'retrievedAt': received, 'tickers': [ticker], 'sourceType': 'OFFICIAL', 'feedUrl': url})
             if not valid: raise ValueError('No valid publication timestamps; previous news retained')
             # Retain distinct history; the same URL is updated only by the issuer feed.
-            merged = {x['url']: x for x in bundle.get('news', [])}
+            fresh_keys = {(x['title'], x['published']) for x in valid}
+            merged = {x['url']: x for x in bundle.get('news', [])
+                      if not (x.get('feedUrl') == url and (x.get('title'), x.get('published')) in fresh_keys)}
             merged.update({x['url']: x for x in valid})
             bundle['news'] = sorted(merged.values(), key=lambda x:x.get('published',''), reverse=True)[:60]
             health = public.success_health(provider, url, asOf=max(x['published'] for x in valid), items=len(valid))
