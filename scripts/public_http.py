@@ -87,4 +87,9 @@ class PublicHTTP:
                     code=e.code if isinstance(e,FetchError) else 'INVALID_SOURCE_FORMAT'
                     self.state['resources'][key]={**meta,'url':url,'lastAttemptAt':iso(attempted),'error':code,'retryUntil':attempted+3600};self.save();raise FetchError(code,502,iso(attempted+3600)) from None
     def report(self):
-        return {'generatedAt':iso(self.clock()),'requests':self.requests,'cacheHits':self.hits,'requestsAvoided':self.skipped,'resources':list(self.state['resources'].values())}
+        def public_url(url):
+            parts=urllib.parse.urlsplit(url)
+            pairs=[(k,'REDACTED' if any(word in k.lower() for word in ('key','token','secret','password')) else v) for k,v in urllib.parse.parse_qsl(parts.query,keep_blank_values=True)]
+            return urllib.parse.urlunsplit((parts.scheme,parts.netloc,parts.path,urllib.parse.urlencode(pairs),''))
+        resources=[{**r,'url':public_url(r.get('url',''))} for r in self.state['resources'].values()]
+        return {'generatedAt':iso(self.clock()),'requests':self.requests,'cacheHits':self.hits,'requestsAvoided':self.skipped,'resources':resources}

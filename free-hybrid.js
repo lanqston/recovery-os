@@ -17,9 +17,9 @@ function localJSON(key,fallback){try{return JSON.parse(localStorage.getItem(key)
 function saveUser(){try{localStorage.setItem(LS,JSON.stringify(user));scheduleRemoteStatePush();return true}catch{toastEx('This device could not save changes. Storage may be full or unavailable.');return false}}
 function apiBase(){try{const value=(localStorage.getItem(API_KEY)||'').replace(/\/$/,'');return /^https:\/\//.test(value)?value:''}catch{return ''}}
 function snapshotDate(value){if(!value)return 'Date not supplied';if(/^\d{4}-\d{2}-\d{2}$/.test(value))return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));return ago(value)}
-async function readResearchJSON(path){if(window.RecoveryRequests)return window.RecoveryRequests.json(path);const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw new Error('Research snapshot unavailable');return r.json()}
-async function loadSeed(){
-  const results=await Promise.allSettled(['data/research-seed.json','data/symbols-seed.json','data/provider-capabilities.json','data/research-seed-aapl-extra.json','data/research/index.json'].map(readResearchJSON));
+async function readResearchJSON(path,options={}){if(window.RecoveryRequests)return window.RecoveryRequests.json(path,options);const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw new Error('Research snapshot unavailable');return r.json()}
+async function loadSeed(options={}){
+  const results=await Promise.allSettled(['data/research-seed.json','data/symbols-seed.json','data/provider-capabilities.json','data/research-seed-aapl-extra.json','data/research/index.json'].map(path=>readResearchJSON(path,options)));
   SEED=results[0].status==='fulfilled'?results[0].value:{stocks:{},meta:{}};
   SYMBOLS=results[1].status==='fulfilled'?results[1].value.symbols||[]:[];
   CAPS=results[2].status==='fulfilled'?results[2].value:{capabilities:[]};
@@ -86,8 +86,8 @@ async function researchBundle(t,{refresh=false}={}){
   if(researchLoads.has(t))return researchLoads.get(t);
   const promise=(async()=>{
     let cached=seedBundle(t),failure=null;
-    if(researchIndex.some(x=>x.ticker===t))try{const published=await readResearchJSON(`data/research/${encodeURIComponent(t)}.json`);cached={...cached,...published,profile:{...cached?.profile,...published.profile}}}catch{failure='The saved research file could not be loaded.'}
-    if(apiBase())try{const r=await api('/api/stock/'+encodeURIComponent(t));const b=r.stock||r;if(b.profile&&(!b.profile.ticker||b.profile.ticker===t))return {...b,connectionState:'Fetched from configured research connection'};failure='The research connection returned an invalid record.'}catch{failure='The research connection is unavailable. Showing the saved evidence.'}
+    if(researchIndex.some(x=>x.ticker===t))try{const published=await readResearchJSON(`data/research/${encodeURIComponent(t)}.json`,{refresh});cached={...cached,...published,profile:{...cached?.profile,...published.profile}}}catch{failure='The saved research file could not be loaded.'}
+    if(apiBase())try{const r=await api('/api/stock/'+encodeURIComponent(t),{refresh});const b=r.stock||r;if(b.profile&&(!b.profile.ticker||b.profile.ticker===t))return {...b,connectionState:'Fetched from configured research connection'};failure='The research connection returned an invalid record.'}catch{failure='The research connection is unavailable. Showing the saved evidence.'}
     const sym=getSym(t),tr=tracked(t);
     const b=cached||{profile:{ticker:t,name:sym.name||tr?.company||t,exchange:sym.exchange,securityType:sym.securityType,cik:sym.cik},quote:null,bars:[],news:[],financials:{quarterly:[],annual:[]}};
     return {...b,profile:{...b.profile,ticker:t,name:b.profile?.name===t?(sym.name||tr?.company||t):b.profile?.name},connectionState:failure||'Saved research snapshot',snapshotOnly:true};

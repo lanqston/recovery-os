@@ -31,13 +31,8 @@ def number(value):
     except (TypeError,ValueError):return None
 
 def market_date(bundle):
-    values=[(bundle.get('quote') or {}).get('collectedAt'),(bundle.get('priceSource') or {}).get('retrievedAt'),
-            (bundle.get('priceSource') or {}).get('date'),(bundle.get('quote') or {}).get('timestamp'),bundle.get('retrievedAt')]
-    dates=[]
-    for value in values:
-        match=re.search(r'\d{4}-\d{2}-\d{2}',str(value or ''))
-        if match:dates.append(match.group(0))
-    return max(dates,default='')
+    from import_market_quotes import effective
+    return effective(bundle).isoformat()
 
 def shard(ticker):
     n=0
@@ -176,9 +171,9 @@ def build(skip_frames=False):
         b.setdefault('financials',{'quarterly':[],'annual':[]});b.setdefault('filings',[]);b.setdefault('news',[]);b.setdefault('bars',[])
         b['coverage']={'financialPeriods':len(b['financials']['quarterly']),'quote':public.finite(b.get('quote',{}).get('price')),'sourceDirectory':True}
         buckets[shard(t)][t]=b
-        symbols.append([t,p['name'],p.get('sector','Market frontier'),p.get('exchange'),p.get('cik'),b.get('quote',{}).get('price'),b.get('quote',{}).get('changePct'),p.get('marketCap'),b['coverage']['financialPeriods'],p.get('securityType','Listed security')])
+        symbols.append([t,p['name'],p.get('sector','Market frontier'),p.get('exchange'),p.get('cik'),b.get('quote',{}).get('price'),b.get('quote',{}).get('changePct'),p.get('marketCap'),b['coverage']['financialPeriods'],p.get('securityType','Listed security'),(b.get('quote') or {}).get('asOf') or (b.get('quote') or {}).get('timestamp')])
     for key,value in buckets.items():write_atlas(DEST/'shards'/(key+'.json'),{'stocks':value})
-    write_atlas(DEST/'index.json',{'retrievedAt':NOW,'columns':['ticker','name','sector','exchange','cik','price','changePct','marketCap','financialPeriods','securityType'],'rows':symbols,
+    write_atlas(DEST/'index.json',{'retrievedAt':NOW,'columns':['ticker','name','sector','exchange','cik','price','changePct','marketCap','financialPeriods','securityType','quoteAsOf'],'rows':symbols,
         'counts':{'symbols':len(symbols),'quotes':sum(b['coverage']['quote'] for b in records.values()),'financials':sum(bool(b['coverage']['financialPeriods']) for b in records.values())},
         'health':health,'method':'Nasdaq screener snapshots and SEC XBRL frames. Company periods are matched by exact start/end dates; field-specific filing links are retained.'})
     write_atlas(DEST/'collection.json',{'retrievedAt':NOW,'sources':health,'frames':frame_health,'http':{k:v for k,v in public.HTTP.report().items() if k!='resources'}})

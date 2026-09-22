@@ -89,7 +89,7 @@ def build():
         'efficiency': {k: collection.get(k, 0) + atlas_http.get(k, 0)
                        for k in ('requests', 'cacheHits', 'requestsAvoided')},
         'automaticMaintenance': {
-            'refresh': 'Weekdays before and after the US regular session; manual refresh also available',
+            'refresh': 'Every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening. Open pages check for new publications every minute.',
             'coverageGrowth': 'Up to four additional directory-verified company records per collection. Matching saved atlas evidence is reused with its original dates.',
             'dataProtection': 'Failed requests retain the last verified data, source identity and successful retrieval time',
             'requests': 'Conditional requests, cache reuse, host cooldowns and bounded retries',

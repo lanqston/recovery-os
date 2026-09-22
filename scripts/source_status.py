@@ -32,6 +32,12 @@ def source_records(bundle, provider):
         expected = 'Yahoo Finance' if provider == 'Yahoo daily history' else 'Stooq'
         matched = source.get('publisher') == expected or expected in str(quote.get('source', ''))
         return (len(rows), source.get('retrievedAt')) if rows and matched else (0, None)
+    if provider == 'Web finance market data':
+        quote = bundle.get('quote') or {}
+        return (1, quote.get('collectedAt')) if quote.get('source') == provider else (0, None)
+    if provider == 'Official issuer news':
+        rows = [r for r in bundle.get('news', []) if r.get('feedUrl')]
+        return len(rows), latest(*(r.get('retrievedAt') for r in rows))
     if provider == 'Yahoo Finance RSS':
         rows = [r for r in bundle.get('news', []) if r.get('publisher') == provider]
         return len(rows), latest(*(r.get('retrievedAt') for r in rows))

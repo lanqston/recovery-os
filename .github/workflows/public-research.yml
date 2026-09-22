@@ -2,7 +2,7 @@ name: Refresh public research
 on:
   workflow_dispatch:
   schedule:
-    - cron: '37 12,21 * * 1-5'
+    - cron: '37 12,22 * * *'
   push:
     branches: [main]
     paths:
@@ -12,13 +12,17 @@ on:
       - 'scripts/refresh_sec_symbols.py'
       - 'scripts/build_market_atlas.py'
       - 'scripts/build_connector_report.py'
+      - 'scripts/import_market_quotes.py'
+      - 'scripts/refresh_official_news.py'
+      - 'scripts/build_refresh_status.py'
+      - 'data/market-quotes.json'
       - '.github/workflows/public-research.yml'
 permissions:
   contents: write
   pages: write
 concurrency:
   group: public-research-refresh
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -46,6 +50,10 @@ jobs:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
           STOOQ_API_KEY: ${{ secrets.STOOQ_API_KEY }}
         run: python scripts/refresh_open_research.py
+      - name: Refresh official issuer news and apply verified quote observations
+        run: |
+          python scripts/refresh_official_news.py
+          python scripts/import_market_quotes.py --apply
       - name: Collect the broad public market atlas
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
@@ -55,6 +63,7 @@ jobs:
           node scripts/build_information_catalog.cjs
           node scripts/audit_information.cjs data/information/health.json
           python scripts/build_connector_report.py
+          python scripts/build_refresh_status.py
       - name: Validate before accepting any refresh
         run: |
           python scripts/validate_information.py /tmp/validation.json
@@ -72,7 +81,7 @@ jobs:
         run: |
           git config user.name 'recovery-os-data'
           git config user.email 'recovery-os-data@users.noreply.github.com'
-          git add data/open-research data/market-atlas data/sec-symbols.json data/information/coverage.json data/information/health.json data/information/connectors.json data/information/directory-health.json
+          git add data/open-research data/market-atlas data/sec-symbols.json data/information/coverage.json data/information/health.json data/information/connectors.json data/information/directory-health.json data/information/news-health.json data/refresh-status.json data/news.json
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh verified free research and connector health'
             git pull --rebase origin main

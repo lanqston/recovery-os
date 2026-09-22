@@ -331,7 +331,7 @@ def main():
     atlas_path=ROOT/'data/market-atlas/index.json'
     if not args.tickers and atlas_path.exists():
         additions=expansion_symbols(tickers,directory,json.loads(atlas_path.read_text()),args.expand)
-        tickers=tickers[:180-len(additions)]+additions
+        tickers=list(dict.fromkeys(tickers+additions))
         print('Coverage expansion: '+(', '.join(additions) or 'no additions'),flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         records=list(pool.map(lambda t:build_company(t,directory),tickers))

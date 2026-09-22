@@ -2,7 +2,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),asse
 const root=path.resolve(__dirname,'..'),read=f=>JSON.parse(fs.readFileSync(path.join(root,f),'utf8'));
 const c={window:{},URL,Intl,console,loadSeed:async()=>{},researchBundle:async()=>{},renderResearchReader(){}};
 vm.createContext(c);vm.runInContext(fs.readFileSync(path.join(root,'research-model.js'),'utf8'),c);
-c.MODEL=c.window.RecoveryResearch;vm.runInContext(fs.readFileSync(path.join(root,'market-atlas.js'),'utf8'),c);
+c.MODEL=c.window.RecoveryResearch;vm.runInContext(fs.readFileSync(path.join(root,'data-freshness.js'),'utf8'),c);vm.runInContext(fs.readFileSync(path.join(root,'market-atlas.js'),'utf8'),c);
 const index=read('data/market-atlas/index.json'),records={};
 for(let n=0;n<64;n++){
  const shard=n.toString(16).padStart(2,'0'),data=read('data/market-atlas/shards/'+shard+'.json');

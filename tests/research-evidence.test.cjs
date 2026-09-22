@@ -2,6 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const root=path.resolve(__dirname,'..'),read=f=>JSON.parse(fs.readFileSync(path.join(root,f),'utf8'));
 const c={window:{},document:{readyState:'loading',addEventListener(){}},URL,Intl,console,setTimeout,clearTimeout,AbortSignal,CustomEvent:class{},SYMBOLS:[]};
 vm.createContext(c);
+vm.runInContext(fs.readFileSync(path.join(root,'data-freshness.js'),'utf8'),c);
 vm.runInContext(fs.readFileSync(path.join(root,'research-model.js'),'utf8'),c);
 vm.runInContext(fs.readFileSync(path.join(root,'free-hybrid.js'),'utf8'),c);
 c.esc=x=>String(x??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
@@ -31,7 +32,9 @@ assert.equal(JSON.stringify(tracker),before);
 (async()=>{
  await c.loadSeed();const b=await c.researchBundle('AAPL',{refresh:true});
  assert.equal(b.profile.name,'Apple Inc.');assert.equal(b.financials.quarterly.length,9);assert.equal(b.bars.length,420);assert(b.financials.cashFlowPeriod.freeCashFlow>0);
- assert(requests.some(x=>x.startsWith('https:'))&&requests.some(x=>x==='data/open-research/AAPL.json'),'A blocked fresh source must fall back to the local snapshot');
+ assert(requests.some(x=>x==='data/open-research/AAPL.json'),'Refresh reads the deployed same-origin snapshot first');
+ const savedFetch=c.fetch;c.fetch=async url=>{if(!url.startsWith('https:'))throw Error('local unavailable');return {ok:true,json:async()=>read('data/open-research/AAPL.json')}};
+ assert.equal((await c.publicResearchFile('AAPL.json',{fresh:true})).ticker,'AAPL','Remote archive remains a fallback');c.fetch=savedFetch;
  const count=requests.length;await c.researchBundle('AAPL');assert.equal(requests.length,count,'Repeated navigation should reuse the stock bundle');
  await c.researchBundle('AAPL',{refresh:true});assert(requests.length>count,'Refresh must refetch evidence');
  console.log(`PASS: ${index.symbols.length} public records; OHLC integrity; financial scope; source URLs; complete narratives; provider fallback; bundle caching and refresh; canonical tracker unchanged.`);

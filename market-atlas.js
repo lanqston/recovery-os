@@ -6,22 +6,18 @@ function atlasShard(t){let h=0;for(const c of t)h=(Math.imul(h,31)+c.charCodeAt(
 async function atlasFile(path,fresh=false){
   if(!/^(index|collection|shards\/[0-9a-f]{2})\.json$/.test(path))throw new Error('Invalid atlas path');
   const local='data/market-atlas/'+path,remote='https://raw.githubusercontent.com/lanqston/recovery-os/main/'+local;
-  for(const url of (fresh?[remote,local]:[local,remote]))try{if(window.RecoveryRequests)return await window.RecoveryRequests.json(url,{refresh:fresh,validate:x=>path.startsWith('shards/')?!!x.stocks:path==='index.json'?Array.isArray(x.rows):!!x});const r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(url===remote?3500:6000)});if(r.ok)return await r.json()}catch{}
+  for(const url of [local,remote])try{if(window.RecoveryRequests)return await window.RecoveryRequests.json(url,{refresh:fresh,validate:x=>path.startsWith('shards/')?!!x.stocks:path==='index.json'?Array.isArray(x.rows):!!x});const r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(url===remote?3500:6000)});if(r.ok)return await r.json()}catch{}
   return null;
 }
-loadSeed=async function loadMarketAtlas(){
-  const atlas=atlasFile('index.json');await ATLAS_BASE_LOAD();ATLAS_META=await atlas;
+loadSeed=async function loadMarketAtlas(options={}){
+  const atlas=atlasFile('index.json',!!options.refresh);await ATLAS_BASE_LOAD(options);ATLAS_META=await atlas;
   ATLAS_INDEX=(ATLAS_META?.rows||[]).map(row=>Object.fromEntries(ATLAS_META.columns.map((key,i)=>[key,row[i]])));
   ATLAS_SYMBOLS=new Map(ATLAS_INDEX.map(x=>[x.ticker,x]));
   const all=new Map(SYMBOLS.map(x=>[x.ticker,x]));for(const x of ATLAS_INDEX){const prior=all.get(x.ticker)||{};all.set(x.ticker,{...x,...prior,sector:x.sector,marketCap:x.marketCap,price:x.price,changePct:x.changePct,financialPeriods:x.financialPeriods,name:prior.name&&prior.name!==x.ticker?prior.name:x.name,exchange:prior.exchange||x.exchange,securityType:/ETF/.test(prior.securityType||'')?'ETF':x.securityType})}SYMBOLS=[...all.values()];
   window.marketAtlasReady=true;window.dispatchEvent(new CustomEvent('market-atlas-ready'));
 };
-function quoteStamp(bundle){
-  const values=[bundle?.quote?.collectedAt,bundle?.quote?.timestamp,bundle?.priceSource?.retrievedAt,bundle?.priceSource?.date,bundle?.retrievedAt];let best=-Infinity;
-  for(const value of values){if(!value)continue;const raw=String(value),match=raw.match(/\\d{4}-\\d{2}-\\d{2}(?:[T ][0-9:.+-Z]+)?/);if(!match)continue;const normalized=match[0].length===10?match[0]+'T23:59:59Z':match[0].replace(' ','T').replace(/ET$/,'');const stamp=Date.parse(normalized);if(Number.isFinite(stamp)&&stamp>best)best=stamp}
-  return best;
-}
-function newestPriceBundle(...bundles){const candidates=bundles.filter(x=>MODEL.finite(x?.quote?.price));if(!candidates.length)return null;if(candidates.length===1)return candidates[0];return candidates.sort((a,b)=>quoteStamp(a)-quoteStamp(b)).at(-1)}
+function atlasQuoteStamp(bundle){return window.RecoveryFreshness.quoteStamp(bundle)}
+function newestPriceBundle(...bundles){const candidates=bundles.filter(x=>MODEL.finite(x?.quote?.price));if(!candidates.length)return null;if(candidates.length===1)return candidates[0];return candidates.sort((a,b)=>atlasQuoteStamp(a)-atlasQuoteStamp(b)).at(-1)}
 function trackerPriceBundle(t){const tr=tracked(t);if(!MODEL.finite(tr?.latestPrice))return null;const series=tr.priceSeries||[],prior=series.length>1?series.at(-2)?.close:null,change=MODEL.finite(prior)&&prior!==0?(tr.latestPrice/prior-1)*100:null,meta=tr.marketData||{};return{quote:{price:tr.latestPrice,changePct:change,volume:meta.volume??null,timestamp:tr.quoteAsOf||meta.regularCloseDate,source:'Recovery OS canonical tracker market refresh',dataState:'TRACKER MARKET REFRESH',currency:'USD',collectedAt:meta.retrievedAt||null},priceSource:{title:'Recovery OS tracked market refresh',publisher:meta.source||'Recovery OS',date:meta.regularCloseDate||String(tr.quoteAsOf||'').slice(0,10),retrievedAt:meta.retrievedAt||null,sourceType:meta.sourceType||'MARKET_DATA'},retrievedAt:meta.retrievedAt||null}}
 function mergeFinancialEvidence(base,extra){
   const old=base?.quarterly||[],more=extra?.quarterly||[],byEnd=new Map(more.map(x=>[x.endDate,x]));
