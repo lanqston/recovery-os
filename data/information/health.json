@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T22:29:35.113Z",
+  "generatedAt": "2026-09-22T22:30:51.990Z",
   "scope": {
-    "dossiers": 243,
+    "dossiers": 247,
     "bars": 63420,
-    "events": 6608,
-    "bytes": 17381152
+    "events": 6624,
+    "bytes": 17406284
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -1368,6 +1368,90 @@
     },
     {
       "ticker": "BAC",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1937926/000162828026054933/",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "BAM",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -2777,6 +2861,90 @@
       "severity": "review"
     },
     {
+      "ticker": "CVNA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1690820/000169082026000055/",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CVNA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
       "ticker": "CVS",
       "code": "MISSING_FINANCIAL_PERIOD",
       "detail": "Quarter ended 2026-06-30",
@@ -3930,6 +4098,90 @@
     },
     {
       "ticker": "EQIX",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1276187/000127618726000038/",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ET",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -8059,7 +8311,7 @@
     {
       "ticker": "NVDA",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -10050,6 +10302,90 @@
     },
     {
       "ticker": "SNOW",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-07-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-04-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-01-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-07-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-07-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-04-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-01-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/883241/000088324126000025/",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-07-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "SNPS",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -12578,17 +12914,17 @@
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 1178,
+      "count": 1198,
       "severity": "medium"
     },
     {
       "code": "MISSING_FINANCIAL_PERIOD",
-      "count": 343,
+      "count": 359,
       "severity": "medium"
     },
     {
       "code": "MISSING_PUBLICATION_TIME",
-      "count": 343,
+      "count": 359,
       "severity": "medium"
     },
     {
@@ -12598,7 +12934,7 @@
     },
     {
       "code": "DUPLICATE_EVENT",
-      "count": 79,
+      "count": 83,
       "severity": "medium"
     }
   ],
@@ -12649,7 +12985,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 1178 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 1198 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -12709,7 +13045,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 343 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 359 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -12769,7 +13105,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 343 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 359 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -12889,7 +13225,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 79 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 83 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
