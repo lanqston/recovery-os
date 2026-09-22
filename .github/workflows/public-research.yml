@@ -40,7 +40,7 @@ jobs:
       - name: Reuse public response cache and cooldowns
         uses: actions/cache@v4
         with:
-          path: ../open-source-cache
+          path: ${{ runner.workspace }}/open-source-cache
           key: public-http-v2-${{ runner.os }}-${{ github.run_id }}
           restore-keys: public-http-v2-${{ runner.os }}-
       - name: Record tracker integrity
