@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three.module.min.js';
 import {StockUniverse} from './research-universe.js';
-import {installInformationWorld} from './information-world.js?v=20260922-movement1';
+import {installInformationWorld} from './information-world.js?v=20260923-open1';
 import {HologramRenderer} from './world-renderer.js';
 
 const el=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)],mobile=()=>innerWidth<760;

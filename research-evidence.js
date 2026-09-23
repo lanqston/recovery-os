@@ -32,7 +32,7 @@ researchBundle=async function publicResearchBundle(t,{refresh=false}={}){
     try{
       const enriched=await publicResearchFile(t+'.json',{fresh:refresh});
       const profile={...base.profile};for(const [k,v] of Object.entries(enriched.profile||{}))if(v!=null&&v!==''&&(k!=='name'||!profile.name||profile.name===t))profile[k]=v;
-      const news=[...(enriched.news||[]),...(base.news||[])].filter((x,i,arr)=>arr.findIndex(y=>y.url===x.url)===i).sort((a,b)=>String(b.published).localeCompare(String(a.published))).slice(0,18);
+      const news=[...(enriched.news||[]),...(base.news||[])].filter((x,i,arr)=>arr.findIndex(y=>y.url===x.url)===i).sort((a,b)=>String(b.published).localeCompare(String(a.published)));
       const bars=enriched.bars?.length&&String(enriched.bars.at(-1).date)>=String(base.bars?.at(-1)?.date||'')?enriched.bars:base.bars;
       const useNewBars=bars===enriched.bars;
       return {...base,profile,news,bars,quote:enriched.quote&&window.RecoveryFreshness.quoteStamp(enriched)>=window.RecoveryFreshness.quoteStamp(base)?enriched.quote:base.quote,priceSource:enriched.quote&&window.RecoveryFreshness.quoteStamp(enriched)>=window.RecoveryFreshness.quoteStamp(base)?enriched.priceSource:base.priceSource,barSource:useNewBars?(enriched.barSource||enriched.priceSource):(base.barSource||base.priceSource),
