@@ -1,7 +1,7 @@
 /* Evidence-led movement explanations. Pure calculations; never writes the tracker. */
 (function(root,factory){const F=typeof module==='object'&&module.exports?require('./information-model.js'):root.RecoveryInformation;const api=factory(F);root.RecoveryMovement=api;if(typeof module==='object'&&module.exports)module.exports=api})(typeof window==='object'?window:globalThis,F=>{
 'use strict';
-const DAY=F.DAY, PERIODS={today:'Today',week:'Past week',month:'Past month'};
+const DAY=F.DAY, PERIODS={today:'Today',week:'Past week',month:'Past month (30 days)'};
 const SECTORS={'Technology':'XLK','Information Technology':'XLK','Financial Services':'XLF','Financials':'XLF','Healthcare':'XLV','Health Care':'XLV','Energy':'XLE','Utilities':'XLU','Real Estate':'XLRE','Basic Materials':'XLB','Materials':'XLB','Industrials':'XLI','Consumer Cyclical':'XLY','Consumer Discretionary':'XLY','Consumer Defensive':'XLP','Consumer Staples':'XLP','Communication Services':'XLC'};
 const etDay=t=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(t));
 function windowFor(period='today',cutoff=new Date().toISOString()){
@@ -17,17 +17,18 @@ function series(d,w,mode){return (d.bars||[]).filter(b=>F.finite(b.close)&&b.clo
 function priceMove(d,w,mode='public',historical=false){
  const bars=series(d,w,mode),latest=bars.at(-1),q=d.metrics?.price,delta=d.metrics?.dailyChange;
  const qAt=q?.source?.effectiveAt,validQuote=q?.value>0&&qAt&&qAt<=w.end&&(!historical||mode!=='observed'||!!q.source.retrievedAt&&q.source.retrievedAt<=w.end);
- const source=q?.source||d.priceMeta||{},result={pct:null,from:null,to:null,price:validQuote?q.value:null,quoteAt:validQuote?qAt:null,source,method:null,points:bars.filter(b=>F.dayEnd(b.date)>=w.start).map(b=>({at:F.dayEnd(b.date),date:b.date,price:b.close,kind:'daily close',source:d.priceMeta})),reason:'No compatible price observations cover this period.'};
+ const source=q?.source||d.priceMeta||{},result={pct:null,from:null,to:null,price:validQuote?q.value:null,quotePrice:validQuote?q.value:null,quoteSource:source,quoteAt:validQuote?qAt:null,source,method:null,points:bars.filter(b=>F.dayEnd(b.date)>=w.start).map(b=>({at:F.dayEnd(b.date),date:b.date,price:b.close,kind:'daily close',source:d.priceMeta})),reason:'No compatible price observations cover this period.'};
  // Report the provider's session percentage, without inventing its reference close or session.
  if(w.period==='today'&&validQuote&&etDay(qAt)===w.day&&F.finite(delta?.value)&&delta.source.effectiveAt===qAt&&F.safeURL(delta.source.url)){
   return {...result,pct:delta.value,to:qAt,source:delta.source,method:'Provider-reported daily change',basis:'reported',reason:'The provider did not supply the reference close time or session. This is a dated daily-change snapshot, not a measured start-to-now return.'};
  }
- const startMs=Date.parse(w.start),before=bars.filter(b=>Date.parse(F.dayEnd(b.date))<=startMs).at(-1);
+ const startMs=Date.parse(w.start),calculation=F.closeReturn(bars,w.days,{end:w.end,start:w.start}),before=calculation?bars.find(b=>F.dayEnd(b.date)===calculation.from):null;
  const fresh=latest&&Date.parse(w.end)-Date.parse(F.dayEnd(latest.date))<=4*DAY;
  const endInPeriod=latest&&F.dayEnd(latest.date)>=w.start;
  if(before&&latest&&before.date!==latest.date&&fresh&&endInPeriod&&startMs-Date.parse(F.dayEnd(before.date))<=4*DAY&&F.safeURL(d.priceMeta?.url)){
-  return {...result,pct:(latest.close/before.close-1)*100,from:F.dayEnd(before.date),to:F.dayEnd(latest.date),price:latest.close,source:d.priceMeta,method:'(Last adjusted close ÷ baseline adjusted close − 1) × 100',basis:'closes',reason:'Close-to-close return, using the last available trading close at each boundary. Daily timestamps represent conservative end-of-day availability in New York; intraday timing and original adjustment vintages are unavailable.',baselinePrice:before.close,points:[{at:F.dayEnd(before.date),date:before.date,price:before.close,kind:'baseline close',source:d.priceMeta},...result.points]};
+  return {...result,pct:calculation.pct,from:F.dayEnd(before.date),to:F.dayEnd(latest.date),price:latest.close,source:d.priceMeta,method:'(Last adjusted close ÷ baseline adjusted close − 1) × 100',basis:'closes',reason:'Close-to-close return, using the last available trading close at each boundary. Daily timestamps represent conservative end-of-day availability in New York; intraday timing and original adjustment vintages are unavailable.',baselinePrice:before.close,points:[{at:F.dayEnd(before.date),date:before.date,price:before.close,kind:'baseline close',source:d.priceMeta},...result.points]};
  }
+ result.retained=F.closeReturn(bars,w.days);
  result.reason=latest?`Price history ends ${latest.date}; compatible start and end observations for ${w.label.toLowerCase()} are unavailable. A current quote cannot reconstruct the missing history.`:'No dated price history is connected for this security.';
  return result;
 }
@@ -78,6 +79,35 @@ function buildCases(events,move,w){
  const rank=e=>(e.scope.startsWith('Published')?100:0)+(['REGULATORY','ISSUER'].includes(e.evidence[0]?.sourceType)?20:0)+Date.parse(e.publishedAt)/1e13;
  return {bullish:bullish.sort((a,b)=>rank(b)-rank(a)).slice(0,3),bearish:bearish.sort((a,b)=>rank(b)-rank(a)).slice(0,3)};
 }
+// Transparent directional evidence summary, not a price forecast or trade signal.
+function assessment(d,move,evidence,comparisons,w,mode){
+ const signals=[],excluded=[];
+ const add=(name,value,source,weight=1,detail='')=>signals.push({name,value,weight,points:Math.sign(value)*weight,source,detail});
+ if(F.finite(move.pct))add(w.label+' price direction',move.pct,move.source,1,move.method);
+ else excluded.push('Selected-period price return: matching closes still needed.');
+ for(const c of comparisons)if(c.comparable)add(c.role+' relative strength',c.excess,c.move.source,.5,'Stock minus '+c.ticker+' over identical dates.');
+ const px=d.metrics?.price,sma=d.metrics?.sma50;
+ const known=m=>F.finite(m?.value)&&m.source.effectiveAt&&m.source.effectiveAt<=w.end&&Date.parse(w.end)-Date.parse(m.source.effectiveAt)<=4*DAY&&(mode!=='observed'||m.source.retrievedAt&&m.source.retrievedAt<=w.end);
+ if(known(px)&&known(sma)&&px.source.currency&&px.source.currency===sma.source.currency)add('Price versus 50-day average',(px.value/sma.value-1)*100,sma.source,.5,'Trend context; historical average and quote must both be recent.');
+ else excluded.push('50-day trend: recent, compatible price and average required.');
+ const news=evidence.filter(e=>e.category!=='macro'&&e.strength!=='Outside observed move'&&['Bullish factor','Bearish factor','Mixed'].includes(e.direction));
+ // Cap correlated headlines: the news group has at most two votes in total.
+ for(const e of news)add(e.title,e.direction==='Bullish factor'?1:e.direction==='Bearish factor'?-1:0,e.evidence[0],2/Math.max(1,news.length),e.factLabel+'; directional interpretation from the stated announcement.');
+ if(!news.length)excluded.push('News direction: no explicit supported improvement or deterioration in this period.');
+ const financials=(d.events||[]).filter(e=>e.category==='financials'&&e.publishedAt&&e.publishedAt<=w.end&&(mode!=='observed'||e.detectedAt&&e.detectedAt<=w.end)).sort((a,b)=>String(b.effectiveAt).localeCompare(String(a.effectiveAt)));
+ const latest=financials[0],prior=latest&&financials.find(e=>e.payload.frequency===latest.payload.frequency&&Math.abs(Date.parse(latest.effectiveAt)-Date.parse(e.effectiveAt)-365*DAY)<15*DAY);
+ if(latest&&prior&&Date.parse(w.end)-Date.parse(latest.publishedAt)<140*DAY){
+  for(const key of ['revenue','netIncome']){const a=latest.payload.metrics?.[key],b=prior.payload.metrics?.[key];const ap=a?.source.reportingPeriod,bp=b?.source.reportingPeriod;const duration=p=>p?.start&&p?.end?Date.parse(p.end)-Date.parse(p.start):null;
+   if(F.finite(a?.value)&&F.finite(b?.value)&&a.source.currency&&a.source.currency===b.source.currency&&duration(ap)!=null&&duration(bp)!=null&&Math.abs(duration(ap)-duration(bp))<=15*DAY)add(key==='revenue'?'Year-over-year revenue trend':'Year-over-year profit trend',a.value-b.value,a.source,.5,'Same-frequency, comparable-duration filings; direction of reported change, not a valuation estimate.');
+  }
+ }
+ if(!signals.some(x=>/Year-over-year/.test(x.name)))excluded.push('Fundamentals: comparable, recently published year-over-year financial periods needed.');
+ excluded.push('Valuation, analyst estimates, options and positioning are not directionally scored without dated, comparable inputs. Missing evidence never counts as zero performance.');
+ const score=signals.reduce((n,x)=>n+x.points,0),total=signals.reduce((n,x)=>n+x.weight,0),positive=signals.filter(x=>x.points>0).length,negative=signals.filter(x=>x.points<0).length;
+ const label=Math.abs(score)<.25?'Neutral':score>0?'Bullish':'Bearish';
+ const breadth=[signals.some(x=>x.name.includes('price direction')),news.length>0,signals.some(x=>/Year-over-year/.test(x.name)),signals.some(x=>/relative strength|50-day/.test(x.name))].filter(Boolean).length;
+ return {label,score,total,positive,negative,signals,excluded,coverage:breadth>=3?'Broad evidence':breadth===2?'Partial evidence':'Limited evidence',reason:!signals.length?'No dated directional inputs qualify for this period. Neutral means insufficient evidence, not a forecast of a flat price.':label==='Neutral'?'The qualified signals are balanced or too weak to establish a directional lean.':label+' lean across the qualified evidence for this period. '+(positive&&negative?'Some inputs conflict; review the counter-evidence below.':'No opposing directional input qualified in the loaded evidence.'),method:'Price direction: 1 vote; matched sector and benchmark relative strength: 0.5 each; recent 50-day trend: 0.5; explicit directional news: at most 2 total; matched revenue and profit trends: 0.5 each. Neutral if the net score is within 0.25 of zero. These are disclosed heuristic weights, not backtested probabilities.'};
+}
 function analyze(d,{period='today',cutoff=null,now=new Date().toISOString(),mode='public',benchmarks=[],macro=[]}={}){
  const w=windowFor(period,cutoff||now),move=priceMove(d,w,mode,!!cutoff);
  const company=dedupe((d.events||[]).filter(e=>['news','announcements','filings','financials','analysts'].includes(e.category)&&eligible(e,w,mode)));
@@ -95,9 +125,9 @@ function analyze(d,{period='today',cutoff=null,now=new Date().toISOString(),mode
  const relevant=evidence.filter(e=>e.strength!=='Outside observed move'),reported=relevant.filter(e=>e.reported),strong=relevant.filter(e=>e.category!=='macro').slice(0,2);
  const summary=reported.length?'Reporting links the move to the events below. These are reported explanations, not independently confirmed causation.':strong.length?`The strongest company evidence concerns ${[...new Set(strong.map(e=>e.kind.toLowerCase()))].join(' and ')}. ${strong[0].mechanism} Available timing does not confirm that this caused the stock’s move.`:'No company-specific catalyst is established by the available evidence in this period. Broader context, when available, is shown separately.';
  const timeline=[...move.points.map(p=>({at:p.at,type:'price',title:`${p.date} · ${p.kind}`,price:p.price,source:p.source})),...evidence.map(e=>({at:e.publishedAt,type:'event',title:e.title,event:e}))];
- if(move.quoteAt&&move.quoteAt>=w.start&&move.price!=null)timeline.push({at:move.quoteAt,type:'quote',title:'Dated quote · session not verified',price:move.price,source:move.source});
+ if(move.quoteAt&&move.quoteAt>=w.start&&move.quotePrice!=null)timeline.push({at:move.quoteAt,type:'quote',title:'Dated quote · session not verified',price:move.quotePrice,source:move.quoteSource});
  timeline.sort((a,b)=>a.at.localeCompare(b.at));
- return {ticker:d.identity.ticker,window:w,historical:!!cutoff,mode,move,evidence,comparisons,context,summary,cases,verdict:'No confirmed catalyst found',timeline,lastSourceCheck:d.health?.map(h=>F.iso(h.lastAttemptAt)).filter(Boolean).sort().at(-1)||d.sourceRetrievedAt||null,limitations:['Evidence strength ranks source authority and company relevance; it is not a probability of causation.','Headlines are research leads; full article text and a complete news archive are not available.','No verified catalyst is inferred from price direction or a same-day headline.',...(cutoff?['Only publications available by the cutoff are included. Date-only disclosures are withheld until the end of their New York publication day. Current sector labels are navigation aids; historical membership is not verified.']:[])]};
+ return {ticker:d.identity.ticker,window:w,historical:!!cutoff,mode,move,evidence,comparisons,context,summary,cases,assessment:assessment(d,move,evidence,comparisons,w,mode),verdict:'No confirmed catalyst found',timeline,lastSourceCheck:d.health?.map(h=>F.iso(h.lastAttemptAt)).filter(Boolean).sort().at(-1)||d.sourceRetrievedAt||null,limitations:['Evidence strength ranks source authority and company relevance; it is not a probability of causation.','Headlines are research leads; full article text and a complete news archive are not available.','No verified catalyst is inferred from price direction or a same-day headline.',...(cutoff?['Only publications available by the cutoff are included. Date-only disclosures are withheld until the end of their New York publication day. Current sector labels are navigation aids; historical membership is not verified.']:[])]};
 }
-return {PERIODS,SECTORS,etDay,windowFor,priceMove,canonicalURL,dedupe,mechanism,compare,buildCases,analyze};
+return {PERIODS,SECTORS,etDay,windowFor,priceMove,canonicalURL,dedupe,mechanism,compare,buildCases,assessment,analyze};
 });

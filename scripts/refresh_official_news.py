@@ -5,6 +5,7 @@ from pathlib import Path
 import refresh_open_research as public
 
 FEEDS = {
+    'AMZN': [('Amazon News', 'https://www.aboutamazon.com/rss/feed.rss')],
     'AAPL': [('Apple Newsroom', 'https://www.apple.com/newsroom/rss-feed.rss')],
     'NVDA': [('NVIDIA Newsroom', 'https://nvidianews.nvidia.com/releases.xml')],
     'MSFT': [('Microsoft News', 'https://news.microsoft.com/feed/')],

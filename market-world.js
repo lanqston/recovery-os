@@ -10,8 +10,8 @@ const ROOT_OPEN=openExplorer,ROOT_VIEW=showView,ROOT_RESEARCH=openResearch,ROOT_
 let market=null,routeBusy=false;
 const symbolKey=t=>{const value=String(t||'').toUpperCase();if(ATLAS_SYMBOLS.has(value))return value;const dashed=value.replace(/\./g,'-');return ATLAS_SYMBOLS.has(dashed)?dashed:value};
 function currentState(){return typeof STATE==='object'&&STATE?STATE:recoveryState()}
-function trackedWorldPrice(r){const x=tracked(r.ticker);return MODEL.finite(x?.latestPrice)?x.latestPrice:r.price}
-function trackedWorldChange(r){const x=tracked(r.ticker),s=x?.priceSeries||[];if(s.length>1&&MODEL.finite(s.at(-1)?.close)&&MODEL.finite(s.at(-2)?.close)&&s.at(-2).close!==0)return(s.at(-1).close/s.at(-2).close-1)*100;return r.changePct}
+function trackedWorldPrice(r){const d=window.RecoveryHistory?.current.get(r.ticker),q=ATLAS_SYMBOLS.get(r.ticker);return d?.metrics.price?.value??q?.price??r.price??tracked(r.ticker)?.latestPrice}
+function trackedWorldChange(r){return window.RecoveryHistory?.current.get(r.ticker)?.metrics.dailyChange?.value??ATLAS_SYMBOLS.get(r.ticker)?.changePct??r.changePct}
 function sectorKey(r){if(/ETF/i.test(r.securityType||''))return'Funds';return SECTORS.some(s=>s[0]===r.sector)?r.sector:'Market frontier'}
 function hashText(t){let x=2166136261;for(const c of t)x=Math.imul(x^c.charCodeAt(0),16777619)>>>0;return x}
 function navRoute(hash){if(location.hash!==hash)history.pushState(null,'',hash)}
