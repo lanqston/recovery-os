@@ -103,7 +103,7 @@ def normalize_facts(facts,sub):
     if cash:
         c=cash[0];cap=[x for x in all_facts['capitalExpenditure'] if x.get('start')==c.get('start') and x.get('end')==c.get('end')]
         cap.sort(key=lambda x:x.get('filed',''),reverse=True);p=cap[0] if cap else None
-        output['cashFlowPeriod']={'startDate':c.get('start'),'endDate':c['end'],'filingDate':c.get('filed'),'operatingCashFlow':c['val'],'capitalExpenditure':p['val'] if p else None,'freeCashFlow':c['val']-p['val'] if p else None,'source':accession_url(sub['cik'],c['accn']),'capexSource':accession_url(sub['cik'],p['accn']) if p else None,'scope':'Year to date' if days(c.get('start'),c['end'])>120 else 'Fiscal quarter'}
+        output['cashFlowPeriod']={'currency':'USD','capexFilingDate':p.get('filed') if p else None,'startDate':c.get('start'),'endDate':c['end'],'filingDate':c.get('filed'),'operatingCashFlow':c['val'],'capitalExpenditure':p['val'] if p else None,'freeCashFlow':c['val']-p['val'] if p else None,'source':accession_url(sub['cik'],c['accn']),'capexSource':accession_url(sub['cik'],p['accn']) if p else None,'scope':'Year to date' if days(c.get('start'),c['end'])>120 else 'Fiscal quarter'}
     return output
 
 def filings(sub):

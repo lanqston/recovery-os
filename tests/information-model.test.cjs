@@ -49,3 +49,18 @@ test('a provider snapshot without an exchange timestamp never becomes an EOD obs
  const x=F.normalize({profile:{ticker:'TEST'},quote:{price:12,dataState:'PROVIDER SNAPSHOT',collectedAt:'2026-09-12T12:00:00Z'},priceSource:{publisher:'Nasdaq',date:'2026-09-12'},bars:[]});
  assert.equal(x.metrics.price.value,12);assert.equal(x.metrics.price.source.effectiveAt,null);assert.equal(x.metrics.price.source.delivery,'CACHED');assert.equal(x.metrics.price.source.timestampPrecision,'UNKNOWN');assert.equal(x.bars.length,0);
 });
+test('cash-flow duration survives a missing quarterly value without leaking into prior replay',()=>{
+ const bundle={profile:{ticker:'TEST',name:'Test'},retrievedAt:'2026-09-20T00:00:00Z',financials:{quarterly:[{period:'Q2',startDate:'2026-04-01',endDate:'2026-06-30',filingDate:'2026-08-01',currency:'USD',revenue:500}],cashFlowPeriod:{startDate:'2026-01-01',endDate:'2026-06-30',filingDate:'2026-08-01',currency:'USD',operatingCashFlow:100,capitalExpenditure:20,source:'https://www.sec.gov/Archives/example/',capexSource:'https://www.sec.gov/Archives/example/',scope:'Year to date'}}};
+ const d=F.normalize(bundle);assert.equal(d.metrics.freeCashFlow.value,80);assert.equal(d.metrics.freeCashFlow.source.reportingPeriod.start,'2026-01-01');assert.equal(d.metrics.revenue.source.reportingPeriod.start,'2026-04-01');
+ assert.equal(F.replay(d,'2026-07-31').metrics.freeCashFlow.value,null);assert.equal(F.replay(d,'2026-08-02').metrics.freeCashFlow.value,80);assert.equal(F.replay(d,'2026-08-02',{mode:'observed'}).metrics.freeCashFlow.value,null);
+ bundle.financials.cashFlowPeriod.capexSource='https://www.sec.gov/Archives/other/';assert.equal(F.normalize(bundle).metrics.freeCashFlow.value,null);
+ bundle.financials.cashFlowPeriod.capexFilingDate='2026-09-01';const revised=F.normalize(bundle);assert.equal(revised.metrics.freeCashFlow.value,80);assert.equal(F.replay(revised,'2026-08-02').metrics.freeCashFlow.value,null);
+});
+test('annual cash flow remains dated context when the newest quarter has no cash-flow duration',()=>{
+ const bundle={profile:{ticker:'TEST'},financials:{quarterly:[{period:'Q2',endDate:'2026-06-30',filingDate:'2026-08-01',currency:'USD',revenue:300}],annual:[{period:'FY',startDate:'2025-01-01',endDate:'2025-12-31',filingDate:'2026-02-01',currency:'USD',operatingCashFlow:100,capitalExpenditure:30}]}};
+ const d=F.normalize(bundle);assert.equal(d.metrics.freeCashFlow.value,70);assert.equal(d.metrics.freeCashFlow.source.reportingPeriod.scope,'FY');assert.equal(d.metrics.freeCashFlow.source.effectiveAt,F.dayEnd('2025-12-31'));
+});
+test('coverage health associates quote and issuer feed refreshes with their own categories',()=>{
+ const d=F.normalize({profile:{ticker:'T'},quote:{price:10},health:[{provider:'Web finance market data',status:'cached',lastSuccessAt:'2026-09-24T00:00:00Z'},{provider:'Official issuer news',status:'available',lastSuccessAt:'2026-09-23T23:00:00Z'},{provider:'Yahoo Finance RSS',status:'unavailable',detail:'RSS paused'}]});
+ const price=d.coverage.find(x=>x.id==='prices'),news=d.coverage.find(x=>x.id==='announcements');assert.equal(price.lastSuccessfulUpdate,'2026-09-24T00:00:00.000Z');assert.deepEqual(price.errors,[]);assert.equal(news.lastSuccessfulUpdate,'2026-09-23T23:00:00.000Z');assert.ok(news.errors.includes('RSS paused'));
+});

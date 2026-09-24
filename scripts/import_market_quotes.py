@@ -30,8 +30,9 @@ def parse(evidence):
     if not collected: raise ValueError('A real collection timestamp is required')
     requested = set(evidence['requested']); quotes = {}; raw = {}
     for response in evidence['responses']:
-        text = '\n'.join(x.get('text', '') for x in response['result'].get('content', []) if x.get('type') == 'text')
-        for block in re.split(r'\n-{5,}\n', text):
+        result = response['result']
+        text = result if isinstance(result, str) else '\n'.join(x.get('text', '') for x in result.get('content', []) if x.get('type') == 'text')
+        for block in re.split(r'-{5,}', text):
             identity = re.search(r'\(([^()]+)\) is a (equity|fund) in the USA market\.', block)
             price = re.search(r'The price is ([\d.]+) ([A-Z]{3}) currently', block)
             trade = re.search(r'The latest trade time is (\w+), (\w+ \d{1,2}), (\d{2}:\d{2}:\d{2}) UTC', block)
@@ -77,8 +78,11 @@ def import_evidence(path):
     day = stamp(evidence['collectedAt']).date()
     # One dated evidence archive per collection date; retain earlier ticker observations.
     archive = ROOT/f'data/market-observations/{day}.json'
-    old = json.loads(archive.read_text()).get('observations', {}) if archive.exists() else {}
-    write(archive, {'collectedAt': evidence['collectedAt'], 'provider': PROVIDER, 'observations': {**old, **raw}})
+    prior = json.loads(archive.read_text()) if archive.exists() else {}
+    old = prior.get('observations', {})
+    collections = prior.get('collections', [])
+    if evidence not in collections: collections.append(evidence)
+    write(archive, {'collectedAt': evidence['collectedAt'], 'provider': PROVIDER, 'observations': {**old, **raw}, 'collections': collections})
     print(f'Imported {len(quotes)}/{len(evidence["requested"])} timestamped quotes; no daily bars or tracker state changed.')
 
 def apply_quotes():

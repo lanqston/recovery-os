@@ -42,3 +42,18 @@ Each stock has one Bullish, Bearish or Neutral evidence assessment. The reader d
 Amazon's published RSS feed joins the daily issuer collection, with future-dated items withheld and prior headlines preserved. The original source is https://www.aboutamazon.com/rss/feed.rss, linked from https://www.aboutamazon.com/news. A successful collection is not a promise that every company has news that day.
 
 Historical-price collection remains a known dependency: the configured Stooq adapter needs its server-side credential, while legacy unapproved collectors remain paused. NineQuantAI was examined as a potential keyless alternative; its terms prohibit systematically mirroring its market data (https://ninequantai.com/en/terms), so no public data mirror or collector was added. Netflix, Nike, Freeport and Meta IR returned 403 to direct discovery/collection; no bypass was attempted. The working Meta newsroom feed is retained. A daily scheduler cannot recreate absent historical observations.
+
+## Gap repair (September 24 UTC)
+
+The quote importer now accepts both structured tool responses and original string responses, including batch separators without newlines. Complete responses and their actual retrieval timestamps are retained in the dated archive's `collections`, alongside parsed observations. Batch collection avoids issuing one request per symbol. A missing individual result may be requested once separately unless the provider reports a cooldown.
+
+The shared information model reads reported cash-flow durations separately from income-statement quarters, and falls back to dated annual disclosures when needed. It never labels year-to-date figures quarterly. Free cash flow still requires matching currency and reporting period, and every historical view checks publication and detection times. Legacy capex records from a different filing are excluded unless their publication date is recorded. Latest available cash-flow metrics may cover different periods; each keeps its own metadata.
+
+Additional issuer feeds verified from the companies' RSS directories:
+- Johnson & Johnson: https://www.jnj.com/rss -> https://www.jnj.com/rss-feed/all
+- Broadcom: https://investors.broadcom.com/rss-feeds -> https://investors.broadcom.com/rss/news-releases.xml
+- Lilly: https://investor.lilly.com/rss-news-feeds -> https://investor.lilly.com/rss/news-releases.xml?items=10
+- Comcast: https://www.cmcsa.com/rss-feeds -> https://www.cmcsa.com/rss/news-releases.xml?items=15
+- Verisign: https://investor.verisign.com/shareholder-services/rss-feeds/ -> https://investor.verisign.com/rss/news-releases.xml
+
+The last two adapters activate when those dossiers are prepared; configuring a source does not add names to the recovery tracker. These sources return linked headlines, not full articles or verified price catalysts. Original dates, deduplication, retained history and host cooldowns still apply. S&P Global, Pfizer and Qualcomm returned HTTP 403 during discovery; they were not added or bypassed. Missing price history, options, short interest and consensus estimates remain unresolved; current quotes do not fill those datasets.

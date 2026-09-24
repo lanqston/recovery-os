@@ -5,6 +5,11 @@ from pathlib import Path
 import refresh_open_research as public
 
 FEEDS = {
+    'LLY': [('Lilly Investor Relations', 'https://investor.lilly.com/rss/news-releases.xml?items=10')],
+    'CMCSA': [('Comcast Investor Relations', 'https://www.cmcsa.com/rss/news-releases.xml?items=15')],
+    'VRSN': [('Verisign Investor Relations', 'https://investor.verisign.com/rss/news-releases.xml')],
+    'AVGO': [('Broadcom Investor Relations', 'https://investors.broadcom.com/rss/news-releases.xml')],
+    'JNJ': [('Johnson & Johnson Newsroom', 'https://www.jnj.com/rss-feed/all')],
     'AMZN': [('Amazon News', 'https://www.aboutamazon.com/rss/feed.rss')],
     'AAPL': [('Apple Newsroom', 'https://www.apple.com/newsroom/rss-feed.rss')],
     'NVDA': [('NVIDIA Newsroom', 'https://nvidianews.nvidia.com/releases.xml')],
