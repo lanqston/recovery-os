@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-25T22:45:58.699285+00:00",
+  "generatedAt": "2026-09-26T12:48:59.694018+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
@@ -8,18 +8,18 @@
       "cost": "Free / public sources only",
       "status": "Partial",
       "successfulRecords": 0,
-      "checkedRecords": 276,
+      "checkedRecords": 280,
       "availableRecords": 140,
-      "unavailableRecords": 136,
+      "unavailableRecords": 140,
       "cachedRecords": 140,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
-      "retryAt": "2026-09-25T23:44:51.520856+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
+      "retryAt": "2026-09-26T13:47:51.556119+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "HTTP_403"
       ],
-      "fallback": "Original dated evidence is available for 140 of 276 checked records. Original source links remain available.",
+      "fallback": "Original dated evidence is available for 140 of 280 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -27,18 +27,18 @@
       "cost": "Free / public sources only",
       "status": "Partial",
       "successfulRecords": 0,
-      "checkedRecords": 269,
-      "availableRecords": 263,
+      "checkedRecords": 273,
+      "availableRecords": 267,
       "unavailableRecords": 6,
-      "cachedRecords": 263,
+      "cachedRecords": 267,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
-      "retryAt": "2026-09-25T23:44:51.520856+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
+      "retryAt": "2026-09-26T13:47:51.556119+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "Issuer fiscal calendar unavailable; original financial records retained where present"
       ],
-      "fallback": "Original dated evidence is available for 263 of 269 checked records. Original source links remain available.",
+      "fallback": "Original dated evidence is available for 267 of 273 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -46,12 +46,12 @@
       "cost": "Free / public sources only",
       "status": "Unavailable",
       "successfulRecords": 0,
-      "checkedRecords": 291,
+      "checkedRecords": 295,
       "availableRecords": 0,
-      "unavailableRecords": 291,
+      "unavailableRecords": 295,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [
         "STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable"
@@ -64,12 +64,12 @@
       "cost": "Free / public sources only",
       "status": "Paused",
       "successfulRecords": 0,
-      "checkedRecords": 291,
+      "checkedRecords": 295,
       "availableRecords": 0,
-      "unavailableRecords": 291,
+      "unavailableRecords": 295,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [
         "Automatic access paused pending provider permission"
@@ -82,17 +82,17 @@
       "cost": "Free / public sources only",
       "status": "Paused",
       "successfulRecords": 0,
-      "checkedRecords": 291,
+      "checkedRecords": 295,
       "availableRecords": 151,
-      "unavailableRecords": 140,
+      "unavailableRecords": 144,
       "cachedRecords": 151,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [
         "RSS ingestion paused pending provider permission"
       ],
-      "fallback": "Original dated evidence is available for 151 of 291 checked records. Original source links remain available.",
+      "fallback": "Original dated evidence is available for 151 of 295 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -104,8 +104,8 @@
       "availableRecords": 14,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:45:52.182834+00:00",
-      "lastAttemptAt": "2026-09-25T22:45:49.423255+00:00",
+      "lastSuccessAt": "2026-09-26T12:48:52.993395+00:00",
+      "lastAttemptAt": "2026-09-26T12:48:49.583946+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 14 of 14 checked records. Original source links remain available.",
@@ -134,18 +134,18 @@
       "cost": "Free / public sources only",
       "status": "Paused",
       "successfulRecords": 0,
-      "checkedRecords": 21,
-      "availableRecords": 21,
+      "checkedRecords": 25,
+      "availableRecords": 25,
       "unavailableRecords": 0,
-      "cachedRecords": 21,
+      "cachedRecords": 25,
       "lastSuccessAt": "2026-09-12T15:43:57.446978+00:00",
-      "lastAttemptAt": "2026-09-25T22:45:53.088833+00:00",
+      "lastAttemptAt": "2026-09-26T12:48:53.982723+00:00",
       "retryAt": null,
       "errors": [
         "Saved provider snapshot; no new market request was made.",
         "Automatic screener ingestion paused pending documented access permission"
       ],
-      "fallback": "Original dated evidence is available for 21 of 21 checked records. Original source links remain available.",
+      "fallback": "Original dated evidence is available for 25 of 25 checked records. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -157,8 +157,8 @@
       "availableRecords": 1,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:44:52.819522+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastSuccessAt": "2026-09-26T12:47:52.756394+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -174,7 +174,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [
         "HTTP_403"
@@ -192,7 +192,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [
         "SOURCE_COOLDOWN"
@@ -210,7 +210,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-23T22:44:11.919787+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [
         "NETWORK_OR_TIMEOUT"
@@ -227,8 +227,8 @@
       "availableRecords": 1,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:45:47.861656+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastSuccessAt": "2026-09-26T12:48:47.966078+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -243,8 +243,8 @@
       "availableRecords": 1,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:45:48.345336+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastSuccessAt": "2026-09-26T12:48:48.217873+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -259,8 +259,8 @@
       "availableRecords": 1,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:45:48.574220+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastSuccessAt": "2026-09-26T12:48:48.430330+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -275,8 +275,8 @@
       "availableRecords": 1,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:45:48.847477+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastSuccessAt": "2026-09-26T12:48:48.611151+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -291,8 +291,8 @@
       "availableRecords": 1,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-09-25T22:45:49.103442+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.253906+00:00",
+      "lastSuccessAt": "2026-09-26T12:48:49.059246+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.297312+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -308,8 +308,8 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-09-25T22:44:51.263977+00:00",
-      "retryAt": "2026-09-25T23:44:51.272818+00:00",
+      "lastAttemptAt": "2026-09-26T12:47:51.307962+00:00",
+      "retryAt": "2026-09-26T13:47:51.317050+00:00",
       "errors": [
         "HTTP_403"
       ],
@@ -319,14 +319,14 @@
   ],
   "coverage": {
     "securities": 10449,
-    "preparedDossiers": 291,
-    "evidenceDossiers": 291,
+    "preparedDossiers": 295,
+    "evidenceDossiers": 295,
     "identityOnlyDossiers": 0
   },
   "efficiency": {
     "requests": 12,
-    "cacheHits": 2,
-    "requestsAvoided": 460
+    "cacheHits": 4,
+    "requestsAvoided": 464
   },
   "automaticMaintenance": {
     "refresh": "Every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening. Open pages check for new publications every minute.",
