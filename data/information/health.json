@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T12:53:48.059Z",
+  "generatedAt": "2026-09-29T22:46:29.473Z",
   "scope": {
-    "dossiers": 319,
+    "dossiers": 323,
     "bars": 63420,
-    "events": 7134,
-    "bytes": 18015354
+    "events": 7164,
+    "bytes": 18049566
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -19,7 +19,7 @@
     {
       "ticker": "AAPL",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
@@ -3162,6 +3162,90 @@
     },
     {
       "ticker": "CAH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1783180/000178318026000032/",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "CARR",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -12371,6 +12455,90 @@
       "severity": "review"
     },
     {
+      "ticker": "NTRA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1604821/000162828026054525/",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "NTRA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
       "ticker": "NUE",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
@@ -13501,7 +13669,7 @@
     {
       "ticker": "PLTR",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -18509,6 +18677,90 @@
       "severity": "review"
     },
     {
+      "ticker": "XEL",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/72903/000007290326000154/",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "XEL",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
       "ticker": "XLB",
       "code": "STALE_QUOTE",
       "detail": "2026-09-11",
@@ -18780,6 +19032,90 @@
     },
     {
       "ticker": "XOM",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_FINANCIAL_PERIOD",
+      "detail": "Quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2026-03-31",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-09-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "DUPLICATE_EVENT",
+      "detail": "https://www.sec.gov/Archives/edgar/data/1512673/000162828026053368/",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "MISSING_PUBLICATION_TIME",
+      "detail": "Original report supporting quarter ended 2025-06-30",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "SEC financial statements: Issuer fiscal calendar unavailable; original financial records retained where present",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Stooq daily history: STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Yahoo daily history: Automatic access paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "XYZ",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
       "severity": "review"
@@ -18860,27 +19196,27 @@
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 1558,
+      "count": 1578,
       "severity": "medium"
     },
     {
       "code": "MISSING_FINANCIAL_PERIOD",
-      "count": 641,
+      "count": 657,
       "severity": "medium"
     },
     {
       "code": "MISSING_PUBLICATION_TIME",
-      "count": 641,
+      "count": 657,
+      "severity": "medium"
+    },
+    {
+      "code": "DUPLICATE_EVENT",
+      "count": 154,
       "severity": "medium"
     },
     {
       "code": "STALE_QUOTE",
       "count": 151,
-      "severity": "medium"
-    },
-    {
-      "code": "DUPLICATE_EVENT",
-      "count": 150,
       "severity": "medium"
     }
   ],
@@ -18893,7 +19229,7 @@
         {
           "ticker": "AAPL",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC filings: SOURCE_COOLDOWN",
+          "detail": "SEC filings: HTTP_403",
           "severity": "review"
         },
         {
@@ -18931,7 +19267,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 1558 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 1578 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -18991,7 +19327,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 641 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 657 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -19051,7 +19387,67 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 641 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 657 flagged observations without replacing retained evidence",
+      "difficulty": "low",
+      "risks": [
+        "Provider access and dataset scope must be rechecked",
+        "Historical values must retain original provenance"
+      ],
+      "validation": [
+        "Schema and identity tests",
+        "Calculation and replay tests",
+        "Regression build"
+      ],
+      "status": "RECOMMEND",
+      "releaseAllowed": false
+    },
+    {
+      "id": "proposal-DUPLICATE_EVENT",
+      "rank": 4,
+      "problem": "DUPLICATE_EVENT",
+      "evidence": [
+        {
+          "ticker": "ABT",
+          "code": "DUPLICATE_EVENT",
+          "detail": "https://www.sec.gov/Archives/edgar/data/1800/000162828026050134/",
+          "severity": "review"
+        },
+        {
+          "ticker": "ACN",
+          "code": "DUPLICATE_EVENT",
+          "detail": "https://www.sec.gov/Archives/edgar/data/1467373/000146737326000032/",
+          "severity": "review"
+        },
+        {
+          "ticker": "ADI",
+          "code": "DUPLICATE_EVENT",
+          "detail": "https://www.sec.gov/Archives/edgar/data/6281/000000628126000073/",
+          "severity": "review"
+        },
+        {
+          "ticker": "AFL",
+          "code": "DUPLICATE_EVENT",
+          "detail": "https://www.sec.gov/Archives/edgar/data/4977/000162828026054618/",
+          "severity": "review"
+        },
+        {
+          "ticker": "AJG",
+          "code": "DUPLICATE_EVENT",
+          "detail": "https://www.sec.gov/Archives/edgar/data/354190/000162828026053489/",
+          "severity": "review"
+        }
+      ],
+      "affectedSystems": [
+        "Information Fabric",
+        "Provider adapters",
+        "Data Coverage Center"
+      ],
+      "affectedFiles": [
+        "information-model.js",
+        "information-bridge.js",
+        "backend/cloudflare/provider-client.mjs"
+      ],
+      "expectedBenefit": "Resolve 154 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
@@ -19067,7 +19463,7 @@
     },
     {
       "id": "proposal-STALE_QUOTE",
-      "rank": 4,
+      "rank": 5,
       "problem": "STALE_QUOTE",
       "evidence": [
         {
@@ -19112,66 +19508,6 @@
         "backend/cloudflare/provider-client.mjs"
       ],
       "expectedBenefit": "Resolve 151 flagged observations without replacing retained evidence",
-      "difficulty": "low",
-      "risks": [
-        "Provider access and dataset scope must be rechecked",
-        "Historical values must retain original provenance"
-      ],
-      "validation": [
-        "Schema and identity tests",
-        "Calculation and replay tests",
-        "Regression build"
-      ],
-      "status": "RECOMMEND",
-      "releaseAllowed": false
-    },
-    {
-      "id": "proposal-DUPLICATE_EVENT",
-      "rank": 5,
-      "problem": "DUPLICATE_EVENT",
-      "evidence": [
-        {
-          "ticker": "ABT",
-          "code": "DUPLICATE_EVENT",
-          "detail": "https://www.sec.gov/Archives/edgar/data/1800/000162828026050134/",
-          "severity": "review"
-        },
-        {
-          "ticker": "ACN",
-          "code": "DUPLICATE_EVENT",
-          "detail": "https://www.sec.gov/Archives/edgar/data/1467373/000146737326000032/",
-          "severity": "review"
-        },
-        {
-          "ticker": "ADI",
-          "code": "DUPLICATE_EVENT",
-          "detail": "https://www.sec.gov/Archives/edgar/data/6281/000000628126000073/",
-          "severity": "review"
-        },
-        {
-          "ticker": "AFL",
-          "code": "DUPLICATE_EVENT",
-          "detail": "https://www.sec.gov/Archives/edgar/data/4977/000162828026054618/",
-          "severity": "review"
-        },
-        {
-          "ticker": "AJG",
-          "code": "DUPLICATE_EVENT",
-          "detail": "https://www.sec.gov/Archives/edgar/data/354190/000162828026053489/",
-          "severity": "review"
-        }
-      ],
-      "affectedSystems": [
-        "Information Fabric",
-        "Provider adapters",
-        "Data Coverage Center"
-      ],
-      "affectedFiles": [
-        "information-model.js",
-        "information-bridge.js",
-        "backend/cloudflare/provider-client.mjs"
-      ],
-      "expectedBenefit": "Resolve 150 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
