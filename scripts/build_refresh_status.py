@@ -67,6 +67,7 @@ def build():
     for path in paths:
         if path.exists(): digest.update(path.read_bytes())
     return {'schemaVersion':1,'revision':digest.hexdigest()[:24],'completedAt':now.isoformat(),
+            'collectionQueue':read('data/open-research/refresh-queue.json'),
             'status':'Current' if all(p['status']=='Current' for p in parts[:-1]) else 'Partial',
             'schedule':'Source refresh every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening.',
             'pollSeconds':60,'components':parts,'preparedDossiers':len(items),

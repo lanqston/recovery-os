@@ -15,6 +15,7 @@ on:
       - 'scripts/import_market_quotes.py'
       - 'scripts/refresh_official_news.py'
       - 'scripts/build_refresh_status.py'
+      - 'scripts/refresh_queue.py'
       - 'data/market-quotes.json'
       - '.github/workflows/public-research.yml'
 permissions:
@@ -26,7 +27,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
@@ -49,7 +50,8 @@ jobs:
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
           STOOQ_API_KEY: ${{ secrets.STOOQ_API_KEY }}
-        run: python scripts/refresh_open_research.py
+          RECOVERY_CACHE_DIR: ${{ runner.workspace }}/open-source-cache
+        run: python scripts/refresh_open_research.py --all-symbols --budget-minutes 145
       - name: Refresh official issuer news and apply verified quote observations
         run: |
           python scripts/refresh_official_news.py

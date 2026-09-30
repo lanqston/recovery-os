@@ -128,3 +128,21 @@
 .simple-stock-news h4{font-size:16px;line-height:1.5;margin:6px 0}
 .simple-stock-news a{color:#d2e9e5;text-decoration:none}
 .simple-stock-news a:hover{text-decoration:underline}
+
+/* Sector islands, direct travel and a stable world map. */
+#worldNavigator{position:absolute;z-index:35;bottom:140px;left:50%;transform:translateX(-50%);display:flex;gap:8px;padding:8px;border:1px solid #527b8a70;border-radius:14px;background:#0a202de8;pointer-events:auto;box-shadow:0 8px 30px #0004}
+#worldNavigator button,#worldNavigator select{min-height:44px;border:1px solid #608c9d66;background:#173442;color:#e2f3f2;border-radius:8px;padding:8px 14px;font:14px system-ui;cursor:pointer}
+#worldNavigator select{max-width:230px}
+.market-world-app .universe-radar{display:block!important;opacity:.95;bottom:150px;right:24px;left:auto;background:#0a202de8;border:1px solid #527b8a70;border-radius:18px}
+.market-world-app .universe-node-label.sector{background:#112e3ded;border:1px solid #93cad0a8;box-shadow:0 6px 24px #0005}
+.market-world-app .universe-node-label.company{background:#0b2530ed;border-color:#64939c80}
+.market-world-app .universe-heading{pointer-events:none}.market-world-app .universe-heading button{pointer-events:auto}
+.market-world-app.universe-pane-open #worldNavigator,.market-world-app.universe-pane-open .universe-radar{display:none!important}
+@media(max-width:760px){
+ #worldNavigator{bottom:calc(var(--mobile-bottom) + 12px);left:12px;right:12px;transform:none;justify-content:space-between;padding:6px;gap:5px}
+ #worldNavigator button,#worldNavigator select{padding:8px;font-size:13px;min-width:0}#worldNavigator select{flex:1;width:120px}
+ .market-world-app .universe-radar{display:none!important}
+ .market-world-app:has(#universeDestinations:not(:empty)) #worldNavigator{bottom:calc(var(--mobile-bottom) + 68px)}
+ .market-world-app .universe-flight-controls{bottom:calc(var(--mobile-bottom) + 132px)}
+ .market-world-app #universeTitle{font-size:30px}.market-world-app #universeSubtitle{max-width:280px}
+}

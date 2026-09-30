@@ -27,3 +27,11 @@ Recovery OS opens directly into a Three.js market world. Thirteen sector distric
 Run `node tests/research-evidence.test.cjs` and `python -m unittest discover -s tests -p 'test_public_research.py'` for public-data integrity, synthesis and period-normalization checks, alongside the model/search checks above.
 
 The atlas is collected by `scripts/build_market_atlas.py` using Nasdaq public screener records and SEC XBRL frames. The collector retains prior evidence during source failures. Financial merges preserve exact dates, units and field-specific filing links, and recalculate ratios after filling compatible fields. Unknown or unsupported metrics lead to original sources; they are never replaced by invented observations. Run `node tests/market-atlas.test.cjs` and `python -m unittest discover -s tests -p "test_market_atlas.py"` for atlas integrity.
+
+## Daily coverage and world navigation
+
+The public-research workflow queues the entire searchable universe at 12:37 and 22:37 UTC. The collector prioritizes unattempted and oldest-checked symbols, checkpoints its compact index every 100 completed attempts, and stops submitting work after 145 minutes so validation and publication have time to finish. `data/open-research/refresh-queue.json` distinguishes completed attempts, deferred symbols and collector errors. Source failures retain saved evidence; a completed queue does not mean every source succeeded.
+
+Price history still requires the configured authorized `STOOQ_API_KEY`; source permission gates remain in place. SEC requests respect shared throttling and cooldowns. Funds and unsupported financial reporting formats retain source links. News combines supported issuer feeds and SEC company events, not guaranteed complete media coverage. Saved recovery theses and trade records are never rewritten by this job.
+
+Stock tabs show source verification and attempt dates in a collapsed freshness section. Empty metric cards and repetitive coverage messages are omitted. The 3D world uses separate sector islands, connecting routes, a sector jump menu, a clickable desktop map and a recenter action. Building heights are decorative; they do not encode financial values.

@@ -90,7 +90,7 @@ def build():
                        for k in ('requests', 'cacheHits', 'requestsAvoided')},
         'automaticMaintenance': {
             'refresh': 'Every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening. Open pages check for new publications every minute.',
-            'coverageGrowth': 'Up to four additional directory-verified company records per collection. Matching saved atlas evidence is reused with its original dates.',
+            'coverageGrowth': 'Full searchable universe queued twice daily, oldest checks first. Bounded runs checkpoint progress and report deferred records. Matching saved evidence retains its original dates.',
             'dataProtection': 'Failed requests retain the last verified data, source identity and successful retrieval time',
             'requests': 'Conditional requests, cache reuse, host cooldowns and bounded retries',
             'quality': 'Financial and price checks, source coverage reports, and tracker integrity gate',

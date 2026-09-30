@@ -2,6 +2,7 @@
 import copy
 import datetime as dt
 import json
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -82,6 +83,11 @@ def has_evidence(bundle):
                 or (bundle.get('financials') or {}).get('annual'))
 
 
+@lru_cache(maxsize=64)
+def _atlas_shard(path, modified):
+    return json.loads(Path(path).read_text())['stocks']
+
+
 def seed_from_atlas(root, ticker, entry, old):
     """Recover an empty dossier only from the matching saved ticker and issuer."""
     if has_evidence(old) or not entry or not str(entry.get('cik', '')).isdigit():
@@ -91,7 +97,8 @@ def seed_from_atlas(root, ticker, entry, old):
         h = (h * 31 + ord(character)) & 0xffffffff
     relative = f'data/market-atlas/shards/{h % 64:02x}.json'
     try:
-        saved = json.loads((Path(root) / relative).read_text())['stocks'][ticker]
+        path = Path(root) / relative
+        saved = _atlas_shard(str(path), path.stat().st_mtime_ns)[ticker]
     except (OSError, ValueError, KeyError):
         return copy.deepcopy(old)
     profile = saved.get('profile', {})

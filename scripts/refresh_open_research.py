@@ -173,6 +173,7 @@ def build_company(t,directory):
     old_path=DEST/(t+'.json');old=json.loads(old_path.read_text()) if old_path.exists() else {}
     if entry and old.get('profile',{}).get('cik') and str(entry.get('cik')).zfill(10)!=str(old['profile']['cik']).zfill(10):old={}
     old=seed_from_atlas(ROOT,t,entry,old)
+    result['profile']={**old.get('profile',{}),'ticker':t,'name':old.get('profile',{}).get('name') or (entry or {}).get('name') or t}
     if entry:
         cik=str(entry['cik']).zfill(10);sub=None
         result['profile']={**old.get('profile',{}),'ticker':t,'cik':cik,'name':old.get('profile',{}).get('name') or entry['name'],'exchange':entry.get('exchange')}
@@ -243,6 +244,8 @@ def build_company(t,directory):
     for key in ('filings','news','bars'):merged.setdefault(key,[])
     merged.setdefault('financials',{'quarterly':[],'annual':[]})
     previous={h['provider']:h for h in company_health(old)}
+    attempted={h['provider'] for h in merged['health']}
+    merged['health'].extend(h for h in company_health(old) if h['provider'] not in attempted)
     for h in merged['health']:
         if h['status']!='available':h['lastSuccessAt']=latest(h.get('lastSuccessAt'),previous.get(h['provider'],{}).get('lastSuccessAt'))
     merged['health']=company_health(merged)
@@ -322,7 +325,8 @@ def expansion_symbols(existing,directory,atlas,count=4):
     return selected
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=None);parser.add_argument('--skip-macro',action='store_true');parser.add_argument('--expand',type=int,choices=range(9),default=4,help='Add up to eight directory-verified company dossiers per run');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--tickers',default=None);parser.add_argument('--skip-macro',action='store_true');parser.add_argument('--expand',type=int,choices=range(9),default=4,help='Add up to eight directory-verified company dossiers per run');parser.add_argument('--all-symbols',action='store_true');parser.add_argument('--budget-minutes',type=float,default=20);args=parser.parse_args()
+    if args.budget_minutes <= 0:parser.error('--budget-minutes must be positive')
     prepared=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
     tickers=args.tickers.upper().split() if args.tickers else list(dict.fromkeys(TICKERS+[x['ticker'] for x in sorted(prepared,key=lambda x:x.get('lastAttemptAt',''))]))
     DEST.mkdir(parents=True,exist_ok=True)
@@ -331,14 +335,24 @@ def main():
     prior=refresh(sys.modules[__name__])
     directory={x['ticker']:x for x in prior['symbols']}
     atlas_path=ROOT/'data/market-atlas/index.json'
-    if not args.tickers and atlas_path.exists():
+    if args.all_symbols and not args.tickers:
+        from refresh_queue import universe
+        tickers=universe(prepared,directory,json.loads(atlas_path.read_text()) if atlas_path.exists() else {},TICKERS)
+        print(f'Full-universe queue: {len(tickers)} securities',flush=True)
+    elif not args.tickers and atlas_path.exists():
         additions=expansion_symbols(tickers,directory,json.loads(atlas_path.read_text()),args.expand)
         tickers=list(dict.fromkeys(tickers+additions))
         print('Coverage expansion: '+(', '.join(additions) or 'no additions'),flush=True)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        records=list(pool.map(lambda t:build_company(t,directory),tickers))
-    previous=json.loads((DEST/'index.json').read_text()).get('symbols',[]) if (DEST/'index.json').exists() else []
-    merged={x['ticker']:x for x in previous};merged.update({x['ticker']:x for x in records})
+    from refresh_queue import collect
+    # Keep the startup index small. Provider diagnostics belong in the lazily
+    # loaded company file, not in every user's 10,000-symbol bootstrap response.
+    records=[];merged={x['ticker']:{k:v for k,v in x.items() if k!='health'} for x in prepared}
+    def checkpoint(record):
+        records.append(record);merged[record['ticker']]={k:v for k,v in record.items() if k!='health'}
+        if len(records)%100==0:
+            write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'collectionInProgress':True})
+    queue=collect(tickers,lambda t:build_company(t,directory),checkpoint,args.budget_minutes*60)
+    write(DEST/'refresh-queue.json',{'lastAttemptAt':NOW,'scope':'all-symbols' if args.all_symbols else 'selected','meaning':'Completed means collection attempted, not all sources succeeded.',**queue})
     write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'method':'SEC statements, filings and company events; official macro sources; retained market snapshots with original timestamps. Unapproved collectors remain paused.'})
     if not args.skip_macro:macro()
     report=HTTP.report()

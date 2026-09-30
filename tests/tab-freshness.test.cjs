@@ -1,0 +1,13 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const c={window:{},loadSeed(){},researchBundle(){},renderResearchReader(){}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('market-atlas.js','utf8'),c);
+const now=Date.parse('2026-09-30T05:00:00Z');
+let checks=c.atlasTabChecks('financials',{health:[{provider:'SEC financial statements',lastAttemptAt:'2026-09-30T04:00:00Z',lastSuccessAt:'2026-09-12T04:00:00Z'}]},now);
+assert.equal(checks[0].state,'Source check overdue','A new attempt cannot freshen old evidence');
+checks=c.atlasTabChecks('filings',{health:[{provider:'SEC filings',lastSuccessAt:'2026-09-30T04:00:00Z'}]},now);
+assert.equal(checks[0].state,'Checked recently','A verified check can be fresh without a new filing');
+checks=c.atlasTabChecks('price',{health:[{provider:'Web finance market data',lastSuccessAt:'2026-09-30T04:00:00Z'}]},now);
+assert.equal(checks[0].state,'Not yet verified','A quote must not freshen historical bars');
+checks=c.atlasTabChecks('financials',{health:[{provider:'SEC financial statements',lastSuccessAt:'2027-01-01T04:00:00Z'}]},now);
+assert.equal(checks[0].state,'Not yet verified','Future timestamps cannot verify a check');
+console.log('PASS: per-tab freshness separates checks, attempts, quote coverage and future timestamps.');
