@@ -42,7 +42,14 @@ export class HologramRenderer{
   dispose(){}
 }
 
+export class StaticMapRenderer{
+  constructor(canvas){this.canvas=canvas;this.software=true;this.staticMap=true;this.ratio=1;}
+  setPixelRatio(){this.ratio=1} getPixelRatio(){return 1}
+  setClearColor(){} setSize(){} render(){} dispose(){}
+}
 export function marketRenderer(canvas,mobile){
+  if(canvas.dataset?.staticWorld==='true')return new StaticMapRenderer(canvas);
+
   let gl=null;try{gl=canvas.getContext('webgl2',{alpha:false,antialias:!mobile,powerPreference:'low-power'})}catch{}
   if(gl)return new THREE.WebGLRenderer({canvas,context:gl,alpha:false,antialias:!mobile,powerPreference:'low-power'});
   // A failed context request does not lock the canvas; use the perspective renderer.

@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.min.js';
-import {marketRenderer} from './world-renderer.js';
+import {marketRenderer} from './world-renderer.js?v=20260930-stablemap1';
 
 const Q=s=>document.querySelector(s),QA=s=>[...document.querySelectorAll(s)];
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
