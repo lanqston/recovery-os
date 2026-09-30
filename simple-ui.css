@@ -108,3 +108,7 @@
  .market-world-app .universe-node-label{max-width:150px;border-radius:8px;padding:10px 12px}
  .market-world-app .universe-node-label strong{font-size:14px}.market-world-app .universe-node-label em{font-size:11px;line-height:1.4}
 }
+.market-world-app .reader-heading{margin-bottom:16px}
+.market-world-app .evidence-synthesis{padding:0 0 12px}
+.market-world-app .evidence-synthesis p:first-of-type{margin-top:0}
+.market-world-app .research-action-row{margin-top:0}
