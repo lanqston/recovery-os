@@ -49,7 +49,6 @@ jobs:
       - name: Collect free public evidence
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
-          STOOQ_API_KEY: ${{ secrets.STOOQ_API_KEY }}
           RECOVERY_CACHE_DIR: ${{ runner.workspace }}/open-source-cache
         run: python scripts/refresh_open_research.py --all-symbols --budget-minutes 145
       - name: Refresh official issuer news and apply verified quote observations

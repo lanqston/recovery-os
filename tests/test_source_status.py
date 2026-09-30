@@ -86,13 +86,6 @@ class SourceStatusTests(unittest.TestCase):
         self.assertEqual(rows['Stooq daily history']['recordCount'], 1)
         self.assertEqual(rows['Yahoo daily history']['recordCount'], 0)
 
-    def test_stooq_parser_keeps_secret_out_of_public_url(self):
-        body = 'Date,Open,High,Low,Close,Volume\n2026-09-17,10,11,9,10.5,100\n2026-09-18,10.5,12,10,11.5,120\n'
-        with patch.dict(collector.os.environ, {'STOOQ_API_KEY': 'top-secret'}), patch.object(collector, 'fetch', return_value=body):
-            bars, request_url, public_url = collector.stooq_price_bars('TEST')
-        self.assertEqual(bars[-1]['close'], 11.5)
-        self.assertIn('top-secret', request_url)
-        self.assertNotIn('top-secret', public_url)
 
 
 class ArchiveSeedTests(unittest.TestCase):

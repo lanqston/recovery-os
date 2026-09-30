@@ -63,6 +63,7 @@ def build():
         bundle = read('data/open-research/' + item['ticker'] + '.json', {})
         evidence_count += int(has_evidence(bundle))
         for row in company_health(bundle):
+            if row['provider']=='Stooq daily history': continue
             groups[row['provider']].append({**row, 'ticker': item['ticker']})
     macro = read('data/open-research/macro.json', {})
     for row in macro.get('health', []):
@@ -98,7 +99,7 @@ def build():
             'codeChanges': 'Evidence-backed improvement proposals require validation and review',
         },
         'limitations': [
-            'Fresh end-of-day market history uses the authorized Stooq adapter when STOOQ_API_KEY is configured; otherwise dated saved quotes remain explicitly stale.',
+            'Saved market history retains its original source dates.',
             'Market sources paused for access permission remain paused; stored quotes are not live.',
             'Analyst, options and intraday coverage is unavailable where no compatible free source is connected.',
             'Passing checks describe the application; individual source blocks and missing records are reported separately.',

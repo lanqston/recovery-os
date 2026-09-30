@@ -146,3 +146,16 @@
  .market-world-app .universe-flight-controls{bottom:calc(var(--mobile-bottom) + 132px)}
  .market-world-app #universeTitle{font-size:30px}.market-world-app #universeSubtitle{max-width:280px}
 }
+
+/* Consistent app surfaces and stable map labels. */
+.market-world-app{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.market-world-app .research-kicker,.market-world-app .atlas-panel-head>span.research-kicker{display:none}
+.market-world-app .universe-node-label{transition:none!important;animation:none!important;backdrop-filter:none!important;box-shadow:none!important;background:#12232f!important;border:1px solid #344651!important;border-radius:8px!important}
+.market-world-app .universe-node-label strong{font-weight:600;letter-spacing:0}
+.market-world-app .universe-heading h2{font-size:36px;font-weight:600;letter-spacing:-.025em}
+.market-world-app .atlas-panel-head h2{font-weight:600;letter-spacing:-.02em}
+.market-world-app .source-note:empty,.market-world-app p:empty{display:none}
+.market-world-app .research-metrics{gap:12px}
+.market-world-app .research-stat,.market-world-app .atlas-news-item{box-shadow:none;border-radius:8px}
+.market-world-app #worldNavigator{box-shadow:none;background:#101d27;border-color:#344651}
+@media(max-width:760px){.market-world-app .universe-heading h2{font-size:28px}.market-world-app .source-note{font-size:12px;line-height:1.5}}
