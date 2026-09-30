@@ -1,1 +1,40 @@
-{"name":"Recovery OS — Crisis-to-Recovery Intelligence","short_name":"Recovery OS","description":"Crisis-to-recovery market intelligence, stock research, and opportunity tracking portal.","start_url":"./","scope":"./","display":"standalone","orientation":"any","background_color":"#050505","theme_color":"#050505","categories":["finance","productivity"],"icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],"shortcuts":[{"name":"Overview","short_name":"Home","url":"./#world"},{"name":"Master Tracker","short_name":"Tracker","url":"./#tracker"},{"name":"Alerts","short_name":"Alerts","url":"./#alerts"}]}
+{
+  "name": "Recovery OS \u2014 Crisis-to-Recovery Intelligence",
+  "short_name": "Recovery OS",
+  "description": "Crisis-to-recovery market intelligence, stock research, and opportunity tracking portal.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f2ec",
+  "theme_color": "#f5f2ec",
+  "categories": [
+    "finance",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Overview",
+      "short_name": "Home",
+      "url": "./#world"
+    },
+    {
+      "name": "Master Tracker",
+      "short_name": "Tracker",
+      "url": "./#tracker"
+    },
+    {
+      "name": "Alerts",
+      "short_name": "Alerts",
+      "url": "./#alerts"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+/* Warm neutral business theme. Loaded last so every research surface shares a palette. */
+:root{color-scheme:light;--paper:#f5f2ec;--surface:#fffdf9;--sand:#eae3d9;--line:#d8d0c5;--ink:#292722;--muted:#69635b;--accent:#725843;--research-bg:var(--paper);--research-surface:var(--surface);--research-elevated:var(--sand);--research-line:var(--line);--research-muted:var(--muted);--research-ink:var(--ink);--research-accent:var(--accent);--rx:var(--accent);--rx2:#725d79;--rx3:#35634e;--rxwarn:#8c641f;--rxbad:#a0483e;--rxbg:var(--paper);--rxpanel:var(--surface);--rxline:var(--line);--rxmuted:var(--muted);--world-ink:var(--ink);--atlas-cyan:var(--accent);--atlas-line:var(--line)}
+html,body.market-world-app,.market-world-app .explorer,.market-world-app .ex-shell,#atlasLoading,#simpleSectorMap,.simple-market-map.universe-pane-open .ex-main{background:var(--paper)!important;color:var(--ink)!important;background-image:none!important}
+.market-world-app{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.market-world-app :is(h1,h2,h3,h4,h5,strong,b){color:var(--ink)!important}
+.market-world-app :is(p,small,label,dt,dd,li,figcaption,summary,em){color:var(--muted)}
+.market-world-app :is(button,input,select,textarea){font-family:inherit;letter-spacing:normal}
+.market-world-app :is(a,button){-webkit-tap-highlight-color:#d8cbb955}
+.market-world-app :is(a,button,input,select,textarea,summary):focus-visible{outline:2px solid #725843!important;outline-offset:3px}
+.market-world-app ::selection{background:#d9c6ad;color:#292722}
+.market-world-app ::placeholder{color:#82796e!important;opacity:1}
+.market-world-app :is(.ex-top,.universe-footer,#universeReaderBar){background:var(--surface)!important;border-color:var(--line)!important;backdrop-filter:none!important;box-shadow:none!important}
+.market-world-app .ex-title b{font:650 13px/1.4 system-ui!important;letter-spacing:.1em!important;color:#554b40!important}
+.market-world-app :is(.ex-search input,input,select,textarea){background:var(--surface)!important;color:var(--ink)!important;border-color:#c9beb0!important;box-shadow:none!important;accent-color:#725843}
+.market-world-app .ex-search input{border-radius:10px!important;background:#f4efe7!important}
+.market-world-app :is(.ex-search:before,.explorer-home-search:before){color:var(--accent)!important}
+.market-world-app :is(.ex-back,.ex-icon,.ex-btn,.simple-tools button,.info-actions button,.information-surface button,.movement-content button,.chart-tools button,.seg button,#stockBasics,#recoveryRefreshStatus,#universeReaderBar>button,.stock-switch button){background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important;box-shadow:none!important}
+.market-world-app :is(.ex-btn,.simple-tools button,.information-surface button,.stock-switch button):hover{background:#eee6db!important;border-color:#a39482!important}
+.market-world-app :is(.ex-btn.on,.ex-btn.research-primary,.seg button.on,.chart-tools button.on){background:#725843!important;color:#fffdf9!important;border-color:#725843!important}
+.market-world-app .universe-footer button{background:transparent!important;color:#756c61!important;box-shadow:none!important;font-weight:500}
+.market-world-app .universe-footer button.selected{background:#e9dfd2!important;color:#44372a!important}
+.market-world-app .universe-footer button span{color:inherit!important}
+.market-world-app :is(.atlas-panel-head,.page-section-heading,.stock-price-summary,.research-coverage,.reader-heading,.research-metrics,.research-details,.simple-deep-research){border-color:var(--line)!important}
+.market-world-app .atlas-panel-head h2,#simpleSectorMap h1{font-weight:550!important;letter-spacing:-.04em!important}
+.market-world-app :is(.atlas-panel-head p,#simpleSectorMap p,.page-muted,.page-section-heading>span,.page-empty p,.watch-method,.stock-price-summary span,.stock-price-summary small,.research-label,.source-note,.info-note,.info-detail dt,.info-details dt,.research-kicker,.research-dated,.research-price small,.research-identity h2>span){color:var(--muted)!important}
+.market-world-app :is(.page-card,.simple-sector-tile,.atlas-recovery-list>article,.atlas-news-item,.atlas-note-preview,.ex-card,.research-metric,.research-stat,.research-prose,.research-two-col>article,.evidence-card,.evidence-chapter,.info-metric,.info-event,.info-provider,.info-coverage,.info-comparison>article,.movement-section,.movement-context article,.movement-evidence,.movement-assessment,.year-range,.public-research-paths,.public-research-grid a){background:var(--surface)!important;background-image:none!important;border-color:var(--line)!important;color:var(--ink)!important;box-shadow:none!important}
+.market-world-app .simple-sector-tile{border-top:1px solid var(--line)!important;border-radius:12px;min-height:104px}
+.market-world-app .simple-sector-tile:hover{background:#eee7dd!important;border-color:#aa9986!important}
+.market-world-app .simple-sector-tile small{color:var(--muted)!important}
+.market-world-app .sector-map-icon{background:#eee6db!important;color:#75604a!important;font-weight:500}
+.market-world-app .simple-sector-tile>span:last-child{color:#8e7e6a}
+.market-world-app :is(.atlas-recovery-list>article){border-top:2px solid #b29a7e!important}
+.market-world-app[data-app-page="tracker"] .research-metrics>div{background:var(--surface)!important;border-color:var(--line)!important}
+.market-world-app :is(.atlas-blocker,.news-context,.beginner-guide,.additional-research,.stock-switch,.movement-period,.movement-retained,.info-warning,.research-more>div,.research-dated){background:#ede6dc!important;border-color:var(--line)!important;color:var(--ink)!important}
+.market-world-app :is(.news-context p,.atlas-blocker span,.beginner-guide p,.beginner-guide dd,.simple-stock-summary small,.simple-stock-news small,.research-metric span,.research-metric small,.research-stat small,.info-metric span,.info-metric small,.movement-section>summary small,.movement-note,.movement-status,.movement-intro,.movement-controls label,.movement-source,.movement-timeline time,.movement-labels span,.public-research-grid span,.public-research-grid small){color:var(--muted)!important}
+.market-world-app :is(.atlas-company-list,.atlas-company-list>button,.watch-sort-rows>button,.atlas-checklist>div,.atlas-detail,.simple-stock-news article,.atlas-history,.atlas-news-item,.movement-content details,.movement-timeline li){background:transparent!important;color:var(--ink)!important;border-color:var(--line)!important}
+.market-world-app :is(.atlas-company-list small,.atlas-company-list em,.watch-sort-rows small,.stock-switch small,.risk-results small,.risk-results p,.year-range small){color:var(--muted)!important}
+.market-world-app :is(.research-text-link,.simple-stock-news a,.atlas-news-item a,.movement-content a,.info-event a,.information-surface a,.stock-extras a,.risk-results a,.public-research-grid a,.atlas-note-preview button){color:#725438!important}
+.market-world-app :is(.atlas-note-preview button,.research-text-link){background:transparent!important}
+.market-world-app :is(.up,.positive){color:#35634e!important}.market-world-app .down{color:#a0483e!important}
+.market-world-app .profit-badge{background:#e7ede4!important;border-color:#b7c4b0!important;color:#34553a!important}.market-world-app .profit-badge.neutral{background:#f2e5dd!important;border-color:#cbb7a7!important;color:#764a35!important}.market-world-app .profit-badge small{color:#52634c!important}
+.market-world-app .range-track{background:#d7c7b2!important}.market-world-app .range-track i{background:#725843!important;border-color:var(--surface)!important}
+.market-world-app .heat-none{background:#efebe4!important;border-color:#d8d0c5!important;color:#514b43!important}.market-world-app .heat-some{background:#e2d1b9!important;border-color:#c7b092!important;color:#4e3b27!important}.market-world-app .heat-high{background:#c8ad89!important;border-color:#a38763!important;color:#352817!important}.market-world-app .watch-heatmap small{color:inherit!important}
+.market-world-app .risk-results article{border-color:#bd9b6c!important}.market-world-app .page-section-title span{background:#e8ded0!important;color:#665a4c!important}
+.market-world-app :is(.ex-suggest,.search-suggest,.search-source,.search-item,.search-empty,.ex-suggest-row){background:var(--surface)!important;border-color:var(--line)!important;color:var(--ink)!important;box-shadow:0 10px 30px #4a342215!important}
+.market-world-app :is(.search-item:hover,.search-item.active,.ex-suggest-row:hover){background:#ebe2d6!important}.market-world-app :is(.search-item span,.search-item em){color:var(--muted)!important}
+#informationDialog,.market-world-app dialog{background:var(--surface)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:0 18px 70px #40302030!important}
+#informationDialog::backdrop{background:#3a30284d;backdrop-filter:blur(3px)}
+.market-world-app .info-dialog-head{background:var(--surface)!important;border-color:var(--line)!important}
+.market-world-app :is(.info-details dd,.info-detail dd,.information-surface p,.information-surface label,.info-evidence-value,#stockDefinitions dd){color:var(--muted)!important}
+.market-world-app :is(.info-badge,.ex-badge,.research-badge,.research-label,.movement-labels span){background:#eee7dd!important;color:#625342!important;border-color:#cfc0ae!important}
+.market-world-app :is(table,th,td,.info-table-wrap,.data-table-wrap){border-color:var(--line)!important;color:var(--ink)!important}.market-world-app th{background:#ece4d9!important}.market-world-app td{background:var(--surface)!important}.market-world-app pre{background:#eee7dd!important;color:var(--ink)!important;border-color:var(--line)!important}
+.market-world-app .research-chart{background:var(--surface)!important;border-color:var(--line)!important}
+.market-world-app :is(.chart-legend,.chart-help,.chart-value){color:var(--muted)!important}
+.market-world-app #researchBackTop,.market-world-app #pullRefreshStatus{background:#725843!important;color:#fffdf9!important;border-color:#725843!important;box-shadow:0 4px 14px #4a342222!important}
+.simple-market-map[data-app-page="stock"].universe-pane-open #universeDestinations{background:var(--surface)!important;border-color:var(--line)!important}.market-world-app #universeDestinations button{background:transparent!important;color:#696055!important}.market-world-app #universeDestinations button.active,.market-world-app #universeDestinations button.selected{background:#e9dfd2!important;color:#44372a!important}
+.market-world-app .ex-main,#simpleSectorMap{scrollbar-color:#c4b6a3 transparent!important}
+#atlasLoading small,#atlasLoading p{color:var(--muted)!important}.atlas-loading-orbit{border-color:#c4b39d!important;box-shadow:none!important}.atlas-loading-orbit:before{border-color:#a18a6c!important}.atlas-loading-orbit:after{background:#725843!important;box-shadow:none!important}
+@media(prefers-reduced-motion:reduce){.market-world-app *{scroll-behavior:auto!important}}
