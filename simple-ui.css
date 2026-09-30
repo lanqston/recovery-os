@@ -159,3 +159,12 @@
 .market-world-app .research-stat,.market-world-app .atlas-news-item{box-shadow:none;border-radius:8px}
 .market-world-app #worldNavigator{box-shadow:none;background:#101d27;border-color:#344651}
 @media(max-width:760px){.market-world-app .universe-heading h2{font-size:28px}.market-world-app .source-note{font-size:12px;line-height:1.5}}
+/* Research is a reading workspace; keep the map on the World screen. */
+.market-world-app.universe-pane-open #universeCanvas,.market-world-app.universe-pane-open #universeLabels,.market-world-app.universe-pane-open .universe-flight-controls,.market-world-app.universe-pane-open #informationLegend{visibility:hidden!important}
+.market-world-app.universe-pane-open #universeStage{background:#09121b}
+@media(min-width:761px){
+ .market-world-app.universe-pane-open .ex-main{left:300px;right:24px;width:auto;max-width:none;top:100px;bottom:130px;background:#101e29;border:1px solid #2b3a46;box-shadow:none}
+ .market-world-app.universe-pane-open .universe-heading{max-width:250px;left:28px;top:125px}
+ .market-world-app.universe-pane-open #universeStockMeta{max-width:230px}
+ .market-world-app.universe-pane-open #universeDestinations{left:300px;right:24px;transform:none;justify-content:flex-start;width:auto}
+}
