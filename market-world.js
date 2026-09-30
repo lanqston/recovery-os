@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three.module.min.js';
 import {StockUniverse} from './research-universe.js?v=20260930-clean1';
-import {installInformationWorld} from './information-world.js?v=20260930-simple1';
+import {installInformationWorld} from './information-world.js?v=20260930-worlddaily3';
 import {HologramRenderer} from './world-renderer.js?v=20260930-terrain1';
 
 const el=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)],mobile=()=>innerWidth<760;
@@ -84,10 +84,10 @@ class MarketWorld extends StockUniverse{
   }
   bind(){
     super.bind();
-    el('#worldMap').onclick=()=>this.home();el('#worldDistrict').onchange=e=>{if(e.target.value)this.district(e.target.value)};el('#worldCenter').onclick=()=>this.reset();
+    el('#worldMap').onclick=()=>this.home(true,{resetCamera:true});el('#worldDistrict').onchange=e=>{if(e.target.value)this.district(e.target.value)};el('#worldCenter').onclick=()=>this.reset();
     const radar=el('#universeRadar');radar.style.cursor='pointer';radar.setAttribute('aria-label','Market map; use Jump to a sector for keyboard navigation');radar.onclick=e=>{const box=radar.getBoundingClientRect(),x=(e.clientX-box.left)/box.width*160-80,z=(e.clientY-box.top)/box.height*160-80;const nearest=[...this.sectors].sort((a,b)=>(a.base.x*.055-x)**2+(a.base.z*.055-z)**2-((b.base.x*.055-x)**2+(b.base.z*.055-z)**2))[0];if(Math.hypot(nearest.base.x*.055-x,nearest.base.z*.055-z)<18)this.district(nearest.id);else this.home();};
-    el('#atlasHome').onclick=()=>this.home();el('#universeTracker').onclick=()=>this.station('tracker');el('#atlasNews').onclick=()=>this.station('news');el('#atlasWorkspace').onclick=()=>this.station('workspace');
-    el('#universeGeneral').onclick=()=>this.selected?selectResearchSection('brief',{scroll:false}):this.station('sectors');el('#universeOverview').onclick=()=>this.home();el('#universeTour').onclick=()=>this.startTour();el('#universeExpand').onclick=()=>this.reading(!document.body.classList.contains('atlas-reading'));el('#returnUniverse').onclick=()=>this.reading(false);el('#universeReader').onclick=()=>this.reading(true);el('#universePaneClose').onclick=()=>this.closePane();el('#closeExplorer').onclick=()=>this.home();el('#researchSettingsBtn').onclick=()=>window.RecoveryFabric?.openTools();el('#universeRefresh').onclick=()=>this.refreshResearch();
+    el('#atlasHome').onclick=()=>this.home(true,{resetCamera:true});el('#universeTracker').onclick=()=>this.station('tracker');el('#atlasNews').onclick=()=>this.station('news');el('#atlasWorkspace').onclick=()=>this.station('workspace');
+    el('#universeGeneral').onclick=()=>this.selected?selectResearchSection('brief',{scroll:false}):this.station('sectors');el('#universeOverview').onclick=()=>this.home(true,{resetCamera:true});el('#universeTour').onclick=()=>this.startTour();el('#universeExpand').onclick=()=>this.reading(!document.body.classList.contains('atlas-reading'));el('#returnUniverse').onclick=()=>this.reading(false);el('#universeReader').onclick=()=>this.reading(true);el('#universePaneClose').onclick=()=>this.closePane();el('#closeExplorer').onclick=()=>this.home();el('#researchSettingsBtn').onclick=()=>window.RecoveryFabric?.openTools();el('#universeRefresh').onclick=()=>this.refreshResearch();
     el('#atlasSave').onclick=()=>{if(this.selected){toggleFavorite(this.selected);this.stockTools()}};el('#atlasCompare').onclick=()=>{if(this.selected)addCompare(this.selected);this.station('compare')};el('#atlasNote').onclick=()=>{if(!this.selected)return;ROOT_VIEW('stock');this.openPane('Notes on '+this.selected);requestAnimationFrame(()=>{scrollResearchTo(el('#worldNotebook'));el('#worldNote')?.focus({preventScroll:true})})};
     this.canvas.addEventListener('pointerup',e=>{if(this.down?.moved>=7)return;const r=this.canvas.getBoundingClientRect();this.pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);this.raycaster.setFromCamera(this.pointer,this.camera);const hit=this.raycaster.intersectObjects(this.pickables).find(x=>x.object.userData.node?.kind==='station'||x.object.userData.node?.kind==='sector');if(hit){const n=hit.object.userData.node;n.kind==='sector'?this.district(n.id):this.station(n.id)}});
   }
