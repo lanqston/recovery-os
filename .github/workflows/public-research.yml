@@ -58,6 +58,7 @@ jobs:
             python scripts/refresh_recovery.py
           else
             python scripts/refresh_open_research.py --all-symbols --budget-minutes 145
+            python scripts/refresh_recovery.py
           fi
       - name: Refresh official issuer news and apply verified quote observations
         env:

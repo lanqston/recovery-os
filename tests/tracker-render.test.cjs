@@ -5,3 +5,9 @@ test('tracker renders and binds every row without aborting the site-wide refresh
  const context={STATE:state,$:s=>s==='#trackerRows'?host:rows[0],$$:s=>s==='#trackerRows tr'?rows:[],latestQuote:x=>({price:x.latestPrice}),money:String,pct:String,safe:String,latestSinceAdded:()=>0,quoteLabel:()=>'',openRoom:t=>opened.push(t)};
  vm.runInNewContext(fn+';renderTracker();',context);assert.match(host.innerHTML,/<tr/);assert.ok(rows.every(x=>typeof x.onclick==='function'));rows.forEach(x=>x.onclick());assert.deepEqual(opened,state.stocks.map(x=>x.ticker));assert.equal(JSON.stringify(state),before);
 });
+test('new recovery quote never displays an older after-hours quote alongside it',()=>{
+ const src=fs.readFileSync('app.js','utf8'),fn=src.slice(src.indexOf('function quoteLabel('),src.indexOf('\nfunction latestSinceAdded'));
+ const x={marketData:{afterHoursPrice:119.4,afterHoursAsOf:'2026-09-18T22:29:00Z'}},q={price:112.77,stamp:Date.parse('2026-09-29T23:15:00Z'),source:'Source',asOf:'raw'};
+ const c={x,q,latestQuote:()=>q,trackerTimestamp:Date.parse,money:String};vm.runInNewContext(fn+';result=quoteLabel(x,q)',c);
+ assert.match(c.result,/Sep 29, 2026/);assert.doesNotMatch(c.result,/119.4|After-hours|raw/);
+});
