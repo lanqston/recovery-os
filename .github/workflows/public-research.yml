@@ -31,8 +31,6 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 180
-    env:
-      RECOVERY_CACHE_DIR: ${{ runner.workspace }}/open-source-cache
     steps:
       - uses: actions/checkout@v4
         with:
@@ -62,6 +60,8 @@ jobs:
             python scripts/refresh_open_research.py --all-symbols --budget-minutes 145
           fi
       - name: Refresh official issuer news and apply verified quote observations
+        env:
+          RECOVERY_CACHE_DIR: ${{ runner.workspace }}/open-source-cache
         run: |
           python scripts/refresh_official_news.py
           python scripts/import_market_quotes.py --apply
