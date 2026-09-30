@@ -100,7 +100,7 @@ class MarketWorld extends StockUniverse{
     const button=el('#universeRefresh');if(button.disabled)return;
     button.disabled=true;
     try{
-      if(!this.selected){await window.RecoveryRefresh?.refresh(true);return}
+      if(!this.selected||document.body.classList.contains('information-open')){await window.RecoveryRefresh?.refresh(true);if(document.body.classList.contains('information-open')&&window.RecoveryFabric?.active==='refresh')window.RecoveryRefresh?.openStatus();return}
       const ticker=currentTicker,request=researchRequest,symbol=currentBundle?.researchSymbol;
       const bundle=await researchBundle(ticker,{refresh:true});
       if(request!==researchRequest||this.selected!==ticker||this.locationKind!=='stock'||window.RecoveryFabric?.replayState||document.body.classList.contains('information-open'))return;
