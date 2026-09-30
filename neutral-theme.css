@@ -57,3 +57,5 @@ html,body.market-world-app,.market-world-app .explorer,.market-world-app .ex-she
 .market-world-app .ex-main,#simpleSectorMap{scrollbar-color:#c4b6a3 transparent!important}
 #atlasLoading small,#atlasLoading p{color:var(--muted)!important}.atlas-loading-orbit{border-color:#c4b39d!important;box-shadow:none!important}.atlas-loading-orbit:before{border-color:#a18a6c!important}.atlas-loading-orbit:after{background:#725843!important;box-shadow:none!important}
 @media(prefers-reduced-motion:reduce){.market-world-app *{scroll-behavior:auto!important}}
+/* The shared shell overlays the main page; its empty area must stay transparent. */
+.market-world-app .ex-shell{background:transparent!important}
