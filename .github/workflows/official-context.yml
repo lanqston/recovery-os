@@ -1,0 +1,52 @@
+name: Refresh official context
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '22 */2 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/refresh_official_context.py'
+      - '.github/workflows/official-context.yml'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: official-context-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.workspace }}/official-source-cache
+          key: official-context-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: official-context-${{ runner.os }}-
+      - name: Check models and fetch official records
+        env:
+          RECOVERY_CACHE_DIR: ${{ runner.workspace }}/official-source-cache
+        run: |
+          python -m unittest discover -s tests -p 'test_official_context.py'
+          python scripts/refresh_official_context.py
+      - name: Save only the official context dataset
+        run: |
+          git config user.name 'recovery-os-data'
+          git config user.email 'recovery-os-data@users.noreply.github.com'
+          git add data/official-context.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh official rates and company legal headlines'
+            git pull --rebase origin main
+            git push
+          fi
+      - name: Publish data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" --jq '.status'
