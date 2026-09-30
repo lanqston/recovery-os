@@ -36,7 +36,7 @@ researchBundle=async function publicResearchBundle(t,{refresh=false}={}){
       const bars=enriched.bars?.length&&String(enriched.bars.at(-1).date)>=String(base.bars?.at(-1)?.date||'')?enriched.bars:base.bars;
       const useNewBars=bars===enriched.bars;
       return {...base,profile,news,bars,quote:enriched.quote&&window.RecoveryFreshness.quoteStamp(enriched)>=window.RecoveryFreshness.quoteStamp(base)?enriched.quote:base.quote,priceSource:enriched.quote&&window.RecoveryFreshness.quoteStamp(enriched)>=window.RecoveryFreshness.quoteStamp(base)?enriched.priceSource:base.priceSource,barSource:useNewBars?(enriched.barSource||enriched.priceSource):(base.barSource||base.priceSource),
-        financials:enriched.financials?.quarterly?.length?enriched.financials:base.financials,filings:enriched.filings||[],sourceHealth:enriched.health||[],health:enriched.health||[],lastAttemptAt:enriched.lastAttemptAt,publicRetrievedAt:enriched.retrievedAt,
+        financials:enriched.financials?.quarterly?.length?enriched.financials:base.financials,filings:enriched.filings||[],sourceHealth:enriched.health||[],health:enriched.health||[],financialPeriodStatus:enriched.financialPeriodStatus,lastAttemptAt:enriched.lastAttemptAt,publicRetrievedAt:enriched.retrievedAt,
         connectionState:'Public-source research · collected '+snapshotDate(enriched.retrievedAt),meta:{...base.meta,coverage:'SEC statements and filings, public market history and news. Each observation retains its date. Sources are collected outside the browser and served as native research.'}};
     }catch{return base}
   })();PUBLIC_BUNDLES.set(t,promise);return promise;

@@ -67,7 +67,7 @@ function atlasTabFreshness(section,b){
   if(section==='thesis')return '<p class="source-note">Saved recovery review · daily source refreshes do not rewrite your thesis or trade records.</p>';
   const checks=atlasTabChecks(section,b);if(!checks.length)return '';
   const date=x=>new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(x);
-  return `<details class="simple-deep-research"><summary>Source freshness · ${checks.every(c=>c.state==='Checked recently')?'checked recently':'checks incomplete'}</summary>${checks.map(c=>`<p class="source-note">${esc(c.label)}: ${esc(c.state)}${c.checked?' · verified '+esc(date(c.checked)):''}${c.attempted?' · last attempt '+esc(date(c.attempted)):''}</p>`).join('')}<p class="source-note">Checks run twice daily. A successful check may find no new report. Prices, reporting periods and headline dates remain shown with their original dates.</p></details>`;
+  return `<details class="simple-deep-research"><summary>Source dates</summary>${checks.map(c=>`<p class="source-note">${esc(c.label)}: ${esc(c.state)}${c.checked?' · verified '+esc(date(c.checked)):''}${c.attempted?' · last attempt '+esc(date(c.attempted)):''}</p>`).join('')}<p class="source-note">Checks run twice daily. A successful check may find no new report. Prices, reporting periods and headline dates remain shown with their original dates.</p></details>`;
 }
 function atlasLinks(b){const t=encodeURIComponent(b.profile?.ticker||currentTicker),cik=b.profile?.cik;return [
  [cik?`https://www.sec.gov/edgar/browse/?CIK=${encodeURIComponent(cik)}&owner=exclude`:`https://www.sec.gov/edgar/search/#/q=${t}`,'SEC company archive','Annual, quarterly, ownership and event filings'],
@@ -112,6 +112,10 @@ renderResearchReader=function renderAtlasReader(section,b,a,tr){
   if(section==='catalysts'&&!b.news?.length)root.innerHTML=readerHeader('NEWS','Company news','')+`<section class="atlas-next-sources"><h4>Company announcements</h4>${atlasSourceCards(b)}</section>`;
   if(section==='sources')root.insertAdjacentHTML('beforeend',atlasSourceCards(b));
   root.querySelectorAll('.research-empty').forEach(panel=>panel.remove());
+  if(section==='price')root.querySelectorAll('article.research-prose').forEach(article=>{
+    if(article.querySelector('h4')?.textContent==='What to check next'){article.remove();return}
+    const details=document.createElement('details');details.className='simple-deep-research';details.innerHTML='<summary>Chart notes</summary>';article.replaceWith(details);details.append(article);
+  });
   root.querySelectorAll('.research-metric').forEach(card=>{const value=card.querySelector('strong')?.textContent?.trim();if(/^(Not available|Not collected|Unavailable|Unknown|N\/A|—|--|null)$/i.test(value||''))card.remove()});
   root.querySelectorAll('.research-metrics').forEach(group=>{if(!group.children.length)group.remove()});
   if(section!=='sources')root.querySelectorAll('.atlas-source-cards').forEach(cards=>{const details=document.createElement('details');details.className='simple-deep-research';details.innerHTML='<summary>Original reports & websites</summary>';cards.replaceWith(details);details.append(cards)});

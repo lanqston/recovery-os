@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three.module.min.js';
 import {StockUniverse} from './research-universe.js?v=20260930-clean1';
 import {installInformationWorld} from './information-world.js?v=20260930-simple1';
-import {HologramRenderer} from './world-renderer.js';
+import {HologramRenderer} from './world-renderer.js?v=20260930-terrain1';
 
 const el=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)],mobile=()=>innerWidth<760;
 const SECTORS=[['Technology','Technology',0x69d9ee],['Health Care','Health care',0xa895ef],['Finance','Finance',0x7baced],['Consumer Discretionary','Consumer',0xf1bb89],['Consumer Staples','Staples',0xb8cf8c],['Industrials','Industrials',0x87cbbc],['Energy','Energy',0xeac279],['Basic Materials','Materials',0xc99f86],['Telecommunications','Communications',0x9dacf1],['Utilities','Utilities',0x96c4e0],['Real Estate','Real estate',0xa7bad6],['Funds','Funds & indices',0xcbdcb9],['Market frontier','Market frontier',0x7b90af]];
@@ -35,7 +35,7 @@ class MarketWorld extends StockUniverse{
     this.sectors=SECTORS.map(([id,title,color],i)=>({id,title,color,kind:'sector',base:new THREE.Vector3(Math.sin(i/SECTORS.length*Math.PI*2)*1080,0,Math.cos(i/SECTORS.length*Math.PI*2)*1080)}));
     for(const r of this.registry){const center=this.sectors.find(s=>s.id===r.sector),angle=(r.seed%10000)/10000*Math.PI*2,radius=40+Math.sqrt((r.seed>>>12)%1000)/31.63*160;r.position=center.base.clone().add(new THREE.Vector3(Math.sin(angle)*radius,0,Math.cos(angle)*radius));}
     this.registryMap=new Map(this.registry.map(r=>[r.ticker,r]));this.stationNodes=[];this.sectorNodes=[];this.lastPool=0;this.focusDistrict=null;
-    super.initScene();this.camera.far=40000;this.camera.updateProjectionMatrix();this.scene.fog.density=.00018;this.renderer.setClearColor(0x091923,1);this.scene.fog.color.set(0x091923);this.stars.material.opacity=.16;this.canvas.dataset.renderer=this.renderer.software?'perspective-canvas':'webgl';
+    super.initScene();this.camera.far=40000;this.camera.updateProjectionMatrix();this.scene.fog.density=.00018;this.renderer.setClearColor(0x091923,1);this.scene.fog.color.set(0x091923);this.stars.material.opacity=.16;for(const child of this.scene.children)if(child.type==='GridHelper')child.visible=false;this.canvas.dataset.renderer=this.renderer.software?'perspective-canvas':'webgl';
     this.addDistricts();this.addRoads();this.addStations();this.addPlanet();this.refreshTape();
     this.records=OPEN_RESEARCH_INDEX;this.renderer.setPixelRatio(Math.min(devicePixelRatio,this.renderer.software?1.2:mobile()?1.4:1.8));
   }
@@ -54,7 +54,7 @@ class MarketWorld extends StockUniverse{
   }
   label(node){const b=node.label;b.dataset.universeNode=node.id;b.querySelector('small').textContent=node.kicker||'';b.querySelector('strong').textContent=node.title+' ↗';b.querySelector('em').textContent=node.detail||'';b.setAttribute('aria-label','Explore '+(node.title||'company'))}
   addDistricts(){
-    for(const sector of this.sectors){const group=new THREE.Group();group.position.copy(sector.base);const island=new THREE.Mesh(new THREE.CylinderGeometry(232,245,32,48),new THREE.MeshStandardMaterial({color:new THREE.Color(sector.color).multiplyScalar(.16),roughness:.9,metalness:.15}));island.position.y=-32;group.add(island);group.add(this.ring(235,sector.color,-14));group.add(this.ring(225,sector.color,-14));const beacon=new THREE.Mesh(new THREE.OctahedronGeometry(16,0),this.material(sector.color,.38));beacon.position.y=100;group.add(beacon);const halo=this.glow(sector.color,120);halo.position.y=96;group.add(halo);this.scene.add(group);const count=this.registry.filter(r=>r.sector===sector.id).length;const node={...sector,group,beacon,kicker:'SECTOR DISTRICT',detail:count.toLocaleString()+' securities',position:sector.base.clone().setY(128)};beacon.userData.node=node;this.pickables.push(beacon);this.sectorNodes.push(this.addLabel(node));}
+    for(const sector of this.sectors){const group=new THREE.Group();group.position.copy(sector.base);const island=new THREE.Mesh(new THREE.CylinderGeometry(232,245,32,48),new THREE.MeshStandardMaterial({color:new THREE.Color(sector.color).multiplyScalar(.28),roughness:.9,metalness:.15}));island.position.y=-32;group.add(island);group.add(this.ring(235,sector.color,-14));group.add(this.ring(225,sector.color,-14));const beacon=new THREE.Mesh(new THREE.OctahedronGeometry(16,0),this.material(sector.color,.38));beacon.position.y=100;group.add(beacon);const halo=this.glow(sector.color,120);halo.position.y=96;group.add(halo);this.scene.add(group);const count=this.registry.filter(r=>r.sector===sector.id).length;const node={...sector,group,beacon,kicker:'SECTOR DISTRICT',detail:count.toLocaleString()+' securities',position:sector.base.clone().setY(128)};beacon.userData.node=node;this.pickables.push(beacon);this.sectorNodes.push(this.addLabel(node));}
   }
   addRoads(){
     this.scene.add(this.ring(1080,0x557884,-14));this.scene.add(this.ring(1090,0x294751,-14));

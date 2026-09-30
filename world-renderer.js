@@ -19,6 +19,18 @@ export class HologramRenderer{
       if(obj.isSprite){const point=this.project(0,0,0,m);if(point.z<0||point.z>1)continue;const scale=obj.getWorldScale(new THREE.Vector3()),distance=Math.max(1,Math.sqrt(depth));const size=h/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)))/distance;const image=mat.map?.image;if(image&&scale.x*size>1){ctx.globalAlpha=Math.min(opacity,.9);ctx.drawImage(image,point.x-scale.x*size/2,point.y-scale.y*size/2,scale.x*size,scale.y*size)}continue;}
       if(obj.isPoints){const p=obj.geometry.attributes.position,colors=obj.geometry.attributes.color;const step=w<760?2:1;ctx.globalAlpha=Math.min(opacity,.8);for(let i=0;i<p.count;i+=step){const point=this.project(p.getX(i),p.getY(i),p.getZ(i),m);if(point.z<0||point.z>1||point.x<0||point.x>w||point.y<80||point.y>h)continue;if(colors){const c=new THREE.Color().fromBufferAttribute(colors,i);ctx.fillStyle='#'+c.getHexString()}const radius=obj.userData.marketCloud?1.4:.7;ctx.fillRect(point.x,point.y,radius,radius)}continue;}
       let geometry=obj.geometry;
+      // Filled sector terrain also works on devices without WebGL. Preserve
+      // perspective and depth ordering instead of reducing every island to wire.
+      if(obj.isMesh&&geometry?.type==='CylinderGeometry'&&geometry.parameters.radiusTop>=200){
+        const {radiusTop:rt,radiusBottom:rb,height:height}=geometry.parameters;
+        const top=[],bottom=[];for(let i=0;i<40;i++){const a=i/40*Math.PI*2;top.push(this.project(Math.cos(a)*rt,height/2,Math.sin(a)*rt,m));bottom.push(this.project(Math.cos(a)*rb,-height/2,Math.sin(a)*rb,m));}
+        if(top.every(p=>p.z>=0&&p.z<=1)&&bottom.every(p=>p.z>=0&&p.z<=1)){
+          const polygon=points=>{ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fill();};
+          ctx.globalAlpha=1;ctx.fillStyle='#0d2632';for(let i=0;i<40;i++)polygon([top[i],top[(i+1)%40],bottom[(i+1)%40],bottom[i]]);
+          ctx.fillStyle=color;polygon(top);ctx.strokeStyle='#527c87';ctx.stroke();
+        }
+        continue;
+      }
       if(obj.isMesh){if(!this.edges.has(geometry))this.edges.set(geometry,mat.wireframe?new THREE.WireframeGeometry(geometry):new THREE.EdgesGeometry(geometry,25));geometry=this.edges.get(geometry);ctx.globalAlpha=Math.min(.64,opacity*.7+.12);}
       const positions=geometry?.attributes.position;if(!positions)continue;
       const segments=obj.isMesh||obj.isLineSegments,index=geometry.index,count=index?index.count:positions.count;ctx.beginPath();let visible=0;

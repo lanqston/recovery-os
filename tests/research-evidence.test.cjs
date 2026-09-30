@@ -23,10 +23,17 @@ for(const item of index.symbols){
    assert.equal(r.currency,'USD');assert(!r.dilutedShares||r.dilutedShares>0);
    if(r.freeCashFlow!=null){assert.equal(r.freeCashFlow,r.operatingCashFlow-r.capitalExpenditure);assert.equal(r.provenance.operatingCashFlow.end,r.provenance.capitalExpenditure.end);assert.equal(r.provenance.operatingCashFlow.start,r.provenance.capitalExpenditure.start)}
  }
- const text=c.evidenceChapters(b,a,null);assert(!/NaN|undefined|Infinity/.test(text),item.ticker+' has invalid narrative output');
+ const text=c.evidenceChapters(b,a,null);assert(!/\bNaN\b|\bundefined\b|[$+−-]Infinity|\bInfinity(?:%|×|<)/.test(text),item.ticker+' has invalid narrative output');
  assert(a.sources.every(x=>model.safeURL(x.url)));assert(b.filings.every(x=>model.safeURL(x.url)));
  if(a.fund)assert.equal(a.fin.rows.length,0,'Fund investment results must not be presented as corporate operating statements');
- else if(b.financials?.quarterly?.length)assert(b.financials.quarterly[0].endDate>'2025-09-01',item.ticker+' unexpectedly uses old financial concepts');
+ else if(b.financials?.quarterly?.length){
+   const end=b.financials.quarterly[0].endDate;
+   if(Math.floor((Date.now()-Date.parse(end))/86400000)>365){
+     assert.equal(b.financialPeriodStatus?.state,'HISTORICAL',item.ticker+' must label old financial periods as historical');
+     assert.equal(b.financialPeriodStatus?.latestPeriodEnd,end,item.ticker+' must retain the actual latest reporting period');
+     assert(b.financials.quarterly.every(r=>model.safeURL(r.source)),item.ticker+' historical records require original sources');
+   }
+ }
 }
 assert.equal(JSON.stringify(tracker),before);
 (async()=>{

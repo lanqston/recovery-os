@@ -243,6 +243,10 @@ def build_company(t,directory):
     merged={**old,**result}
     for key in ('filings','news','bars'):merged.setdefault(key,[])
     merged.setdefault('financials',{'quarterly':[],'annual':[]})
+    periods=merged['financials'].get('quarterly',[])
+    if periods:
+        period_end=max(r['endDate'] for r in periods if r.get('endDate'))
+        merged['financialPeriodStatus']={'state':'HISTORICAL' if days(period_end,NOW[:10])>365 else 'REPORTED','latestPeriodEnd':period_end}
     previous={h['provider']:h for h in company_health(old)}
     attempted={h['provider'] for h in merged['health']}
     merged['health'].extend(h for h in company_health(old) if h['provider'] not in attempted)
