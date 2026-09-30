@@ -4,13 +4,14 @@
   const esc=x=>String(x??'Unknown').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const display=x=>x?window.RecoveryInformation?.display(x)||x:'No successful observation';
   function draw(){
-    const host=document.querySelector('#atlasTape');if(!host)return;
+    const host=document.querySelector('.ex-actions');if(!host)return;
     let button=document.querySelector('#recoveryRefreshStatus');
     if(!button){button=document.createElement('button');button.id='recoveryRefreshStatus';host.append(button);button.onclick=openStatus}
     const late=!status||Date.now()-Date.parse(status.completedAt)>36*3600000;
-    button.textContent=status?`Daily refresh · ${late?'Overdue':status.status}`:'Refresh status unavailable';
+    const label=status?`Daily refresh · ${late?'Overdue':status.status}`:'Refresh status unavailable';
+    button.textContent='Updates';
     button.title=status?`Collection completed ${display(status.completedAt)}. Open component dates.`:'Open refresh details';
-    button.setAttribute('aria-label',button.textContent+'. Open component freshness');
+    button.setAttribute('aria-label',label+'. Open component freshness');
   }
   function openStatus(){
     const fabric=window.RecoveryFabric;if(!fabric)return;

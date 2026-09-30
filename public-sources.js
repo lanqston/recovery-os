@@ -9,7 +9,6 @@
  }
  function html(d,options={}){return `<section class="public-research-paths"><h3>Keep exploring ${esc(d.identity.ticker)}</h3><p>Follow public sources beyond the saved dataset. Search links are research paths, not confirmed evidence or an assertion that nothing else happened.</p><div class="public-research-grid">${links(d,options).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer"><small>${esc(x.type)}</small><strong>${esc(x.label)} ↗</strong><span>${esc(x.note)}</span></a>`).join('')}</div>${options.end?'<p>Search is date-filtered where supported. Always verify publication and revision dates before using a result in historical research.</p>':''}</section>`}
  async function open(ticker){U.modal('Explore public sources',`<div id="publicSourcesContent">Opening source paths for ${esc(ticker)}…</div>`);const d=await U.load(ticker);const host=document.querySelector('#publicSourcesContent');if(host)host.innerHTML=html(d);}
- const reader=renderResearchReader;renderResearchReader=function(section,b,...args){reader(section,b,...args);const host=document.querySelector('#researchReader');if(host&&!host.querySelector('.public-source-launch'))host.insertAdjacentHTML('afterbegin',`<button class="public-source-launch ex-btn" data-public-sources="${esc(b.profile.ticker)}">Explore public sources ↗</button>`)};
  document.addEventListener('click',e=>{const b=e.target.closest('[data-public-sources]');if(b){e.preventDefault();open(b.dataset.publicSources)}});
  window.RecoveryPublicSources={links,html,open};
 })();

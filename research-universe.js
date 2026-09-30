@@ -7,7 +7,7 @@ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches||docume
 const small=()=>innerWidth<760;
 const COLORS={brief:0x9cbdff,price:0x54e6c2,financials:0xa0a9ff,catalysts:0xffc58b,risks:0xff839b,sources:0x86d5ff,filings:0xd8dfef,macro:0xba99ff};
 const TITLES={brief:'Research desk',price:'Price observatory',financials:'Financial engine',catalysts:'Catalyst field',risks:'Risk scenarios',sources:'Source archive',filings:'Filing trail',macro:'Macro observatory'};
-const TOPICS=['brief','price','financials','filings','catalysts','risks','macro','sources'];
+const TOPICS=['brief','price','financials','catalysts','sources'];
 const pretty=t=>t==='brief'?'Research':t==='price'?'Price':t[0].toUpperCase()+t.slice(1);
 const baseOpen=openExplorer,baseClose=closeExplorer,baseView=showView,baseRender=renderResearchWorld,baseSelect=selectResearchSection;
 let U=null,enabled=false,readerPreference=false,ready=false;
