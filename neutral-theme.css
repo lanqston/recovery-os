@@ -61,3 +61,5 @@ html,body.market-world-app,.market-world-app .explorer,.market-world-app .ex-she
 .market-world-app .ex-shell{background:transparent!important}
 .market-world-app .atlas-recovery-list header span{color:#725843!important;background:#eee5d8!important;border-color:#d0bfa8!important}
 .market-world-app :is(.info-event small,.atlas-news-item small,.atlas-history small,.atlas-checklist span,.atlas-checklist b,.info-provider dd,.research-stat span){color:var(--muted)!important}
+
+.news-filter-bar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin:24px 0 8px}.news-filter-bar label{font-size:13px;color:#69635b}.news-filter-bar .atlas-filter{margin-top:8px}#atlasNewsMore{display:block;margin:24px auto;min-height:48px}#atlasNewsMore[hidden]{display:none}@media(max-width:650px){.news-filter-bar{grid-template-columns:1fr 1fr;gap:12px}.news-filter-bar label:first-child{grid-column:1/-1}}
