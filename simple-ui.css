@@ -33,3 +33,6 @@
  .market-world-app #informationSelection{max-height:calc(100dvh - 180px);overflow:auto}
  .market-world-app .simple-deep-research>summary{font-size:15px}
 }
+
+.market-world-app .research-action-row{display:flex!important;flex-wrap:wrap;margin:0 0 16px}
+.market-world-app .research-action-row>.ex-btn{font-size:14px}

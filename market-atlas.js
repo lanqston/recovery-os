@@ -77,7 +77,7 @@ renderResearchReader=function renderAtlasReader(section,b,a,tr){
   if(section==='financials')root.innerHTML=renderAtlasFinancials(b,a);
   if(section==='brief'){
     root.querySelector('.evidence-synthesis')?.insertAdjacentHTML('afterend',atlasBusiness(b)+`<div class="research-metrics">${atlasKnownStats(b,a)}</div>`);
-    root.querySelector('.research-empty')?.remove();root.insertAdjacentHTML('beforeend',`<section class="atlas-next-sources"><div class="research-kicker">KEEP INVESTIGATING</div><h4>Every question has a next source.</h4>${atlasSourceCards(b)}</section>`);
+    root.querySelector('.research-empty')?.remove();root.insertAdjacentHTML('beforeend',`<button class="ex-btn" data-research-section="sources">Sources & original reports ↗</button>`);
   }
   if(section==='price'){
     if(a.tech)root.insertAdjacentHTML('beforeend',atlasPriceStats(b,a));
