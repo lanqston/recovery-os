@@ -1,6 +1,6 @@
 /* One publication revision invalidates every research layer, independently of thesis revision. */
 (()=>{'use strict';
-  let status=null,pending=null,lastApplied=0;
+  let status=null,pending=null;
   const esc=x=>String(x??'Unknown').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const display=x=>x?window.RecoveryInformation?.display(x)||x:'No successful observation';
   function draw(){
@@ -31,19 +31,22 @@
     await refreshTrackerObservations();
     const fabric=window.RecoveryFabric,world=fabric?.world;
     if(currentBundle&&currentTicker&&!fabric?.replayState&&world?.locationKind==='stock'){
-      const ticker=currentTicker,section=researchSection;
+      const ticker=currentTicker,request=researchRequest;
       const bundle=await researchBundle(ticker,{refresh:true});
       // Do not replace a new navigation with an older request's result.
-      if(currentTicker===ticker&&world.locationKind==='stock'&&!fabric?.replayState){
+      if(currentTicker===ticker&&request===researchRequest&&world.locationKind==='stock'&&!fabric?.replayState&&!document.body.classList.contains('information-open')){
+        // Capture after the fetch: the user may have switched sections while it ran.
+        const section=researchSection,reader=world.captureReader?.();
         const camera={position:world.camera.position.clone(),target:world.target.clone(),cameraTarget:world.cameraTarget.clone(),distance:world.distance,yaw:world.yaw,pitch:world.pitch};
         bundle.researchSymbol=currentBundle.researchSymbol;currentBundle=bundle;
         renderResearchWorld(bundle,section);world.bundle=bundle;
+        world.restoreReader?.(reader);
         world.camera.position.copy(camera.position);world.target.copy(camera.target);world.cameraTarget.copy(camera.cameraTarget);
         Object.assign(world,{distance:camera.distance,yaw:camera.yaw,pitch:camera.pitch,flight:null});world.changed=true;
       }
     }
     await fabric?.refreshData();
-    status=next;lastApplied=Date.now();draw();
+    status=next;draw();
     window.dispatchEvent(new CustomEvent('recovery-data-updated',{detail:next}));
   }
   async function refresh(manual=false){
@@ -55,7 +58,7 @@
         if(!response.ok)throw new Error('Refresh report HTTP '+response.status);
         const next=await response.json();if(!next.revision||!Array.isArray(next.components))throw new Error('Refresh report invalid');
         const changed=status?.revision!==next.revision;
-        if(manual||changed||Date.now()-lastApplied>300000)await apply(next);else{status=next;draw()}
+        if(manual||changed)await apply(next);else{status=next;draw()}
         if(manual)toast('Latest available evidence loaded · '+next.status.toLowerCase()+' coverage');
       }catch(e){draw();if(manual)toast('Could not refresh · saved evidence remains available');console.warn('Daily refresh',e)}
       finally{pending=null}
@@ -64,6 +67,8 @@
   window.RecoveryRefresh={refresh,openStatus,invalidate,get status(){return status}};
   const resume=()=>{if(!document.hidden)refresh()};
   document.addEventListener('visibilitychange',resume);window.addEventListener('online',resume);window.addEventListener('pageshow',resume);
+  // Poll only the small publication manifest, not every source or stock.
+  setInterval(resume,60000);
   // Seed loading is owned by the existing app. Wait for its world before refreshing it.
   let bootTries=0;const boot=setInterval(()=>{if(window.RecoveryFabric?.world){clearInterval(boot);refresh()}else if(++bootTries>60)clearInterval(boot)},1000);
 })();

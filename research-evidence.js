@@ -119,4 +119,4 @@ renderResearchReader=function renderPublicReader(section,b,a,tr){
   bindResearchNavigation();
 }
 
-marketWorkspace=function publicMarketWorkspace(kind,symbol){return kind==='chart'?`<div class="research-citation-row">${sourceLink(tradingViewUrl(symbol),'Open full chart','ex-btn')}</div>`:''};
+marketWorkspace=function publicMarketWorkspace(kind,symbol){return kind==='chart'?`<section class="market-workspace"><h4>Updating market chart</h4><p>TradingView updates this chart while it is open. Real-time, delayed or end-of-day availability depends on the exchange; check the chart’s data label. Saved analysis above keeps its own dates.</p><button type="button" class="ex-btn" data-market-module="chart" data-market-symbol="${esc(symbol)}">Load updating chart</button><div id="marketModule" class="market-module" hidden></div><div id="marketModuleStatus" class="market-module-status" role="status"></div><div class="research-citation-row">${sourceLink(tradingViewUrl(symbol),'Open full chart on TradingView','ex-btn')}</div></section>`:''};

@@ -57,3 +57,11 @@ Additional issuer feeds verified from the companies' RSS directories:
 - Verisign: https://investor.verisign.com/shareholder-services/rss-feeds/ -> https://investor.verisign.com/rss/news-releases.xml
 
 The last two adapters activate when those dossiers are prepared; configuring a source does not add names to the recovery tracker. These sources return linked headlines, not full articles or verified price catalysts. Original dates, deduplication, retained history and host cooldowns still apply. S&P Global, Pfizer and Qualcomm returned HTTP 403 during discovery; they were not added or bypassed. Missing price history, options, short interest and consensus estimates remain unresolved; current quotes do not fill those datasets.
+
+## UI and refresh repair (September 30)
+
+Visible pages poll the lightweight publication manifest every 60 seconds and on resume. Only a changed revision or manual refresh reloads the datasets. These checks do not increase upstream quote collection frequency. Refresh retains the stock section, reader expansion, scroll, open disclosures and notes focus, and cannot overwrite a newer navigation or historical replay. Tracker controls are rebound after publication updates.
+
+The Price page offers one on-demand official TradingView chart embed. Once loaded, the provider updates it at its permitted frequency. Exchange availability and delays remain visible inside the widget; the widget does not supply data to native calculations, quote files, or historical replay. Branding and the original chart link are retained. See https://www.tradingview.com/widget-docs/faq/data/ and https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/.
+
+Barchart OnDemand was reviewed as a potential frequent quote feed. Its official product describes usage-based paid access (https://www.barchart.com/ondemand). No free production API entitlement or redistribution license is configured, so no Barchart collector, paid subscription or credentials were added. Free access to a website is not an API entitlement. Existing quote collection limitations above still apply.
