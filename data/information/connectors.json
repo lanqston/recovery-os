@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-30T05:46:49.836294+00:00",
+  "generatedAt": "2026-09-30T05:59:18.454796+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
@@ -13,7 +13,7 @@
       "unavailableRecords": 10286,
       "cachedRecords": 140,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": "2026-09-30T06:11:30.028353+00:00",
       "errors": [
         "SOURCE_COOLDOWN"
@@ -31,31 +31,13 @@
       "unavailableRecords": 3572,
       "cachedRecords": 6847,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": "2026-09-30T06:11:30.028353+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "Issuer fiscal calendar unavailable; original financial records retained where present"
       ],
       "fallback": "Original dated evidence is available for 6847 of 10419 checked records. Original source links remain available.",
-      "paidRequests": false
-    },
-    {
-      "provider": "Stooq daily history",
-      "cost": "Free / public sources only",
-      "status": "Unavailable",
-      "successfulRecords": 0,
-      "checkedRecords": 10449,
-      "availableRecords": 0,
-      "unavailableRecords": 10449,
-      "cachedRecords": 0,
-      "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
-      "retryAt": null,
-      "errors": [
-        "STOOQ_API_KEY not configured; fresh Stooq EOD prices are unavailable"
-      ],
-      "fallback": "No saved evidence is available for these checks. Original source links remain available.",
       "paidRequests": false
     },
     {
@@ -68,7 +50,7 @@
       "unavailableRecords": 10449,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [
         "Automatic access paused pending provider permission"
@@ -86,7 +68,7 @@
       "unavailableRecords": 10298,
       "cachedRecords": 151,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [
         "RSS ingestion paused pending provider permission"
@@ -97,14 +79,14 @@
     {
       "provider": "Official issuer news",
       "cost": "Free / public sources only",
-      "status": "Current",
-      "successfulRecords": 17,
+      "status": "Cached",
+      "successfulRecords": 0,
       "checkedRecords": 17,
       "availableRecords": 17,
       "unavailableRecords": 0,
-      "cachedRecords": 0,
+      "cachedRecords": 17,
       "lastSuccessAt": "2026-09-30T05:46:11.883041+00:00",
-      "lastAttemptAt": "2026-09-30T05:46:06.267866+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:52.968025+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 17 of 17 checked records. Original source links remain available.",
@@ -138,7 +120,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 6461,
       "lastSuccessAt": "2026-09-12T15:43:57.446978+00:00",
-      "lastAttemptAt": "2026-09-30T05:46:12.892838+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:53.518271+00:00",
       "retryAt": null,
       "errors": [
         "Saved provider snapshot; no new market request was made.",
@@ -157,7 +139,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:11:31.197182+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -173,7 +155,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [
         "SOURCE_COOLDOWN"
@@ -191,7 +173,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [
         "SOURCE_COOLDOWN"
@@ -209,7 +191,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:15:25.810857+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -225,7 +207,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:12:26.391750+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -241,7 +223,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:12:26.663590+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -257,7 +239,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:12:26.871816+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -273,7 +255,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:12:27.007649+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -289,7 +271,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-30T05:12:27.348005+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.669476+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.195815+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
@@ -305,7 +287,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-09-30T05:45:54.678050+00:00",
+      "lastAttemptAt": "2026-09-30T05:58:45.212247+00:00",
       "retryAt": "2026-09-30T06:11:29.817826+00:00",
       "errors": [
         "SOURCE_COOLDOWN"
@@ -335,7 +317,7 @@
     "codeChanges": "Evidence-backed improvement proposals require validation and review"
   },
   "limitations": [
-    "Fresh end-of-day market history uses the authorized Stooq adapter when STOOQ_API_KEY is configured; otherwise dated saved quotes remain explicitly stale.",
+    "Saved market history retains its original source dates.",
     "Market sources paused for access permission remain paused; stored quotes are not live.",
     "Analyst, options and intraday coverage is unavailable where no compatible free source is connected.",
     "Passing checks describe the application; individual source blocks and missing records are reported separately."
