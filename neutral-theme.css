@@ -59,3 +59,5 @@ html,body.market-world-app,.market-world-app .explorer,.market-world-app .ex-she
 @media(prefers-reduced-motion:reduce){.market-world-app *{scroll-behavior:auto!important}}
 /* The shared shell overlays the main page; its empty area must stay transparent. */
 .market-world-app .ex-shell{background:transparent!important}
+.market-world-app .atlas-recovery-list header span{color:#725843!important;background:#eee5d8!important;border-color:#d0bfa8!important}
+.market-world-app :is(.info-event small,.atlas-news-item small,.atlas-history small,.atlas-checklist span,.atlas-checklist b,.info-provider dd,.research-stat span){color:var(--muted)!important}
