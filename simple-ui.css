@@ -112,3 +112,11 @@
 .market-world-app .evidence-synthesis{padding:0 0 12px}
 .market-world-app .evidence-synthesis p:first-of-type{margin-top:0}
 .market-world-app .research-action-row{margin-top:0}
+
+/* Keep identity and the dated price visible inside every stock section. */
+.stock-price-summary{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:0 0 18px;margin:0 0 22px;border-bottom:1px solid #294350}
+.stock-price-summary>div{display:flex;flex-direction:column;flex:1;min-width:140px}
+.stock-price-summary strong{font-size:20px;color:#e5f4f5}
+.stock-price-summary span,.stock-price-summary small{color:#a6bdc6;font-size:13px;line-height:1.5}
+.stock-price-summary>b{font-size:26px;color:#e5f4f5}
+.stock-price-summary>small{flex-basis:100%}
