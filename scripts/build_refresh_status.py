@@ -59,7 +59,7 @@ def build():
             if item.get('url'): headlines[item['url']]={**item,'relatedTicker':b.get('ticker') or b.get('profile',{}).get('ticker')}
     for item in macro.get('releases',[]):
         if item.get('url'): headlines[item['url']]=item
-    news_feed={'generatedAt':now.isoformat(),'items':sorted(headlines.values(),key=lambda x:x.get('published',''),reverse=True)[:600]}
+    news_feed={'generatedAt':now.isoformat(),'items':sorted(headlines.values(),key=lambda x:x.get('published',''),reverse=True)}
     (ROOT/'data/news.json').write_text(json.dumps(news_feed,separators=(',',':'))+'\n')
     digest=hashlib.sha256()
     paths=[ROOT/'data/market-quotes.json',ROOT/'data/open-research/index.json',ROOT/'data/open-research/macro.json',ROOT/'data/market-atlas/index.json',ROOT/'data/information/coverage.json',ROOT/'data/information/connectors.json']
