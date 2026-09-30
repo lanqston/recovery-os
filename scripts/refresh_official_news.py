@@ -5,6 +5,7 @@ from pathlib import Path
 import refresh_open_research as public
 
 FEEDS = {
+    'BA': [('Boeing Investor Relations', 'https://investors.boeing.com/rss/pressrelease.aspx')],
     'LLY': [('Lilly Investor Relations', 'https://investor.lilly.com/rss/news-releases.xml?items=10')],
     'CMCSA': [('Comcast Investor Relations', 'https://www.cmcsa.com/rss/news-releases.xml?items=15')],
     'VRSN': [('Verisign Investor Relations', 'https://investor.verisign.com/rss/news-releases.xml')],

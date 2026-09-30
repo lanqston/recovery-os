@@ -21,7 +21,7 @@ The importer validates the requested ticker, finite positive price, currency, ac
 
 `data/refresh-status.json` carries a content revision independent of the recovery-thesis revision. Open pages check it every minute and on resume/online. Manual refresh checks every layer immediately. A changed revision invalidates the request, research, atlas and information caches and refreshes visible data without changing the selected historical replay date or the camera location.
 
-The Daily refresh panel reports component coverage and dates. **Partial** means at least one component could not supply current observations. The broad directory contains thousands of additional securities with older or unavailable data; 235 prepared dossiers were included at this release. Directory entries are not a claim of current quote coverage.
+The Daily refresh panel reports component coverage and dates. **Partial** means at least one component could not supply current observations. The broad directory contains thousands of additional securities with older or unavailable data; 323 prepared dossiers are included. Directory entries are not a claim of current quote coverage.
 
 ## Retained limitations
 
@@ -65,3 +65,11 @@ Visible pages poll the lightweight publication manifest every 60 seconds and on 
 The Price page offers one on-demand official TradingView chart embed. Once loaded, the provider updates it at its permitted frequency. Exchange availability and delays remain visible inside the widget; the widget does not supply data to native calculations, quote files, or historical replay. Branding and the original chart link are retained. See https://www.tradingview.com/widget-docs/faq/data/ and https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/.
 
 Barchart OnDemand was reviewed as a potential frequent quote feed. Its official product describes usage-based paid access (https://www.barchart.com/ondemand). No free production API entitlement or redistribution license is configured, so no Barchart collector, paid subscription or credentials were added. Free access to a website is not an API entitlement. Existing quote collection limitations above still apply.
+
+## Quote recovery (September 30)
+
+The connected daily task was found disabled and was re-enabled after a validated manual collection. The September 30 collection returned 322 of 323 requested symbols; BMNP returned no valid quote, and CCZ retained a September 25 trade timestamp. Publication success does not make either current. The source workflow and Pages deployment were verified after publication.
+
+Stock search now opens the overview directly, and every research section repeats the company identity, quote and original trade time. The 3D world remains available through World and the close control.
+
+Boeing's investor-published press release feed joins the existing scheduled issuer collector: https://investors.boeing.com/rss/pressrelease.aspx, linked from https://investors.boeing.com/investors/rss-feeds/default.aspx. Collection uses the existing timestamp checks, cache and cooldown policy. SEC runner access and licensed historical bars remain unresolved; no upstream permissions were changed.
