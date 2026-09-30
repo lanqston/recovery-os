@@ -25,7 +25,7 @@ The Daily refresh panel reports component coverage and dates. **Partial** means 
 
 ## Retained limitations
 
-- Daily historical OHLC requires an authorized feed. The Stooq adapter accepts the server-side `STOOQ_API_KEY` repository secret. Without it, saved chart bars retain their original dates and provenance.
+- The inactive Stooq collector has been removed. Saved chart bars retain their original dates and provenance.
 - SEC may reject runner requests. Cooldowns and original evidence are retained; successful macro or quote collection does not claim fresh SEC filings.
 - Verified issuer feeds currently cover AAPL, NVDA, MSFT, AMD, ENPH and ON. Other company news relies on SEC events and saved evidence. New adapters require a verified issuer feed and dated linked headlines.
 - `data/recovery-os.json` is protected by a hash check. Discovery prices/dates, thesis scores, stage history, notes, watchlists and trading records are not rewritten by market collection.
@@ -41,7 +41,7 @@ Each stock has one Bullish, Bearish or Neutral evidence assessment. The reader d
 
 Amazon's published RSS feed joins the daily issuer collection, with future-dated items withheld and prior headlines preserved. The original source is https://www.aboutamazon.com/rss/feed.rss, linked from https://www.aboutamazon.com/news. A successful collection is not a promise that every company has news that day.
 
-Historical-price collection remains a known dependency: the configured Stooq adapter needs its server-side credential, while legacy unapproved collectors remain paused. NineQuantAI was examined as a potential keyless alternative; its terms prohibit systematically mirroring its market data (https://ninequantai.com/en/terms), so no public data mirror or collector was added. Netflix, Nike, Freeport and Meta IR returned 403 to direct discovery/collection; no bypass was attempted. The working Meta newsroom feed is retained. A daily scheduler cannot recreate absent historical observations.
+Historical-price collection requires an approved working source. The inactive Stooq collector has been removed; unapproved collectors remain paused. NineQuantAI was examined as a potential keyless alternative; its terms prohibit systematically mirroring its market data (https://ninequantai.com/en/terms), so no public data mirror or collector was added. Netflix, Nike, Freeport and Meta IR returned 403 to direct discovery/collection; no bypass was attempted. The working Meta newsroom feed is retained. A daily scheduler cannot recreate absent historical observations.
 
 ## Gap repair (September 24 UTC)
 

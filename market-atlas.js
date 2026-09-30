@@ -54,7 +54,7 @@ researchBundle=async function loadAtlasCompany(t,options={}){
   })();ATLAS_BUNDLES.set(t,promise);return promise;
 };
 function atlasTabChecks(section,b,now=Date.now()){
-  const groups={brief:[['Financials',['SEC financial statements']],['Company events',['SEC filings','Official issuer news','Yahoo Finance RSS']]],financials:[['Financials',['SEC financial statements']]],filings:[['Filings',['SEC filings']]],catalysts:[['Company events',['SEC filings','Official issuer news','Yahoo Finance RSS']]],price:[['Daily history',['Stooq daily history','Yahoo daily history']]],risks:[['Financials',['SEC financial statements']],['Filings',['SEC filings']]]};
+  const groups={brief:[['Financials',['SEC financial statements']],['Company events',['SEC filings','Official issuer news','Yahoo Finance RSS']]],financials:[['Financials',['SEC financial statements']]],filings:[['Filings',['SEC filings']]],catalysts:[['Company events',['SEC filings','Official issuer news','Yahoo Finance RSS']]],price:[['Daily history',['Yahoo daily history']]],risks:[['Financials',['SEC financial statements']],['Filings',['SEC filings']]]};
   return (groups[section]||[]).map(([label,providers])=>{
     const rows=(b.health||[]).filter(h=>providers.includes(h.provider));
     const times=rows.map(h=>Date.parse(h.lastSuccessAt)).filter(x=>Number.isFinite(x)&&x<=now);
