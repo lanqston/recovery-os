@@ -68,8 +68,9 @@ def build():
         if path.exists(): digest.update(path.read_bytes())
     return {'schemaVersion':1,'revision':digest.hexdigest()[:24],'completedAt':now.isoformat(),
             'collectionQueue':read('data/open-research/refresh-queue.json'),
+            'recoveryQueue':read('data/open-research/recovery-queue.json'),
             'status':'Current' if all(p['status']=='Current' for p in parts[:-1]) else 'Partial',
-            'schedule':'Source refresh every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening.',
+            'schedule':'Recovery stocks are checked about every 30 minutes. The full stock list is checked twice daily. Schedules can be delayed; sources may have no new data.',
             'pollSeconds':60,'components':parts,'preparedDossiers':len(items),
             'quotesAsOf':parts[0]['latestObservationAt'],
             'limitations':['Quotes are dated observations, not a streaming feed.','Historical bars are not fabricated from a quote.',

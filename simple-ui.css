@@ -168,3 +168,5 @@
  .market-world-app.universe-pane-open #universeStockMeta{max-width:230px}
  .market-world-app.universe-pane-open #universeDestinations{left:300px;right:24px;transform:none;justify-content:flex-start;width:auto}
 }
+
+.beginner-guide{margin:20px 0;padding:16px;border:1px solid #334550;border-radius:8px;background:#10212b}.beginner-guide summary{cursor:pointer;font-weight:600}.beginner-guide p,.beginner-guide dd,#stockDefinitions dd{line-height:1.65;color:#b9cbd3}.beginner-guide dt,#stockDefinitions dt{font-weight:600;margin-top:16px}.beginner-guide dd,#stockDefinitions dd{margin:4px 0 12px}#stockTerms{width:100%;padding:12px;margin:10px 0;background:#0b1922;border:1px solid #435966;color:#eef5f8;border-radius:6px}#stockBasics{min-height:44px}@media(max-width:760px){.market-world-app .ex-actions{gap:5px}#stockBasics{font-size:12px;padding:8px}}

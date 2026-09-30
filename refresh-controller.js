@@ -8,16 +8,16 @@
     let button=document.querySelector('#recoveryRefreshStatus');
     if(!button){button=document.createElement('button');button.id='recoveryRefreshStatus';host.append(button);button.onclick=openStatus}
     const late=!status||Date.now()-Date.parse(status.completedAt)>36*3600000;
-    const label=status?`Daily refresh · ${late?'Overdue':status.status}`:'Refresh status unavailable';
+    const label=status?`Data updates · ${late?'Overdue':status.status}`:'Refresh status unavailable';
     button.textContent='Updates';
     button.title=status?`Collection completed ${display(status.completedAt)}. Open component dates.`:'Open refresh details';
-    button.setAttribute('aria-label',label+'. Open component freshness');
+    button.setAttribute('aria-label',label+'. See when data was updated');
   }
   function openStatus(){
     const fabric=window.RecoveryFabric;if(!fabric)return;
     const labels={quotes:'Stock & ETF quotes',priceHistory:'Historical chart bars',news:'Company news',filings:'SEC filings',financials:'Financial statements',directory:'Symbol directory',macro:'Macro releases',atlas:'Broad market atlas',recoveryThesis:'Recovery thesis review'};
     fabric.active='refresh';
-    fabric.panel('Daily refresh',`<h2>Daily refresh</h2><p>${esc(status?.schedule||'The refresh report could not be loaded. Try again when connected.')}</p><p>Last completed collection: ${esc(display(status?.completedAt))}</p><p>A completed collection can contain unavailable sources. Each observation keeps its own date.</p><button id="refreshAllNow">Check for updates</button><div class="info-coverage-grid">${(status?.components||[]).map(c=>`<article class="info-metric"><h3>${esc(labels[c.id]||c.id)}</h3><strong>${esc(c.status)}</strong>${c.current!=null?`<p>${c.current} current · ${c.stale} older · ${c.unavailable} unavailable / ${c.total}</p>`:''}<p>Latest observation: ${esc(display(c.latestObservationAt))}</p>${c.lastSuccessfulRetrieval?`<p>Source checked: ${esc(display(c.lastSuccessfulRetrieval))}</p>`:''}${c.note?`<p>${esc(c.note)}</p>`:''}</article>`).join('')}</div>`);
+    fabric.panel('Data updates',`<h2>Data updates</h2><p>${esc(status?.schedule||'The refresh report could not be loaded. Try again when connected.')}</p><p>Last update check: ${esc(display(status?.completedAt))}</p><p>A check may find no new data. Each figure keeps its original date.</p><button id="refreshAllNow">Check for updates</button><div class="info-coverage-grid">${(status?.components||[]).map(c=>`<article class="info-metric"><h3>${esc(labels[c.id]||c.id)}</h3><strong>${esc(c.status)}</strong>${c.current!=null?`<p>${c.current} current · ${c.stale} older · ${c.unavailable} unavailable / ${c.total}</p>`:''}<p>Latest observation: ${esc(display(c.latestObservationAt))}</p>${c.lastSuccessfulRetrieval?`<p>Source checked: ${esc(display(c.lastSuccessfulRetrieval))}</p>`:''}${c.note?`<p>${esc(c.note)}</p>`:''}</article>`).join('')}</div>`);
     document.querySelector('#refreshAllNow').onclick=async()=>{await refresh(true);openStatus()};
   }
   function invalidate(){
@@ -59,8 +59,8 @@
         const next=await response.json();if(!next.revision||!Array.isArray(next.components))throw new Error('Refresh report invalid');
         const changed=status?.revision!==next.revision;
         if(manual||changed)await apply(next);else{status=next;draw()}
-        if(manual)toast('Latest available evidence loaded · '+next.status.toLowerCase()+' coverage');
-      }catch(e){draw();if(manual)toast('Could not refresh · saved evidence remains available');console.warn('Daily refresh',e)}
+        if(manual)toast('Latest saved data loaded · '+next.status.toLowerCase()+' coverage');
+      }catch(e){draw();if(manual)toast('Could not refresh · saved evidence remains available');console.warn('Data updates',e)}
       finally{pending=null}
     })();return pending;
   }

@@ -318,7 +318,7 @@ def main():
         if len(records)%100==0:
             write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'collectionInProgress':True})
     queue=collect(tickers,lambda t:build_company(t,directory),checkpoint,args.budget_minutes*60)
-    write(DEST/'refresh-queue.json',{'lastAttemptAt':NOW,'scope':'all-symbols' if args.all_symbols else 'selected','meaning':'Completed means collection attempted, not all sources succeeded.',**queue})
+    write(DEST/('recovery-queue.json' if args.tickers else 'refresh-queue.json'),{'lastAttemptAt':NOW,'scope':'all-symbols' if args.all_symbols else 'selected','meaning':'Completed means collection attempted, not all sources succeeded.',**queue})
     write(DEST/'index.json',{'retrievedAt':NOW,'symbols':list(merged.values()),'method':'SEC statements, filings and company events; official macro sources; retained market snapshots with original timestamps. Unapproved collectors remain paused.'})
     if not args.skip_macro:macro()
     report=HTTP.report()

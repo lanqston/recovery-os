@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '37 12,22 * * *'
+    - cron: '7,37 0-11,13-21,23 * * *'
+    - cron: '7 12,22 * * *'
   push:
     branches: [main]
     paths:
@@ -16,6 +18,7 @@ on:
       - 'scripts/refresh_official_news.py'
       - 'scripts/build_refresh_status.py'
       - 'scripts/refresh_queue.py'
+      - 'scripts/refresh_recovery.py'
       - 'data/market-quotes.json'
       - '.github/workflows/public-research.yml'
 permissions:
@@ -28,6 +31,8 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    env:
+      RECOVERY_CACHE_DIR: ${{ runner.workspace }}/open-source-cache
     steps:
       - uses: actions/checkout@v4
         with:
@@ -50,12 +55,18 @@ jobs:
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
           RECOVERY_CACHE_DIR: ${{ runner.workspace }}/open-source-cache
-        run: python scripts/refresh_open_research.py --all-symbols --budget-minutes 145
+        run: |
+          if [ '${{ github.event_name }}' = 'schedule' ] && [ '${{ github.event.schedule }}' != '37 12,22 * * *' ]; then
+            python scripts/refresh_recovery.py
+          else
+            python scripts/refresh_open_research.py --all-symbols --budget-minutes 145
+          fi
       - name: Refresh official issuer news and apply verified quote observations
         run: |
           python scripts/refresh_official_news.py
           python scripts/import_market_quotes.py --apply
       - name: Collect the broad public market atlas
+        if: github.event_name != 'schedule' || github.event.schedule == '37 12,22 * * *'
         env:
           SEC_USER_AGENT: RecoveryOS/1.0 (public research; contact https://github.com/lanqston/recovery-os/issues)
         run: python scripts/build_market_atlas.py
