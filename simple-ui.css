@@ -59,3 +59,52 @@
  #informationDialog .info-dialog-head{top:-16px;padding:12px 0;margin-bottom:12px}
  #informationDialog .info-dialog-head h2{font-size:22px;line-height:1.3;margin:4px 0}
 }
+
+/* Stock actions must never stretch between top and bottom anchors. */
+.market-world-app #informationStockBar{bottom:auto;height:auto;min-height:0;align-items:center;align-content:start}
+.market-world-app #informationStockBar button{height:auto;min-height:44px;max-height:64px;line-height:1.3;align-self:start}
+.market-world-app .reader-heading>.research-kicker,.market-world-app .atlas-panel-head>.research-kicker,.market-world-app .evidence-synthesis>.research-label{display:none}
+.market-world-app .reader-heading h3,.market-world-app .atlas-panel-head h2{letter-spacing:-.025em;line-height:1.2}
+.market-world-app .ex-view{line-height:1.65}
+.market-world-app .research-metric{border-radius:10px}
+.market-world-app #universePaneKicker{display:none}
+.market-world-app .universe-node-label small{display:none}
+@media(max-width:760px){
+ .market-world-app{--mobile-top:calc(112px + env(safe-area-inset-top));--mobile-bottom:calc(68px + env(safe-area-inset-bottom))}
+ .market-world-app .ex-top{height:var(--mobile-top);min-height:var(--mobile-top);box-sizing:border-box;padding:8px 12px;padding-top:calc(8px + env(safe-area-inset-top));gap:6px 10px;grid-template-columns:40px minmax(0,1fr) auto}
+ .market-world-app .ex-title b{font-size:11px;letter-spacing:.12em}
+ .market-world-app #recoveryRefreshStatus{font-size:13px;padding:8px;min-height:40px}
+ .market-world-app #informationStockBar{top:calc(var(--mobile-top) + 10px);bottom:auto;left:12px;right:12px;height:auto;display:flex;flex-wrap:nowrap;align-items:flex-start;gap:8px}
+ .market-world-app #informationStockBar[hidden],.market-world-app.universe-pane-open #informationStockBar{display:none}
+ .market-world-app #informationStockBar button{flex:1 1 0;min-width:0;min-height:44px;max-height:60px;font-size:13px;padding:10px 8px}
+ .market-world-app .universe-heading{top:calc(var(--mobile-top) + 20px);left:18px;right:64px;width:auto;max-width:none}
+ .market-world-app:has(#informationStockBar:not([hidden])) .universe-heading{top:calc(var(--mobile-top) + 72px)}
+ .market-world-app #universeTitle{font-size:34px;line-height:1.1;margin:0 0 10px}
+ .market-world-app #universeSubtitle{font-size:14px;line-height:1.5}
+ .market-world-app #universeStockMeta{font-size:12px;gap:8px;max-width:100%}
+ .market-world-app #universeStockMeta small{font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+ .market-world-app #universeGeneral{font-size:14px;min-height:44px}
+ .market-world-app #informationLegend{display:none}
+ .market-world-app .universe-flight-controls{top:auto;bottom:calc(var(--mobile-bottom) + 66px);right:12px}
+ .market-world-app #atlasStockTools{left:12px;bottom:calc(var(--mobile-bottom) + 72px);gap:6px;max-width:calc(100% - 76px);flex-wrap:wrap}
+ .market-world-app #atlasStockTools button{font-size:12px;min-height:44px;padding:8px 10px}
+ .market-world-app .universe-footer{height:var(--mobile-bottom);min-height:var(--mobile-bottom);box-sizing:border-box;padding:6px 10px calc(6px + env(safe-area-inset-bottom))}
+ .market-world-app .universe-footer>div{max-width:none;gap:4px}
+ .market-world-app .universe-footer>div>button{font-size:18px;gap:4px;padding:4px;min-height:48px}
+ .market-world-app .universe-footer #universeHelpButton{display:none}
+ .market-world-app .universe-destinations{bottom:calc(var(--mobile-bottom) + 8px);left:10px;right:10px;display:flex;overflow-x:auto;flex-wrap:nowrap;gap:2px;justify-content:space-between;padding:4px;border-radius:10px}
+ .market-world-app .universe-destinations button{flex:0 0 auto;padding:0 10px;font-size:13px;min-height:44px}
+ .market-world-app .universe-destinations button small{display:none}
+ .market-world-app.universe-pane-open .universe-heading,.market-world-app.universe-pane-open .universe-flight-controls{visibility:hidden}
+ .market-world-app.universe-pane-open .ex-main,.market-world-app.information-open .ex-main,.market-world-app.atlas-reading .ex-main{top:calc(var(--mobile-top) + 10px);bottom:calc(var(--mobile-bottom) + 68px);left:10px;right:10px;width:auto;transform:none;border-radius:12px}
+ .market-world-app.universe-pane-open #universeStage{right:0;bottom:0;opacity:.15}
+ .market-world-app #universeReaderBar{min-height:56px;padding:8px 12px;gap:8px}
+ .market-world-app #universePaneTitle{font-size:16px;line-height:1.3}
+ .market-world-app #universeReaderBar>button{min-width:44px;width:44px;height:44px}
+ .market-world-app #universeExpand{display:none}
+ .market-world-app .ex-view,.market-world-app.atlas-reading .ex-view{padding:20px 16px 28px}
+ .market-world-app .evidence-chapter p,.market-world-app .evidence-synthesis p,.market-world-app .research-prose p{font-size:15px;line-height:1.7}
+ .market-world-app .reader-heading h3,.market-world-app .atlas-panel-head h2{font-size:26px}
+ .market-world-app .universe-node-label{max-width:150px;border-radius:8px;padding:10px 12px}
+ .market-world-app .universe-node-label strong{font-size:14px}.market-world-app .universe-node-label em{font-size:11px;line-height:1.4}
+}
