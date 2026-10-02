@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-01T21:17:43.936069+00:00",
+  "generatedAt": "2026-10-02T01:04:39.186407+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
@@ -13,8 +13,8 @@
       "unavailableRecords": 10286,
       "cachedRecords": 140,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
-      "retryAt": "2026-10-01T22:17:03.933707+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
+      "retryAt": "2026-10-02T02:03:58.046104+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "HTTP_403"
@@ -32,8 +32,8 @@
       "unavailableRecords": 3572,
       "cachedRecords": 6847,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
-      "retryAt": "2026-10-01T22:17:03.933707+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
+      "retryAt": "2026-10-02T02:03:58.046104+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "Issuer fiscal calendar unavailable; original financial records retained where present"
@@ -51,7 +51,7 @@
       "unavailableRecords": 10449,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
       "retryAt": null,
       "errors": [
         "Automatic access paused pending provider permission"
@@ -69,7 +69,7 @@
       "unavailableRecords": 10298,
       "cachedRecords": 151,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
       "retryAt": null,
       "errors": [
         "RSS ingestion paused pending provider permission"
@@ -86,8 +86,8 @@
       "availableRecords": 17,
       "unavailableRecords": 0,
       "cachedRecords": 0,
-      "lastSuccessAt": "2026-10-01T21:17:08.403342+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:04.605713+00:00",
+      "lastSuccessAt": "2026-10-02T01:04:01.325756+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:58.720134+00:00",
       "retryAt": null,
       "errors": [],
       "fallback": "Original dated evidence is available for 17 of 17 checked records. Original source links remain available.",
@@ -288,8 +288,8 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:03.811594+00:00",
-      "retryAt": "2026-10-01T22:17:03.818325+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.937377+00:00",
+      "retryAt": "2026-10-02T02:03:57.943980+00:00",
       "errors": [
         "HTTP_403"
       ],

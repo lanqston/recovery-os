@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": "8b8a4f49548e8a2cbb203cfa",
-  "completedAt": "2026-10-01T21:17:44.158400+00:00",
+  "revision": "6a6b6d9e8f497c7200bac9f1",
+  "completedAt": "2026-10-02T01:04:39.426123+00:00",
   "collectionQueue": {
     "lastAttemptAt": "2026-10-01T18:33:50.629294+00:00",
     "scope": "all-symbols",
@@ -13,7 +13,7 @@
     "complete": true
   },
   "recoveryQueue": {
-    "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
+    "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
     "scope": "selected",
     "meaning": "Completed means collection attempted, not all sources succeeded.",
     "targetCount": 8,
@@ -35,7 +35,7 @@
       "unavailable": 3667,
       "latestObservationAt": "2026-09-30T23:41:22+00:00",
       "lastSuccessfulRetrieval": "2026-09-30T23:56:31.010Z",
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
       "status": "Partial"
     },
     {
@@ -57,9 +57,9 @@
       "current": 13,
       "stale": 144,
       "unavailable": 10292,
-      "latestObservationAt": "2026-10-01T16:34:24-04:00",
-      "lastSuccessfulRetrieval": "2026-10-01T21:17:08.403342+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:04.605713+00:00",
+      "latestObservationAt": "2026-10-01T23:44:13+00:00",
+      "lastSuccessfulRetrieval": "2026-10-02T01:04:01.325756+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:58.720134+00:00",
       "status": "Partial",
       "note": "Publication dates and successful feed checks are separate. A current feed can have no new headline."
     },
@@ -72,7 +72,7 @@
       "unavailable": 10309,
       "latestObservationAt": "2026-09-11",
       "lastSuccessfulRetrieval": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
       "status": "Stale",
       "note": "Reported dates are preserved. Current requires a successful source check within 72 hours."
     },
@@ -85,7 +85,7 @@
       "unavailable": 3601,
       "latestObservationAt": "2026-08-31",
       "lastSuccessfulRetrieval": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:03.791305+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.917516+00:00",
       "status": "Stale",
       "note": "Reported dates are preserved. Current requires a successful source check within 72 hours."
     },
@@ -98,7 +98,7 @@
       "unavailable": 0,
       "latestObservationAt": "2026-09-14T03:55:33.925748+00:00",
       "lastSuccessfulRetrieval": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-10-01T21:17:03.811594+00:00",
+      "lastAttemptAt": "2026-10-02T01:03:57.937377+00:00",
       "status": "Stale",
       "note": "Refresh check time is not the date of every underlying observation."
     },
