@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-03T02:18:35.998Z",
+  "generatedAt": "2026-10-03T08:32:36.427Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
@@ -9445,7 +9445,7 @@
     {
       "ticker": "ADBE",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
@@ -157327,7 +157327,7 @@
     {
       "ticker": "DECK",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
