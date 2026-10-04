@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T00:28:30.656Z",
+  "generatedAt": "2026-10-04T01:59:46.755Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
     "events": 31667,
-    "bytes": 63472209
+    "bytes": 63472253
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -145,7 +145,7 @@
     {
       "ticker": "AA",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
@@ -607114,7 +607114,7 @@
         {
           "ticker": "AA",
           "code": "PROVIDER_FAILURE",
-          "detail": "SEC filings: SOURCE_COOLDOWN",
+          "detail": "SEC filings: HTTP_403",
           "severity": "review"
         }
       ],
