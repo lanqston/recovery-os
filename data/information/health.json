@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T17:01:09.554Z",
+  "generatedAt": "2026-10-04T17:30:12.820Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
     "events": 31667,
-    "bytes": 63472199
+    "bytes": 63472250
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
