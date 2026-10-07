@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T01:48:58.710Z",
+  "generatedAt": "2026-10-07T05:48:25.041Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
     "events": 31731,
-    "bytes": 63502976
+    "bytes": 63503020
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -9445,7 +9445,7 @@
     {
       "ticker": "ADBE",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
