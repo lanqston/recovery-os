@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-08T13:20:33.117Z",
+  "generatedAt": "2026-10-08T18:47:39.760Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
-    "events": 31757,
-    "bytes": 63515351
+    "events": 31765,
+    "bytes": 63518722
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -9445,7 +9445,7 @@
     {
       "ticker": "ADBE",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
@@ -55148,6 +55148,12 @@
       "ticker": "AVGO",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "AVGO",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Official issuer news: HTTP_403",
       "severity": "review"
     },
     {
@@ -125315,6 +125321,12 @@
       "severity": "review"
     },
     {
+      "ticker": "CMCSA",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Official issuer news: HTTP_403",
+      "severity": "review"
+    },
+    {
       "ticker": "CMCT",
       "code": "MISSING_FINANCIAL_PERIOD",
       "detail": "Quarter ended 2026-06-30",
@@ -157327,7 +157339,7 @@
     {
       "ticker": "DECK",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -182426,6 +182438,12 @@
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ENPH",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Official issuer news: HTTP_403",
       "severity": "review"
     },
     {
@@ -323759,6 +323777,12 @@
       "severity": "review"
     },
     {
+      "ticker": "LLY",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Official issuer news: HTTP_403",
+      "severity": "review"
+    },
+    {
       "ticker": "LLYVA",
       "code": "MISSING_FINANCIAL_PERIOD",
       "detail": "Quarter ended 2026-06-30",
@@ -401936,6 +401960,12 @@
       "ticker": "ON",
       "code": "PROVIDER_FAILURE",
       "detail": "Yahoo Finance RSS: RSS ingestion paused pending provider permission",
+      "severity": "review"
+    },
+    {
+      "ticker": "ON",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Official issuer news: HTTP_403",
       "severity": "review"
     },
     {
@@ -575789,6 +575819,12 @@
       "severity": "review"
     },
     {
+      "ticker": "VRSN",
+      "code": "PROVIDER_FAILURE",
+      "detail": "Official issuer news: HTTP_403",
+      "severity": "review"
+    },
+    {
       "ticker": "VRT",
       "code": "MISSING_FINANCIAL_PERIOD",
       "detail": "Quarter ended 2026-06-30",
@@ -607052,7 +607088,7 @@
   "summary": [
     {
       "code": "PROVIDER_FAILURE",
-      "count": 41743,
+      "count": 41749,
       "severity": "medium"
     },
     {
@@ -607128,7 +607164,7 @@
         "information-bridge.js",
         "backend/cloudflare/provider-client.mjs"
       ],
-      "expectedBenefit": "Resolve 41743 flagged observations without replacing retained evidence",
+      "expectedBenefit": "Resolve 41749 flagged observations without replacing retained evidence",
       "difficulty": "low",
       "risks": [
         "Provider access and dataset scope must be rechecked",
