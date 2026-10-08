@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-08T19:25:07.901965+00:00",
+  "generatedAt": "2026-10-08T23:56:20.321724+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
@@ -13,10 +13,11 @@
       "unavailableRecords": 10286,
       "cachedRecords": 140,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-08T19:24:30.352752+00:00",
-      "retryAt": "2026-10-08T19:46:48.315791+00:00",
+      "lastAttemptAt": "2026-10-08T23:55:29.735744+00:00",
+      "retryAt": "2026-10-09T00:55:29.933457+00:00",
       "errors": [
-        "SOURCE_COOLDOWN"
+        "SOURCE_COOLDOWN",
+        "HTTP_403"
       ],
       "fallback": "Original dated evidence is available for 140 of 10426 checked records. Original source links remain available.",
       "paidRequests": false
@@ -31,8 +32,8 @@
       "unavailableRecords": 3572,
       "cachedRecords": 6847,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-08T19:24:30.352752+00:00",
-      "retryAt": "2026-10-08T19:46:48.315791+00:00",
+      "lastAttemptAt": "2026-10-08T23:55:29.735744+00:00",
+      "retryAt": "2026-10-09T00:55:29.933457+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "Issuer fiscal calendar unavailable; original financial records retained where present"
@@ -50,7 +51,7 @@
       "unavailableRecords": 10449,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-08T19:24:30.352752+00:00",
+      "lastAttemptAt": "2026-10-08T23:55:29.735744+00:00",
       "retryAt": null,
       "errors": [
         "Automatic access paused pending provider permission"
@@ -68,7 +69,7 @@
       "unavailableRecords": 10298,
       "cachedRecords": 151,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-08T19:24:30.352752+00:00",
+      "lastAttemptAt": "2026-10-08T23:55:29.735744+00:00",
       "retryAt": null,
       "errors": [
         "RSS ingestion paused pending provider permission"
@@ -79,18 +80,16 @@
     {
       "provider": "Official issuer news",
       "cost": "Free / public sources only",
-      "status": "Partial",
-      "successfulRecords": 11,
+      "status": "Current",
+      "successfulRecords": 17,
       "checkedRecords": 17,
       "availableRecords": 17,
       "unavailableRecords": 0,
-      "cachedRecords": 6,
-      "lastSuccessAt": "2026-10-08T19:24:33.151256+00:00",
-      "lastAttemptAt": "2026-10-08T19:24:30.545325+00:00",
-      "retryAt": "2026-10-08T19:46:52.225334+00:00",
-      "errors": [
-        "SOURCE_COOLDOWN"
-      ],
+      "cachedRecords": 0,
+      "lastSuccessAt": "2026-10-08T23:55:35.608823+00:00",
+      "lastAttemptAt": "2026-10-08T23:55:30.610442+00:00",
+      "retryAt": null,
+      "errors": [],
       "fallback": "Original dated evidence is available for 17 of 17 checked records. Original source links remain available.",
       "paidRequests": false
     },
@@ -291,10 +290,10 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-10-08T19:24:30.372704+00:00",
-      "retryAt": "2026-10-08T19:46:48.122901+00:00",
+      "lastAttemptAt": "2026-10-08T23:55:29.759924+00:00",
+      "retryAt": "2026-10-09T00:55:29.768037+00:00",
       "errors": [
-        "SOURCE_COOLDOWN"
+        "HTTP_403"
       ],
       "fallback": "Original dated evidence is available for 1 of 1 checked records. Original source links remain available.",
       "paidRequests": false
@@ -307,9 +306,9 @@
     "identityOnlyDossiers": 1953
   },
   "efficiency": {
-    "requests": 0,
+    "requests": 2,
     "cacheHits": 0,
-    "requestsAvoided": 69
+    "requestsAvoided": 67
   },
   "automaticMaintenance": {
     "refresh": "Every day at 12:37 and 22:37 UTC; connected quote collection daily in the US evening. Open pages check for new publications every minute.",
