@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-09T18:31:06.154817+00:00",
+  "generatedAt": "2026-10-09T18:48:43.553450+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
@@ -13,7 +13,7 @@
       "unavailableRecords": 10286,
       "cachedRecords": 140,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-09T18:30:41.321648+00:00",
+      "lastAttemptAt": "2026-10-09T18:47:51.395058+00:00",
       "retryAt": "2026-10-09T19:17:14.750094+00:00",
       "errors": [
         "SOURCE_COOLDOWN"
@@ -31,7 +31,7 @@
       "unavailableRecords": 3572,
       "cachedRecords": 6847,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-09T18:30:41.321648+00:00",
+      "lastAttemptAt": "2026-10-09T18:47:51.395058+00:00",
       "retryAt": "2026-10-09T19:17:14.750094+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
@@ -50,7 +50,7 @@
       "unavailableRecords": 10449,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-09T18:30:41.321648+00:00",
+      "lastAttemptAt": "2026-10-09T18:47:51.395058+00:00",
       "retryAt": null,
       "errors": [
         "Automatic access paused pending provider permission"
@@ -68,7 +68,7 @@
       "unavailableRecords": 10298,
       "cachedRecords": 151,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-09T18:30:41.321648+00:00",
+      "lastAttemptAt": "2026-10-09T18:47:51.395058+00:00",
       "retryAt": null,
       "errors": [
         "RSS ingestion paused pending provider permission"
@@ -79,14 +79,14 @@
     {
       "provider": "Official issuer news",
       "cost": "Free / public sources only",
-      "status": "Cached",
-      "successfulRecords": 0,
+      "status": "Partial",
+      "successfulRecords": 11,
       "checkedRecords": 17,
       "availableRecords": 17,
       "unavailableRecords": 0,
-      "cachedRecords": 17,
-      "lastSuccessAt": "2026-10-09T18:17:17.791248+00:00",
-      "lastAttemptAt": "2026-10-09T18:30:41.470380+00:00",
+      "cachedRecords": 6,
+      "lastSuccessAt": "2026-10-09T18:47:54.017442+00:00",
+      "lastAttemptAt": "2026-10-09T18:47:51.659745+00:00",
       "retryAt": "2026-10-09T19:17:17.614490+00:00",
       "errors": [
         "SOURCE_COOLDOWN"
@@ -289,7 +289,7 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-10-09T18:30:41.332428+00:00",
+      "lastAttemptAt": "2026-10-09T18:47:51.423332+00:00",
       "retryAt": "2026-10-09T19:17:14.589492+00:00",
       "errors": [
         "SOURCE_COOLDOWN"
