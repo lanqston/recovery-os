@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-10T17:17:00.977Z",
+  "generatedAt": "2026-10-10T17:29:30.149Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
     "events": 31773,
-    "bytes": 63523011
+    "bytes": 63523027
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -9445,7 +9445,7 @@
     {
       "ticker": "ADBE",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -55153,7 +55153,7 @@
     {
       "ticker": "AVGO",
       "code": "PROVIDER_FAILURE",
-      "detail": "Official issuer news: HTTP_403",
+      "detail": "Official issuer news: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -125323,7 +125323,7 @@
     {
       "ticker": "CMCSA",
       "code": "PROVIDER_FAILURE",
-      "detail": "Official issuer news: HTTP_403",
+      "detail": "Official issuer news: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -182443,7 +182443,7 @@
     {
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
-      "detail": "Official issuer news: HTTP_403",
+      "detail": "Official issuer news: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -323779,7 +323779,7 @@
     {
       "ticker": "LLY",
       "code": "PROVIDER_FAILURE",
-      "detail": "Official issuer news: HTTP_403",
+      "detail": "Official issuer news: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -401965,7 +401965,7 @@
     {
       "ticker": "ON",
       "code": "PROVIDER_FAILURE",
-      "detail": "Official issuer news: HTTP_403",
+      "detail": "Official issuer news: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
@@ -575821,7 +575821,7 @@
     {
       "ticker": "VRSN",
       "code": "PROVIDER_FAILURE",
-      "detail": "Official issuer news: HTTP_403",
+      "detail": "Official issuer news: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
