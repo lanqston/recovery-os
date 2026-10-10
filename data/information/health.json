@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T23:11:31.945Z",
+  "generatedAt": "2026-10-10T01:39:45.317Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
@@ -157339,7 +157339,7 @@
     {
       "ticker": "DECK",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
@@ -182419,7 +182419,7 @@
     {
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: HTTP_403",
+      "detail": "SEC filings: SOURCE_COOLDOWN",
       "severity": "review"
     },
     {
