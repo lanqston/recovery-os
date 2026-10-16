@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T06:20:16.639873+00:00",
+  "generatedAt": "2026-10-16T11:52:09.610667+00:00",
   "mode": "FREE_SOURCES_ONLY",
   "providers": [
     {
@@ -13,8 +13,8 @@
       "unavailableRecords": 10286,
       "cachedRecords": 140,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-16T06:19:25.978904+00:00",
-      "retryAt": "2026-10-16T07:19:26.107754+00:00",
+      "lastAttemptAt": "2026-10-16T11:51:37.757385+00:00",
+      "retryAt": "2026-10-16T12:51:38.160117+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "HTTP_403"
@@ -32,8 +32,8 @@
       "unavailableRecords": 3572,
       "cachedRecords": 6847,
       "lastSuccessAt": "2026-09-14T03:55:33.922092+00:00",
-      "lastAttemptAt": "2026-10-16T06:19:25.978904+00:00",
-      "retryAt": "2026-10-16T07:19:26.107754+00:00",
+      "lastAttemptAt": "2026-10-16T11:51:37.757385+00:00",
+      "retryAt": "2026-10-16T12:51:38.160117+00:00",
       "errors": [
         "SOURCE_COOLDOWN",
         "Issuer fiscal calendar unavailable; original financial records retained where present"
@@ -51,7 +51,7 @@
       "unavailableRecords": 10449,
       "cachedRecords": 0,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-16T06:19:25.978904+00:00",
+      "lastAttemptAt": "2026-10-16T11:51:37.757385+00:00",
       "retryAt": null,
       "errors": [
         "Automatic access paused pending provider permission"
@@ -69,7 +69,7 @@
       "unavailableRecords": 10298,
       "cachedRecords": 151,
       "lastSuccessAt": null,
-      "lastAttemptAt": "2026-10-16T06:19:25.978904+00:00",
+      "lastAttemptAt": "2026-10-16T11:51:37.757385+00:00",
       "retryAt": null,
       "errors": [
         "RSS ingestion paused pending provider permission"
@@ -86,9 +86,9 @@
       "availableRecords": 17,
       "unavailableRecords": 0,
       "cachedRecords": 6,
-      "lastSuccessAt": "2026-10-16T06:19:28.731028+00:00",
-      "lastAttemptAt": "2026-10-16T06:19:26.805504+00:00",
-      "retryAt": "2026-10-16T07:19:28.525488+00:00",
+      "lastSuccessAt": "2026-10-16T11:51:42.876465+00:00",
+      "lastAttemptAt": "2026-10-16T11:51:38.806983+00:00",
+      "retryAt": "2026-10-16T12:51:42.261870+00:00",
       "errors": [
         "HTTP_403"
       ],
@@ -292,8 +292,8 @@
       "unavailableRecords": 0,
       "cachedRecords": 1,
       "lastSuccessAt": "2026-09-14T03:55:33.925748+00:00",
-      "lastAttemptAt": "2026-10-16T06:19:26.006205+00:00",
-      "retryAt": "2026-10-16T07:19:26.015266+00:00",
+      "lastAttemptAt": "2026-10-16T11:51:37.777147+00:00",
+      "retryAt": "2026-10-16T12:51:37.782560+00:00",
       "errors": [
         "HTTP_403"
       ],
