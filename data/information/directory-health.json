@@ -1,1 +1,1 @@
-{"status":"Cached","lastSuccessAt":"2026-09-14T03:55:33.925748+00:00","lastAttemptAt":"2026-10-23T00:55:29.364386+00:00","records":10426,"error":"SOURCE_COOLDOWN","retryAt":"2026-10-23T01:32:01.887051+00:00"}
+{"status":"Cached","lastSuccessAt":"2026-09-14T03:55:33.925748+00:00","lastAttemptAt":"2026-10-23T01:52:49.220647+00:00","records":10426,"error":"HTTP_403","retryAt":"2026-10-23T02:52:49.229291+00:00"}
