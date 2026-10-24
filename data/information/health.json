@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-24T01:02:36.663Z",
+  "generatedAt": "2026-10-24T04:27:57.852Z",
   "scope": {
     "dossiers": 10449,
     "bars": 63420,
     "events": 31979,
-    "bytes": 63621708
+    "bytes": 63621701
   },
   "trackerSHA256": "e8288d0d2fd42463753f1e3b0c15e6d9825994872c97e073ad1cf32e3a88fadc",
   "mode": "READ_ONLY",
@@ -182419,7 +182419,7 @@
     {
       "ticker": "ENPH",
       "code": "PROVIDER_FAILURE",
-      "detail": "SEC filings: SOURCE_COOLDOWN",
+      "detail": "SEC filings: HTTP_403",
       "severity": "review"
     },
     {
